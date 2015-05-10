@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:PagingMenuController.xcodeproj">
+      location = "self:PagingMenuControllerDemo.xcodeproj">
    </FileRef>
 </Workspace>
