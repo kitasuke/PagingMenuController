@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'PagingMenuController', :exclusive => true do
+  pod "PagingMenuController", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "PagingMenuController", :path => "../"
+
+  
+end
