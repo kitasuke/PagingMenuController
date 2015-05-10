@@ -1,5 +1,4 @@
 # PagingMenuController
-<<<<<<< HEAD
 
 [![CI Status](http://img.shields.io/travis/kitasuke/PagingMenuController.svg?style=flat)](https://travis-ci.org/kitasuke/PagingMenuController)
 [![Version](https://img.shields.io/cocoapods/v/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
@@ -28,5 +27,3 @@ kitasuke, yusuke2759@gmail.com
 ## License
 
 PagingMenuController is available under the MIT license. See the LICENSE file for more info.
-=======
->>>>>>> 476ce95aa36d2476b998388e15a9bdbddf649db2
