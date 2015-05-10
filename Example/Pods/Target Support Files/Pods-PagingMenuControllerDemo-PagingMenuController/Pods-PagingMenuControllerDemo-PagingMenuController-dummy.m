@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_PagingMenuControllerDemo_PagingMenuController : NSObject
+@end
+@implementation PodsDummy_Pods_PagingMenuControllerDemo_PagingMenuController
+@end

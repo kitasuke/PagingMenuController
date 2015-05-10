@@ -1,11 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
 
-target 'PagingMenuController', :exclusive => true do
+target 'PagingMenuControllerDemo', :exclusive => true do
   pod "PagingMenuController", :path => "../"
 end
 
-target 'Tests', :exclusive => true do
+target 'PagingMenuControllerDemoTests', :exclusive => true do
   pod "PagingMenuController", :path => "../"
 
-  
 end
