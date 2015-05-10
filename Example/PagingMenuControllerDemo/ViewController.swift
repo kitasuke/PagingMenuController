@@ -16,15 +16,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let viewController1 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController1") as! ViewController1
-        viewController1.title = "First"
+        viewController1.title = "First menu"
         let viewController2 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController2") as! ViewController2
-        viewController2.title = "Second"
+        viewController2.title = "Second menu"
         let viewController3 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController3") as! ViewController3
-        viewController3.title = "Third"
+        viewController3.title = "Third menu"
         let viewController4 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController4") as! ViewController4
-        viewController4.title = "Fourth"
+        viewController4.title = "Fourth menu"
         let viewController5 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController5") as! ViewController5
-        viewController5.title = "Fifth"
+        viewController5.title = "Fifth menu"
         
         let viewControllers = [viewController1, viewController2, viewController3, viewController4, viewController5]
         

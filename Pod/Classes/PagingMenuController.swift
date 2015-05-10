@@ -8,33 +8,37 @@
 
 import UIKit
 
-class PagingMenuOptions {
-    internal var defaultPage = 0
-    internal var backgroundColor = UIColor.whiteColor()
-    internal var selectedBackgroundColor = UIColor.whiteColor()
-    internal var textColor = UIColor.lightGrayColor()
-    internal var selectedTextColor = UIColor.darkGrayColor()
-    internal var font = UIFont.systemFontOfSize(12)
-    internal var menuHeight: CGFloat = 30
-    internal var menuItemMargin: CGFloat = 20
-    internal var animationDuration: NSTimeInterval = 0.3
-    internal var menuDisplayMode = MenuDisplayMode.FlexibleItemWidth(centerItem: false, scrollingMode: MenuScrollingMode.PagingEnabled)
+public class PagingMenuOptions {
+    public var defaultPage = 0
+    public var backgroundColor = UIColor.whiteColor()
+    public var selectedBackgroundColor = UIColor.whiteColor()
+    public var textColor = UIColor.lightGrayColor()
+    public var selectedTextColor = UIColor.blackColor()
+    public var font = UIFont.systemFontOfSize(16)
+    public var menuHeight: CGFloat = 30
+    public var menuItemMargin: CGFloat = 20
+    public var animationDuration: NSTimeInterval = 0.3
+    public var menuDisplayMode = MenuDisplayMode.FlexibleItemWidth(centerItem: false, scrollingMode: MenuScrollingMode.PagingEnabled)
     internal var menuItemCount = 0
     
-    enum MenuScrollingMode {
+    public enum MenuScrollingMode {
         case ScrollEnabled
         case ScrollEnabledAndBouces
         case PagingEnabled
     }
     
-    enum MenuDisplayMode {
+    public enum MenuDisplayMode {
         case FlexibleItemWidth(centerItem: Bool, scrollingMode: MenuScrollingMode)
         case FixedItemWidth(width: CGFloat, centerItem: Bool, scrollingMode: MenuScrollingMode)
         case SegmentedControl
     }
+    
+    public init() {
+        
+    }
 }
 
-class PagingMenuController: UIViewController, UIScrollViewDelegate {
+public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     private var options: PagingMenuOptions!
     private var menuView: MenuView!
@@ -57,18 +61,18 @@ class PagingMenuController: UIViewController, UIScrollViewDelegate {
         self.init(viewControllers: viewControllers, options: PagingMenuOptions())
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required public init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         self.menuView.moveToMenu(page: currentPage, animated: false)
         self.menuViewDidScroll(index: currentPage, animated: false)
     }
     
-    internal func setup(#viewControllers: [UIViewController], options: PagingMenuOptions) {
+    public func setup(#viewControllers: [UIViewController], options: PagingMenuOptions) {
         pagingViewControllers = viewControllers
         self.options = options
         options.menuItemCount = pagingViewControllers.count
@@ -88,7 +92,7 @@ class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - UISCrollViewDelegate
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
         let page = self.currentPagingViewPage()
         if currentPage == page {
             self.scrollView.contentOffset = scrollView.contentOffset
@@ -100,7 +104,7 @@ class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - HomeMenuViewDelegate
     
-    func menuViewDidScroll(#index: Int, animated: Bool) {
+    internal func menuViewDidScroll(#index: Int, animated: Bool) {
         currentPage = index
         currentViewController = pagingViewControllers[index]
         
@@ -112,7 +116,7 @@ class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - UIGestureRecognizer
     
-    func handleTapGesture(recognizer: UITapGestureRecognizer) {
+    internal func handleTapGesture(recognizer: UITapGestureRecognizer) {
         let tappedMenuView = recognizer.view as! MenuItemView
         if let tappedIndex = find(menuView.menuItemViews, tappedMenuView) where tappedIndex != currentPage {
             let index = self.targetIndex(tappedIndex: tappedIndex)
@@ -121,7 +125,7 @@ class PagingMenuController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func handleSwipeGesture(recognizer: UISwipeGestureRecognizer) {
+    internal func handleSwipeGesture(recognizer: UISwipeGestureRecognizer) {
         var newPageIndex = currentPage
         if recognizer.direction == .Left {
             newPageIndex = min(++newPageIndex, menuView.menuItemViews.count - 1)
