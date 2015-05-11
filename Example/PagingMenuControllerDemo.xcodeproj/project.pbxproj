@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7021C9801B009B9800C2AD1D /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97D1B009B9800C2AD1D /* MenuItemView.swift */; };
+		7021C9811B009B9800C2AD1D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97E1B009B9800C2AD1D /* MenuView.swift */; };
+		7021C9821B009B9800C2AD1D /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */; };
 		707C60E11AFF822100BDAB0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60E01AFF822100BDAB0B /* AppDelegate.swift */; };
 		707C60E31AFF822100BDAB0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60E21AFF822100BDAB0B /* ViewController.swift */; };
 		707C60E61AFF822100BDAB0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707C60E41AFF822100BDAB0B /* Main.storyboard */; };
@@ -74,6 +77,9 @@
 
 /* Begin PBXFileReference section */
 		61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7021C97D1B009B9800C2AD1D /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemView.swift; path = ../../Pod/Classes/MenuItemView.swift; sourceTree = "<group>"; };
+		7021C97E1B009B9800C2AD1D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuView.swift; path = ../../Pod/Classes/MenuView.swift; sourceTree = "<group>"; };
+		7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingMenuController.swift; path = ../../Pod/Classes/PagingMenuController.swift; sourceTree = "<group>"; };
 		707C60DB1AFF822100BDAB0B /* PagingMenuControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingMenuControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		707C60DF1AFF822100BDAB0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		707C60E01AFF822100BDAB0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +224,9 @@
 			isa = PBXGroup;
 			children = (
 				70C505341B0058B10007571E /* PagingMenuController.h */,
+				7021C97D1B009B9800C2AD1D /* MenuItemView.swift */,
+				7021C97E1B009B9800C2AD1D /* MenuView.swift */,
+				7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */,
 				70C505321B0058B10007571E /* Supporting Files */,
 			);
 			path = PagingMenuController;
@@ -553,6 +562,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7021C9801B009B9800C2AD1D /* MenuItemView.swift in Sources */,
+				7021C9821B009B9800C2AD1D /* PagingMenuController.swift in Sources */,
+				7021C9811B009B9800C2AD1D /* MenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +763,7 @@
 		70C5054A1B0058B10007571E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -765,6 +778,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -774,6 +788,7 @@
 		70C5054B1B0058B10007571E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -859,6 +874,7 @@
 				70C5054B1B0058B10007571E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		70C5054F1B0058B10007571E /* Build configuration list for PBXNativeTarget "PagingMenuControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -867,6 +883,7 @@
 				70C5054D1B0058B10007571E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
