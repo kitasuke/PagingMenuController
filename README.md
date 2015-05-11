@@ -73,6 +73,10 @@ public enum MenuScrollingMode {
   case PagingEnabled
 }
 ```
+if `centerItem` is true, selected menu item is always on center
+  
+if `MenuScrollingMode` is `ScrollEnabled` or `ScrollEnabledAndBouces`, menu view allows scrolling to select any menu item
+if `MenuScrollingMode` is `PagingEnabled`, menu item should be selected one by one 
 
 ## Usage
 
