@@ -7,17 +7,17 @@
 
 ## Display Mode
 
-### Flexible width based menu mode
+### Flexible menu item label width based mode
 
-![](https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo1.gif)
+<img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo1.gif" width="160" height="284">
 
-### Fixed width based menu mode
+### Fixed menu item label width based mode
 
-![](https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo2.gif)
+<img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo2.gif" width="284" height="160">
 
 ### Segmented control like menu mode
 
-![](https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo3.gif)
+<img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo3.gif" width="160" height="284">
 
 ## Usage
 
