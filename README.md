@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![Platform](https://img.shields.io/cocoapods/p/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 
-## Display Mode
+## Description
 
 ### Flexible menu item label width based mode
 
