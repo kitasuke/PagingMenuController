@@ -116,6 +116,10 @@ pagingMenuController.didMoveToParentViewController(self)
 
 ## Requirements
 
+iOS8 or later
+Swift 1.2 or later
+Xcode 6.3 or later
+
 ## Installation
 
 ### CocoaPods
