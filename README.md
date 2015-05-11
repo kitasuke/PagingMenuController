@@ -80,7 +80,39 @@ if `MenuScrollingMode` is `PagingEnabled`, menu item should be selected one by o
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+`import PagingMenuController` to use PagingMenuController in your file.
+
+### Using Storyboard
+
+```Swift
+let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+viewController.title = "Menu title"
+let viewControllers = [viewController]
+
+let pagingMenuController = self.childViewControllers.first as! PagingMenuController
+
+let options = PagingMenuOptions()
+options.menuHeight = 60
+options.menuDisplayMode = PagingMenuOptions.MenuDisplayMode.FlexibleItemWidth(centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
+pagingMenuController.setup(viewControllers: viewControllers, options: options)
+```
+* You should add `ContainerView` into your view controller's view and set `PagingMenuController` as the embedded view controller's class
+
+### Coding only
+```Swift
+let viewController = UIViewController()
+viewController.title = "Menu title"
+let viewControllers = [viewController]
+
+let options = PagingMenuOptions()
+options.menuItemMargin = 5
+options.menuDisplayMode = PagingMenuOptions.MenuDisplayMode.SegmentedControl
+let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
+
+self.addChildViewController(pagingMenuController)
+self.view.addSubview(pagingMenuController.view)
+pagingMenuController.didMoveToParentViewController(self)
+```
 
 ## Requirements
 
@@ -112,7 +144,7 @@ PagingMenuController is available through [Carthage](https://github.com/Carthage
 To install PagingMenuController into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```ruby
-github 'kitasuke/PagingMenuController'
+github "kitasuke/PagingMenuController"
 ```
 
 Then, run `carthage update`
