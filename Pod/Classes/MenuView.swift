@@ -63,7 +63,6 @@ class MenuView: UIScrollView {
         self.showsHorizontalScrollIndicator = false
         self.showsVerticalScrollIndicator = false
         self.bounces = self.bounces()
-        println(self.bounces())
         self.scrollEnabled = true
         self.scrollsToTop = false
         self.setTranslatesAutoresizingMaskIntoConstraints(false)
