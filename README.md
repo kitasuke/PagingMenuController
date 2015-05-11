@@ -5,6 +5,20 @@
 [![License](https://img.shields.io/cocoapods/l/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![Platform](https://img.shields.io/cocoapods/p/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 
+## Display Mode
+
+### Flexible width based menu mode
+
+![](https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo1.gif)
+
+### Fixed width based menu mode
+
+![](https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo2.gif)
+
+### Segmented control like menu mode
+
+![](https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo3.gif)
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
