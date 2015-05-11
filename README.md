@@ -86,16 +86,54 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+### CocoaPods
 PagingMenuController is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
 pod "PagingMenuController"
 ```
 
-## Author
+Then, run `pod install`
 
-kitasuke, yusuke2759@gmail.com
+In case you haven't installed CocoaPods yet, run the following command
+
+```ruby
+$ gem install cocoapods
+```
+
+### Carthage
+PagingMenuController is available through [Carthage](https://github.com/Carthage/Carthage).
+
+To install PagingMenuController into your Xcode project using Carthage, specify it in your Cartfile:
+
+```ruby
+github 'kitasuke/PagingMenuController'
+```
+
+Then, run `carthage update`
+
+You can see `Carthage/Build/iOS/PagingMenuController.framework` now, so drag and drop it to `Linked Frameworks and Libraries` in General menu tab with your project.
+Add the following script to `New Run Script Phase` in Build Phases menu tab.
+```ruby
+/usr/local/bin/carthage copy-frameworks
+```
+
+Also add the following script in `Input Files`
+```ruby
+$(SRCROOT)/Carthage/Build/iOS/PagingMenuController.framework
+```
+
+In case you haven't installed Carthage yet, run the following command
+
+```ruby
+$ brew update
+$ brew install carthage
+```
 
 ## License
 
