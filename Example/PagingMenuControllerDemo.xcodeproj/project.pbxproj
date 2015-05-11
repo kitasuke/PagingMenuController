@@ -18,6 +18,11 @@
 		707C61051AFF845200BDAB0B /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61041AFF845200BDAB0B /* ViewController3.swift */; };
 		707C61071AFF846800BDAB0B /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61061AFF846800BDAB0B /* ViewController4.swift */; };
 		707C61091AFF848700BDAB0B /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61081AFF848700BDAB0B /* ViewController5.swift */; };
+		70C505351B0058B10007571E /* PagingMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = 70C505341B0058B10007571E /* PagingMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		70C5053B1B0058B10007571E /* PagingMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C505301B0058B10007571E /* PagingMenuController.framework */; };
+		70C505441B0058B10007571E /* PagingMenuControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C505431B0058B10007571E /* PagingMenuControllerTests.swift */; };
+		70C505471B0058B10007571E /* PagingMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C505301B0058B10007571E /* PagingMenuController.framework */; };
+		70C505491B0058B10007571E /* PagingMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70C505301B0058B10007571E /* PagingMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B47D044F762BB5D827DD6DC6 /* Pods_PagingMenuControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DDA172CA689446F04F4C9097 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -30,7 +35,42 @@
 			remoteGlobalIDString = 707C60DA1AFF822100BDAB0B;
 			remoteInfo = PagingMenuControllerDemo;
 		};
+		70C5053C1B0058B10007571E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 707C60D31AFF822100BDAB0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70C5052F1B0058B10007571E;
+			remoteInfo = PagingMenuController;
+		};
+		70C5053E1B0058B10007571E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 707C60D31AFF822100BDAB0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 707C60DA1AFF822100BDAB0B;
+			remoteInfo = PagingMenuControllerDemo;
+		};
+		70C505451B0058B10007571E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 707C60D31AFF822100BDAB0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70C5052F1B0058B10007571E;
+			remoteInfo = PagingMenuController;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		70C505481B0058B10007571E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				70C505491B0058B10007571E /* PagingMenuController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +89,12 @@
 		707C61041AFF845200BDAB0B /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		707C61061AFF846800BDAB0B /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		707C61081AFF848700BDAB0B /* ViewController5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
+		70C505301B0058B10007571E /* PagingMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PagingMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70C505331B0058B10007571E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70C505341B0058B10007571E /* PagingMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingMenuController.h; sourceTree = "<group>"; };
+		70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		70C505421B0058B10007571E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70C505431B0058B10007571E /* PagingMenuControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerTests.swift; sourceTree = "<group>"; };
 		8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A43A77E541E67E86AA41BE0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8444D2212F28EF990A1A4B6 /* Pods-PagingMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -62,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B47D044F762BB5D827DD6DC6 /* Pods_PagingMenuControllerDemo.framework in Frameworks */,
+				70C505471B0058B10007571E /* PagingMenuController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +117,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA172CA689446F04F4C9097 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70C5052C1B0058B10007571E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70C505371B0058B10007571E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70C5053B1B0058B10007571E /* PagingMenuController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +152,8 @@
 			children = (
 				707C60DD1AFF822100BDAB0B /* PagingMenuControllerDemo */,
 				707C60F31AFF822200BDAB0B /* PagingMenuControllerDemoTests */,
+				70C505311B0058B10007571E /* PagingMenuController */,
+				70C505401B0058B10007571E /* PagingMenuControllerTests */,
 				707C60DC1AFF822100BDAB0B /* Products */,
 				90D456DCC3386FD0738FA4C6 /* Pods */,
 				31C312B457D869AC3AD2B333 /* Frameworks */,
@@ -101,6 +165,8 @@
 			children = (
 				707C60DB1AFF822100BDAB0B /* PagingMenuControllerDemo.app */,
 				707C60F01AFF822200BDAB0B /* PagingMenuControllerDemoTests.xctest */,
+				70C505301B0058B10007571E /* PagingMenuController.framework */,
+				70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +214,40 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		70C505311B0058B10007571E /* PagingMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				70C505341B0058B10007571E /* PagingMenuController.h */,
+				70C505321B0058B10007571E /* Supporting Files */,
+			);
+			path = PagingMenuController;
+			sourceTree = "<group>";
+		};
+		70C505321B0058B10007571E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				70C505331B0058B10007571E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70C505401B0058B10007571E /* PagingMenuControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				70C505431B0058B10007571E /* PagingMenuControllerTests.swift */,
+				70C505411B0058B10007571E /* Supporting Files */,
+			);
+			path = PagingMenuControllerTests;
+			sourceTree = "<group>";
+		};
+		70C505411B0058B10007571E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				70C505421B0058B10007571E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		90D456DCC3386FD0738FA4C6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +261,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		70C5052D1B0058B10007571E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70C505351B0058B10007571E /* PagingMenuController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		707C60DA1AFF822100BDAB0B /* PagingMenuControllerDemo */ = {
 			isa = PBXNativeTarget;
@@ -172,10 +283,12 @@
 				707C60D91AFF822100BDAB0B /* Resources */,
 				68E076C7307454405A028714 /* Copy Pods Resources */,
 				3B692420AF8A248B54B401FD /* Embed Pods Frameworks */,
+				70C505481B0058B10007571E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				70C505461B0058B10007571E /* PBXTargetDependency */,
 			);
 			name = PagingMenuControllerDemo;
 			productName = PagingMenuControllerDemo;
@@ -203,6 +316,43 @@
 			productReference = 707C60F01AFF822200BDAB0B /* PagingMenuControllerDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		70C5052F1B0058B10007571E /* PagingMenuController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70C5054E1B0058B10007571E /* Build configuration list for PBXNativeTarget "PagingMenuController" */;
+			buildPhases = (
+				70C5052B1B0058B10007571E /* Sources */,
+				70C5052C1B0058B10007571E /* Frameworks */,
+				70C5052D1B0058B10007571E /* Headers */,
+				70C5052E1B0058B10007571E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PagingMenuController;
+			productName = PagingMenuController;
+			productReference = 70C505301B0058B10007571E /* PagingMenuController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		70C505391B0058B10007571E /* PagingMenuControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70C5054F1B0058B10007571E /* Build configuration list for PBXNativeTarget "PagingMenuControllerTests" */;
+			buildPhases = (
+				70C505361B0058B10007571E /* Sources */,
+				70C505371B0058B10007571E /* Frameworks */,
+				70C505381B0058B10007571E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70C5053D1B0058B10007571E /* PBXTargetDependency */,
+				70C5053F1B0058B10007571E /* PBXTargetDependency */,
+			);
+			name = PagingMenuControllerTests;
+			productName = PagingMenuControllerTests;
+			productReference = 70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -216,6 +366,13 @@
 						CreatedOnToolsVersion = 6.3.1;
 					};
 					707C60EF1AFF822200BDAB0B = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 707C60DA1AFF822100BDAB0B;
+					};
+					70C5052F1B0058B10007571E = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					70C505391B0058B10007571E = {
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 707C60DA1AFF822100BDAB0B;
 					};
@@ -236,6 +393,8 @@
 			targets = (
 				707C60DA1AFF822100BDAB0B /* PagingMenuControllerDemo */,
 				707C60EF1AFF822200BDAB0B /* PagingMenuControllerDemoTests */,
+				70C5052F1B0058B10007571E /* PagingMenuController */,
+				70C505391B0058B10007571E /* PagingMenuControllerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -252,6 +411,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		707C60EE1AFF822200BDAB0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70C5052E1B0058B10007571E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70C505381B0058B10007571E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -376,6 +549,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70C5052B1B0058B10007571E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70C505361B0058B10007571E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70C505441B0058B10007571E /* PagingMenuControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -383,6 +571,21 @@
 			isa = PBXTargetDependency;
 			target = 707C60DA1AFF822100BDAB0B /* PagingMenuControllerDemo */;
 			targetProxy = 707C60F11AFF822200BDAB0B /* PBXContainerItemProxy */;
+		};
+		70C5053D1B0058B10007571E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70C5052F1B0058B10007571E /* PagingMenuController */;
+			targetProxy = 70C5053C1B0058B10007571E /* PBXContainerItemProxy */;
+		};
+		70C5053F1B0058B10007571E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 707C60DA1AFF822100BDAB0B /* PagingMenuControllerDemo */;
+			targetProxy = 70C5053E1B0058B10007571E /* PBXContainerItemProxy */;
+		};
+		70C505461B0058B10007571E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70C5052F1B0058B10007571E /* PagingMenuController */;
+			targetProxy = 70C505451B0058B10007571E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -545,6 +748,80 @@
 			};
 			name = Release;
 		};
+		70C5054A1B0058B10007571E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PagingMenuController/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		70C5054B1B0058B10007571E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = PagingMenuController/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		70C5054C1B0058B10007571E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PagingMenuControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PagingMenuControllerDemo.app/PagingMenuControllerDemo";
+			};
+			name = Debug;
+		};
+		70C5054D1B0058B10007571E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PagingMenuControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PagingMenuControllerDemo.app/PagingMenuControllerDemo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -574,6 +851,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		70C5054E1B0058B10007571E /* Build configuration list for PBXNativeTarget "PagingMenuController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70C5054A1B0058B10007571E /* Debug */,
+				70C5054B1B0058B10007571E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		70C5054F1B0058B10007571E /* Build configuration list for PBXNativeTarget "PagingMenuControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70C5054C1B0058B10007571E /* Debug */,
+				70C5054D1B0058B10007571E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
