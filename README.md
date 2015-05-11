@@ -1,4 +1,4 @@
-# PagingMenuController
+![](https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/logo.png)
 
 [![CI Status](http://img.shields.io/travis/kitasuke/PagingMenuController.svg?style=flat)](https://travis-ci.org/kitasuke/PagingMenuController)
 [![Version](https://img.shields.io/cocoapods/v/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
