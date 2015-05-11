@@ -51,13 +51,13 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
 
     // MARK: - Lifecycle
     
-    init(viewControllers: [UIViewController], options: PagingMenuOptions) {
+    public init(viewControllers: [UIViewController], options: PagingMenuOptions) {
         super.init(nibName: nil, bundle: nil)
         
         self.setup(viewControllers: viewControllers, options: options)
     }
     
-    convenience init(viewControllers: [UIViewController]) {
+    convenience public init(viewControllers: [UIViewController]) {
         self.init(viewControllers: viewControllers, options: PagingMenuOptions())
     }
 
