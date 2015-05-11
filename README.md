@@ -115,6 +115,19 @@ To install PagingMenuController into your Xcode project using Carthage, specify 
 github 'kitasuke/PagingMenuController'
 ```
 
+Then, run `carthage update`
+
+You can see `Carthage/Build/iOS/PagingMenuController.framework` now, so drag and drop it to `Linked Frameworks and Libraries` in General menu tab with your project.
+Add the following script to `New Run Script Phase` in Build Phases menu tab.
+```ruby
+/usr/local/bin/carthage copy-frameworks
+```
+
+Also add the following script in `Input Files`
+```ruby
+$(SRCROOT)/Carthage/Build/iOS/PagingMenuController.framework
+```
+
 In case you haven't installed Carthage yet, run the following command
 
 ```ruby
