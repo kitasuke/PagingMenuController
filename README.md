@@ -115,6 +115,10 @@ self.view.addSubview(pagingMenuController.view)
 pagingMenuController.didMoveToParentViewController(self)
 ```
 
+### Manual
+
+Copy all the files in `Pod/Classes` directory into your project.
+
 ## Requirements
 
 iOS8 or later  
