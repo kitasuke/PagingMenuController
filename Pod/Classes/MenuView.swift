@@ -190,8 +190,7 @@ class MenuView: UIScrollView {
     
     private func changeMenuItemColor() {
         for (index, menuItemView) in enumerate(menuItemViews) {
-            menuItemView.backgroundColor = index == currentPage ? options.selectedBackgroundColor : options.backgroundColor
-            menuItemView.titleLabel.textColor = index == currentPage ? options.selectedTextColor : options.textColor
+            menuItemView.changeColor(selected: index == currentPage)
         }
     }
 }

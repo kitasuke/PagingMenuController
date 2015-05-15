@@ -10,8 +10,9 @@ import Foundation
 
 class MenuItemView: UIView {
     
-    internal var titleLabel: UILabel!
     private var options: PagingMenuOptions!
+    private var titleLabel: UILabel!
+    private var underlineView: UIView!
     
     // MARK: - Lifecycle
     
@@ -24,6 +25,14 @@ class MenuItemView: UIView {
         
         self.constructLabel(title: title)
         self.layoutLabel()
+        switch options.menuItemMode {
+        case .Underline(let height, let color, let selectedColor):
+            self.constructUnderlineView(color: color)
+            self.layoutUnderlineView(height: height)
+        case .RoundRect: fallthrough
+        case .None:
+            break;
+        }
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -50,6 +59,20 @@ class MenuItemView: UIView {
         }
     }
     
+    // MARK: - Color changer
+    
+    internal func changeColor(#selected: Bool) {
+        self.backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
+        self.titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
+        switch options.menuItemMode {
+        case .Underline(let height, let color, let selectedColor):
+            self.underlineView.backgroundColor = selected ? selectedColor : color
+        case .RoundRect: fallthrough
+        case .None:
+            break;
+        }
+    }
+    
     // MARK: - Constructor
     
     private func constructLabel(#title: String) {
@@ -65,11 +88,28 @@ class MenuItemView: UIView {
     }
     
     private func layoutLabel() {
-        let viewsDicrionary = ["label": titleLabel]
+        let viewsDictionary = ["label": titleLabel]
         
         let labelSize = self.calculateLableSize()
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[label(width)]|", options: NSLayoutFormatOptions.allZeros, metrics: ["width": labelSize.width], views: viewsDicrionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label]|", options: NSLayoutFormatOptions.allZeros, metrics: ["height": labelSize.height], views: viewsDicrionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[label(width)]|", options: NSLayoutFormatOptions.allZeros, metrics: ["width": labelSize.width], views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label(height)]", options: NSLayoutFormatOptions.allZeros, metrics: ["height": labelSize.height], views: viewsDictionary)
+        
+        self.addConstraints(horizontalConstraints)
+        self.addConstraints(verticalConstraints)
+    }
+    
+    private func constructUnderlineView(#color: UIColor) {
+        underlineView = UIView()
+        underlineView.backgroundColor = color
+        underlineView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.addSubview(underlineView)
+    }
+    
+    private func layoutUnderlineView(#height: CGFloat) {
+        let viewsDictionary = ["view": underlineView]
+        
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view(width)]|", options: NSLayoutFormatOptions.allZeros, metrics: ["width": self.calculateLableSize().width], views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[view(height)]|", options: NSLayoutFormatOptions.allZeros, metrics: ["height": height], views: viewsDictionary)
         
         self.addConstraints(horizontalConstraints)
         self.addConstraints(verticalConstraints)

@@ -19,6 +19,7 @@ public class PagingMenuOptions {
     public var menuItemMargin: CGFloat = 20
     public var animationDuration: NSTimeInterval = 0.3
     public var menuDisplayMode = MenuDisplayMode.FlexibleItemWidth(centerItem: false, scrollingMode: MenuScrollingMode.PagingEnabled)
+    public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.whiteColor(), selectedColor: UIColor.blueColor())
     internal var menuItemCount = 0
     
     public enum MenuScrollingMode {
@@ -31,6 +32,12 @@ public class PagingMenuOptions {
         case FlexibleItemWidth(centerItem: Bool, scrollingMode: MenuScrollingMode)
         case FixedItemWidth(width: CGFloat, centerItem: Bool, scrollingMode: MenuScrollingMode)
         case SegmentedControl
+    }
+    
+    public enum MenuItemMode {
+        case None
+        case Underline(height: CGFloat, color: UIColor, selectedColor: UIColor)
+        case RoundRect
     }
     
     public init() {

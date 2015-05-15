@@ -9,6 +9,6 @@
 // PagingMenuController
 #define COCOAPODS_POD_AVAILABLE_PagingMenuController
 #define COCOAPODS_VERSION_MAJOR_PagingMenuController 0
-#define COCOAPODS_VERSION_MINOR_PagingMenuController 1
-#define COCOAPODS_VERSION_PATCH_PagingMenuController 1
+#define COCOAPODS_VERSION_MINOR_PagingMenuController 2
+#define COCOAPODS_VERSION_PATCH_PagingMenuController 3
 
