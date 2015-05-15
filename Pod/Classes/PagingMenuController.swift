@@ -47,7 +47,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     private var pagingViewControllers = [UIViewController]()
     private var currentPage: Int = 0
     private var currentViewController: UIViewController!
-    private var menuHeightConstraint: NSLayoutConstraint?
 
     // MARK: - Lifecycle
     
@@ -152,14 +151,12 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     private func layoutMenuView() {
         let viewsDictionary = ["menuView": self.menuView]
+        let metrics = ["height": options.menuHeight]
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuView]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuView]", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuView(height)]", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: viewsDictionary)
         
         self.view.addConstraints(horizontalConstraints)
         self.view.addConstraints(verticalConstraints)
-        
-        menuHeightConstraint = NSLayoutConstraint(item: menuView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: options.menuHeight)
-        view.addConstraint(menuHeightConstraint!)
     }
     
     private func constructScrollView() {
