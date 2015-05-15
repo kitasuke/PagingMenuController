@@ -1,21 +1,22 @@
 ![](https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/logo.png)
 
 [![CI Status](http://img.shields.io/travis/kitasuke/PagingMenuController.svg?style=flat)](https://travis-ci.org/kitasuke/PagingMenuController)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/kitasuke/PagingMenuController)
 [![Version](https://img.shields.io/cocoapods/v/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![License](https://img.shields.io/cocoapods/l/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![Platform](https://img.shields.io/cocoapods/p/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 
 ## Description
 
-### Flexible menu item label width based mode
+### Flexible menu width mode
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo1.gif" width="160" height="284">
 
-### Fixed menu item label width based mode
+### Fixed menu width mode
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo2.gif" width="284" height="160">
 
-### Segmented control like menu mode
+### Segmented control mode
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo3.gif" width="160" height="284">
 
@@ -80,9 +81,49 @@ if `MenuScrollingMode` is `PagingEnabled`, menu item should be selected one by o
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+`import PagingMenuController` to use PagingMenuController in your file.
+
+### Using Storyboard
+
+```Swift
+let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController") as! ViewController
+viewController.title = "Menu title"
+let viewControllers = [viewController]
+
+let pagingMenuController = self.childViewControllers.first as! PagingMenuController
+
+let options = PagingMenuOptions()
+options.menuHeight = 60
+options.menuDisplayMode = PagingMenuOptions.MenuDisplayMode.FlexibleItemWidth(centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
+pagingMenuController.setup(viewControllers: viewControllers, options: options)
+```
+* You should add `ContainerView` into your view controller's view and set `PagingMenuController` as the embedded view controller's class
+
+### Coding only
+```Swift
+let viewController = UIViewController()
+viewController.title = "Menu title"
+let viewControllers = [viewController]
+
+let options = PagingMenuOptions()
+options.menuItemMargin = 5
+options.menuDisplayMode = PagingMenuOptions.MenuDisplayMode.SegmentedControl
+let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
+
+self.addChildViewController(pagingMenuController)
+self.view.addSubview(pagingMenuController.view)
+pagingMenuController.didMoveToParentViewController(self)
+```
+
+### Manual
+
+Copy all the files in `Pod/Classes` directory into your project.
 
 ## Requirements
+
+iOS8 or later  
+Swift 1.2 or later  
+Xcode 6.3 or later  
 
 ## Installation
 
@@ -112,7 +153,7 @@ PagingMenuController is available through [Carthage](https://github.com/Carthage
 To install PagingMenuController into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```ruby
-github 'kitasuke/PagingMenuController'
+github "kitasuke/PagingMenuController"
 ```
 
 Then, run `carthage update`
