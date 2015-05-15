@@ -8,15 +8,15 @@
 
 ## Description
 
-### Flexible menu item label width based mode
+### Flexible menu width mode
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo1.gif" width="160" height="284">
 
-### Fixed menu item label width based mode
+### Fixed menu width mode
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo2.gif" width="284" height="160">
 
-### Segmented control like menu mode
+### Segmented control mode
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo3.gif" width="160" height="284">
 
