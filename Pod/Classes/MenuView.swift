@@ -47,7 +47,7 @@ class MenuView: UIScrollView {
 
         currentPage = page
 
-        UIView.animateWithDuration(duration, animations: { () -> Void in
+        UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.contentOffset.x = contentOffsetX
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in

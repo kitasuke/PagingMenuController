@@ -109,7 +109,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         currentViewController = pagingViewControllers[index]
         
         let duration = animated ? options.animationDuration : 0
-        UIView.animateWithDuration(duration, animations: { () -> Void in
+        UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.scrollView.contentOffset.x = CGRectGetWidth(self.scrollView.frame) * CGFloat(index)
         })
     }
