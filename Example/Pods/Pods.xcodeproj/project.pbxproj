@@ -16,6 +16,10 @@
 		50D4E62EF0CECDA23F40D7AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88C5DA90DA8AD2C09831908 /* Foundation.framework */; };
 		5DAC1A09D6B81463F702A2BC /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50534DD67C44FBEE2770D8E4 /* MenuItemView.swift */; };
 		6B45FA3E8C4CDB69D0E79E21 /* Pods-PagingMenuControllerDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A66D84CC7BB80518AC4838 /* Pods-PagingMenuControllerDemoTests-dummy.m */; };
+		7077A9891B08B03300EBE337 /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077A9881B08B03300EBE337 /* PagingMenuOptions.swift */; };
+		7077A98A1B08B03300EBE337 /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077A9881B08B03300EBE337 /* PagingMenuOptions.swift */; };
+		7077A98E1B08B0D700EBE337 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077A98D1B08B0D700EBE337 /* Constants.swift */; };
+		7077A98F1B08B0D700EBE337 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077A98D1B08B0D700EBE337 /* Constants.swift */; };
 		921FF5181C9A72883A06839A /* Pods-PagingMenuControllerDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F931736EADDA336727AB72FF /* Pods-PagingMenuControllerDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		99005F0A164A13B85EC3A75D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD55CDB10D9A7CFDB6C6C9 /* MenuView.swift */; };
 		A31EB80656B352D07EFE1CCD /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CD55CDB10D9A7CFDB6C6C9 /* MenuView.swift */; };
@@ -80,6 +84,8 @@
 		5DD4D7BF24AA67A9E412C084 /* Pods-PagingMenuControllerDemo-PagingMenuController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo-PagingMenuController.xcconfig"; sourceTree = "<group>"; };
 		6733EE37F88D0562C865D29B /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h"; sourceTree = "<group>"; };
 		6FA179A36D4406F0C5792D5E /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig"; sourceTree = "<group>"; };
+		7077A9881B08B03300EBE337 /* PagingMenuOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuOptions.swift; sourceTree = "<group>"; };
+		7077A98D1B08B0D700EBE337 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8807059589E0C9C09210031B /* Pods-PagingMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		8DBE00786A6AF4B1C5157119 /* Pods-PagingMenuControllerDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PagingMenuControllerDemo-dummy.m"; sourceTree = "<group>"; };
 		8DC62C1C0CBC152C4E113061 /* Pods-PagingMenuControllerDemo-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-environment.h"; sourceTree = "<group>"; };
@@ -211,7 +217,9 @@
 			children = (
 				50534DD67C44FBEE2770D8E4 /* MenuItemView.swift */,
 				D1CD55CDB10D9A7CFDB6C6C9 /* MenuView.swift */,
+				7077A9881B08B03300EBE337 /* PagingMenuOptions.swift */,
 				DDCC77C494F67E5600AB15CC /* PagingMenuController.swift */,
+				7077A98D1B08B0D700EBE337 /* Constants.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -523,6 +531,8 @@
 				A31EB80656B352D07EFE1CCD /* MenuView.swift in Sources */,
 				B8944D6732DECA69B15AF65A /* PagingMenuController.swift in Sources */,
 				B2E6844208C4546D12C6D3F0 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m in Sources */,
+				7077A98A1B08B03300EBE337 /* PagingMenuOptions.swift in Sources */,
+				7077A98F1B08B0D700EBE337 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +574,8 @@
 				99005F0A164A13B85EC3A75D /* MenuView.swift in Sources */,
 				0B036DC555D4104C4A2987E6 /* PagingMenuController.swift in Sources */,
 				EAA83D8A868CAC77C0DFE180 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m in Sources */,
+				7077A9891B08B03300EBE337 /* PagingMenuOptions.swift in Sources */,
+				7077A98E1B08B0D700EBE337 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
