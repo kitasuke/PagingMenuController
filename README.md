@@ -79,6 +79,16 @@ if `centerItem` is true, selected menu item is always on center
 if `MenuScrollingMode` is `ScrollEnabled` or `ScrollEnabledAndBouces`, menu view allows scrolling to select any menu item
 if `MenuScrollingMode` is `PagingEnabled`, menu item should be selected one by one 
 
+* menu item mode
+```Swift
+public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.whiteColor(), selectedColor: UIColor.blueColor())
+public enum MenuItemMode {
+    case None
+    case Underline(height: CGFloat, color: UIColor, selectedColor: UIColor)
+    case RoundRect  // not supported yet
+}
+```
+
 ## Usage
 
 `import PagingMenuController` to use PagingMenuController in your file.
