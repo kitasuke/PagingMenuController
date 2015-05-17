@@ -179,7 +179,7 @@ class MenuView: UIScrollView {
     }
     
     private func centerOfScreenWidth(#nextIndex: Int) -> CGFloat {
-        return CGRectGetMinX(self.menuItemViews[nextIndex].frame) + CGRectGetWidth(self.menuItemViews[nextIndex].frame) / 2 - CGRectGetWidth(self.frame) / 2
+        return CGRectGetMinX(menuItemViews[nextIndex].frame) + CGRectGetWidth(menuItemViews[nextIndex].frame) / 2 - CGRectGetWidth(self.frame) / 2
     }
     
     private func contentOffsetXForCurrentPage(#nextIndex: Int) -> CGFloat {

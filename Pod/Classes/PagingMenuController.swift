@@ -102,6 +102,10 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - UISCrollViewDelegate
     
     public func scrollViewDidScroll(scrollView: UIScrollView) {
+        if !scrollView.dragging {
+            return
+        }
+        
         let page = self.currentPagingViewPage()
         if currentPage == page {
             self.scrollView.contentOffset = scrollView.contentOffset
