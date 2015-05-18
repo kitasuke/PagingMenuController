@@ -1,3 +1,8 @@
+
+### Enhancements
+
+- Added CHANGELOG.md
+
 # 0.3.1 Release notes (2015-05-17)
 
 ### Enhancements
