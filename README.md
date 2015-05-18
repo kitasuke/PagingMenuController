@@ -6,6 +6,10 @@
 [![License](https://img.shields.io/cocoapods/l/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![Platform](https://img.shields.io/cocoapods/p/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 
+## Updates
+
+See [CHANGELOG.md](https://github.com/kitasuke/PagingMenuController/blob/master/CHANGELOG.md) for details
+
 ## Description
 
 ### Flexible menu width mode
