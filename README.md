@@ -192,4 +192,4 @@ $ brew install carthage
 
 ## License
 
-PagingMenuController is available under the MIT license. See the LICENSE file for more info.
+PagingMenuController is available under the MIT license. See the [LICENSE](https://github.com/kitasuke/PagingMenuController/blob/master/LICENSE) file for more info.
