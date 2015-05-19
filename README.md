@@ -8,7 +8,7 @@
 
 ## Updates
 
-See [CHANGELOG.md](https://github.com/kitasuke/PagingMenuController/blob/master/CHANGELOG.md) for details
+See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHANGELOG.md) for details
 
 ## Description
 
