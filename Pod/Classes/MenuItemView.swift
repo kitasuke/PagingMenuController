@@ -17,6 +17,8 @@ class MenuItemView: UIView {
     private var underlineView: UIView!
     private var widthViewConstraint: NSLayoutConstraint!
     private var widthLabelConstraint: NSLayoutConstraint!
+    private var horizontalViewScale: CGFloat!
+    private var verticalViewScale: CGFloat!
     
     // MARK: - Lifecycle
     
@@ -26,9 +28,10 @@ class MenuItemView: UIView {
         self.options = options
         self.title = title
         
-        self.backgroundColor = options.backgroundColor
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        // scale for title view
+        self.calculateViewScale()
         
+        self.setupView()
         self.constructTitleView()
         self.constructLabel()
         self.layoutTitleView()
@@ -71,7 +74,7 @@ class MenuItemView: UIView {
         switch options.menuItemMode {
         case .Underline(let height, let color, let selectedColor):
             self.underlineView.backgroundColor = selected ? selectedColor : color
-        case .RoundRect(let radius, let scale, let selectedColor):
+        case .RoundRect(let radius, let horizontalScale, let verticalScale, let selectedColor):
             self.titleView.backgroundColor = selected ? selectedColor : UIColor.clearColor()
         case .None: break
         }
@@ -79,12 +82,17 @@ class MenuItemView: UIView {
     
     // MARK: - Constructor
     
+    private func setupView() {
+        self.backgroundColor = options.backgroundColor
+        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+    }
+    
     private func constructTitleView() {
         titleView = UIView()
         titleView.userInteractionEnabled = true
         titleView.setTranslatesAutoresizingMaskIntoConstraints(false)
         switch options.menuItemMode {
-        case .RoundRect(let radius, let scale, let selectedColor):
+        case .RoundRect(let radius, let horizontalScale, let verticalScale, let selectedColor):
             titleView.layer.cornerRadius = radius
         default: break
         }
@@ -195,45 +203,32 @@ class MenuItemView: UIView {
         }
     }
     
-    private func calculateLabelMargin(margin: (horizontal: CGFloat, vertical: CGFloat)) -> (horizontal: CGFloat, vertical: CGFloat) {
-        let roundRectScale: CGFloat
+    private func calculateViewScale() {
         switch options.menuItemMode {
-        case .RoundRect(let radius, let scale, let selectedColor):
-            roundRectScale = scale
+        case .RoundRect(let radius, let horizontalScale, let verticalScale, let selectedColor):
+            self.horizontalViewScale = horizontalScale
+            self.verticalViewScale = verticalScale
         default:
-            roundRectScale = 0
+            self.horizontalViewScale = 0
+            self.verticalViewScale = 0
         }
-        let horizontalMargin = margin.horizontal * roundRectScale
-        let verticalMargin = margin.vertical * roundRectScale
+    }
+    
+    private func calculateLabelMargin(margin: (horizontal: CGFloat, vertical: CGFloat)) -> (horizontal: CGFloat, vertical: CGFloat) {
+        let horizontalMargin = margin.horizontal * self.horizontalViewScale
+        let verticalMargin = margin.vertical * self.verticalViewScale
         return (horizontalMargin, verticalMargin)
     }
     
     private func calculateTitleViewSize(labelSize: CGSize, margin: (horizontal: CGFloat, vertical: CGFloat)) -> CGSize {
-        let roundRectScale: CGFloat
-        switch options.menuItemMode {
-        case .RoundRect(let radius, let scale, let selectedColor):
-            roundRectScale = scale
-        default:
-            roundRectScale = 0
-        }
-        
-        let width = labelSize.width + margin.horizontal * roundRectScale * 2
-        let height = labelSize.height + margin.vertical * roundRectScale * 2
+        let width = labelSize.width + margin.horizontal * self.horizontalViewScale * 2
+        let height = labelSize.height + margin.vertical * self.verticalViewScale * 2
         return CGSizeMake(width, height)
     }
     
     private func calculateTitleViewMargin(margin: (horizontal: CGFloat, vertical: CGFloat)) -> (horizontal: CGFloat, vertical: CGFloat) {
-        let roundRectScale: CGFloat
-        switch options.menuItemMode {
-        case .RoundRect(let radius, let scale, let selectedColor):
-            roundRectScale = scale
-        default:
-            roundRectScale = 0
-        }
-        let marginScale = 1.0 - roundRectScale
-        
-        let horizontalMargin = margin.horizontal * marginScale
-        let verticalMargin = margin.vertical * marginScale
+        let horizontalMargin = margin.horizontal * (1.0 - self.horizontalViewScale)
+        let verticalMargin = margin.vertical * (1.0 - self.verticalViewScale)
         return (horizontalMargin, verticalMargin)
     }
 }

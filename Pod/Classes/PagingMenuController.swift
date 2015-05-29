@@ -51,6 +51,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         pagingViewControllers = viewControllers
         self.options = options
         options.menuItemCount = pagingViewControllers.count
+        Validator.validate(self.options)
         
         self.constructMenuView()
         self.layoutMenuView()
@@ -61,7 +62,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         self.constructPagingViewControllers()
         self.layoutPagingViewControllers()
         
-        self.validateDefaultPage()
         self.menuView.moveToMenu(page: options.defaultPage, animated: false)
         self.menuViewDidScroll(index: options.defaultPage, animated: false)
     }
@@ -280,14 +280,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             }
         case .SegmentedControl:
             return tappedIndex
-        }
-    }
-    
-    // MARK: - Validator
-    
-    private func validateDefaultPage() {
-        if options.defaultPage >= options.menuItemCount || options.defaultPage < 0 {
-            NSException(name: ExceptionName, reason: "default page is invalid", userInfo: nil).raise()
         }
     }
 }

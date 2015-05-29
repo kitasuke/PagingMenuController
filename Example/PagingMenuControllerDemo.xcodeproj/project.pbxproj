@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		701F7F8D1B18A7FA00D97D57 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F7F8C1B18A7FA00D97D57 /* Validator.swift */; };
 		7021C9801B009B9800C2AD1D /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97D1B009B9800C2AD1D /* MenuItemView.swift */; };
 		7021C9811B009B9800C2AD1D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97E1B009B9800C2AD1D /* MenuView.swift */; };
 		7021C9821B009B9800C2AD1D /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		701F7F8C1B18A7FA00D97D57 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = ../../Pod/Classes/Validator.swift; sourceTree = "<group>"; };
 		7021C97D1B009B9800C2AD1D /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemView.swift; path = ../../Pod/Classes/MenuItemView.swift; sourceTree = "<group>"; };
 		7021C97E1B009B9800C2AD1D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuView.swift; path = ../../Pod/Classes/MenuView.swift; sourceTree = "<group>"; };
 		7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingMenuController.swift; path = ../../Pod/Classes/PagingMenuController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */,
 				7077A98B1B08B06700EBE337 /* PagingMenuOptions.swift */,
 				7077A9901B08B0E300EBE337 /* Constants.swift */,
+				701F7F8C1B18A7FA00D97D57 /* Validator.swift */,
 				70C505321B0058B10007571E /* Supporting Files */,
 			);
 			path = PagingMenuController;
@@ -572,6 +575,7 @@
 				7021C9801B009B9800C2AD1D /* MenuItemView.swift in Sources */,
 				7077A98C1B08B06700EBE337 /* PagingMenuOptions.swift in Sources */,
 				7021C9821B009B9800C2AD1D /* PagingMenuController.swift in Sources */,
+				701F7F8D1B18A7FA00D97D57 /* Validator.swift in Sources */,
 				7021C9811B009B9800C2AD1D /* MenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
