@@ -1,6 +1,10 @@
 
+# 0.3.2 Release notes (2015-05-29)
+
 ### Enhancements
 
+- Added new item mode, RoundRect
+- Revert animation duration default value to 0.3
 - Added CHANGELOG.md
 
 # 0.3.1 Release notes (2015-05-17)
