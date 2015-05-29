@@ -1,4 +1,11 @@
 
+# 0.3.3 Release notes (2015-05-29)
+
+### Enhancements
+
+- Separate RoundRect scale into horizontal and vertical one
+- Add Validator class to validate options value
+
 # 0.3.2 Release notes (2015-05-29)
 
 ### Enhancements
