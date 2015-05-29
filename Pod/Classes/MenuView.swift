@@ -56,6 +56,16 @@ class MenuView: UIScrollView {
         })
     }
     
+    internal func updateMenuItemConstraintsIfNeeded(#size: CGSize) {
+        switch options.menuDisplayMode {
+        case .SegmentedControl:
+            for menuItemView in menuItemViews {
+                menuItemView.updateLabelConstraints(size: size)
+            }
+        default: break
+        }
+    }
+    
     // MARK: - Private method
     
     private func setupScrollView() {
