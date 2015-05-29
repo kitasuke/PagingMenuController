@@ -89,7 +89,7 @@ public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.white
 public enum MenuItemMode {
     case None
     case Underline(height: CGFloat, color: UIColor, selectedColor: UIColor)
-    case RoundRect(radius: CGFloat, scale: CGFloat, selectedColor: UIColor)
+    case RoundRect(radius: CGFloat, horizontalScale: CGFloat, verticalScale: CGFloat, selectedColor: UIColor)
 }
 ```
 
