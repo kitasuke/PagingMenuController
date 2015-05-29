@@ -41,6 +41,12 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         self.menuViewDidScroll(index: currentPage, animated: false)
     }
     
+    override public func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        menuView.updateMenuItemConstraintsIfNeeded(size: size)
+    }
+    
     public func setup(#viewControllers: [UIViewController], options: PagingMenuOptions) {
         pagingViewControllers = viewControllers
         self.options = options
@@ -228,17 +234,13 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         switch options.menuDisplayMode {
         case .FlexibleItemWidth(let centerItem, let scrollingMode):
             switch scrollingMode {
-            case .PagingEnabled:
-                break
-            default:
-                return
+            case .PagingEnabled: break
+            default: return
             }
         case .FixedItemWidth(let width, let centerItem, let scrollingMode):
             switch scrollingMode {
-            case .PagingEnabled:
-                break
-            default:
-                return
+            case .PagingEnabled: break
+            default: return
             }
         case .SegmentedControl:
             return
