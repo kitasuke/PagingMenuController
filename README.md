@@ -14,7 +14,7 @@ See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHA
 
 ### Flexible menu width mode
 
-<img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo1.gif" width="160" height="284">
+<img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo4.gif" width="160" height="284">
 
 ### Fixed menu width mode
 
@@ -89,7 +89,7 @@ public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.white
 public enum MenuItemMode {
     case None
     case Underline(height: CGFloat, color: UIColor, selectedColor: UIColor)
-    case RoundRect  // not supported yet
+    case RoundRect(radius: CGFloat, scale: CGFloat, selectedColor: UIColor)
 }
 ```
 
