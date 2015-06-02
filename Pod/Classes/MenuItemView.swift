@@ -38,7 +38,7 @@ class MenuItemView: UIView {
         self.layoutLabel()
         
         switch options.menuItemMode {
-        case .Underline(let height, let color, let selectedColor):
+        case .Underline(let height, let color, _):
             self.constructUnderlineView(color: color)
             self.layoutUnderlineView(height: height)
         default: break
@@ -72,9 +72,9 @@ class MenuItemView: UIView {
         self.backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
         self.titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
         switch options.menuItemMode {
-        case .Underline(let height, let color, let selectedColor):
+        case .Underline(_, let color, let selectedColor):
             self.underlineView.backgroundColor = selected ? selectedColor : color
-        case .RoundRect(let radius, let horizontalScale, let verticalScale, let selectedColor):
+        case .RoundRect(_, _, _, let selectedColor):
             self.titleView.backgroundColor = selected ? selectedColor : UIColor.clearColor()
         case .None: break
         }
@@ -92,7 +92,7 @@ class MenuItemView: UIView {
         titleView.userInteractionEnabled = true
         titleView.setTranslatesAutoresizingMaskIntoConstraints(false)
         switch options.menuItemMode {
-        case .RoundRect(let radius, let horizontalScale, let verticalScale, let selectedColor):
+        case .RoundRect(let radius, _, _, _):
             titleView.layer.cornerRadius = radius
         default: break
         }
@@ -177,9 +177,9 @@ class MenuItemView: UIView {
         
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, let scrollingMode):
+        case .FlexibleItemWidth(_, _):
             itemWidth = ceil(labelSize.width)
-        case .FixedItemWidth(let width, let centerItem, let scrollingMode):
+        case .FixedItemWidth(let width, _, _):
             itemWidth = width - options.menuItemMargin * 2
         case .SegmentedControl:
             itemWidth = size.width / CGFloat(options.menuItemCount)
@@ -205,7 +205,7 @@ class MenuItemView: UIView {
     
     private func calculateViewScale() {
         switch options.menuItemMode {
-        case .RoundRect(let radius, let horizontalScale, let verticalScale, let selectedColor):
+        case .RoundRect(_, let horizontalScale, let verticalScale, _):
             self.horizontalViewScale = horizontalScale
             self.verticalViewScale = verticalScale
         default:

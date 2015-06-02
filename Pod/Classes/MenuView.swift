@@ -128,14 +128,14 @@ class MenuView: UIScrollView {
     
     private func bounces() -> Bool {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, let scrollingMode):
+        case .FlexibleItemWidth(_, let scrollingMode):
             switch scrollingMode {
             case .ScrollEnabledAndBouces:
                 return true
             default:
                 return false
             }
-        case .FixedItemWidth(let width, let centerItem, let scrollingMode):
+        case .FixedItemWidth(_, _, let scrollingMode):
             switch scrollingMode {
             case .ScrollEnabledAndBouces:
                 return true
@@ -149,11 +149,11 @@ class MenuView: UIScrollView {
     
     private func adjustmentContentInsetIfNeeded() {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, let scrollingMode):
+        case .FlexibleItemWidth(let centerItem, _):
             if !centerItem {
                 return
             }
-        case .FixedItemWidth(let width, let centerItem, let scrollingMode):
+        case .FixedItemWidth(_, let centerItem, _):
             if !centerItem {
                 return
             }
@@ -173,12 +173,12 @@ class MenuView: UIScrollView {
     
     private func targetContentOffsetX(#nextIndex: Int) -> CGFloat {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, let scrollingMode):
+        case .FlexibleItemWidth(let centerItem, _):
             if centerItem {
                 return self.centerOfScreenWidth(nextIndex: nextIndex)
             }
             return self.contentOffsetXForCurrentPage(nextIndex: nextIndex)
-        case .FixedItemWidth(let width, let centerItem, let scrollingMode):
+        case .FixedItemWidth(_, let centerItem, _):
             if centerItem {
                 return self.centerOfScreenWidth(nextIndex: nextIndex)
             }

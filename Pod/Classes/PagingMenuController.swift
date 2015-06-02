@@ -232,12 +232,12 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     private func addSwipeGestureHandlersIfNeeded() {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, let scrollingMode):
+        case .FlexibleItemWidth(_, let scrollingMode):
             switch scrollingMode {
             case .PagingEnabled: break
             default: return
             }
-        case .FixedItemWidth(let width, let centerItem, let scrollingMode):
+        case .FixedItemWidth(_, _, let scrollingMode):
             switch scrollingMode {
             case .PagingEnabled: break
             default: return
@@ -264,14 +264,14 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     private func targetIndex(#tappedIndex: Int) -> Int {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, let scrollingMode):
+        case .FlexibleItemWidth(_, let scrollingMode):
             switch scrollingMode {
             case .PagingEnabled:
                 return tappedIndex < currentPage ? currentPage-1 : currentPage+1
             default:
                 return tappedIndex
             }
-        case .FixedItemWidth(let width, let centerItem, let scrollingMode):
+        case .FixedItemWidth(_, _, let scrollingMode):
             switch scrollingMode {
             case .PagingEnabled:
                 return tappedIndex < currentPage ? currentPage-1 : currentPage+1
