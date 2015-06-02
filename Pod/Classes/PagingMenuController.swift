@@ -90,7 +90,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         let duration = animated ? options.animationDuration : 0
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
-            self.scrollView.contentOffset.x = CGRectGetWidth(self.scrollView.frame) * CGFloat(index)
+            self.scrollView.contentOffset.x = self.scrollView.frame.width * CGFloat(index)
         })
     }
     
@@ -191,7 +191,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         var contentWidth: CGFloat = 0.0
         var viewsDictionary: [String: AnyObject] = ["scrollView": self.scrollView]
         for (index, pagingViewController) in enumerate(self.pagingViewControllers) {
-            contentWidth += CGRectGetWidth(self.view.frame)
+            contentWidth += self.view.frame.width
             
             viewsDictionary["pagingView"] = pagingViewController.view!
             let horizontalVisualFormat: String
@@ -257,7 +257,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     private func currentPagingViewPage() -> Int {
-        let pageWidth = CGRectGetWidth(self.scrollView.frame)
+        let pageWidth = self.scrollView.frame.width
         
         return Int(floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth)) + 1
     }
