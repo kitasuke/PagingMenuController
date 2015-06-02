@@ -165,9 +165,9 @@ class MenuView: UIScrollView {
         let lastMenuView = menuItemViews.last! as MenuItemView
         
         var inset = self.contentInset
-        let halfWidth = CGRectGetWidth(self.frame) / 2
-        inset.left = halfWidth - CGRectGetWidth(firstMenuView.frame) / 2
-        inset.right = halfWidth - CGRectGetWidth(lastMenuView.frame) / 2
+        let halfWidth = self.frame.width / 2
+        inset.left = halfWidth - firstMenuView.frame.width / 2
+        inset.right = halfWidth - lastMenuView.frame.width / 2
         self.contentInset = inset
     }
     
@@ -189,13 +189,13 @@ class MenuView: UIScrollView {
     }
     
     private func centerOfScreenWidth(#nextIndex: Int) -> CGFloat {
-        return CGRectGetMinX(menuItemViews[nextIndex].frame) + CGRectGetWidth(menuItemViews[nextIndex].frame) / 2 - CGRectGetWidth(self.frame) / 2
+        return menuItemViews[nextIndex].frame.origin.x + menuItemViews[nextIndex].frame.width / 2 - self.frame.width / 2
     }
     
     private func contentOffsetXForCurrentPage(#nextIndex: Int) -> CGFloat {
         let ratio = CGFloat(nextIndex) / CGFloat(menuItemViews.count - 1)
         let previousMenuItem = menuItemViews[currentPage]
-        return (self.contentSize.width - CGRectGetWidth(self.frame)) * ratio
+        return (self.contentSize.width - self.frame.width) * ratio
     }
     
     private func changeMenuItemColor() {
