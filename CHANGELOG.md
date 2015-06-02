@@ -1,3 +1,6 @@
+### Enhancements
+
+- Small improvements
 
 # 0.3.3 Release notes (2015-05-29)
 
