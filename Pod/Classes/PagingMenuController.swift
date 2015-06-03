@@ -198,7 +198,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             if (index == 0) {
                 horizontalVisualFormat = "H:|[pagingView(==scrollView)]"
             } else if (index == self.pagingViewControllers.count - 1) {
-                horizontalVisualFormat = "H:[pagingView(==scrollView)]|"
+                horizontalVisualFormat = "H:[previousPagingView][pagingView(==scrollView)]|"
+                viewsDictionary["previousPagingView"] = self.pagingViewControllers[index - 1].view
             } else {
                 horizontalVisualFormat = "H:[previousPagingView][pagingView(==scrollView)][nextPagingView]"
                 viewsDictionary["previousPagingView"] = self.pagingViewControllers[index - 1].view

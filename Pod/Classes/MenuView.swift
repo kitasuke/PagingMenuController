@@ -110,7 +110,8 @@ class MenuView: UIScrollView {
             if index == 0 {
                 visualFormat = "H:|[menuItemView]"
             } else if index == menuItemViews.count - 1 {
-                visualFormat = "H:[menuItemView]|"
+                viewsDicrionary["previousMenuItemView"] = menuItemViews[index - 1]
+                visualFormat = "H:[previousMenuItemView][menuItemView]|"
             } else {
                 visualFormat = "H:[previousMenuItemView][menuItemView][nextMenuItemView]"
                 viewsDicrionary["nextMenuItemView"] = menuItemViews[index + 1]
