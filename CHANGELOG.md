@@ -1,6 +1,7 @@
 ### Enhancements
 
 - Displaying only two menu items is now supported thanks to jeksys
+- Change framework's deployment target to 8.0 for Carthage users thanks to alexcurylo
 - Small improvements
 
 # 0.3.3 Release notes (2015-05-29)
