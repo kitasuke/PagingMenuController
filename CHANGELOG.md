@@ -1,3 +1,5 @@
+# 0.3.4 Release notes (2015-06-05)
+
 ### Enhancements
 
 - Displaying only two menu items is now supported thanks to jeksys
