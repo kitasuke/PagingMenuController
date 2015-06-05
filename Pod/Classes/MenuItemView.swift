@@ -120,7 +120,7 @@ class MenuItemView: UIView {
         let viewSize = self.calculateTitleViewSize(labelSize, margin: margin)
         let viewMargin = self.calculateTitleViewMargin(margin)
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin@250-[view]-margin@250-|", options: NSLayoutFormatOptions.allZeros, metrics: ["margin": viewMargin.horizontal], views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[view]-margin-|", options: NSLayoutFormatOptions.allZeros, metrics: ["margin": viewMargin.horizontal], views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[view(height)]-margin@250-|", options: NSLayoutFormatOptions.allZeros, metrics: ["height": viewSize.height, "margin": viewMargin.vertical], views: viewsDictionary)
         
         self.addConstraints(horizontalConstraints)
@@ -138,7 +138,7 @@ class MenuItemView: UIView {
         let margin = self.calculateMargin(labelHeight: labelSize.height)
         let labelMargin = self.calculateLabelMargin(margin)
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin@250-[label]-margin@250-|", options: NSLayoutFormatOptions.allZeros, metrics: ["margin": labelMargin.horizontal], views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[label]-margin-|", options: NSLayoutFormatOptions.allZeros, metrics: ["margin": labelMargin.horizontal], views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[label(height)]-margin@250-|", options: NSLayoutFormatOptions.allZeros, metrics: ["height": labelSize.height, "margin": labelMargin.vertical], views: viewsDictionary)
         
         titleView.addConstraints(horizontalConstraints)
@@ -160,10 +160,8 @@ class MenuItemView: UIView {
         let viewsDictionary = ["view": underlineView]
         
         let labelSize = self.calculateLableSize()
-        let margin = self.calculateMargin(labelHeight: labelSize.height)
-        let width = labelSize.width + margin.horizontal * 2
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view(width)]|", options: NSLayoutFormatOptions.allZeros, metrics: ["width": width], views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[view(height)]|", options: NSLayoutFormatOptions.allZeros, metrics: ["height": height], views: viewsDictionary)
         
         self.addConstraints(horizontalConstraints)
