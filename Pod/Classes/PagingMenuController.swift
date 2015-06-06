@@ -50,7 +50,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     public func setup(#viewControllers: [UIViewController], options: PagingMenuOptions) {
         pagingViewControllers = viewControllers
         self.options = options
-        options.menuItemCount = pagingViewControllers.count
+        self.options.menuItemCount = pagingViewControllers.count
         Validator.validate(self.options)
         
         self.constructMenuView()
