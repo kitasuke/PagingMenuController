@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PagingMenuOptions {
+public struct PagingMenuOptions {
     public var defaultPage = 0
     public var backgroundColor = UIColor.whiteColor()
     public var selectedBackgroundColor = UIColor.whiteColor()
