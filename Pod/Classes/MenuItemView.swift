@@ -37,11 +37,9 @@ class MenuItemView: UIView {
         self.layoutTitleView()
         self.layoutLabel()
         
-        switch options.menuItemMode {
-        case .Underline(let height, let color, _):
+        if case .Underline(let height, let color, _) = options.menuItemMode {
             self.constructUnderlineView(color: color)
             self.layoutUnderlineView(height: height)
-        default: break
         }
     }
     
@@ -57,12 +55,10 @@ class MenuItemView: UIView {
     
     internal func updateLabelConstraints(size size: CGSize) {
         // set width manually to support ratotaion
-        switch options.menuDisplayMode {
-        case .SegmentedControl:
+        if case .SegmentedControl = options.menuDisplayMode {
             let labelSize = self.calculateLableSize(size)
             widthLabelConstraint.constant = labelSize.width
             widthViewConstraint.constant = labelSize.width
-        default: break
         }
     }
     
@@ -91,10 +87,8 @@ class MenuItemView: UIView {
         titleView = UIView()
         titleView.userInteractionEnabled = true
         titleView.translatesAutoresizingMaskIntoConstraints = false
-        switch options.menuItemMode {
-        case .RoundRect(let radius, _, _, _):
+        if case .RoundRect(let radius, _, _, _) = options.menuItemMode {
             titleView.layer.cornerRadius = radius
-        default: break
         }
         titleView.backgroundColor = UIColor.clearColor()
         self.addSubview(titleView)
@@ -158,8 +152,6 @@ class MenuItemView: UIView {
     
     private func layoutUnderlineView(height height: CGFloat) {
         let viewsDictionary = ["view": underlineView]
-        
-        let labelSize = self.calculateLableSize()
         
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[view(height)]|", options: NSLayoutFormatOptions(), metrics: ["height": height], views: viewsDictionary)

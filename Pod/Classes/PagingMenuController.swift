@@ -177,7 +177,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     private func constructPagingViewControllers() {
-        for (index, pagingViewController) in self.pagingViewControllers.enumerate() {
+        for pagingViewController in self.pagingViewControllers {
             pagingViewController.view!.frame = CGRectZero
             pagingViewController.view!.translatesAutoresizingMaskIntoConstraints = false
 
@@ -266,21 +266,16 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     private func targetIndex(tappedIndex tappedIndex: Int) -> Int {
         switch options.menuDisplayMode {
         case .FlexibleItemWidth(_, let scrollingMode):
-            switch scrollingMode {
-            case .PagingEnabled:
+            if case .PagingEnabled = scrollingMode {
                 return tappedIndex < currentPage ? currentPage-1 : currentPage+1
-            default:
-                return tappedIndex
             }
         case .FixedItemWidth(_, _, let scrollingMode):
-            switch scrollingMode {
-            case .PagingEnabled:
+            if case .PagingEnabled = scrollingMode {
                 return tappedIndex < currentPage ? currentPage-1 : currentPage+1
-            default:
-                return tappedIndex
             }
-        case .SegmentedControl:
+        default:
             return tappedIndex
         }
+        return tappedIndex
     }
 }
