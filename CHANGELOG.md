@@ -1,6 +1,7 @@
 ### Enhancements
 
 - Change PagingMenuOptions structure from class to struct
+- Merge validator into PagingMenuController class
 
 # 0.3.4 Release notes (2015-06-05)
 
