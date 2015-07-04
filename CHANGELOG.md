@@ -1,3 +1,5 @@
+# 0.4.0 Release notes (2015-07-04)
+
 ### Enhancements
 
 - Change PagingMenuOptions structure from class to struct
