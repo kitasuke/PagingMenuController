@@ -134,9 +134,19 @@ self.view.addSubview(pagingMenuController.view)
 pagingMenuController.didMoveToParentViewController(self)
 ```
 
-### Manual
+### Delegate methods (optional)
 
-Copy all the files in `Pod/Classes` directory into your project.
+```Swift
+pagingMenuController.delegate = self
+```
+
+```Swift
+func willMoveToMenuPage(page: Int) {
+}
+
+func didMoveToMenuPage(page: Int) {
+}
+```
 
 ## Requirements
 
@@ -194,6 +204,10 @@ In case you haven't installed Carthage yet, run the following command
 $ brew update
 $ brew install carthage
 ```
+
+### Manual
+
+Copy all the files in `Pod/Classes` directory into your project.
 
 ## License
 
