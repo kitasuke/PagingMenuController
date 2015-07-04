@@ -29,18 +29,18 @@ class MenuItemView: UIView {
         self.title = title
         
         // scale for title view
-        self.calculateViewScale()
+        calculateViewScale()
         
-        self.setupView()
-        self.constructTitleView()
-        self.constructLabel()
-        self.layoutTitleView()
-        self.layoutLabel()
+        setupView()
+        constructTitleView()
+        constructLabel()
+        layoutTitleView()
+        layoutLabel()
         
         switch options.menuItemMode {
         case .Underline(let height, let color, _):
-            self.constructUnderlineView(color: color)
-            self.layoutUnderlineView(height: height)
+            constructUnderlineView(color: color)
+            layoutUnderlineView(height: height)
         default: break
         }
     }
@@ -59,7 +59,7 @@ class MenuItemView: UIView {
         // set width manually to support ratotaion
         switch options.menuDisplayMode {
         case .SegmentedControl:
-            let labelSize = self.calculateLableSize(size: size)
+            let labelSize = calculateLableSize(size: size)
             widthLabelConstraint.constant = labelSize.width
             widthViewConstraint.constant = labelSize.width
         default: break
@@ -69,13 +69,13 @@ class MenuItemView: UIView {
     // MARK: - Color changer
     
     internal func changeColor(#selected: Bool) {
-        self.backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
-        self.titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
+        backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
+        titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
         switch options.menuItemMode {
         case .Underline(_, let color, let selectedColor):
-            self.underlineView.backgroundColor = selected ? selectedColor : color
+            underlineView.backgroundColor = selected ? selectedColor : color
         case .RoundRect(_, _, _, let selectedColor):
-            self.titleView.backgroundColor = selected ? selectedColor : UIColor.clearColor()
+            titleView.backgroundColor = selected ? selectedColor : UIColor.clearColor()
         case .None: break
         }
     }
@@ -83,8 +83,8 @@ class MenuItemView: UIView {
     // MARK: - Constructor
     
     private func setupView() {
-        self.backgroundColor = options.backgroundColor
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        backgroundColor = options.backgroundColor
+        setTranslatesAutoresizingMaskIntoConstraints(false)
     }
     
     private func constructTitleView() {
@@ -97,7 +97,7 @@ class MenuItemView: UIView {
         default: break
         }
         titleView.backgroundColor = UIColor.clearColor()
-        self.addSubview(titleView)
+        addSubview(titleView)
     }
     
     private func constructLabel() {
@@ -115,28 +115,28 @@ class MenuItemView: UIView {
     private func layoutTitleView() {
         let viewsDictionary = ["view": titleView]
         
-        let labelSize = self.calculateLableSize()
-        let margin = self.calculateMargin(labelHeight: labelSize.height)
-        let viewSize = self.calculateTitleViewSize(labelSize, margin: margin)
-        let viewMargin = self.calculateTitleViewMargin(margin)
+        let labelSize = calculateLableSize()
+        let margin = calculateMargin(labelHeight: labelSize.height)
+        let viewSize = calculateTitleViewSize(labelSize, margin: margin)
+        let viewMargin = calculateTitleViewMargin(margin)
         
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[view]-margin-|", options: NSLayoutFormatOptions.allZeros, metrics: ["margin": viewMargin.horizontal], views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[view(height)]-margin@250-|", options: NSLayoutFormatOptions.allZeros, metrics: ["height": viewSize.height, "margin": viewMargin.vertical], views: viewsDictionary)
         
-        self.addConstraints(horizontalConstraints)
-        self.addConstraints(verticalConstraints)
+        addConstraints(horizontalConstraints)
+        addConstraints(verticalConstraints)
         
         // use property to change constant value anytime
         widthViewConstraint = NSLayoutConstraint(item: titleView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: viewSize.width)
-        self.addConstraint(widthViewConstraint)
+        addConstraint(widthViewConstraint)
     }
     
     private func layoutLabel() {
         let viewsDictionary = ["label": titleLabel]
         
-        let labelSize = self.calculateLableSize()
-        let margin = self.calculateMargin(labelHeight: labelSize.height)
-        let labelMargin = self.calculateLabelMargin(margin)
+        let labelSize = calculateLableSize()
+        let margin = calculateMargin(labelHeight: labelSize.height)
+        let labelMargin = calculateLabelMargin(margin)
         
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[label]-margin-|", options: NSLayoutFormatOptions.allZeros, metrics: ["margin": labelMargin.horizontal], views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[label(height)]-margin@250-|", options: NSLayoutFormatOptions.allZeros, metrics: ["height": labelSize.height, "margin": labelMargin.vertical], views: viewsDictionary)
@@ -153,19 +153,17 @@ class MenuItemView: UIView {
         underlineView = UIView()
         underlineView.backgroundColor = color
         underlineView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.addSubview(underlineView)
+        addSubview(underlineView)
     }
     
     private func layoutUnderlineView(#height: CGFloat) {
         let viewsDictionary = ["view": underlineView]
         
-        let labelSize = self.calculateLableSize()
-        
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[view(height)]|", options: NSLayoutFormatOptions.allZeros, metrics: ["height": height], views: viewsDictionary)
         
-        self.addConstraints(horizontalConstraints)
-        self.addConstraints(verticalConstraints)
+        addConstraints(horizontalConstraints)
+        addConstraints(verticalConstraints)
     }
     
     // MARK: - Size calculator
@@ -207,26 +205,26 @@ class MenuItemView: UIView {
             self.horizontalViewScale = horizontalScale
             self.verticalViewScale = verticalScale
         default:
-            self.horizontalViewScale = 0
-            self.verticalViewScale = 0
+            horizontalViewScale = 0
+            verticalViewScale = 0
         }
     }
     
     private func calculateLabelMargin(margin: (horizontal: CGFloat, vertical: CGFloat)) -> (horizontal: CGFloat, vertical: CGFloat) {
-        let horizontalMargin = margin.horizontal * self.horizontalViewScale
-        let verticalMargin = margin.vertical * self.verticalViewScale
+        let horizontalMargin = margin.horizontal * horizontalViewScale
+        let verticalMargin = margin.vertical * verticalViewScale
         return (horizontalMargin, verticalMargin)
     }
     
     private func calculateTitleViewSize(labelSize: CGSize, margin: (horizontal: CGFloat, vertical: CGFloat)) -> CGSize {
-        let width = labelSize.width + margin.horizontal * self.horizontalViewScale * 2
-        let height = labelSize.height + margin.vertical * self.verticalViewScale * 2
+        let width = labelSize.width + margin.horizontal * horizontalViewScale * 2
+        let height = labelSize.height + margin.vertical * verticalViewScale * 2
         return CGSizeMake(width, height)
     }
     
     private func calculateTitleViewMargin(margin: (horizontal: CGFloat, vertical: CGFloat)) -> (horizontal: CGFloat, vertical: CGFloat) {
-        let horizontalMargin = margin.horizontal * (1.0 - self.horizontalViewScale)
-        let verticalMargin = margin.vertical * (1.0 - self.verticalViewScale)
+        let horizontalMargin = margin.horizontal * (1.0 - horizontalViewScale)
+        let verticalMargin = margin.vertical * (1.0 - verticalViewScale)
         return (horizontalMargin, verticalMargin)
     }
 }

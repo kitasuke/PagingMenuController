@@ -30,7 +30,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     public init(viewControllers: [UIViewController], options: PagingMenuOptions) {
         super.init(nibName: nil, bundle: nil)
         
-        self.setup(viewControllers: viewControllers, options: options)
+        setup(viewControllers: viewControllers, options: options)
     }
     
     convenience public init(viewControllers: [UIViewController]) {
@@ -59,17 +59,17 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         self.options.menuItemCount = pagingViewControllers.count
         
         // validate
-        self.validateDefaultPage()
-        self.validateRoundRectScaleIfNeeded()
+        validateDefaultPage()
+        validateRoundRectScaleIfNeeded()
         
-        self.constructMenuView()
-        self.layoutMenuView()
-        self.constructScrollView()
-        self.layoutScrollView()
-        self.constructContentView()
-        self.layoutContentView()
-        self.constructPagingViewControllers()
-        self.layoutPagingViewControllers()
+        constructMenuView()
+        layoutMenuView()
+        constructScrollView()
+        layoutScrollView()
+        constructContentView()
+        layoutContentView()
+        constructPagingViewControllers()
+        layoutPagingViewControllers()
         
         currentPage = self.options.defaultPage
         currentViewController = pagingViewControllers[self.options.defaultPage]
@@ -82,7 +82,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             return
         }
         
-        let page = self.currentPagingViewPage()
+        let page = currentPagingViewPage()
         if currentPage == page {
             self.scrollView.contentOffset = scrollView.contentOffset
         } else {
@@ -130,107 +130,107 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - Constructor
     
     private func constructMenuView() {
-        menuView = MenuView(menuItemTitles: self.menuItemTitles(), options: options)
+        menuView = MenuView(menuItemTitles: menuItemTitles(), options: options)
         menuView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addSubview(menuView)
+        view.addSubview(menuView)
         
         for menuItemView in menuView.menuItemViews {
             menuItemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTapGesture:"))
         }
         
-        self.addSwipeGestureHandlersIfNeeded()
+        addSwipeGestureHandlersIfNeeded()
     }
     
     private func layoutMenuView() {
-        let viewsDictionary = ["menuView": self.menuView]
+        let viewsDictionary = ["menuView": menuView]
         let metrics = ["height": options.menuHeight]
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuView]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuView(height)]", options: NSLayoutFormatOptions.allZeros, metrics: metrics, views: viewsDictionary)
         
-        self.view.addConstraints(horizontalConstraints)
-        self.view.addConstraints(verticalConstraints)
+        view.addConstraints(horizontalConstraints)
+        view.addConstraints(verticalConstraints)
     }
     
     private func constructScrollView() {
-        self.scrollView = UIScrollView(frame: CGRectZero)
-        self.scrollView.delegate = self
-        self.scrollView.pagingEnabled = true
-        self.scrollView.showsHorizontalScrollIndicator = false
-        self.scrollView.showsVerticalScrollIndicator = false
-        self.scrollView.scrollsToTop = false
-        self.scrollView.bounces = false
-        self.scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.view.addSubview(self.scrollView)
+        scrollView = UIScrollView(frame: CGRectZero)
+        scrollView.delegate = self
+        scrollView.pagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.scrollsToTop = false
+        scrollView.bounces = false
+        scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.addSubview(scrollView)
     }
     
     private func layoutScrollView() {
-        let viewsDictionary = ["scrollView": self.scrollView, "menuView": self.menuView]
+        let viewsDictionary = ["scrollView": scrollView, "menuView": menuView]
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[scrollView]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView][scrollView]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
         
-        self.view.addConstraints(horizontalConstraints)
-        self.view.addConstraints(verticalConstraints)
+        view.addConstraints(horizontalConstraints)
+        view.addConstraints(verticalConstraints)
     }
     
     private func constructContentView() {
-        self.contentView = UIView(frame: CGRectZero)
-        self.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.scrollView.addSubview(self.contentView)
+        contentView = UIView(frame: CGRectZero)
+        contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        scrollView.addSubview(contentView)
     }
     
     private func layoutContentView() {
-        let viewsDictionary = ["contentView": self.contentView, "scrollView": self.scrollView]
+        let viewsDictionary = ["contentView": contentView, "scrollView": scrollView]
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==scrollView)]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
         
-        self.scrollView.addConstraints(horizontalConstraints)
-        self.scrollView.addConstraints(verticalConstraints)
+        scrollView.addConstraints(horizontalConstraints)
+        scrollView.addConstraints(verticalConstraints)
     }
     
     private func constructPagingViewControllers() {
-        for (index, pagingViewController) in enumerate(self.pagingViewControllers) {
+        for (index, pagingViewController) in enumerate(pagingViewControllers) {
             pagingViewController.view!.frame = CGRectZero
             pagingViewController.view!.setTranslatesAutoresizingMaskIntoConstraints(false)
 
-            self.contentView.addSubview(pagingViewController.view!)
-            self.addChildViewController(pagingViewController as UIViewController)
+            contentView.addSubview(pagingViewController.view!)
+            addChildViewController(pagingViewController as UIViewController)
             pagingViewController.didMoveToParentViewController(self)
         }
     }
     
     private func layoutPagingViewControllers() {
         var contentWidth: CGFloat = 0.0
-        var viewsDictionary: [String: AnyObject] = ["scrollView": self.scrollView]
-        for (index, pagingViewController) in enumerate(self.pagingViewControllers) {
-            contentWidth += self.view.frame.width
+        var viewsDictionary: [String: AnyObject] = ["scrollView": scrollView]
+        for (index, pagingViewController) in enumerate(pagingViewControllers) {
+            contentWidth += view.frame.width
             
             viewsDictionary["pagingView"] = pagingViewController.view!
             let horizontalVisualFormat: String
             if (index == 0) {
                 horizontalVisualFormat = "H:|[pagingView(==scrollView)]"
-            } else if (index == self.pagingViewControllers.count - 1) {
+            } else if (index == pagingViewControllers.count - 1) {
                 horizontalVisualFormat = "H:[previousPagingView][pagingView(==scrollView)]|"
-                viewsDictionary["previousPagingView"] = self.pagingViewControllers[index - 1].view
+                viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
             } else {
                 horizontalVisualFormat = "H:[previousPagingView][pagingView(==scrollView)][nextPagingView]"
-                viewsDictionary["previousPagingView"] = self.pagingViewControllers[index - 1].view
-                viewsDictionary["nextPagingView"] = self.pagingViewControllers[index + 1].view
+                viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
+                viewsDictionary["nextPagingView"] = pagingViewControllers[index + 1].view
             }
             
             let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(horizontalVisualFormat, options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
             let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[pagingView(==scrollView)]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
             
-            self.scrollView.addConstraints(horizontalConstraints)
-            self.scrollView.addConstraints(verticalConstraints)
+            scrollView.addConstraints(horizontalConstraints)
+            scrollView.addConstraints(verticalConstraints)
         }
         
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
     
     private func menuItemTitles() -> [String] {
         var titles = [String]()
-        for (index, viewController) in enumerate(self.pagingViewControllers) {
+        for (index, viewController) in enumerate(pagingViewControllers) {
             if let title = viewController.title {
                 titles.append(title)
             } else {
@@ -291,9 +291,9 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - Page calculator
     
     private func currentPagingViewPage() -> Int {
-        let pageWidth = self.scrollView.frame.width
+        let pageWidth = scrollView.frame.width
         
-        return Int(floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth)) + 1
+        return Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth)) + 1
     }
     
     private func targetPage(#tappedPage: Int) -> Int {
