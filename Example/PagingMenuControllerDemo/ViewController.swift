@@ -9,7 +9,7 @@
 import UIKit
 import PagingMenuController
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PagingMenuControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         let options = PagingMenuOptions()
         
         let pagingMenuController = self.childViewControllers.first as! PagingMenuController
+        pagingMenuController.delegate = self
         pagingMenuController.setup(viewControllers: viewControllers, options: options)
     }
 
@@ -39,6 +40,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    // MARK: - PagingMenuControllerDelegate
+    
+    func willMoveToMenuPage(page: Int) {
+    }
+    
+    func didMoveToMenuPage(page: Int) {
+    }
 }
 
