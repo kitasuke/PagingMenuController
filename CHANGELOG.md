@@ -1,6 +1,10 @@
 ### Enhancements
 
 - Change PagingMenuOptions structure from class to struct
+- Support delegate methods to handle menu transition state
+
+### Breaking changes
+
 - Merge validator into PagingMenuController class
 
 # 0.3.4 Release notes (2015-06-05)
