@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		701F7F8D1B18A7FA00D97D57 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701F7F8C1B18A7FA00D97D57 /* Validator.swift */; };
 		7021C9801B009B9800C2AD1D /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97D1B009B9800C2AD1D /* MenuItemView.swift */; };
 		7021C9811B009B9800C2AD1D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97E1B009B9800C2AD1D /* MenuView.swift */; };
 		7021C9821B009B9800C2AD1D /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */; };
 		7077A98C1B08B06700EBE337 /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077A98B1B08B06700EBE337 /* PagingMenuOptions.swift */; };
-		7077A9911B08B0E300EBE337 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7077A9901B08B0E300EBE337 /* Constants.swift */; };
 		707C60E11AFF822100BDAB0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60E01AFF822100BDAB0B /* AppDelegate.swift */; };
 		707C60E31AFF822100BDAB0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60E21AFF822100BDAB0B /* ViewController.swift */; };
 		707C60E61AFF822100BDAB0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707C60E41AFF822100BDAB0B /* Main.storyboard */; };
@@ -80,12 +78,10 @@
 
 /* Begin PBXFileReference section */
 		61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		701F7F8C1B18A7FA00D97D57 /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validator.swift; path = ../../Pod/Classes/Validator.swift; sourceTree = "<group>"; };
 		7021C97D1B009B9800C2AD1D /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemView.swift; path = ../../Pod/Classes/MenuItemView.swift; sourceTree = "<group>"; };
 		7021C97E1B009B9800C2AD1D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuView.swift; path = ../../Pod/Classes/MenuView.swift; sourceTree = "<group>"; };
 		7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingMenuController.swift; path = ../../Pod/Classes/PagingMenuController.swift; sourceTree = "<group>"; };
 		7077A98B1B08B06700EBE337 /* PagingMenuOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingMenuOptions.swift; path = ../../Pod/Classes/PagingMenuOptions.swift; sourceTree = "<group>"; };
-		7077A9901B08B0E300EBE337 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../Pod/Classes/Constants.swift; sourceTree = "<group>"; };
 		707C60DB1AFF822100BDAB0B /* PagingMenuControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingMenuControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		707C60DF1AFF822100BDAB0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		707C60E01AFF822100BDAB0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -234,8 +230,6 @@
 				7021C97E1B009B9800C2AD1D /* MenuView.swift */,
 				7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */,
 				7077A98B1B08B06700EBE337 /* PagingMenuOptions.swift */,
-				7077A9901B08B0E300EBE337 /* Constants.swift */,
-				701F7F8C1B18A7FA00D97D57 /* Validator.swift */,
 				70C505321B0058B10007571E /* Supporting Files */,
 			);
 			path = PagingMenuController;
@@ -571,11 +565,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7077A9911B08B0E300EBE337 /* Constants.swift in Sources */,
 				7021C9801B009B9800C2AD1D /* MenuItemView.swift in Sources */,
 				7077A98C1B08B06700EBE337 /* PagingMenuOptions.swift in Sources */,
 				7021C9821B009B9800C2AD1D /* PagingMenuController.swift in Sources */,
-				701F7F8D1B18A7FA00D97D57 /* Validator.swift in Sources */,
 				7021C9811B009B9800C2AD1D /* MenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

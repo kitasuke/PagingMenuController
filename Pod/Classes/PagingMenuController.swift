@@ -17,6 +17,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     private var pagingViewControllers = [UIViewController]()
     private var currentPage: Int = 0
     private var currentViewController: UIViewController!
+    private let ExceptionName = "PMCException"
 
     // MARK: - Lifecycle
     
@@ -51,7 +52,10 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         pagingViewControllers = viewControllers
         self.options = options
         self.options.menuItemCount = pagingViewControllers.count
-        Validator.validate(self.options)
+        
+        // validate
+        self.validateDefaultPage()
+        self.validateRoundRectScaleIfNeeded()
         
         self.constructMenuView()
         self.layoutMenuView()
@@ -217,8 +221,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         self.view.layoutIfNeeded()
     }
     
-    // MARK: - Private method
-    
     private func menuItemTitles() -> [String] {
         var titles = [String]()
         for (index, viewController) in enumerate(self.pagingViewControllers) {
@@ -281,6 +283,24 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             }
         case .SegmentedControl:
             return tappedIndex
+        }
+    }
+    
+    // MARK: - Validator
+    
+    private func validateDefaultPage() {
+        if options.defaultPage >= options.menuItemCount || options.defaultPage < 0 {
+            NSException(name: ExceptionName, reason: "default page is invalid", userInfo: nil).raise()
+        }
+    }
+    
+    private func validateRoundRectScaleIfNeeded() {
+        switch options.menuItemMode {
+        case .RoundRect(_, let horizontalScale, let verticalScale, _):
+            if horizontalScale < 0 || horizontalScale > 1 || verticalScale < 0 || verticalScale > 1 {
+                NSException(name: ExceptionName, reason: "scale value should be between 0 and 1", userInfo: nil).raise()
+            }
+        default: break
         }
     }
 }

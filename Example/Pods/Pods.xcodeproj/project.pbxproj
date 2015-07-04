@@ -14,23 +14,19 @@
 		32CC696AB66585EC3D6714D6 /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E94EAFF7510584EE7A4C6A /* PagingMenuOptions.swift */; };
 		49F6499C58DE12C9DFB50392 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D8DB1AC703F226EE27AC8 /* MenuView.swift */; };
 		4D9DB1D753951BA58B2A780B /* Pods-PagingMenuControllerDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 890DFBFB8011EFB975BB6F12 /* Pods-PagingMenuControllerDemo-dummy.m */; };
-		53CE2332FCB79D5F5044947D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CCDED79618A41D6F2DD6DF /* Constants.swift */; };
 		7132E904570455EA370E458B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C4BA0200B32323818E8805 /* Foundation.framework */; };
 		7747F716785AE6FD9CC1B965 /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E94EAFF7510584EE7A4C6A /* PagingMenuOptions.swift */; };
 		840CB6B798833950EC51854D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D8DB1AC703F226EE27AC8 /* MenuView.swift */; };
 		885E620B17E0A49505D6FBB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C4BA0200B32323818E8805 /* Foundation.framework */; };
 		92A5DD01D6BC9F9355C52381 /* PagingMenuController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30D796B32F027851678174C6 /* PagingMenuController.bundle */; };
-		95D02571C75D6EA7B57390C6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A6C17429A25192C5AE9B7 /* Validator.swift */; };
 		990F45ADB468555FC38D2A1E /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B1C38F7163F336FA79E7C6 /* MenuItemView.swift */; };
 		A341CC085C544B19447581A4 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE42C042EABF909A4752A1 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m */; };
 		A4CA0FD9CF939FDF5801957A /* PagingMenuController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB909492A983F0E35BCB14 /* PagingMenuController.bundle */; };
 		A5F0714B1D963E27220957BF /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B1C38F7163F336FA79E7C6 /* MenuItemView.swift */; };
-		B8FF846F865A729D30D43BA8 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A6C17429A25192C5AE9B7 /* Validator.swift */; };
 		BA78BBD8BDDBBD6282444484 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C4BA0200B32323818E8805 /* Foundation.framework */; };
 		BD022E4F5D7E1847B8D8907A /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 88359F000B6F76D0A56C5ABC /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C861300BACB6C145D4DB7316 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C4BA0200B32323818E8805 /* Foundation.framework */; };
 		DCB8C0375446C4C73516446D /* Pods-PagingMenuControllerDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7820024B37534A72E5EEBB /* Pods-PagingMenuControllerDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DFEB0F4DAD15BEAE01659D21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CCDED79618A41D6F2DD6DF /* Constants.swift */; };
 		E6EB54EBC135EA6480DD3EFD /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A24D21890766278C2ED80246 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC358F9A2044D644E9F7B5D1 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D34078556196A77846040BB0 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m */; };
 /* End PBXBuildFile section */
@@ -70,7 +66,6 @@
 		0946415C738CAA9071DEE48F /* Pods-PagingMenuControllerDemoTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemoTests-resources.sh"; sourceTree = "<group>"; };
 		100389F1359B9EE1664C731D /* Pods-PagingMenuControllerDemoTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemoTests-frameworks.sh"; sourceTree = "<group>"; };
 		11B70429F419784EDC14A042 /* Pods-PagingMenuControllerDemoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PagingMenuControllerDemoTests.modulemap"; sourceTree = "<group>"; };
-		16CCDED79618A41D6F2DD6DF /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2A85B673FC6E8FF60885625B /* Pods-PagingMenuControllerDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PagingMenuControllerDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2AFB909492A983F0E35BCB14 /* PagingMenuController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1D8DB1AC703F226EE27AC8 /* MenuView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -101,7 +96,6 @@
 		A24D21890766278C2ED80246 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h"; sourceTree = "<group>"; };
 		A41EB2F6381A6F695C3EBFD9 /* Pods_PagingMenuControllerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E94EAFF7510584EE7A4C6A /* PagingMenuOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PagingMenuOptions.swift; sourceTree = "<group>"; };
-		A87A6C17429A25192C5AE9B7 /* Validator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		ABE3F6F475454B320F5A13FE /* PagingMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PagingMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCC5C3345B8409DA196D89D /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50153E4E1C6E12CA6E9A3CB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -269,12 +263,10 @@
 		A712E8FBA08F97FF0F797AC2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				16CCDED79618A41D6F2DD6DF /* Constants.swift */,
 				96B1C38F7163F336FA79E7C6 /* MenuItemView.swift */,
 				2B1D8DB1AC703F226EE27AC8 /* MenuView.swift */,
 				FD6EF2A051F42DF30F300F5D /* PagingMenuController.swift */,
 				A6E94EAFF7510584EE7A4C6A /* PagingMenuOptions.swift */,
-				A87A6C17429A25192C5AE9B7 /* Validator.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -531,13 +523,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53CE2332FCB79D5F5044947D /* Constants.swift in Sources */,
 				A5F0714B1D963E27220957BF /* MenuItemView.swift in Sources */,
 				49F6499C58DE12C9DFB50392 /* MenuView.swift in Sources */,
 				184BBF107B39AE2F9D69FCD5 /* PagingMenuController.swift in Sources */,
 				7747F716785AE6FD9CC1B965 /* PagingMenuOptions.swift in Sources */,
 				A341CC085C544B19447581A4 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m in Sources */,
-				B8FF846F865A729D30D43BA8 /* Validator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,13 +543,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFEB0F4DAD15BEAE01659D21 /* Constants.swift in Sources */,
 				990F45ADB468555FC38D2A1E /* MenuItemView.swift in Sources */,
 				840CB6B798833950EC51854D /* MenuView.swift in Sources */,
 				0746D590BE98D40F8B2ED34E /* PagingMenuController.swift in Sources */,
 				32CC696AB66585EC3D6714D6 /* PagingMenuOptions.swift in Sources */,
 				EC358F9A2044D644E9F7B5D1 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m in Sources */,
-				95D02571C75D6EA7B57390C6 /* Validator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
