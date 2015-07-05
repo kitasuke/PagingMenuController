@@ -29,6 +29,7 @@ class ViewController: UIViewController, PagingMenuControllerDelegate {
         let viewControllers = [viewController1, viewController2, viewController3, viewController4, viewController5]
         
         let options = PagingMenuOptions()
+        options.menuHeight = 50
         
         let pagingMenuController = self.childViewControllers.first as! PagingMenuController
         pagingMenuController.delegate = self
