@@ -1,3 +1,9 @@
+# 0.4.1 Release notes (2015-07-05)
+
+### Bug fixed
+
+- Change option class to struct to change property value
+
 # 0.4.0 Release notes (2015-07-04)
 
 ### Enhancements
