@@ -7,353 +7,353 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0746D590BE98D40F8B2ED34E /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6EF2A051F42DF30F300F5D /* PagingMenuController.swift */; };
-		0CE6A46F472E9FEAF0A7BF4D /* Pods-PagingMenuControllerDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E75CF5F1F2BBF398E194F99 /* Pods-PagingMenuControllerDemoTests-dummy.m */; };
-		184BBF107B39AE2F9D69FCD5 /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6EF2A051F42DF30F300F5D /* PagingMenuController.swift */; };
-		2E8972E32BFCC62D9C47097F /* Pods-PagingMenuControllerDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5743C69EF4A24EDB7341FB80 /* Pods-PagingMenuControllerDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		32CC696AB66585EC3D6714D6 /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E94EAFF7510584EE7A4C6A /* PagingMenuOptions.swift */; };
-		49F6499C58DE12C9DFB50392 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D8DB1AC703F226EE27AC8 /* MenuView.swift */; };
-		4D9DB1D753951BA58B2A780B /* Pods-PagingMenuControllerDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 890DFBFB8011EFB975BB6F12 /* Pods-PagingMenuControllerDemo-dummy.m */; };
-		7132E904570455EA370E458B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C4BA0200B32323818E8805 /* Foundation.framework */; };
-		7747F716785AE6FD9CC1B965 /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E94EAFF7510584EE7A4C6A /* PagingMenuOptions.swift */; };
-		840CB6B798833950EC51854D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1D8DB1AC703F226EE27AC8 /* MenuView.swift */; };
-		885E620B17E0A49505D6FBB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C4BA0200B32323818E8805 /* Foundation.framework */; };
-		92A5DD01D6BC9F9355C52381 /* PagingMenuController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30D796B32F027851678174C6 /* PagingMenuController.bundle */; };
-		990F45ADB468555FC38D2A1E /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B1C38F7163F336FA79E7C6 /* MenuItemView.swift */; };
-		A341CC085C544B19447581A4 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EAE42C042EABF909A4752A1 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m */; };
-		A4CA0FD9CF939FDF5801957A /* PagingMenuController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB909492A983F0E35BCB14 /* PagingMenuController.bundle */; };
-		A5F0714B1D963E27220957BF /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B1C38F7163F336FA79E7C6 /* MenuItemView.swift */; };
-		BA78BBD8BDDBBD6282444484 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C4BA0200B32323818E8805 /* Foundation.framework */; };
-		BD022E4F5D7E1847B8D8907A /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 88359F000B6F76D0A56C5ABC /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C861300BACB6C145D4DB7316 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C4BA0200B32323818E8805 /* Foundation.framework */; };
-		DCB8C0375446C4C73516446D /* Pods-PagingMenuControllerDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7820024B37534A72E5EEBB /* Pods-PagingMenuControllerDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6EB54EBC135EA6480DD3EFD /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A24D21890766278C2ED80246 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EC358F9A2044D644E9F7B5D1 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D34078556196A77846040BB0 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m */; };
+		04C6E9F367563D6D3AC5D4EF /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9CBE9A36BB6225767ADA38 /* PagingMenuController.swift */; };
+		0EEBA6583ADF4E9D7941A6A9 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 602701D6115D1D7D0371D640 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m */; };
+		12BBB647181910CA07348066 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 786405FDA268A3CC52EC9BEF /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m */; };
+		16506CBA34C7DB1873714347 /* Pods-PagingMenuControllerDemoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725417D6EC82C61C9E23483 /* Pods-PagingMenuControllerDemoTests-dummy.m */; };
+		1A05F5ED88B7741D309653BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA84D756B282B1C0BE4EBEB /* Foundation.framework */; };
+		26E2246FD8085FB1033FE713 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA84D756B282B1C0BE4EBEB /* Foundation.framework */; };
+		38CD3C5788D98C5C6707C0A3 /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E07FB40CD2A031B4A11FC421 /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C2AD63D77F7D39F9992ADBA /* Pods-PagingMenuControllerDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 85309A20B9576B358D430798 /* Pods-PagingMenuControllerDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		613DF210DB245527925FF7B7 /* PagingMenuController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 85AA9956BF64B4160876B4F4 /* PagingMenuController.bundle */; };
+		77501C573582A9EF16F078ED /* Pods-PagingMenuControllerDemoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D9FB36D1D0928AD4ABF978D7 /* Pods-PagingMenuControllerDemoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78ECFFBDCD32AC93826EB8FE /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9CBE9A36BB6225767ADA38 /* PagingMenuController.swift */; };
+		7C7A46C07694A3FC398739F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA84D756B282B1C0BE4EBEB /* Foundation.framework */; };
+		7E47794387A3D635DFC84936 /* PagingMenuController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5BF9A0760D89717501F7D46E /* PagingMenuController.bundle */; };
+		9E5D53AC70E0AC05A0F12CFA /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 481F2EAE03214A3952F8FC7C /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5E42BB361351A9138028D78 /* Pods-PagingMenuControllerDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A24045A626223064FDA6C1DA /* Pods-PagingMenuControllerDemo-dummy.m */; };
+		AF94F547BA7EBB14AD4928A2 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AD7869B322BDBE230CAE7 /* MenuItemView.swift */; };
+		C1B7BC2DF0B58AB06BD8614C /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A8D26C5F8C47040FB449A /* PagingMenuOptions.swift */; };
+		C5F7A5DB211B9051AF1F161F /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AD7869B322BDBE230CAE7 /* MenuItemView.swift */; };
+		D1B6FF8C83640358D4F4BA37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA84D756B282B1C0BE4EBEB /* Foundation.framework */; };
+		E9FF66DD1C8E7EE2749082E0 /* PagingMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4A8D26C5F8C47040FB449A /* PagingMenuOptions.swift */; };
+		EF65F0BEB07A502A811A1316 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563028DF5ED59AFE055D67B /* MenuView.swift */; };
+		F579D349EB9649DB8437FC1E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563028DF5ED59AFE055D67B /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		71869BB7894635CE3049F77B /* PBXContainerItemProxy */ = {
+		69497EE8DE790037D3F83E9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4DE1C6101E57A02959E3D8C8 /* Project object */;
+			containerPortal = C7EC3DE5C9ECFDE5549ECF5C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D971B1B85E2B1398B04E0745;
-			remoteInfo = "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController";
-		};
-		C247111656DA894853D02CE1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4DE1C6101E57A02959E3D8C8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2A5C15B098349C0B4A3E1951;
+			remoteGlobalIDString = 1E055706FF90A359D293759F;
 			remoteInfo = "Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController";
 		};
-		EC0CD84B376C2A12A22C693E /* PBXContainerItemProxy */ = {
+		81E1DC6572876A4BBC1D77D0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4DE1C6101E57A02959E3D8C8 /* Project object */;
+			containerPortal = C7EC3DE5C9ECFDE5549ECF5C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BD15B3B9AA83860045038452;
+			remoteGlobalIDString = BE1F5A67183F57871D16B341;
+			remoteInfo = "Pods-PagingMenuControllerDemoTests-PagingMenuController";
+		};
+		96AA387EA66E0C35FF135A93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7EC3DE5C9ECFDE5549ECF5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7392FC1BEC2096B2D15AAC10;
 			remoteInfo = "Pods-PagingMenuControllerDemo-PagingMenuController";
 		};
-		F84A81C7707F9F4C4ACBFF11 /* PBXContainerItemProxy */ = {
+		CD60F775C9BC34A278DD01DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4DE1C6101E57A02959E3D8C8 /* Project object */;
+			containerPortal = C7EC3DE5C9ECFDE5549ECF5C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 90FAA8FB06F8BCE06F19FFE7;
-			remoteInfo = "Pods-PagingMenuControllerDemoTests-PagingMenuController";
+			remoteGlobalIDString = 44BB4B36D7EF0546FC83A287;
+			remoteInfo = "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0946415C738CAA9071DEE48F /* Pods-PagingMenuControllerDemoTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemoTests-resources.sh"; sourceTree = "<group>"; };
-		100389F1359B9EE1664C731D /* Pods-PagingMenuControllerDemoTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemoTests-frameworks.sh"; sourceTree = "<group>"; };
-		11B70429F419784EDC14A042 /* Pods-PagingMenuControllerDemoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PagingMenuControllerDemoTests.modulemap"; sourceTree = "<group>"; };
-		2A85B673FC6E8FF60885625B /* Pods-PagingMenuControllerDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PagingMenuControllerDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2AFB909492A983F0E35BCB14 /* PagingMenuController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B1D8DB1AC703F226EE27AC8 /* MenuView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		2D03D80DE125DF4E57261530 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch"; sourceTree = "<group>"; };
-		2F7820024B37534A72E5EEBB /* Pods-PagingMenuControllerDemoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemoTests-umbrella.h"; sourceTree = "<group>"; };
-		30D796B32F027851678174C6 /* PagingMenuController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		344D26588319904CD785390F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		3574431EC4C4B80F438A6896 /* Pods-PagingMenuControllerDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemo-frameworks.sh"; sourceTree = "<group>"; };
-		3C1B8503AF86B47F58D65E8F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Info.plist"; sourceTree = "<group>"; };
-		44AF159CEA817064756C3525 /* Pods-PagingMenuControllerDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PagingMenuControllerDemo-acknowledgements.plist"; sourceTree = "<group>"; };
-		45ED4EDB3D7526EDB95A35FB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B7D26B72C673B9AF4E1E8C2 /* Pods-PagingMenuControllerDemo-PagingMenuController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo-PagingMenuController.xcconfig"; sourceTree = "<group>"; };
-		4D3D1B24F7E3C0FDC5AD47D7 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5743C69EF4A24EDB7341FB80 /* Pods-PagingMenuControllerDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-umbrella.h"; sourceTree = "<group>"; };
-		5B7D618814428D8DEDE39424 /* Pods-PagingMenuControllerDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PagingMenuControllerDemo.modulemap"; sourceTree = "<group>"; };
-		5E75CF5F1F2BBF398E194F99 /* Pods-PagingMenuControllerDemoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PagingMenuControllerDemoTests-dummy.m"; sourceTree = "<group>"; };
-		6A62E649467606A848CB9203 /* PagingMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PagingMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		794B1463FCE7D18C110D05B2 /* Pods-PagingMenuControllerDemoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PagingMenuControllerDemoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8064EB92DBEC8AA420827E78 /* Pods-PagingMenuControllerDemoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PagingMenuControllerDemoTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		81C01FAB65CE3A91ADAB9999 /* Pods-PagingMenuControllerDemoTests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemoTests-environment.h"; sourceTree = "<group>"; };
-		82E82B0FE82500A83E7007B0 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig"; sourceTree = "<group>"; };
-		87A34D1C44FAEB1271BFD9D8 /* Pods-PagingMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		88359F000B6F76D0A56C5ABC /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h"; sourceTree = "<group>"; };
-		890DFBFB8011EFB975BB6F12 /* Pods-PagingMenuControllerDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PagingMenuControllerDemo-dummy.m"; sourceTree = "<group>"; };
-		8EAE42C042EABF909A4752A1 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m"; sourceTree = "<group>"; };
-		9687025FA19B484DCC148D85 /* Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap"; sourceTree = "<group>"; };
-		96B1C38F7163F336FA79E7C6 /* MenuItemView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
-		A24D21890766278C2ED80246 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h"; sourceTree = "<group>"; };
-		A41EB2F6381A6F695C3EBFD9 /* Pods_PagingMenuControllerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6E94EAFF7510584EE7A4C6A /* PagingMenuOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PagingMenuOptions.swift; sourceTree = "<group>"; };
-		ABE3F6F475454B320F5A13FE /* PagingMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PagingMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFCC5C3345B8409DA196D89D /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B50153E4E1C6E12CA6E9A3CB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1614D7FF930A38BD100C29D /* Pods-PagingMenuControllerDemo-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-environment.h"; sourceTree = "<group>"; };
-		C276C0EE612E368F1506D82D /* Pods-PagingMenuControllerDemo-PagingMenuController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PagingMenuControllerDemo-PagingMenuController.modulemap"; sourceTree = "<group>"; };
-		D34078556196A77846040BB0 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m"; sourceTree = "<group>"; };
-		D4CAD5F50B59AC64BA21B469 /* Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch"; sourceTree = "<group>"; };
-		D83995BA9211BA5118FBA050 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig"; sourceTree = "<group>"; };
-		D944BB0DE562DB1ECF3D4A24 /* Pods-PagingMenuControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
-		D977AD9417CC8FB82B6E1D08 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EEAE77D9BE9207A13473BA19 /* Pods-PagingMenuControllerDemoTests-PagingMenuController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController.xcconfig"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController.xcconfig"; sourceTree = "<group>"; };
-		F1C4BA0200B32323818E8805 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		F70281F191D221AAF6E5226B /* Pods-PagingMenuControllerDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemo-resources.sh"; sourceTree = "<group>"; };
-		FAAC0CB62934C8C115648DBE /* Pods-PagingMenuControllerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
-		FD6EF2A051F42DF30F300F5D /* PagingMenuController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
+		0563028DF5ED59AFE055D67B /* MenuView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		05B2997BCF6C34C6E11B96AE /* Pods_PagingMenuControllerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06B6A5DE00C82C004A1FA348 /* Pods-PagingMenuControllerDemoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PagingMenuControllerDemoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1533A447FB99DDC17BE92A62 /* Pods-PagingMenuControllerDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemo-frameworks.sh"; sourceTree = "<group>"; };
+		19458EDD20A1BDC046CC4B32 /* Pods-PagingMenuControllerDemoTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemoTests-resources.sh"; sourceTree = "<group>"; };
+		1B2D4A5872C485DCB5DC0A4C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EA84D756B282B1C0BE4EBEB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		2725417D6EC82C61C9E23483 /* Pods-PagingMenuControllerDemoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PagingMenuControllerDemoTests-dummy.m"; sourceTree = "<group>"; };
+		278D6C7149B0DABB074CE3AA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3981D323A4A1030C26307E10 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39995B665EACC6EB4E90A8F3 /* Pods-PagingMenuControllerDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemo-resources.sh"; sourceTree = "<group>"; };
+		3B211DE55F80700603D68606 /* Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch"; sourceTree = "<group>"; };
+		4068F554F5EA99D979DDA8E8 /* Pods-PagingMenuControllerDemo-PagingMenuController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo-PagingMenuController.xcconfig"; sourceTree = "<group>"; };
+		46961F60AF7834EE2475F03A /* Pods-PagingMenuControllerDemoTests-PagingMenuController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController.xcconfig"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController.xcconfig"; sourceTree = "<group>"; };
+		481F2EAE03214A3952F8FC7C /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h"; sourceTree = "<group>"; };
+		491D3181AA525B16FC1FD7A5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Info.plist"; sourceTree = "<group>"; };
+		5A9CBE9A36BB6225767ADA38 /* PagingMenuController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
+		5AB15CE599DA46710230C4E0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5BF9A0760D89717501F7D46E /* PagingMenuController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		602701D6115D1D7D0371D640 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m"; sourceTree = "<group>"; };
+		60D639DDF82E034B32600BE3 /* Pods-PagingMenuControllerDemoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PagingMenuControllerDemoTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		638A7A6A0FCDFF82947CD7C5 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		6564B423AC3EE132A88D7ABF /* PagingMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PagingMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		786405FDA268A3CC52EC9BEF /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m"; sourceTree = "<group>"; };
+		7A32C91A0FC88B03D7E41B49 /* Pods-PagingMenuControllerDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PagingMenuControllerDemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		7E0AF6E691E1B73D08B56C10 /* Pods-PagingMenuControllerDemoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PagingMenuControllerDemoTests.modulemap"; sourceTree = "<group>"; };
+		814BC6A67C863875A7476848 /* Pods-PagingMenuControllerDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PagingMenuControllerDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		85309A20B9576B358D430798 /* Pods-PagingMenuControllerDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-umbrella.h"; sourceTree = "<group>"; };
+		85AA9956BF64B4160876B4F4 /* PagingMenuController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A4A8D26C5F8C47040FB449A /* PagingMenuOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PagingMenuOptions.swift; sourceTree = "<group>"; };
+		A24045A626223064FDA6C1DA /* Pods-PagingMenuControllerDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PagingMenuControllerDemo-dummy.m"; sourceTree = "<group>"; };
+		B356F70FEEFB32D76A6CB4CD /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B546C141F525D190AC9105A2 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig"; sourceTree = "<group>"; };
+		B685C87F32F4CCEFB3691165 /* Pods-PagingMenuControllerDemo-PagingMenuController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PagingMenuControllerDemo-PagingMenuController.modulemap"; sourceTree = "<group>"; };
+		B8B038ED5FE48FEF64ACD352 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BB79330FB5B78730CDF42FE9 /* Pods-PagingMenuControllerDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PagingMenuControllerDemo.modulemap"; sourceTree = "<group>"; };
+		BDB38285021DB9FF66E891CD /* Pods-PagingMenuControllerDemoTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagingMenuControllerDemoTests-frameworks.sh"; sourceTree = "<group>"; };
+		D77ECB39EF52D5F8AA32641C /* PagingMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PagingMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D99AD7869B322BDBE230CAE7 /* MenuItemView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
+		D9FB36D1D0928AD4ABF978D7 /* Pods-PagingMenuControllerDemoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemoTests-umbrella.h"; sourceTree = "<group>"; };
+		DFD71208E0C9F4C539B42C31 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig"; sourceTree = "<group>"; };
+		E0086CB9B54DA3F11028E56C /* Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch"; sourceTree = "<group>"; };
+		E07FB40CD2A031B4A11FC421 /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h"; sourceTree = "<group>"; };
+		E63B67EAE9397F4AC6D6EA4B /* Pods-PagingMenuControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		E7A7841737C21C94218BD133 /* Pods-PagingMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagingMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		EDE65FEC1B2DB553BA9E2845 /* Pods-PagingMenuControllerDemoTests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemoTests-environment.h"; sourceTree = "<group>"; };
+		F4BCD32C9BDBF3E8B5B97C6B /* Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap"; path = "../Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap"; sourceTree = "<group>"; };
+		F9B498209DF10561E03C091B /* Pods-PagingMenuControllerDemo-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PagingMenuControllerDemo-environment.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		28AB44591939CBF533FAB6A7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				885E620B17E0A49505D6FBB3 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3B066A04D021BC8744059484 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7132E904570455EA370E458B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3B9E0F07C6953E9687DE29B5 /* Frameworks */ = {
+		13625C2F64FBE3B3CFDE6DE8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9D8F1FD7830CF735729DF2B1 /* Frameworks */ = {
+		43F78B333874FC9E7C14269F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26E2246FD8085FB1033FE713 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A593ED2D81AB326A498F2677 /* Frameworks */ = {
+		816EF1B698CA84EAE4090085 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA78BBD8BDDBBD6282444484 /* Foundation.framework in Frameworks */,
+				D1B6FF8C83640358D4F4BA37 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC541ABAA5FFB02484B8AA3A /* Frameworks */ = {
+		BC15BE1517AE0CBA3157391C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C861300BACB6C145D4DB7316 /* Foundation.framework in Frameworks */,
+				1A05F5ED88B7741D309653BD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D61B3CAB364E4AFF22A3F60C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C7A46C07694A3FC398739F9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D97854446B5A5681FABE6DC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04164F0E2C6F8C0B87908AE3 /* PagingMenuController */ = {
+		1D388B5302CD4512C02FCA2F /* Pods-PagingMenuControllerDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				E24FF6BFF65B3CA23CE800AC /* Pod */,
-				947603F8BB065B6E363DA894 /* Support Files */,
-			);
-			name = PagingMenuController;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		0CD9115E49B7ABA0D6217B2F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				51F13F2002E46C7316D12064 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		51F13F2002E46C7316D12064 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				F1C4BA0200B32323818E8805 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		5CFCA49C193E83AF58F8646E /* Pods-PagingMenuControllerDemo */ = {
-			isa = PBXGroup;
-			children = (
-				D977AD9417CC8FB82B6E1D08 /* Info.plist */,
-				5B7D618814428D8DEDE39424 /* Pods-PagingMenuControllerDemo.modulemap */,
-				2A85B673FC6E8FF60885625B /* Pods-PagingMenuControllerDemo-acknowledgements.markdown */,
-				44AF159CEA817064756C3525 /* Pods-PagingMenuControllerDemo-acknowledgements.plist */,
-				890DFBFB8011EFB975BB6F12 /* Pods-PagingMenuControllerDemo-dummy.m */,
-				C1614D7FF930A38BD100C29D /* Pods-PagingMenuControllerDemo-environment.h */,
-				3574431EC4C4B80F438A6896 /* Pods-PagingMenuControllerDemo-frameworks.sh */,
-				F70281F191D221AAF6E5226B /* Pods-PagingMenuControllerDemo-resources.sh */,
-				5743C69EF4A24EDB7341FB80 /* Pods-PagingMenuControllerDemo-umbrella.h */,
-				87A34D1C44FAEB1271BFD9D8 /* Pods-PagingMenuControllerDemo.debug.xcconfig */,
-				D944BB0DE562DB1ECF3D4A24 /* Pods-PagingMenuControllerDemo.release.xcconfig */,
-			);
-			name = "Pods-PagingMenuControllerDemo";
-			path = "Target Support Files/Pods-PagingMenuControllerDemo";
-			sourceTree = "<group>";
-		};
-		6D6C3879A572754505C4A195 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2AFB909492A983F0E35BCB14 /* PagingMenuController.bundle */,
-				30D796B32F027851678174C6 /* PagingMenuController.bundle */,
-				ABE3F6F475454B320F5A13FE /* PagingMenuController.framework */,
-				6A62E649467606A848CB9203 /* PagingMenuController.framework */,
-				AFCC5C3345B8409DA196D89D /* Pods_PagingMenuControllerDemo.framework */,
-				A41EB2F6381A6F695C3EBFD9 /* Pods_PagingMenuControllerDemoTests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		747C777666DAFDFE66B33F1D /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5CFCA49C193E83AF58F8646E /* Pods-PagingMenuControllerDemo */,
-				AB567CEF1F5A6993210AD77C /* Pods-PagingMenuControllerDemoTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		947603F8BB065B6E363DA894 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B50153E4E1C6E12CA6E9A3CB /* Info.plist */,
-				3C1B8503AF86B47F58D65E8F /* Info.plist */,
-				C276C0EE612E368F1506D82D /* Pods-PagingMenuControllerDemo-PagingMenuController.modulemap */,
-				4B7D26B72C673B9AF4E1E8C2 /* Pods-PagingMenuControllerDemo-PagingMenuController.xcconfig */,
-				82E82B0FE82500A83E7007B0 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */,
-				D34078556196A77846040BB0 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m */,
-				D4CAD5F50B59AC64BA21B469 /* Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch */,
-				88359F000B6F76D0A56C5ABC /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h */,
-				9687025FA19B484DCC148D85 /* Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap */,
-				EEAE77D9BE9207A13473BA19 /* Pods-PagingMenuControllerDemoTests-PagingMenuController.xcconfig */,
-				D83995BA9211BA5118FBA050 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */,
-				8EAE42C042EABF909A4752A1 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m */,
-				2D03D80DE125DF4E57261530 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch */,
-				A24D21890766278C2ED80246 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController";
-			sourceTree = "<group>";
-		};
-		9892228248683C972FE5F45F /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				04164F0E2C6F8C0B87908AE3 /* PagingMenuController */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		A712E8FBA08F97FF0F797AC2 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				96B1C38F7163F336FA79E7C6 /* MenuItemView.swift */,
-				2B1D8DB1AC703F226EE27AC8 /* MenuView.swift */,
-				FD6EF2A051F42DF30F300F5D /* PagingMenuController.swift */,
-				A6E94EAFF7510584EE7A4C6A /* PagingMenuOptions.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		AB567CEF1F5A6993210AD77C /* Pods-PagingMenuControllerDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				45ED4EDB3D7526EDB95A35FB /* Info.plist */,
-				11B70429F419784EDC14A042 /* Pods-PagingMenuControllerDemoTests.modulemap */,
-				794B1463FCE7D18C110D05B2 /* Pods-PagingMenuControllerDemoTests-acknowledgements.markdown */,
-				8064EB92DBEC8AA420827E78 /* Pods-PagingMenuControllerDemoTests-acknowledgements.plist */,
-				5E75CF5F1F2BBF398E194F99 /* Pods-PagingMenuControllerDemoTests-dummy.m */,
-				81C01FAB65CE3A91ADAB9999 /* Pods-PagingMenuControllerDemoTests-environment.h */,
-				100389F1359B9EE1664C731D /* Pods-PagingMenuControllerDemoTests-frameworks.sh */,
-				0946415C738CAA9071DEE48F /* Pods-PagingMenuControllerDemoTests-resources.sh */,
-				2F7820024B37534A72E5EEBB /* Pods-PagingMenuControllerDemoTests-umbrella.h */,
-				4D3D1B24F7E3C0FDC5AD47D7 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */,
-				FAAC0CB62934C8C115648DBE /* Pods-PagingMenuControllerDemoTests.release.xcconfig */,
+				278D6C7149B0DABB074CE3AA /* Info.plist */,
+				7E0AF6E691E1B73D08B56C10 /* Pods-PagingMenuControllerDemoTests.modulemap */,
+				06B6A5DE00C82C004A1FA348 /* Pods-PagingMenuControllerDemoTests-acknowledgements.markdown */,
+				60D639DDF82E034B32600BE3 /* Pods-PagingMenuControllerDemoTests-acknowledgements.plist */,
+				2725417D6EC82C61C9E23483 /* Pods-PagingMenuControllerDemoTests-dummy.m */,
+				EDE65FEC1B2DB553BA9E2845 /* Pods-PagingMenuControllerDemoTests-environment.h */,
+				BDB38285021DB9FF66E891CD /* Pods-PagingMenuControllerDemoTests-frameworks.sh */,
+				19458EDD20A1BDC046CC4B32 /* Pods-PagingMenuControllerDemoTests-resources.sh */,
+				D9FB36D1D0928AD4ABF978D7 /* Pods-PagingMenuControllerDemoTests-umbrella.h */,
+				5AB15CE599DA46710230C4E0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */,
+				638A7A6A0FCDFF82947CD7C5 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */,
 			);
 			name = "Pods-PagingMenuControllerDemoTests";
 			path = "Target Support Files/Pods-PagingMenuControllerDemoTests";
 			sourceTree = "<group>";
 		};
-		B57145AECD829EE9814524D4 = {
+		509B544D51969A7BC15BC002 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				344D26588319904CD785390F /* Podfile */,
-				9892228248683C972FE5F45F /* Development Pods */,
-				0CD9115E49B7ABA0D6217B2F /* Frameworks */,
-				6D6C3879A572754505C4A195 /* Products */,
-				747C777666DAFDFE66B33F1D /* Targets Support Files */,
+				FD7AE8C466E6771AD5FDEDA4 /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		529CBE4987AF11521FCE6599 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3981D323A4A1030C26307E10 /* Info.plist */,
+				491D3181AA525B16FC1FD7A5 /* Info.plist */,
+				B685C87F32F4CCEFB3691165 /* Pods-PagingMenuControllerDemo-PagingMenuController.modulemap */,
+				4068F554F5EA99D979DDA8E8 /* Pods-PagingMenuControllerDemo-PagingMenuController.xcconfig */,
+				DFD71208E0C9F4C539B42C31 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */,
+				786405FDA268A3CC52EC9BEF /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m */,
+				3B211DE55F80700603D68606 /* Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch */,
+				E07FB40CD2A031B4A11FC421 /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h */,
+				F4BCD32C9BDBF3E8B5B97C6B /* Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap */,
+				46961F60AF7834EE2475F03A /* Pods-PagingMenuControllerDemoTests-PagingMenuController.xcconfig */,
+				B546C141F525D190AC9105A2 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */,
+				602701D6115D1D7D0371D640 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m */,
+				E0086CB9B54DA3F11028E56C /* Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch */,
+				481F2EAE03214A3952F8FC7C /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController";
+			sourceTree = "<group>";
+		};
+		57B5532A572D30DEBE48C10B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F272660925AC75A68B583A7E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67DD030FB41B0D41FE504AD6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				85AA9956BF64B4160876B4F4 /* PagingMenuController.bundle */,
+				5BF9A0760D89717501F7D46E /* PagingMenuController.bundle */,
+				D77ECB39EF52D5F8AA32641C /* PagingMenuController.framework */,
+				6564B423AC3EE132A88D7ABF /* PagingMenuController.framework */,
+				B356F70FEEFB32D76A6CB4CD /* Pods_PagingMenuControllerDemo.framework */,
+				05B2997BCF6C34C6E11B96AE /* Pods_PagingMenuControllerDemoTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		86C04E6A107F204B84103DF2 /* PagingMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				509B544D51969A7BC15BC002 /* Pod */,
+				529CBE4987AF11521FCE6599 /* Support Files */,
+			);
+			name = PagingMenuController;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		96C937309B9E80E9AFC39345 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86C04E6A107F204B84103DF2 /* PagingMenuController */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		9A75FD74A37BB37C5CF41B5E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A588A99FE356594CDDDF2BF4 /* Pods-PagingMenuControllerDemo */,
+				1D388B5302CD4512C02FCA2F /* Pods-PagingMenuControllerDemoTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A588A99FE356594CDDDF2BF4 /* Pods-PagingMenuControllerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				1B2D4A5872C485DCB5DC0A4C /* Info.plist */,
+				BB79330FB5B78730CDF42FE9 /* Pods-PagingMenuControllerDemo.modulemap */,
+				814BC6A67C863875A7476848 /* Pods-PagingMenuControllerDemo-acknowledgements.markdown */,
+				7A32C91A0FC88B03D7E41B49 /* Pods-PagingMenuControllerDemo-acknowledgements.plist */,
+				A24045A626223064FDA6C1DA /* Pods-PagingMenuControllerDemo-dummy.m */,
+				F9B498209DF10561E03C091B /* Pods-PagingMenuControllerDemo-environment.h */,
+				1533A447FB99DDC17BE92A62 /* Pods-PagingMenuControllerDemo-frameworks.sh */,
+				39995B665EACC6EB4E90A8F3 /* Pods-PagingMenuControllerDemo-resources.sh */,
+				85309A20B9576B358D430798 /* Pods-PagingMenuControllerDemo-umbrella.h */,
+				E7A7841737C21C94218BD133 /* Pods-PagingMenuControllerDemo.debug.xcconfig */,
+				E63B67EAE9397F4AC6D6EA4B /* Pods-PagingMenuControllerDemo.release.xcconfig */,
+			);
+			name = "Pods-PagingMenuControllerDemo";
+			path = "Target Support Files/Pods-PagingMenuControllerDemo";
+			sourceTree = "<group>";
+		};
+		E0E706FF860A15BDD1C8A762 = {
+			isa = PBXGroup;
+			children = (
+				B8B038ED5FE48FEF64ACD352 /* Podfile */,
+				96C937309B9E80E9AFC39345 /* Development Pods */,
+				57B5532A572D30DEBE48C10B /* Frameworks */,
+				67DD030FB41B0D41FE504AD6 /* Products */,
+				9A75FD74A37BB37C5CF41B5E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		E24FF6BFF65B3CA23CE800AC /* Pod */ = {
+		F272660925AC75A68B583A7E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				A712E8FBA08F97FF0F797AC2 /* Classes */,
+				1EA84D756B282B1C0BE4EBEB /* Foundation.framework */,
 			);
-			path = Pod;
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		FD7AE8C466E6771AD5FDEDA4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D99AD7869B322BDBE230CAE7 /* MenuItemView.swift */,
+				0563028DF5ED59AFE055D67B /* MenuView.swift */,
+				5A9CBE9A36BB6225767ADA38 /* PagingMenuController.swift */,
+				8A4A8D26C5F8C47040FB449A /* PagingMenuOptions.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		7AE17C820C80C71EFD723C6E /* Headers */ = {
+		0159E9C57E4BEAC1C5F4DE46 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD022E4F5D7E1847B8D8907A /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h in Headers */,
+				4C2AD63D77F7D39F9992ADBA /* Pods-PagingMenuControllerDemo-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7EE5647A9A0F3B5A6FC4D84C /* Headers */ = {
+		2C11F2A2D881609D31464A45 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E8972E32BFCC62D9C47097F /* Pods-PagingMenuControllerDemo-umbrella.h in Headers */,
+				9E5D53AC70E0AC05A0F12CFA /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99E3DCF38977A2D3A809FD99 /* Headers */ = {
+		4E1B8ED149BA5AC3C71F29B3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCB8C0375446C4C73516446D /* Pods-PagingMenuControllerDemoTests-umbrella.h in Headers */,
+				77501C573582A9EF16F078ED /* Pods-PagingMenuControllerDemoTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0D68E39547B1F8162B72F15 /* Headers */ = {
+		BA6AE13F68A4693A38441999 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6EB54EBC135EA6480DD3EFD /* Pods-PagingMenuControllerDemoTests-PagingMenuController-umbrella.h in Headers */,
+				38CD3C5788D98C5C6707C0A3 /* Pods-PagingMenuControllerDemo-PagingMenuController-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2A5C15B098349C0B4A3E1951 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController */ = {
+		1E055706FF90A359D293759F /* Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 24DB863C6621F02DC7BE7ADA /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController" */;
+			buildConfigurationList = 261126B4883EEF8FFF86451A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController" */;
 			buildPhases = (
-				EFA7CA70660EB1CDCBA634CF /* Sources */,
-				3B9E0F07C6953E9687DE29B5 /* Frameworks */,
-				9D79164C42A28780AA8EF07C /* Resources */,
+				BFD662781955AA8FC1D0C933 /* Sources */,
+				D97854446B5A5681FABE6DC3 /* Frameworks */,
+				61327CA7CCCB97AA39BB3012 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -361,90 +361,16 @@
 			);
 			name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController";
 			productName = "Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController";
-			productReference = 2AFB909492A983F0E35BCB14 /* PagingMenuController.bundle */;
+			productReference = 85AA9956BF64B4160876B4F4 /* PagingMenuController.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		2B86C439838F8F810921BC91 /* Pods-PagingMenuControllerDemoTests */ = {
+		44BB4B36D7EF0546FC83A287 /* Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 10648BF1DAA86A60345A9C2A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests" */;
+			buildConfigurationList = 9DCDFB69C137A3DEF13C20AF /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController" */;
 			buildPhases = (
-				5D1C1DB39BDB7BCA39370FC2 /* Sources */,
-				28AB44591939CBF533FAB6A7 /* Frameworks */,
-				99E3DCF38977A2D3A809FD99 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9F352BB7F8195002BE265A2D /* PBXTargetDependency */,
-			);
-			name = "Pods-PagingMenuControllerDemoTests";
-			productName = "Pods-PagingMenuControllerDemoTests";
-			productReference = A41EB2F6381A6F695C3EBFD9 /* Pods_PagingMenuControllerDemoTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		496910051EDD95FC282A9936 /* Pods-PagingMenuControllerDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 23BA8C2B7380DEA2DE1C677A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo" */;
-			buildPhases = (
-				B5593493BDDB16B864A1B2F9 /* Sources */,
-				A593ED2D81AB326A498F2677 /* Frameworks */,
-				7EE5647A9A0F3B5A6FC4D84C /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BDA72D24E0E01B9028095781 /* PBXTargetDependency */,
-			);
-			name = "Pods-PagingMenuControllerDemo";
-			productName = "Pods-PagingMenuControllerDemo";
-			productReference = AFCC5C3345B8409DA196D89D /* Pods_PagingMenuControllerDemo.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		90FAA8FB06F8BCE06F19FFE7 /* Pods-PagingMenuControllerDemoTests-PagingMenuController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 91F85CE1F32239CA515FF2D6 /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests-PagingMenuController" */;
-			buildPhases = (
-				240636BFE9DF022C3FAAC517 /* Sources */,
-				EC541ABAA5FFB02484B8AA3A /* Frameworks */,
-				0B9E092A3FF58759EECF7F21 /* Resources */,
-				F0D68E39547B1F8162B72F15 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1BBF5F2CAED64A67E921B591 /* PBXTargetDependency */,
-			);
-			name = "Pods-PagingMenuControllerDemoTests-PagingMenuController";
-			productName = "Pods-PagingMenuControllerDemoTests-PagingMenuController";
-			productReference = 6A62E649467606A848CB9203 /* PagingMenuController.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		BD15B3B9AA83860045038452 /* Pods-PagingMenuControllerDemo-PagingMenuController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 202ED99F954F88978E84AB17 /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo-PagingMenuController" */;
-			buildPhases = (
-				91701F817B8DF58A1E5CD2DB /* Sources */,
-				3B066A04D021BC8744059484 /* Frameworks */,
-				F56E5886FB58702B0F162D08 /* Resources */,
-				7AE17C820C80C71EFD723C6E /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6126EE68633C1FC6556DE51A /* PBXTargetDependency */,
-			);
-			name = "Pods-PagingMenuControllerDemo-PagingMenuController";
-			productName = "Pods-PagingMenuControllerDemo-PagingMenuController";
-			productReference = ABE3F6F475454B320F5A13FE /* PagingMenuController.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D971B1B85E2B1398B04E0745 /* Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1149CEDA6BD4CAB1ECF590D1 /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController" */;
-			buildPhases = (
-				A1CAC56BA374A76ABBE872C1 /* Sources */,
-				9D8F1FD7830CF735729DF2B1 /* Frameworks */,
-				531D46FCB39F02F9444FBA5F /* Resources */,
+				A845B069E0947613B6C5FC1E /* Sources */,
+				13625C2F64FBE3B3CFDE6DE8 /* Frameworks */,
+				C292CFCE758F31EE059973EE /* Resources */,
 			);
 			buildRules = (
 			);
@@ -452,121 +378,195 @@
 			);
 			name = "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController";
 			productName = "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController";
-			productReference = 30D796B32F027851678174C6 /* PagingMenuController.bundle */;
+			productReference = 5BF9A0760D89717501F7D46E /* PagingMenuController.bundle */;
 			productType = "com.apple.product-type.bundle";
+		};
+		5A75944A3859AE0F4B73305D /* Pods-PagingMenuControllerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E75BE1390A2F578CCF00A1A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests" */;
+			buildPhases = (
+				53E444443723D36B6F9283A9 /* Sources */,
+				D61B3CAB364E4AFF22A3F60C /* Frameworks */,
+				4E1B8ED149BA5AC3C71F29B3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EC13A81AE4D711C8CD0A2C4 /* PBXTargetDependency */,
+			);
+			name = "Pods-PagingMenuControllerDemoTests";
+			productName = "Pods-PagingMenuControllerDemoTests";
+			productReference = 05B2997BCF6C34C6E11B96AE /* Pods_PagingMenuControllerDemoTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7392FC1BEC2096B2D15AAC10 /* Pods-PagingMenuControllerDemo-PagingMenuController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 946CD1DCE19697B7D1D64870 /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo-PagingMenuController" */;
+			buildPhases = (
+				2BB05C7F3386760FD5B7A09E /* Sources */,
+				BC15BE1517AE0CBA3157391C /* Frameworks */,
+				C8A3EB31CE7E42DF1490DF78 /* Resources */,
+				BA6AE13F68A4693A38441999 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92B0923EF6219898FA0D0BCC /* PBXTargetDependency */,
+			);
+			name = "Pods-PagingMenuControllerDemo-PagingMenuController";
+			productName = "Pods-PagingMenuControllerDemo-PagingMenuController";
+			productReference = D77ECB39EF52D5F8AA32641C /* PagingMenuController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8023EA15765C7502E5F3B792 /* Pods-PagingMenuControllerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E8391C3425236C69EB04C6C /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo" */;
+			buildPhases = (
+				BA7F87B0EF79D5415D618678 /* Sources */,
+				816EF1B698CA84EAE4090085 /* Frameworks */,
+				0159E9C57E4BEAC1C5F4DE46 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81E35AAC75C9449DE5EDB5EF /* PBXTargetDependency */,
+			);
+			name = "Pods-PagingMenuControllerDemo";
+			productName = "Pods-PagingMenuControllerDemo";
+			productReference = B356F70FEEFB32D76A6CB4CD /* Pods_PagingMenuControllerDemo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BE1F5A67183F57871D16B341 /* Pods-PagingMenuControllerDemoTests-PagingMenuController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB1DE2ED389E721B7355236A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests-PagingMenuController" */;
+			buildPhases = (
+				9EEB951CE5F4DDE5136E38AD /* Sources */,
+				43F78B333874FC9E7C14269F /* Frameworks */,
+				E44960EA7F1E570151C77BE9 /* Resources */,
+				2C11F2A2D881609D31464A45 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				164D871A6FEF2DBFEFA19CB7 /* PBXTargetDependency */,
+			);
+			name = "Pods-PagingMenuControllerDemoTests-PagingMenuController";
+			productName = "Pods-PagingMenuControllerDemoTests-PagingMenuController";
+			productReference = 6564B423AC3EE132A88D7ABF /* PagingMenuController.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4DE1C6101E57A02959E3D8C8 /* Project object */ = {
+		C7EC3DE5C9ECFDE5549ECF5C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
 			};
-			buildConfigurationList = F2214ED1E6CD2A5565F691D3 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = BC8983FB499E1239E71612E7 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = B57145AECD829EE9814524D4;
-			productRefGroup = 6D6C3879A572754505C4A195 /* Products */;
+			mainGroup = E0E706FF860A15BDD1C8A762;
+			productRefGroup = 67DD030FB41B0D41FE504AD6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				496910051EDD95FC282A9936 /* Pods-PagingMenuControllerDemo */,
-				BD15B3B9AA83860045038452 /* Pods-PagingMenuControllerDemo-PagingMenuController */,
-				D971B1B85E2B1398B04E0745 /* Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController */,
-				2B86C439838F8F810921BC91 /* Pods-PagingMenuControllerDemoTests */,
-				90FAA8FB06F8BCE06F19FFE7 /* Pods-PagingMenuControllerDemoTests-PagingMenuController */,
-				2A5C15B098349C0B4A3E1951 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController */,
+				8023EA15765C7502E5F3B792 /* Pods-PagingMenuControllerDemo */,
+				7392FC1BEC2096B2D15AAC10 /* Pods-PagingMenuControllerDemo-PagingMenuController */,
+				44BB4B36D7EF0546FC83A287 /* Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController */,
+				5A75944A3859AE0F4B73305D /* Pods-PagingMenuControllerDemoTests */,
+				BE1F5A67183F57871D16B341 /* Pods-PagingMenuControllerDemoTests-PagingMenuController */,
+				1E055706FF90A359D293759F /* Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0B9E092A3FF58759EECF7F21 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A4CA0FD9CF939FDF5801957A /* PagingMenuController.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		531D46FCB39F02F9444FBA5F /* Resources */ = {
+		61327CA7CCCB97AA39BB3012 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9D79164C42A28780AA8EF07C /* Resources */ = {
+		C292CFCE758F31EE059973EE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F56E5886FB58702B0F162D08 /* Resources */ = {
+		C8A3EB31CE7E42DF1490DF78 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92A5DD01D6BC9F9355C52381 /* PagingMenuController.bundle in Resources */,
+				7E47794387A3D635DFC84936 /* PagingMenuController.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44960EA7F1E570151C77BE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				613DF210DB245527925FF7B7 /* PagingMenuController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		240636BFE9DF022C3FAAC517 /* Sources */ = {
+		2BB05C7F3386760FD5B7A09E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5F0714B1D963E27220957BF /* MenuItemView.swift in Sources */,
-				49F6499C58DE12C9DFB50392 /* MenuView.swift in Sources */,
-				184BBF107B39AE2F9D69FCD5 /* PagingMenuController.swift in Sources */,
-				7747F716785AE6FD9CC1B965 /* PagingMenuOptions.swift in Sources */,
-				A341CC085C544B19447581A4 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m in Sources */,
+				C5F7A5DB211B9051AF1F161F /* MenuItemView.swift in Sources */,
+				EF65F0BEB07A502A811A1316 /* MenuView.swift in Sources */,
+				78ECFFBDCD32AC93826EB8FE /* PagingMenuController.swift in Sources */,
+				E9FF66DD1C8E7EE2749082E0 /* PagingMenuOptions.swift in Sources */,
+				12BBB647181910CA07348066 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5D1C1DB39BDB7BCA39370FC2 /* Sources */ = {
+		53E444443723D36B6F9283A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CE6A46F472E9FEAF0A7BF4D /* Pods-PagingMenuControllerDemoTests-dummy.m in Sources */,
+				16506CBA34C7DB1873714347 /* Pods-PagingMenuControllerDemoTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		91701F817B8DF58A1E5CD2DB /* Sources */ = {
+		9EEB951CE5F4DDE5136E38AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				990F45ADB468555FC38D2A1E /* MenuItemView.swift in Sources */,
-				840CB6B798833950EC51854D /* MenuView.swift in Sources */,
-				0746D590BE98D40F8B2ED34E /* PagingMenuController.swift in Sources */,
-				32CC696AB66585EC3D6714D6 /* PagingMenuOptions.swift in Sources */,
-				EC358F9A2044D644E9F7B5D1 /* Pods-PagingMenuControllerDemo-PagingMenuController-dummy.m in Sources */,
+				AF94F547BA7EBB14AD4928A2 /* MenuItemView.swift in Sources */,
+				F579D349EB9649DB8437FC1E /* MenuView.swift in Sources */,
+				04C6E9F367563D6D3AC5D4EF /* PagingMenuController.swift in Sources */,
+				C1B7BC2DF0B58AB06BD8614C /* PagingMenuOptions.swift in Sources */,
+				0EEBA6583ADF4E9D7941A6A9 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A1CAC56BA374A76ABBE872C1 /* Sources */ = {
+		A845B069E0947613B6C5FC1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5593493BDDB16B864A1B2F9 /* Sources */ = {
+		BA7F87B0EF79D5415D618678 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D9DB1D753951BA58B2A780B /* Pods-PagingMenuControllerDemo-dummy.m in Sources */,
+				A5E42BB361351A9138028D78 /* Pods-PagingMenuControllerDemo-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EFA7CA70660EB1CDCBA634CF /* Sources */ = {
+		BFD662781955AA8FC1D0C933 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -576,34 +576,120 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1BBF5F2CAED64A67E921B591 /* PBXTargetDependency */ = {
+		164D871A6FEF2DBFEFA19CB7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController";
-			target = 2A5C15B098349C0B4A3E1951 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController */;
-			targetProxy = C247111656DA894853D02CE1 /* PBXContainerItemProxy */;
+			target = 1E055706FF90A359D293759F /* Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController */;
+			targetProxy = 69497EE8DE790037D3F83E9A /* PBXContainerItemProxy */;
 		};
-		6126EE68633C1FC6556DE51A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController";
-			target = D971B1B85E2B1398B04E0745 /* Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController */;
-			targetProxy = 71869BB7894635CE3049F77B /* PBXContainerItemProxy */;
-		};
-		9F352BB7F8195002BE265A2D /* PBXTargetDependency */ = {
+		1EC13A81AE4D711C8CD0A2C4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-PagingMenuControllerDemoTests-PagingMenuController";
-			target = 90FAA8FB06F8BCE06F19FFE7 /* Pods-PagingMenuControllerDemoTests-PagingMenuController */;
-			targetProxy = F84A81C7707F9F4C4ACBFF11 /* PBXContainerItemProxy */;
+			target = BE1F5A67183F57871D16B341 /* Pods-PagingMenuControllerDemoTests-PagingMenuController */;
+			targetProxy = 81E1DC6572876A4BBC1D77D0 /* PBXContainerItemProxy */;
 		};
-		BDA72D24E0E01B9028095781 /* PBXTargetDependency */ = {
+		81E35AAC75C9449DE5EDB5EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-PagingMenuControllerDemo-PagingMenuController";
-			target = BD15B3B9AA83860045038452 /* Pods-PagingMenuControllerDemo-PagingMenuController */;
-			targetProxy = EC0CD84B376C2A12A22C693E /* PBXContainerItemProxy */;
+			target = 7392FC1BEC2096B2D15AAC10 /* Pods-PagingMenuControllerDemo-PagingMenuController */;
+			targetProxy = 96AA387EA66E0C35FF135A93 /* PBXContainerItemProxy */;
+		};
+		92B0923EF6219898FA0D0BCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController";
+			target = 44BB4B36D7EF0546FC83A287 /* Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController */;
+			targetProxy = CD60F775C9BC34A278DD01DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		242535908C3570E2B86E24F0 /* Debug */ = {
+		169BBA288252139084012CAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B546C141F525D190AC9105A2 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemoTests-PagingMenuController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = PagingMenuController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		188538223232EE93A9804CBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFD71208E0C9F4C539B42C31 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Pods-PagingMenuControllerDemo-PagingMenuController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = PagingMenuController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		29B0D37D065949EEEEF11C00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AB15CE599DA46710230C4E0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemoTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_PagingMenuControllerDemoTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3CC2453AD128CC3F08E318B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -642,22 +728,9 @@
 			};
 			name = Debug;
 		};
-		80379155C4BBB4CC20C3FDF2 /* Debug */ = {
+		3F7CCD6B49145B9D7795E28A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82E82B0FE82500A83E7007B0 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-PagingMenuControllerDemo";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = PagingMenuController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		92925CC0C7808577683C88C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D83995BA9211BA5118FBA050 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */;
+			baseConfigurationReference = B546C141F525D190AC9105A2 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -682,9 +755,22 @@
 			};
 			name = Release;
 		};
-		95FBE98F8AD044028904A9FC /* Debug */ = {
+		45C4ACD7FA59BDF7E96DAB4E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D83995BA9211BA5118FBA050 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */;
+			baseConfigurationReference = B546C141F525D190AC9105A2 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-PagingMenuControllerDemoTests";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = PagingMenuController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		5F4C04C5D37B876B2D699B85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFD71208E0C9F4C539B42C31 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -693,52 +779,25 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemoTests-PagingMenuController/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemoTests-PagingMenuController/Pods-PagingMenuControllerDemoTests-PagingMenuController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Pods-PagingMenuControllerDemo-PagingMenuController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = PagingMenuController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
-		};
-		989A26F223A2F20D58E762C4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D83995BA9211BA5118FBA050 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-PagingMenuControllerDemoTests";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = PagingMenuController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
 			name = Release;
 		};
-		A6B4545BBAF6CBDE781342AF /* Debug */ = {
+		A4462DCACC8038232E403FE5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D83995BA9211BA5118FBA050 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-PagingMenuControllerDemoTests";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = PagingMenuController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		B5C09F313ED446AD25CC07CE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAAC0CB62934C8C115648DBE /* Pods-PagingMenuControllerDemoTests.release.xcconfig */;
+			baseConfigurationReference = 638A7A6A0FCDFF82947CD7C5 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -765,7 +824,20 @@
 			};
 			name = Release;
 		};
-		C2ACFA4A381F099A413B2438 /* Release */ = {
+		AC7335DE1AF9FC5F8E4B5C99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B546C141F525D190AC9105A2 /* Pods-PagingMenuControllerDemoTests-PagingMenuController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-PagingMenuControllerDemoTests";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = PagingMenuController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		C811ECBA2C6C771E5A7C5D0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -799,9 +871,9 @@
 			};
 			name = Release;
 		};
-		C4212409355DB744E3EAF46A /* Release */ = {
+		CB559ADEE4221F2DFDB8145E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82E82B0FE82500A83E7007B0 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */;
+			baseConfigurationReference = DFD71208E0C9F4C539B42C31 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-PagingMenuControllerDemo";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -812,96 +884,9 @@
 			};
 			name = Release;
 		};
-		CB0F0C30CF919D2F98C96104 /* Debug */ = {
+		EC31CE4A9BF4C6DEC43517CF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82E82B0FE82500A83E7007B0 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Pods-PagingMenuControllerDemo-PagingMenuController.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = PagingMenuController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D57087D961CD8472DC86573F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D3D1B24F7E3C0FDC5AD47D7 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemoTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_PagingMenuControllerDemoTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DE910D115CC819449FCE1C6A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D944BB0DE562DB1ECF3D4A24 /* Pods-PagingMenuControllerDemo.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemo/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_PagingMenuControllerDemo;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E445DF3B9325A6C7E954A527 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87A34D1C44FAEB1271BFD9D8 /* Pods-PagingMenuControllerDemo.debug.xcconfig */;
+			baseConfigurationReference = E7A7841737C21C94218BD133 /* Pods-PagingMenuControllerDemo.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -929,9 +914,22 @@
 			};
 			name = Debug;
 		};
-		ECFC2D68FCE8F4EDCDC2F0BE /* Release */ = {
+		F118249CF03F0C194966FA0D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82E82B0FE82500A83E7007B0 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */;
+			baseConfigurationReference = DFD71208E0C9F4C539B42C31 /* Pods-PagingMenuControllerDemo-PagingMenuController-Private.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-PagingMenuControllerDemo";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = PagingMenuController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		F9B6BD6FD2C0BA0E2198D26F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E63B67EAE9397F4AC6D6EA4B /* Pods-PagingMenuControllerDemo.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -940,14 +938,16 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Pods-PagingMenuControllerDemo-PagingMenuController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-PagingMenuControllerDemo/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemo-PagingMenuController/Pods-PagingMenuControllerDemo-PagingMenuController.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = PagingMenuController;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_PagingMenuControllerDemo;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -959,70 +959,70 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		10648BF1DAA86A60345A9C2A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests" */ = {
+		261126B4883EEF8FFF86451A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D57087D961CD8472DC86573F /* Debug */,
-				B5C09F313ED446AD25CC07CE /* Release */,
+				45C4ACD7FA59BDF7E96DAB4E /* Debug */,
+				AC7335DE1AF9FC5F8E4B5C99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1149CEDA6BD4CAB1ECF590D1 /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController" */ = {
+		5E8391C3425236C69EB04C6C /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80379155C4BBB4CC20C3FDF2 /* Debug */,
-				C4212409355DB744E3EAF46A /* Release */,
+				EC31CE4A9BF4C6DEC43517CF /* Debug */,
+				F9B6BD6FD2C0BA0E2198D26F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		202ED99F954F88978E84AB17 /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo-PagingMenuController" */ = {
+		8E75BE1390A2F578CCF00A1A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CB0F0C30CF919D2F98C96104 /* Debug */,
-				ECFC2D68FCE8F4EDCDC2F0BE /* Release */,
+				29B0D37D065949EEEEF11C00 /* Debug */,
+				A4462DCACC8038232E403FE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23BA8C2B7380DEA2DE1C677A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo" */ = {
+		946CD1DCE19697B7D1D64870 /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo-PagingMenuController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E445DF3B9325A6C7E954A527 /* Debug */,
-				DE910D115CC819449FCE1C6A /* Release */,
+				188538223232EE93A9804CBE /* Debug */,
+				5F4C04C5D37B876B2D699B85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		24DB863C6621F02DC7BE7ADA /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests-PagingMenuController-PagingMenuController" */ = {
+		9DCDFB69C137A3DEF13C20AF /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemo-PagingMenuController-PagingMenuController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6B4545BBAF6CBDE781342AF /* Debug */,
-				989A26F223A2F20D58E762C4 /* Release */,
+				F118249CF03F0C194966FA0D /* Debug */,
+				CB559ADEE4221F2DFDB8145E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91F85CE1F32239CA515FF2D6 /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests-PagingMenuController" */ = {
+		BB1DE2ED389E721B7355236A /* Build configuration list for PBXNativeTarget "Pods-PagingMenuControllerDemoTests-PagingMenuController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				95FBE98F8AD044028904A9FC /* Debug */,
-				92925CC0C7808577683C88C0 /* Release */,
+				169BBA288252139084012CAF /* Debug */,
+				3F7CCD6B49145B9D7795E28A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F2214ED1E6CD2A5565F691D3 /* Build configuration list for PBXProject "Pods" */ = {
+		BC8983FB499E1239E71612E7 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				242535908C3570E2B86E24F0 /* Debug */,
-				C2ACFA4A381F099A413B2438 /* Release */,
+				3CC2453AD128CC3F08E318B3 /* Debug */,
+				C811ECBA2C6C771E5A7C5D0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4DE1C6101E57A02959E3D8C8 /* Project object */;
+	rootObject = C7EC3DE5C9ECFDE5549ECF5C /* Project object */;
 }
