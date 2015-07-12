@@ -1,6 +1,0 @@
-framework module PagingMenuController {
-  umbrella header "Pods-PagingMenuControllerDemo2-PagingMenuController-umbrella.h"
-
-  export *
-  module * { export * }
-}
