@@ -28,7 +28,15 @@
 		70C505471B0058B10007571E /* PagingMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C505301B0058B10007571E /* PagingMenuController.framework */; };
 		70C505491B0058B10007571E /* PagingMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 70C505301B0058B10007571E /* PagingMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B47D044F762BB5D827DD6DC6 /* Pods_PagingMenuControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		CC9834AF445FD5D22067BC36 /* Pods_PagingMenuControllerDemo2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7973CCC1BB7BBFC90BA94CC3 /* Pods_PagingMenuControllerDemo2.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DDA172CA689446F04F4C9097 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EC7BA3FC1B524BB4007FB8A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA3FB1B524BB4007FB8A5 /* AppDelegate.swift */; };
+		EC7BA3FE1B524BB4007FB8A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA3FD1B524BB4007FB8A5 /* ViewController.swift */; };
+		EC7BA4031B524BB4007FB8A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7BA4021B524BB4007FB8A5 /* Images.xcassets */; };
+		EC7BA4061B524BB4007FB8A5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7BA4041B524BB4007FB8A5 /* LaunchScreen.xib */; };
+		EC7BA4121B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA4111B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.swift */; };
+		EC7BA41B1B524C04007FB8A5 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA4191B524C04007FB8A5 /* ViewController1.swift */; };
+		EC7BA41C1B524C04007FB8A5 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA41A1B524C04007FB8A5 /* ViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +68,13 @@
 			remoteGlobalIDString = 70C5052F1B0058B10007571E;
 			remoteInfo = PagingMenuController;
 		};
+		EC7BA40C1B524BB4007FB8A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 707C60D31AFF822100BDAB0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC7BA3F61B524BB4007FB8A5;
+			remoteInfo = PagingMenuControllerDemo2;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67405852A888E9A94CB40B0C /* Pods-PagingMenuControllerDemo2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo2.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2.release.xcconfig"; sourceTree = "<group>"; };
 		7021C97D1B009B9800C2AD1D /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemView.swift; path = ../../Pod/Classes/MenuItemView.swift; sourceTree = "<group>"; };
 		7021C97E1B009B9800C2AD1D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuView.swift; path = ../../Pod/Classes/MenuView.swift; sourceTree = "<group>"; };
 		7021C97F1B009B9800C2AD1D /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingMenuController.swift; path = ../../Pod/Classes/PagingMenuController.swift; sourceTree = "<group>"; };
@@ -103,11 +119,24 @@
 		70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C505421B0058B10007571E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70C505431B0058B10007571E /* PagingMenuControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerTests.swift; sourceTree = "<group>"; };
+		7973CCC1BB7BBFC90BA94CC3 /* Pods_PagingMenuControllerDemo2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A43A77E541E67E86AA41BE0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8444D2212F28EF990A1A4B6 /* Pods-PagingMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BFECDBB98E484B88553F4AA0 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		C67F4ECA52F2CFD5663796DB /* Pods-PagingMenuControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		EC7BA3F71B524BB4007FB8A5 /* PagingMenuControllerDemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingMenuControllerDemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC7BA3FA1B524BB4007FB8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC7BA3FB1B524BB4007FB8A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EC7BA3FD1B524BB4007FB8A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EC7BA4021B524BB4007FB8A5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EC7BA4051B524BB4007FB8A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EC7BA40B1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuControllerDemo2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC7BA4101B524BB4007FB8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC7BA4111B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerDemo2Tests.swift; sourceTree = "<group>"; };
+		EC7BA4191B524C04007FB8A5 /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		EC7BA41A1B524C04007FB8A5 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		F4108687AE0EB5851561C508 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +172,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC7BA3F41B524BB4007FB8A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC9834AF445FD5D22067BC36 /* Pods_PagingMenuControllerDemo2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7BA4081B524BB4007FB8A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -151,6 +195,7 @@
 			children = (
 				61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */,
 				8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */,
+				7973CCC1BB7BBFC90BA94CC3 /* Pods_PagingMenuControllerDemo2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,6 +207,8 @@
 				707C60F31AFF822200BDAB0B /* PagingMenuControllerDemoTests */,
 				70C505311B0058B10007571E /* PagingMenuController */,
 				70C505401B0058B10007571E /* PagingMenuControllerTests */,
+				EC7BA3F81B524BB4007FB8A5 /* PagingMenuControllerDemo2 */,
+				EC7BA40E1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */,
 				707C60DC1AFF822100BDAB0B /* Products */,
 				90D456DCC3386FD0738FA4C6 /* Pods */,
 				31C312B457D869AC3AD2B333 /* Frameworks */,
@@ -175,6 +222,8 @@
 				707C60F01AFF822200BDAB0B /* PagingMenuControllerDemoTests.xctest */,
 				70C505301B0058B10007571E /* PagingMenuController.framework */,
 				70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */,
+				EC7BA3F71B524BB4007FB8A5 /* PagingMenuControllerDemo2.app */,
+				EC7BA40B1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -267,8 +316,49 @@
 				C67F4ECA52F2CFD5663796DB /* Pods-PagingMenuControllerDemo.release.xcconfig */,
 				8A43A77E541E67E86AA41BE0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */,
 				BFECDBB98E484B88553F4AA0 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */,
+				F4108687AE0EB5851561C508 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */,
+				67405852A888E9A94CB40B0C /* Pods-PagingMenuControllerDemo2.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC7BA3F81B524BB4007FB8A5 /* PagingMenuControllerDemo2 */ = {
+			isa = PBXGroup;
+			children = (
+				EC7BA3FB1B524BB4007FB8A5 /* AppDelegate.swift */,
+				EC7BA3FD1B524BB4007FB8A5 /* ViewController.swift */,
+				EC7BA4191B524C04007FB8A5 /* ViewController1.swift */,
+				EC7BA41A1B524C04007FB8A5 /* ViewController2.swift */,
+				EC7BA4021B524BB4007FB8A5 /* Images.xcassets */,
+				EC7BA4041B524BB4007FB8A5 /* LaunchScreen.xib */,
+				EC7BA3F91B524BB4007FB8A5 /* Supporting Files */,
+			);
+			path = PagingMenuControllerDemo2;
+			sourceTree = "<group>";
+		};
+		EC7BA3F91B524BB4007FB8A5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC7BA3FA1B524BB4007FB8A5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EC7BA40E1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EC7BA4111B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.swift */,
+				EC7BA40F1B524BB4007FB8A5 /* Supporting Files */,
+			);
+			path = PagingMenuControllerDemo2Tests;
+			sourceTree = "<group>";
+		};
+		EC7BA40F1B524BB4007FB8A5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC7BA4101B524BB4007FB8A5 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +455,44 @@
 			productReference = 70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EC7BA3F61B524BB4007FB8A5 /* PagingMenuControllerDemo2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC7BA4171B524BB4007FB8A5 /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemo2" */;
+			buildPhases = (
+				1EE1D53FA9DCE7D4714ED3F5 /* Check Pods Manifest.lock */,
+				EC7BA3F31B524BB4007FB8A5 /* Sources */,
+				EC7BA3F41B524BB4007FB8A5 /* Frameworks */,
+				EC7BA3F51B524BB4007FB8A5 /* Resources */,
+				595CEFE90AE8BA5CA5D5B438 /* Embed Pods Frameworks */,
+				97342B74FEB3AF257732083F /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PagingMenuControllerDemo2;
+			productName = PagingMenuControllerDemo2;
+			productReference = EC7BA3F71B524BB4007FB8A5 /* PagingMenuControllerDemo2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EC7BA40A1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC7BA4181B524BB4007FB8A5 /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemo2Tests" */;
+			buildPhases = (
+				EC7BA4071B524BB4007FB8A5 /* Sources */,
+				EC7BA4081B524BB4007FB8A5 /* Frameworks */,
+				EC7BA4091B524BB4007FB8A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC7BA40D1B524BB4007FB8A5 /* PBXTargetDependency */,
+			);
+			name = PagingMenuControllerDemo2Tests;
+			productName = PagingMenuControllerDemo2Tests;
+			productReference = EC7BA40B1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -388,6 +516,13 @@
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 707C60DA1AFF822100BDAB0B;
 					};
+					EC7BA3F61B524BB4007FB8A5 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					EC7BA40A1B524BB4007FB8A5 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = EC7BA3F61B524BB4007FB8A5;
+					};
 				};
 			};
 			buildConfigurationList = 707C60D61AFF822100BDAB0B /* Build configuration list for PBXProject "PagingMenuControllerDemo" */;
@@ -407,6 +542,8 @@
 				707C60EF1AFF822200BDAB0B /* PagingMenuControllerDemoTests */,
 				70C5052F1B0058B10007571E /* PagingMenuController */,
 				70C505391B0058B10007571E /* PagingMenuControllerTests */,
+				EC7BA3F61B524BB4007FB8A5 /* PagingMenuControllerDemo2 */,
+				EC7BA40A1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -443,10 +580,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC7BA3F51B524BB4007FB8A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC7BA4061B524BB4007FB8A5 /* LaunchScreen.xib in Resources */,
+				EC7BA4031B524BB4007FB8A5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7BA4091B524BB4007FB8A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		150B61640FE80BFE11290D76 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1EE1D53FA9DCE7D4714ED3F5 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -491,6 +659,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		595CEFE90AE8BA5CA5D5B438 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		68E076C7307454405A028714 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -519,6 +702,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97342B74FEB3AF257732083F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		992D543DCFD6E4B881B0FFB1 /* Copy Pods Resources */ = {
@@ -580,6 +778,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC7BA3F31B524BB4007FB8A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC7BA41B1B524C04007FB8A5 /* ViewController1.swift in Sources */,
+				EC7BA41C1B524C04007FB8A5 /* ViewController2.swift in Sources */,
+				EC7BA3FE1B524BB4007FB8A5 /* ViewController.swift in Sources */,
+				EC7BA3FC1B524BB4007FB8A5 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC7BA4071B524BB4007FB8A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC7BA4121B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -603,6 +820,11 @@
 			target = 70C5052F1B0058B10007571E /* PagingMenuController */;
 			targetProxy = 70C505451B0058B10007571E /* PBXContainerItemProxy */;
 		};
+		EC7BA40D1B524BB4007FB8A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC7BA3F61B524BB4007FB8A5 /* PagingMenuControllerDemo2 */;
+			targetProxy = EC7BA40C1B524BB4007FB8A5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -618,6 +840,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				707C60EA1AFF822200BDAB0B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		EC7BA4041B524BB4007FB8A5 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC7BA4051B524BB4007FB8A5 /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -841,6 +1071,72 @@
 			};
 			name = Release;
 		};
+		EC7BA4131B524BB4007FB8A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4108687AE0EB5851561C508 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PagingMenuControllerDemo2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC7BA4141B524BB4007FB8A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67405852A888E9A94CB40B0C /* Pods-PagingMenuControllerDemo2.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PagingMenuControllerDemo2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EC7BA4151B524BB4007FB8A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PagingMenuControllerDemo2Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PagingMenuControllerDemo2.app/PagingMenuControllerDemo2";
+			};
+			name = Debug;
+		};
+		EC7BA4161B524BB4007FB8A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PagingMenuControllerDemo2Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PagingMenuControllerDemo2.app/PagingMenuControllerDemo2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -885,6 +1181,24 @@
 			buildConfigurations = (
 				70C5054C1B0058B10007571E /* Debug */,
 				70C5054D1B0058B10007571E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC7BA4171B524BB4007FB8A5 /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemo2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC7BA4131B524BB4007FB8A5 /* Debug */,
+				EC7BA4141B524BB4007FB8A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC7BA4181B524BB4007FB8A5 /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemo2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC7BA4151B524BB4007FB8A5 /* Debug */,
+				EC7BA4161B524BB4007FB8A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
