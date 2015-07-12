@@ -5,6 +5,10 @@ target 'PagingMenuControllerDemo', :exclusive => true do
   pod "PagingMenuController", :path => "../"
 end
 
+target 'PagingMenuControllerDemo2', :exclusive => true do
+  pod "PagingMenuController", :path => "../"
+end
+
 target 'PagingMenuControllerDemoTests', :exclusive => true do
   pod "PagingMenuController", :path => "../"
 

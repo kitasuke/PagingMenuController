@@ -44,6 +44,9 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        // fix unnecessary inset for menu view when implemented by programmatically
+        menuView.contentInset = UIEdgeInsetsZero
+        
         moveToMenuPage(currentPage, animated: false)
     }
     
