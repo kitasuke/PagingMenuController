@@ -1,3 +1,9 @@
+# 0.4.2 Release notes (2015/07-12)
+
+### Bug fixed
+
+- Set appropriate contentInset for menu view in case implemented programmatically
+
 # 0.4.1 Release notes (2015-07-05)
 
 ### Bug fixed
