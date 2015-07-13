@@ -1,5 +1,5 @@
 PODS:
-  - PagingMenuController (0.4.2)
+  - PagingMenuController (0.4.3)
 
 DEPENDENCIES:
   - PagingMenuController (from `../`)
