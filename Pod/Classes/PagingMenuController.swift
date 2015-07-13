@@ -195,8 +195,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     private func layoutContentView() {
         let viewsDictionary = ["contentView": contentView, "scrollView": scrollView]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==scrollView)]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: .allZeros, metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==scrollView)]|", options: .allZeros, metrics: nil, views: viewsDictionary)
         
         scrollView.addConstraints(horizontalConstraints)
         scrollView.addConstraints(verticalConstraints)
@@ -232,8 +232,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
                 viewsDictionary["nextPagingView"] = pagingViewControllers[index + 1].view
             }
             
-            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(horizontalVisualFormat, options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
-            let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[pagingView(==scrollView)]|", options: NSLayoutFormatOptions.allZeros, metrics: nil, views: viewsDictionary)
+            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(horizontalVisualFormat, options: .allZeros, metrics: nil, views: viewsDictionary)
+            let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[pagingView(==scrollView)]|", options: .allZeros, metrics: nil, views: viewsDictionary)
             
             scrollView.addConstraints(horizontalConstraints)
             scrollView.addConstraints(verticalConstraints)
