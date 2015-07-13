@@ -55,6 +55,10 @@ selectedTextColor: UIColor
 ```Swift
 font: UIFont
 ```
+* menu position
+```Swift
+menuPosition: MenuPosition
+```
 * height for menu view
 ```Swift
 menuHeight: CGFloat
