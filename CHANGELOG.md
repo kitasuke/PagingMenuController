@@ -1,3 +1,9 @@
+# 0.4.3 Release notes (2015/07-13)
+
+### Enhancements
+
+- Menu position option (top or bottom)
+
 # 0.4.2 Release notes (2015/07-12)
 
 ### Bug fixed
