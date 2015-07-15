@@ -73,7 +73,7 @@ class MenuView: UIScrollView {
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
         bounces = bounces()
-        scrollEnabled = true
+        scrollEnabled = scrollEnabled()
         scrollsToTop = false
         setTranslatesAutoresizingMaskIntoConstraints(false)
     }
@@ -142,6 +142,27 @@ class MenuView: UIScrollView {
                 return true
             default:
                 return false
+            }
+        default:
+            return false
+        }
+    }
+    
+    private func scrollEnabled() -> Bool {
+        switch options.menuDisplayMode {
+        case .FlexibleItemWidth(_, let scrollingMode):
+            switch scrollingMode {
+            case .PagingEnabled:
+                return false
+            default:
+                return true
+            }
+        case .FixedItemWidth(_, _, let scrollingMode):
+            switch scrollingMode {
+            case .PagingEnabled:
+                return false
+            default:
+                return true
             }
         default:
             return false
