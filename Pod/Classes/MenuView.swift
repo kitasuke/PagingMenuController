@@ -175,15 +175,15 @@ class MenuView: UIScrollView {
     private func targetContentOffsetX(#nextIndex: Int) -> CGFloat {
         switch options.menuDisplayMode {
         case .FlexibleItemWidth(let centerItem, _):
-            if centerItem {
-                return centerOfScreenWidth(nextIndex: nextIndex)
+            if !centerItem {
+                return contentOffsetXForCurrentPage(nextIndex: nextIndex)
             }
-            return contentOffsetXForCurrentPage(nextIndex: nextIndex)
+            return centerOfScreenWidth(nextIndex: nextIndex)
         case .FixedItemWidth(_, let centerItem, _):
-            if centerItem {
-                return centerOfScreenWidth(nextIndex: nextIndex)
+            if !centerItem {
+                return contentOffsetXForCurrentPage(nextIndex: nextIndex)
             }
-            return contentOffsetXForCurrentPage(nextIndex: nextIndex)
+            return centerOfScreenWidth(nextIndex: nextIndex)
         case .SegmentedControl:
             return contentOffset.x
         }
