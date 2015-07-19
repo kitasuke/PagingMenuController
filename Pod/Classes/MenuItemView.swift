@@ -37,15 +37,13 @@ class MenuItemView: UIView {
         layoutTitleView()
         layoutLabel()
         
-        switch options.menuItemMode {
-        case .Underline(let height, let color, _):
+        if case .Underline(let height, let color, _) = options.menuItemMode {
             constructUnderlineView(color: color)
             layoutUnderlineView(height: height)
-        default: break
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -55,11 +53,11 @@ class MenuItemView: UIView {
     
     // MARK: - Constraints manager
     
-    internal func updateLabelConstraints(#size: CGSize) {
+    internal func updateLabelConstraints(size size: CGSize) {
         // set width manually to support ratotaion
         switch options.menuDisplayMode {
         case .SegmentedControl:
-            let labelSize = calculateLableSize(size: size)
+            let labelSize = calculateLableSize(size)
             widthLabelConstraint.constant = labelSize.width
             widthViewConstraint.constant = labelSize.width
         default: break
@@ -68,7 +66,7 @@ class MenuItemView: UIView {
     
     // MARK: - Color changer
     
-    internal func changeColor(#selected: Bool) {
+    internal func changeColor(selected selected: Bool) {
         backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
         titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
         switch options.menuItemMode {
@@ -84,17 +82,15 @@ class MenuItemView: UIView {
     
     private func setupView() {
         backgroundColor = options.backgroundColor
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func constructTitleView() {
         titleView = UIView()
         titleView.userInteractionEnabled = true
-        titleView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        switch options.menuItemMode {
-        case .RoundRect(let radius, _, _, _):
+        titleView.translatesAutoresizingMaskIntoConstraints = false
+        if case .RoundRect(let radius, _, _, _) = options.menuItemMode {
             titleView.layer.cornerRadius = radius
-        default: break
         }
         titleView.backgroundColor = UIColor.clearColor()
         addSubview(titleView)
@@ -108,7 +104,7 @@ class MenuItemView: UIView {
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.userInteractionEnabled = true
-        titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleView.addSubview(titleLabel)
     }
     
@@ -120,8 +116,8 @@ class MenuItemView: UIView {
         let viewSize = calculateTitleViewSize(labelSize, margin: margin)
         let viewMargin = calculateTitleViewMargin(margin)
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[view]-margin-|", options: .allZeros, metrics: ["margin": viewMargin.horizontal], views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[view(height)]-margin@250-|", options: .allZeros, metrics: ["height": viewSize.height, "margin": viewMargin.vertical], views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[view]-margin-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["margin": viewMargin.horizontal], views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[view(height)]-margin@250-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["height": viewSize.height, "margin": viewMargin.vertical], views: viewsDictionary)
         
         addConstraints(horizontalConstraints)
         addConstraints(verticalConstraints)
@@ -138,8 +134,8 @@ class MenuItemView: UIView {
         let margin = calculateMargin(labelHeight: labelSize.height)
         let labelMargin = calculateLabelMargin(margin)
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[label]-margin-|", options: .allZeros, metrics: ["margin": labelMargin.horizontal], views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[label(height)]-margin@250-|", options: .allZeros, metrics: ["height": labelSize.height, "margin": labelMargin.vertical], views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[label]-margin-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["margin": labelMargin.horizontal], views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[label(height)]-margin@250-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["height": labelSize.height, "margin": labelMargin.vertical], views: viewsDictionary)
         
         titleView.addConstraints(horizontalConstraints)
         titleView.addConstraints(verticalConstraints)
@@ -149,18 +145,18 @@ class MenuItemView: UIView {
         titleView.addConstraint(widthLabelConstraint)
     }
     
-    private func constructUnderlineView(#color: UIColor) {
+    private func constructUnderlineView(color color: UIColor) {
         underlineView = UIView()
         underlineView.backgroundColor = color
-        underlineView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        underlineView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(underlineView)
     }
     
-    private func layoutUnderlineView(#height: CGFloat) {
+    private func layoutUnderlineView(height height: CGFloat) {
         let viewsDictionary = ["view": underlineView]
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .allZeros, metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[view(height)]|", options: .allZeros, metrics: ["height": height], views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[view(height)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: ["height": height], views: viewsDictionary)
         
         addConstraints(horizontalConstraints)
         addConstraints(verticalConstraints)
@@ -185,7 +181,7 @@ class MenuItemView: UIView {
         return CGSizeMake(itemWidth, itemHeight)
     }
     
-    private func calculateMargin(#labelHeight: CGFloat) -> (horizontal: CGFloat, vertical: CGFloat) {
+    private func calculateMargin(labelHeight labelHeight: CGFloat) -> (horizontal: CGFloat, vertical: CGFloat) {
         let horizontalMargin: CGFloat
         let verticalMargin = ceil((options.menuHeight - ceil(labelHeight)) / 2)
         

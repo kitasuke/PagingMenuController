@@ -29,7 +29,7 @@ class MenuView: UIScrollView {
         layoutMenuItemViews()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -41,7 +41,7 @@ class MenuView: UIScrollView {
     
     // MARK: - Public method
     
-    internal func moveToMenu(#page: Int, animated: Bool) {
+    internal func moveToMenu(page page: Int, animated: Bool) {
         let duration = animated ? options.animationDuration : 0
         let contentOffsetX = targetContentOffsetX(nextIndex: page)
 
@@ -56,13 +56,11 @@ class MenuView: UIScrollView {
         })
     }
     
-    internal func updateMenuItemConstraintsIfNeeded(#size: CGSize) {
-        switch options.menuDisplayMode {
-        case .SegmentedControl:
+    internal func updateMenuItemConstraintsIfNeeded(size size: CGSize) {
+        if case .SegmentedControl = options.menuDisplayMode {
             for menuItemView in menuItemViews {
                 menuItemView.updateLabelConstraints(size: size)
             }
-        default: break
         }
     }
     
@@ -75,28 +73,28 @@ class MenuView: UIScrollView {
         bounces = bounces()
         scrollEnabled = scrollEnabled()
         scrollsToTop = false
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func constructContentView() {
         contentView = UIView(frame: CGRectZero)
-        contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(contentView)
     }
     
     private func layoutContentView() {
         let viewsDictionary = ["contentView": contentView, "scrollView": self]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: .allZeros, metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==scrollView)]|", options: .allZeros, metrics: nil, views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==scrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
         
         addConstraints(horizontalConstraints)
         addConstraints(verticalConstraints)
     }
     
-    private func constructMenuItemViews(#titles: [String]) {
+    private func constructMenuItemViews(titles titles: [String]) {
         for title in titles {
             let menuView = MenuItemView(title: title, options: options)
-            menuView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            menuView.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(menuView)
             
             menuItemViews.append(menuView)
@@ -104,7 +102,7 @@ class MenuView: UIScrollView {
     }
     
     private func layoutMenuItemViews() {
-        for (index, menuItemView) in enumerate(menuItemViews) {
+        for (index, menuItemView) in menuItemViews.enumerate() {
             let visualFormat: String;
             var viewsDicrionary = ["menuItemView": menuItemView]
             if index == 0 {
@@ -118,9 +116,9 @@ class MenuView: UIScrollView {
                 viewsDicrionary["previousMenuItemView"] = menuItemViews[index - 1]
             }
             
-            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(visualFormat, options: .allZeros, metrics: nil, views: viewsDicrionary)
+            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(visualFormat, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDicrionary)
             
-            let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuItemView]|", options: .allZeros, metrics: nil, views: viewsDicrionary)
+            let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuItemView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDicrionary)
             
             contentView.addConstraints(horizontalConstraints)
             contentView.addConstraints(verticalConstraints)
@@ -130,57 +128,42 @@ class MenuView: UIScrollView {
     private func bounces() -> Bool {
         switch options.menuDisplayMode {
         case .FlexibleItemWidth(_, let scrollingMode):
-            switch scrollingMode {
-            case .ScrollEnabledAndBouces:
+            if case .ScrollEnabledAndBouces = scrollingMode {
                 return true
-            default:
-                return false
             }
         case .FixedItemWidth(_, _, let scrollingMode):
-            switch scrollingMode {
-            case .ScrollEnabledAndBouces:
+            if case .ScrollEnabledAndBouces = scrollingMode {
                 return true
-            default:
-                return false
             }
-        default:
+        case .SegmentedControl:
             return false
         }
+        return false
     }
     
     private func scrollEnabled() -> Bool {
         switch options.menuDisplayMode {
         case .FlexibleItemWidth(_, let scrollingMode):
-            switch scrollingMode {
-            case .PagingEnabled:
+            if case .PagingEnabled = scrollingMode {
                 return false
-            default:
-                return true
             }
         case .FixedItemWidth(_, _, let scrollingMode):
-            switch scrollingMode {
-            case .PagingEnabled:
+            if case .PagingEnabled = scrollingMode {
                 return false
-            default:
-                return true
             }
         default:
             return false
         }
+        return true
     }
     
     private func adjustmentContentInsetIfNeeded() {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, _):
-            if !centerItem {
-                return
-            }
-        case .FixedItemWidth(_, let centerItem, _):
-            if !centerItem {
-                return
-            }
+        case .FlexibleItemWidth(let centerItem, _) where !centerItem: return
+        case .FixedItemWidth(_, let centerItem, _) where !centerItem: return
         case .SegmentedControl:
             return
+        default: break
         }
         
         let firstMenuView = menuItemViews.first! as MenuItemView
@@ -193,35 +176,30 @@ class MenuView: UIScrollView {
         contentInset = inset
     }
     
-    private func targetContentOffsetX(#nextIndex: Int) -> CGFloat {
+    private func targetContentOffsetX(nextIndex nextIndex: Int) -> CGFloat {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, _):
-            if !centerItem {
-                return contentOffsetXForCurrentPage(nextIndex: nextIndex)
-            }
-            return centerOfScreenWidth(nextIndex: nextIndex)
-        case .FixedItemWidth(_, let centerItem, _):
-            if !centerItem {
-                return contentOffsetXForCurrentPage(nextIndex: nextIndex)
-            }
-            return centerOfScreenWidth(nextIndex: nextIndex)
+        case .FlexibleItemWidth(let centerItem, _) where !centerItem:
+            return contentOffsetXForCurrentPage(nextIndex: nextIndex)
+        case .FixedItemWidth(_, let centerItem, _) where !centerItem:
+            return contentOffsetXForCurrentPage(nextIndex: nextIndex)
         case .SegmentedControl:
             return contentOffset.x
+        default:
+            return centerOfScreenWidth(nextIndex: nextIndex)
         }
     }
     
-    private func centerOfScreenWidth(#nextIndex: Int) -> CGFloat {
+    private func centerOfScreenWidth(nextIndex nextIndex: Int) -> CGFloat {
         return menuItemViews[nextIndex].frame.origin.x + menuItemViews[nextIndex].frame.width / 2 - frame.width / 2
     }
     
-    private func contentOffsetXForCurrentPage(#nextIndex: Int) -> CGFloat {
+    private func contentOffsetXForCurrentPage(nextIndex nextIndex: Int) -> CGFloat {
         let ratio = CGFloat(nextIndex) / CGFloat(menuItemViews.count - 1)
-        let previousMenuItem = menuItemViews[currentPage]
         return (contentSize.width - frame.width) * ratio
     }
     
     private func changeMenuItemColor() {
-        for (index, menuItemView) in enumerate(menuItemViews) {
+        for (index, menuItemView) in menuItemViews.enumerate() {
             menuItemView.changeColor(selected: index == currentPage)
         }
     }
