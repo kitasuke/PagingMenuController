@@ -14,7 +14,6 @@ class MenuItemView: UIView {
     private var title: String!
     private var titleView: UIView!
     private var titleLabel: UILabel!
-    private var underlineView: UIView!
     private var widthViewConstraint: NSLayoutConstraint!
     private var widthLabelConstraint: NSLayoutConstraint!
     private var horizontalViewScale: CGFloat!
@@ -36,13 +35,6 @@ class MenuItemView: UIView {
         constructLabel()
         layoutTitleView()
         layoutLabel()
-        
-        switch options.menuItemMode {
-        case .Underline(let height, let color, _):
-            constructUnderlineView(color: color)
-            layoutUnderlineView(height: height)
-        default: break
-        }
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -72,11 +64,9 @@ class MenuItemView: UIView {
         backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
         titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
         switch options.menuItemMode {
-        case .Underline(_, let color, let selectedColor):
-            underlineView.backgroundColor = selected ? selectedColor : color
         case .RoundRect(_, _, _, let selectedColor):
             titleView.backgroundColor = selected ? selectedColor : UIColor.clearColor()
-        case .None: break
+        default: break
         }
     }
     
@@ -147,23 +137,6 @@ class MenuItemView: UIView {
         widthLabelConstraint = NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: labelSize.width)
         widthLabelConstraint.priority = 250 // label's width should be calculated by its view's width
         titleView.addConstraint(widthLabelConstraint)
-    }
-    
-    private func constructUnderlineView(#color: UIColor) {
-        underlineView = UIView()
-        underlineView.backgroundColor = color
-        underlineView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        addSubview(underlineView)
-    }
-    
-    private func layoutUnderlineView(#height: CGFloat) {
-        let viewsDictionary = ["view": underlineView]
-        
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: .allZeros, metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[view(height)]|", options: .allZeros, metrics: ["height": height], views: viewsDictionary)
-        
-        addConstraints(horizontalConstraints)
-        addConstraints(verticalConstraints)
     }
     
     // MARK: - Size calculator
