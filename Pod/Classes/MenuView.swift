@@ -221,7 +221,7 @@ class MenuView: UIScrollView {
             }
             return centerOfScreenWidth(nextIndex: nextIndex)
         case .FixedItemWidth(_, let centerItem, _):
-            if !centerItem {
+            if !centerItem && menuItemViews.count > 1{
                 return contentOffsetXForCurrentPage(nextIndex: nextIndex)
             }
             return centerOfScreenWidth(nextIndex: nextIndex)
