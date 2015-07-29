@@ -1,3 +1,15 @@
+# 0.4.5 Release notes (2015/07-25)
+
+### Enhancements
+
+- Underline view is now animated with content view
+
+# 0.4.4 Release notes (2015/07-15)
+
+#### Bug fixed
+
+- `centerItem` didn't work on device
+
 # 0.4.3 Release notes (2015/07-13)
 
 ### Enhancements
