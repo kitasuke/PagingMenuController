@@ -22,6 +22,7 @@ public class PagingMenuOptions {
     public var menuDisplayMode = MenuDisplayMode.FlexibleItemWidth(centerItem: false, scrollingMode: MenuScrollingMode.PagingEnabled)
     public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.blueColor())
     internal var menuItemCount = 0
+    internal let minumumSupportedViewCount = 1
     
     public enum MenuPosition {
         case Top
