@@ -235,6 +235,9 @@ class MenuView: UIScrollView {
     }
     
     private func contentOffsetXForCurrentPage(#nextIndex: Int) -> CGFloat {
+        if menuItemViews.count == options.minumumSupportedViewCount {
+            return 0.0
+        }
         let ratio = CGFloat(nextIndex) / CGFloat(menuItemViews.count - 1)
         let previousMenuItem = menuItemViews[currentPage]
         return (contentSize.width - frame.width) * ratio
