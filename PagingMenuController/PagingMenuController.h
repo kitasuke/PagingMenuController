@@ -2,7 +2,7 @@
 //  PagingMenuController.h
 //  PagingMenuController
 //
-//  Created by Yusuke Kita on 5/11/15.
+//  Created by Yusuke Kita on 8/2/15.
 //  Copyright (c) 2015 kitasuke. All rights reserved.
 //
 
