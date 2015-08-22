@@ -22,8 +22,12 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         let task = session.dataTaskWithRequest(request) { [unowned self] data, response, error in
-            let result = NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: nil) as! [[String: AnyObject]]
-            self.users = result
+            do {
+                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
+                self.users = result
+            } catch _ {
+                
+            }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadData()
@@ -41,7 +45,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         
         let user = users[indexPath.row]
         cell.textLabel?.text = user["login"] as? String
