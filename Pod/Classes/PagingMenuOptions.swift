@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 kitasuke. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class PagingMenuOptions {
     public var defaultPage = 0
