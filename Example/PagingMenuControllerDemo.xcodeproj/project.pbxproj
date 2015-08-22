@@ -13,15 +13,14 @@
 		707C60E81AFF822200BDAB0B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 707C60E71AFF822200BDAB0B /* Images.xcassets */; };
 		707C60EB1AFF822200BDAB0B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 707C60E91AFF822200BDAB0B /* LaunchScreen.xib */; };
 		707C60F71AFF822200BDAB0B /* PagingMenuControllerDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60F61AFF822200BDAB0B /* PagingMenuControllerDemoTests.swift */; };
-		707C61011AFF83C700BDAB0B /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61001AFF83C700BDAB0B /* ViewController1.swift */; };
-		707C61031AFF843F00BDAB0B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61021AFF843F00BDAB0B /* ViewController2.swift */; };
-		707C61051AFF845200BDAB0B /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61041AFF845200BDAB0B /* ViewController3.swift */; };
-		707C61071AFF846800BDAB0B /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61061AFF846800BDAB0B /* ViewController4.swift */; };
-		707C61091AFF848700BDAB0B /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61081AFF848700BDAB0B /* ViewController5.swift */; };
-		70C505441B0058B10007571E /* PagingMenuControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C505431B0058B10007571E /* PagingMenuControllerTests.swift */; };
+		707C61011AFF83C700BDAB0B /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61001AFF83C700BDAB0B /* UsersViewController.swift */; };
+		707C61031AFF843F00BDAB0B /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61021AFF843F00BDAB0B /* RepositoriesViewController.swift */; };
+		707C61051AFF845200BDAB0B /* GistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61041AFF845200BDAB0B /* GistsViewController.swift */; };
+		707C61071AFF846800BDAB0B /* OrganizationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61061AFF846800BDAB0B /* OrganizationsViewController.swift */; };
 		B47D044F762BB5D827DD6DC6 /* Pods_PagingMenuControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CC9834AF445FD5D22067BC36 /* Pods_PagingMenuControllerDemo2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7973CCC1BB7BBFC90BA94CC3 /* Pods_PagingMenuControllerDemo2.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DDA172CA689446F04F4C9097 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EC13F4A01B84A92D00685199 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13F49F1B84A92D00685199 /* DetailViewController.swift */; };
 		EC7BA3FC1B524BB4007FB8A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA3FB1B524BB4007FB8A5 /* AppDelegate.swift */; };
 		EC7BA3FE1B524BB4007FB8A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA3FD1B524BB4007FB8A5 /* ViewController.swift */; };
 		EC7BA4031B524BB4007FB8A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7BA4021B524BB4007FB8A5 /* Images.xcassets */; };
@@ -33,13 +32,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		707C60F11AFF822200BDAB0B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 707C60D31AFF822100BDAB0B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 707C60DA1AFF822100BDAB0B;
-			remoteInfo = PagingMenuControllerDemo;
-		};
-		70C5053E1B0058B10007571E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 707C60D31AFF822100BDAB0B /* Project object */;
 			proxyType = 1;
@@ -81,20 +73,17 @@
 		707C60F01AFF822200BDAB0B /* PagingMenuControllerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuControllerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		707C60F51AFF822200BDAB0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		707C60F61AFF822200BDAB0B /* PagingMenuControllerDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerDemoTests.swift; sourceTree = "<group>"; };
-		707C61001AFF83C700BDAB0B /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
-		707C61021AFF843F00BDAB0B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
-		707C61041AFF845200BDAB0B /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
-		707C61061AFF846800BDAB0B /* ViewController4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
-		707C61081AFF848700BDAB0B /* ViewController5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
-		70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		70C505421B0058B10007571E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		70C505431B0058B10007571E /* PagingMenuControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerTests.swift; sourceTree = "<group>"; };
+		707C61001AFF83C700BDAB0B /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		707C61021AFF843F00BDAB0B /* RepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
+		707C61041AFF845200BDAB0B /* GistsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistsViewController.swift; sourceTree = "<group>"; };
+		707C61061AFF846800BDAB0B /* OrganizationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationsViewController.swift; sourceTree = "<group>"; };
 		7973CCC1BB7BBFC90BA94CC3 /* Pods_PagingMenuControllerDemo2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A43A77E541E67E86AA41BE0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8444D2212F28EF990A1A4B6 /* Pods-PagingMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		BFECDBB98E484B88553F4AA0 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		C67F4ECA52F2CFD5663796DB /* Pods-PagingMenuControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		EC13F49F1B84A92D00685199 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EC7BA3F71B524BB4007FB8A5 /* PagingMenuControllerDemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingMenuControllerDemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7BA3FA1B524BB4007FB8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC7BA3FB1B524BB4007FB8A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,13 +112,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA172CA689446F04F4C9097 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70C505371B0058B10007571E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +148,6 @@
 			children = (
 				707C60DD1AFF822100BDAB0B /* PagingMenuControllerDemo */,
 				707C60F31AFF822200BDAB0B /* PagingMenuControllerDemoTests */,
-				70C505401B0058B10007571E /* PagingMenuControllerTests */,
 				EC7BA3F81B524BB4007FB8A5 /* PagingMenuControllerDemo2 */,
 				EC7BA40E1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */,
 				707C60DC1AFF822100BDAB0B /* Products */,
@@ -180,7 +161,6 @@
 			children = (
 				707C60DB1AFF822100BDAB0B /* PagingMenuControllerDemo.app */,
 				707C60F01AFF822200BDAB0B /* PagingMenuControllerDemoTests.xctest */,
-				70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */,
 				EC7BA3F71B524BB4007FB8A5 /* PagingMenuControllerDemo2.app */,
 				EC7BA40B1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.xctest */,
 			);
@@ -192,11 +172,11 @@
 			children = (
 				707C60E01AFF822100BDAB0B /* AppDelegate.swift */,
 				707C60E21AFF822100BDAB0B /* ViewController.swift */,
-				707C61001AFF83C700BDAB0B /* ViewController1.swift */,
-				707C61021AFF843F00BDAB0B /* ViewController2.swift */,
-				707C61041AFF845200BDAB0B /* ViewController3.swift */,
-				707C61061AFF846800BDAB0B /* ViewController4.swift */,
-				707C61081AFF848700BDAB0B /* ViewController5.swift */,
+				707C61001AFF83C700BDAB0B /* UsersViewController.swift */,
+				707C61021AFF843F00BDAB0B /* RepositoriesViewController.swift */,
+				707C61041AFF845200BDAB0B /* GistsViewController.swift */,
+				707C61061AFF846800BDAB0B /* OrganizationsViewController.swift */,
+				EC13F49F1B84A92D00685199 /* DetailViewController.swift */,
 				707C60E41AFF822100BDAB0B /* Main.storyboard */,
 				707C60E71AFF822200BDAB0B /* Images.xcassets */,
 				707C60E91AFF822200BDAB0B /* LaunchScreen.xib */,
@@ -226,23 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				707C60F51AFF822200BDAB0B /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		70C505401B0058B10007571E /* PagingMenuControllerTests */ = {
-			isa = PBXGroup;
-			children = (
-				70C505431B0058B10007571E /* PagingMenuControllerTests.swift */,
-				70C505411B0058B10007571E /* Supporting Files */,
-			);
-			path = PagingMenuControllerTests;
-			sourceTree = "<group>";
-		};
-		70C505411B0058B10007571E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				70C505421B0058B10007571E /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -344,24 +307,6 @@
 			productReference = 707C60F01AFF822200BDAB0B /* PagingMenuControllerDemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		70C505391B0058B10007571E /* PagingMenuControllerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 70C5054F1B0058B10007571E /* Build configuration list for PBXNativeTarget "PagingMenuControllerTests" */;
-			buildPhases = (
-				70C505361B0058B10007571E /* Sources */,
-				70C505371B0058B10007571E /* Frameworks */,
-				70C505381B0058B10007571E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				70C5053F1B0058B10007571E /* PBXTargetDependency */,
-			);
-			name = PagingMenuControllerTests;
-			productName = PagingMenuControllerTests;
-			productReference = 70C5053A1B0058B10007571E /* PagingMenuControllerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		EC7BA3F61B524BB4007FB8A5 /* PagingMenuControllerDemo2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC7BA4171B524BB4007FB8A5 /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemo2" */;
@@ -416,10 +361,6 @@
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 707C60DA1AFF822100BDAB0B;
 					};
-					70C505391B0058B10007571E = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 707C60DA1AFF822100BDAB0B;
-					};
 					EC7BA3F61B524BB4007FB8A5 = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -444,7 +385,6 @@
 			targets = (
 				707C60DA1AFF822100BDAB0B /* PagingMenuControllerDemo */,
 				707C60EF1AFF822200BDAB0B /* PagingMenuControllerDemoTests */,
-				70C505391B0058B10007571E /* PagingMenuControllerTests */,
 				EC7BA3F61B524BB4007FB8A5 /* PagingMenuControllerDemo2 */,
 				EC7BA40A1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */,
 			);
@@ -463,13 +403,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		707C60EE1AFF822200BDAB0B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70C505381B0058B10007571E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -637,13 +570,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				707C61051AFF845200BDAB0B /* ViewController3.swift in Sources */,
-				707C61071AFF846800BDAB0B /* ViewController4.swift in Sources */,
-				707C61011AFF83C700BDAB0B /* ViewController1.swift in Sources */,
-				707C61031AFF843F00BDAB0B /* ViewController2.swift in Sources */,
+				707C61051AFF845200BDAB0B /* GistsViewController.swift in Sources */,
+				707C61071AFF846800BDAB0B /* OrganizationsViewController.swift in Sources */,
+				707C61011AFF83C700BDAB0B /* UsersViewController.swift in Sources */,
+				707C61031AFF843F00BDAB0B /* RepositoriesViewController.swift in Sources */,
 				707C60E31AFF822100BDAB0B /* ViewController.swift in Sources */,
 				707C60E11AFF822100BDAB0B /* AppDelegate.swift in Sources */,
-				707C61091AFF848700BDAB0B /* ViewController5.swift in Sources */,
+				EC13F4A01B84A92D00685199 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,14 +585,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				707C60F71AFF822200BDAB0B /* PagingMenuControllerDemoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70C505361B0058B10007571E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				70C505441B0058B10007571E /* PagingMenuControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,11 +614,6 @@
 			isa = PBXTargetDependency;
 			target = 707C60DA1AFF822100BDAB0B /* PagingMenuControllerDemo */;
 			targetProxy = 707C60F11AFF822200BDAB0B /* PBXContainerItemProxy */;
-		};
-		70C5053F1B0058B10007571E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 707C60DA1AFF822100BDAB0B /* PagingMenuControllerDemo */;
-			targetProxy = 70C5053E1B0058B10007571E /* PBXContainerItemProxy */;
 		};
 		EC7BA40D1B524BB4007FB8A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -869,38 +789,6 @@
 			};
 			name = Release;
 		};
-		70C5054C1B0058B10007571E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PagingMenuControllerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PagingMenuControllerDemo.app/PagingMenuControllerDemo";
-			};
-			name = Debug;
-		};
-		70C5054D1B0058B10007571E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PagingMenuControllerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PagingMenuControllerDemo.app/PagingMenuControllerDemo";
-			};
-			name = Release;
-		};
 		EC7BA4131B524BB4007FB8A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F4108687AE0EB5851561C508 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */;
@@ -993,15 +881,6 @@
 			buildConfigurations = (
 				707C60FE1AFF822200BDAB0B /* Debug */,
 				707C60FF1AFF822200BDAB0B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		70C5054F1B0058B10007571E /* Build configuration list for PBXNativeTarget "PagingMenuControllerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				70C5054C1B0058B10007571E /* Debug */,
-				70C5054D1B0058B10007571E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

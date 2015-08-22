@@ -15,18 +15,12 @@ class ViewController: UIViewController, PagingMenuControllerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let viewController1 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController1") as! ViewController1
-        viewController1.title = "First menu"
-        let viewController2 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController2") as! ViewController2
-        viewController2.title = "Second menu"
-        let viewController3 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController3") as! ViewController3
-        viewController3.title = "Third menu"
-        let viewController4 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController4") as! ViewController4
-        viewController4.title = "Fourth menu"
-        let viewController5 = self.storyboard?.instantiateViewControllerWithIdentifier("ViewController5") as! ViewController5
-        viewController5.title = "Fifth menu"
+        let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersViewController
+        let repositoriesViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RepositoriesViewController") as! RepositoriesViewController
+        let gistsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GistsViewController") as! GistsViewController
+        let organizationsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrganizationsViewController") as! OrganizationsViewController
         
-        let viewControllers = [viewController1, viewController2, viewController3, viewController4, viewController5]
+        let viewControllers = [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController]
         
         let options = PagingMenuOptions()
         options.menuHeight = 50
