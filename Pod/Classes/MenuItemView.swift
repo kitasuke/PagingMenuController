@@ -113,12 +113,11 @@ class MenuItemView: UIView {
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[view]-margin-|", options: .allZeros, metrics: ["margin": viewMargin.horizontal], views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[view(height)]-margin@250-|", options: .allZeros, metrics: ["height": viewSize.height, "margin": viewMargin.vertical], views: viewsDictionary)
         
-        addConstraints(horizontalConstraints)
-        addConstraints(verticalConstraints)
+        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
         
         // use property to change constant value anytime
         widthViewConstraint = NSLayoutConstraint(item: titleView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: viewSize.width)
-        addConstraint(widthViewConstraint)
+        widthViewConstraint.active = true
     }
     
     private func layoutLabel() {
@@ -131,12 +130,11 @@ class MenuItemView: UIView {
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[label]-margin-|", options: .allZeros, metrics: ["margin": labelMargin.horizontal], views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin@250-[label(height)]-margin@250-|", options: .allZeros, metrics: ["height": labelSize.height, "margin": labelMargin.vertical], views: viewsDictionary)
         
-        titleView.addConstraints(horizontalConstraints)
-        titleView.addConstraints(verticalConstraints)
+        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
         
         widthLabelConstraint = NSLayoutConstraint(item: titleLabel, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: labelSize.width)
         widthLabelConstraint.priority = 250 // label's width should be calculated by its view's width
-        titleView.addConstraint(widthLabelConstraint)
+        widthLabelConstraint.active = true
     }
     
     // MARK: - Size calculator

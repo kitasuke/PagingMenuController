@@ -156,8 +156,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView(height)]|", options: .allZeros, metrics: metrics, views: viewsDictionary)
         }
         
-        view.addConstraints(horizontalConstraints)
-        view.addConstraints(verticalConstraints)
+        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
     
     private func constructScrollView() {
@@ -183,8 +182,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[scrollView][menuView]", options: .allZeros, metrics: nil, views: viewsDictionary)
         }
         
-        view.addConstraints(horizontalConstraints)
-        view.addConstraints(verticalConstraints)
+        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
     
     private func constructContentView() {
@@ -198,8 +196,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: .allZeros, metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==scrollView)]|", options: .allZeros, metrics: nil, views: viewsDictionary)
         
-        scrollView.addConstraints(horizontalConstraints)
-        scrollView.addConstraints(verticalConstraints)
+        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
     
     private func constructPagingViewControllers() {
@@ -235,8 +232,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(horizontalVisualFormat, options: .allZeros, metrics: nil, views: viewsDictionary)
             let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[pagingView(==scrollView)]|", options: .allZeros, metrics: nil, views: viewsDictionary)
             
-            scrollView.addConstraints(horizontalConstraints)
-            scrollView.addConstraints(verticalConstraints)
+            NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
         }
         
         view.setNeedsLayout()
