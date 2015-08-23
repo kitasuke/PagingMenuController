@@ -102,8 +102,7 @@ class MenuView: UIScrollView {
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: .allZeros, metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==scrollView)]|", options: .allZeros, metrics: nil, views: viewsDictionary)
         
-        addConstraints(horizontalConstraints)
-        addConstraints(verticalConstraints)
+        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
     
     private func constructMenuItemViews(#titles: [String]) {
@@ -135,8 +134,7 @@ class MenuView: UIScrollView {
             
             let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuItemView]|", options: .allZeros, metrics: nil, views: viewsDicrionary)
             
-            contentView.addConstraints(horizontalConstraints)
-            contentView.addConstraints(verticalConstraints)
+            NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
         }
     }
     
