@@ -29,11 +29,7 @@ class MenuView: UIScrollView {
         constructMenuItemViews(titles: menuItemTitles)
         layoutMenuItemViews()
         
-        switch options.menuItemMode {
-        case .Underline(let height, let color):
-            constructUnderlineView(height, color: color)
-        default: break
-        }
+        constructUnderlineViewIfNeeded()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -57,10 +53,14 @@ class MenuView: UIScrollView {
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.contentOffset.x = contentOffsetX
             
-            if let underlineView = self.underlineView {
-                let targetFrame = self.menuItemViews[self.currentPage].frame
-                underlineView.frame.origin.x = targetFrame.origin.x
-                underlineView.frame.size.width = targetFrame.width
+            switch self.options.menuItemMode {
+            case .Underline(_, _, let horizontalPadding, _):
+                if let underlineView = self.underlineView {
+                    let targetFrame = self.menuItemViews[self.currentPage].frame
+                    underlineView.frame.origin.x = targetFrame.origin.x + horizontalPadding
+                    underlineView.frame.size.width = targetFrame.width - horizontalPadding * 2
+                }
+            default: break
             }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -138,11 +138,15 @@ class MenuView: UIScrollView {
         }
     }
     
-    private func constructUnderlineView(height: CGFloat, color: UIColor) {
-        let width = menuItemViews.first!.bounds.size.width
-        underlineView = UIView(frame: CGRectMake(0, options.menuHeight - height, width, height))
-        underlineView.backgroundColor = color
-        contentView.addSubview(underlineView)
+    private func constructUnderlineViewIfNeeded() {
+        switch options.menuItemMode {
+        case .Underline(let height, let color, let horizontalPadding, let verticalPadding):
+            let width = menuItemViews.first!.bounds.size.width - horizontalPadding * 2
+            underlineView = UIView(frame: CGRectMake(horizontalPadding, options.menuHeight - (height + verticalPadding), width, height))
+            underlineView.backgroundColor = color
+            contentView.addSubview(underlineView)
+        default: break
+        }
     }
     
     private func bounces() -> Bool {
