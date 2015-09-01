@@ -53,14 +53,12 @@ class MenuView: UIScrollView {
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.contentOffset.x = contentOffsetX
             
-            switch self.options.menuItemMode {
-            case .Underline(_, _, let horizontalPadding, _):
+            if case .Underline(_, _, let horizontalPadding, _) = self.options.menuItemMode {
                 if let underlineView = self.underlineView {
                     let targetFrame = self.menuItemViews[self.currentPage].frame
                     underlineView.frame.origin.x = targetFrame.origin.x + horizontalPadding
                     underlineView.frame.size.width = targetFrame.width - horizontalPadding * 2
                 }
-            default: break
             }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -137,13 +135,11 @@ class MenuView: UIScrollView {
     }
     
     private func constructUnderlineViewIfNeeded() {
-        switch options.menuItemMode {
-        case .Underline(let height, let color, let horizontalPadding, let verticalPadding):
+        if case .Underline(let height, let color, let horizontalPadding, let verticalPadding) = options.menuItemMode {
             let width = menuItemViews.first!.bounds.size.width - horizontalPadding * 2
             underlineView = UIView(frame: CGRectMake(horizontalPadding, options.menuHeight - (height + verticalPadding), width, height))
             underlineView.backgroundColor = color
             contentView.addSubview(underlineView)
-        default: break
         }
     }
     
