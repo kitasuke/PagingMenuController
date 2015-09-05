@@ -94,10 +94,10 @@ if `MenuScrollingMode` is `PagingEnabled`, menu item should be selected one by o
 
 * menu item mode
 ```Swift
-public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.whiteColor(), selectedColor: UIColor.blueColor())
+public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.whiteColor(), horizontalPadding: 0, verticalPadding: 0)
 public enum MenuItemMode {
     case None
-    case Underline(height: CGFloat, color: UIColor, selectedColor: UIColor)
+    case Underline(height: CGFloat, color: UIColor, horizontalPadding: CGFloat, verticalPadding: CGFloat)
     case RoundRect(radius: CGFloat, horizontalScale: CGFloat, verticalScale: CGFloat, selectedColor: UIColor)
 }
 ```

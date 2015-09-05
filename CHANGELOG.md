@@ -1,3 +1,15 @@
+# 0.4.6 Release notes (2015/09-01)
+
+### Enhancements
+
+- Underline view's width and height can be changed by using horizontal and vertical paddings
+- Improve behaviour of example project
+
+### Bug fixed
+
+- Now copying all the files into your project works fine
+- First step to support single view controller usage 
+
 # 0.4.5 Release notes (2015/07-25)
 
 ### Enhancements
