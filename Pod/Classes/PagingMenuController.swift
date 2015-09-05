@@ -76,6 +76,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         validateDefaultPage()
         validateRoundRectScaleIfNeeded()
         
+        cleanup()
+        
         constructMenuView()
         constructContentScrollView()
         layoutMenuView()
@@ -87,6 +89,9 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         currentPage = self.options.defaultPage
         currentViewController = pagingViewControllers[self.options.defaultPage]
+        
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
     
     // MARK: - UISCrollViewDelegate
@@ -250,6 +255,16 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         view.setNeedsLayout()
         view.layoutIfNeeded()
+    }
+    
+    // MARK: - Cleanup
+    
+    private func cleanup() {
+        if let menuView = self.menuView, let contentScrollView = self.contentScrollView {
+            menuView.removeFromSuperview()
+            contentScrollView.removeFromSuperview()
+        }
+        currentPage = 0
     }
     
     // MARK: - Gesture handler
