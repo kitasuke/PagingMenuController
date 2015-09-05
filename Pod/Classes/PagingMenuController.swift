@@ -20,9 +20,21 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     private var menuView: MenuView!
     private var scrollView: UIScrollView!
     private var contentView: UIView!
-    private var pagingViewControllers = [UIViewController]()
+    private var pagingViewControllers = [UIViewController]() {
+        willSet {
+            options.menuItemCount = newValue.count
+        }
+    }
     private var currentPage: Int = 0
     private var currentViewController: UIViewController!
+    private var menuItemTitles: [String] {
+        get {
+            return pagingViewControllers.map { viewController -> String in
+                return viewController.title ?? "Menu"
+            }
+        }
+    }
+    
     private let ExceptionName = "PMCException"
 
     // MARK: - Lifecycle
@@ -57,9 +69,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     public func setup(#viewControllers: [UIViewController], options: PagingMenuOptions) {
-        pagingViewControllers = viewControllers
         self.options = options
-        self.options.menuItemCount = pagingViewControllers.count
+        pagingViewControllers = viewControllers
         
         // validate
         validateDefaultPage()
@@ -133,7 +144,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - Constructor
     
     private func constructMenuView() {
-        menuView = MenuView(menuItemTitles: menuItemTitles(), options: options)
+        menuView = MenuView(menuItemTitles: menuItemTitles, options: options)
         menuView.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(menuView)
         
@@ -211,11 +222,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     private func layoutPagingViewControllers() {
-        var contentWidth: CGFloat = 0.0
         var viewsDictionary: [String: AnyObject] = ["scrollView": scrollView]
         for (index, pagingViewController) in enumerate(pagingViewControllers) {
-            contentWidth += view.frame.width
-            
             viewsDictionary["pagingView"] = pagingViewController.view!
             let horizontalVisualFormat: String
             
@@ -242,18 +250,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         view.setNeedsLayout()
         view.layoutIfNeeded()
-    }
-    
-    private func menuItemTitles() -> [String] {
-        var titles = [String]()
-        for (index, viewController) in enumerate(pagingViewControllers) {
-            if let title = viewController.title {
-                titles.append(title)
-            } else {
-                titles.append("Menu \(index)")
-            }
-        }
-        return titles
     }
     
     // MARK: - Gesture handler
