@@ -194,11 +194,11 @@ class MenuView: UIScrollView {
     private func adjustmentContentInsetIfNeeded() {
         switch options.menuDisplayMode {
         case .FlexibleItemWidth(let centerItem, _):
-            if !centerItem {
+            if centerItem != true {
                 return
             }
         case .FixedItemWidth(_, let centerItem, _):
-            if !centerItem {
+            if centerItem != true{
                 return
             }
         case .SegmentedControl:
@@ -218,12 +218,12 @@ class MenuView: UIScrollView {
     private func targetContentOffsetX(#nextIndex: Int) -> CGFloat {
         switch options.menuDisplayMode {
         case .FlexibleItemWidth(let centerItem, _):
-            if !centerItem {
+            if centerItem != true {
                 return contentOffsetXForCurrentPage(nextIndex: nextIndex)
             }
             return centerOfScreenWidth(nextIndex: nextIndex)
         case .FixedItemWidth(_, let centerItem, _):
-            if !centerItem {
+            if centerItem != true {
                 return contentOffsetXForCurrentPage(nextIndex: nextIndex)
             }
             return centerOfScreenWidth(nextIndex: nextIndex)
