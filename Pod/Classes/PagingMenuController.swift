@@ -218,15 +218,20 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             
             viewsDictionary["pagingView"] = pagingViewController.view!
             let horizontalVisualFormat: String
-            if (index == 0) {
-                horizontalVisualFormat = "H:|[pagingView(==scrollView)]"
-            } else if (index == pagingViewControllers.count - 1) {
-                horizontalVisualFormat = "H:[previousPagingView][pagingView(==scrollView)]|"
-                viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
+            
+            if (options.menuItemCount == options.minumumSupportedViewCount) {
+                horizontalVisualFormat = "H:|[pagingView(==scrollView)]|"
             } else {
-                horizontalVisualFormat = "H:[previousPagingView][pagingView(==scrollView)][nextPagingView]"
-                viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
-                viewsDictionary["nextPagingView"] = pagingViewControllers[index + 1].view
+                if (index == 0) {
+                    horizontalVisualFormat = "H:|[pagingView(==scrollView)]"
+                } else if (index == pagingViewControllers.count - 1) {
+                    horizontalVisualFormat = "H:[previousPagingView][pagingView(==scrollView)]|"
+                    viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
+                } else {
+                    horizontalVisualFormat = "H:[previousPagingView][pagingView(==scrollView)][nextPagingView]"
+                    viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
+                    viewsDictionary["nextPagingView"] = pagingViewControllers[index + 1].view
+                }
             }
             
             let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(horizontalVisualFormat, options: .allZeros, metrics: nil, views: viewsDictionary)
