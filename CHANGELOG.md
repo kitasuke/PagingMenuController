@@ -1,3 +1,9 @@
+# 0.4.7 Release notes (2015/09-05)
+
+### Enhancements
+
+- Support onve view controller usage
+
 # 0.4.6 Release notes (2015/09-01)
 
 ### Enhancements
