@@ -66,6 +66,9 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
         menuView.updateMenuItemConstraintsIfNeeded(size: size)
+        
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
     
     public func setup(viewControllers viewControllers: [UIViewController], options: PagingMenuOptions) {
