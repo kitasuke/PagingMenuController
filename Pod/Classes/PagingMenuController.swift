@@ -89,6 +89,10 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         currentPage = self.options.defaultPage
         currentViewController = pagingViewControllers[self.options.defaultPage]
+    }
+    
+    public func rebuild(viewControllers: [UIViewController], options: PagingMenuOptions) {
+        setup(viewControllers: viewControllers, options: options)
         
         view.setNeedsLayout()
         view.layoutIfNeeded()
