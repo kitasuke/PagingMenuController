@@ -117,7 +117,7 @@ let pagingMenuController = self.childViewControllers.first as! PagingMenuControl
 
 let options = PagingMenuOptions()
 options.menuHeight = 60
-options.menuDisplayMode = PagingMenuOptions.MenuDisplayMode.FlexibleItemWidth(centerItem: true, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
+options.menuDisplayMode = .FlexibleItemWidth(centerItem: true, scrollingMode: .PagingEnabled)
 pagingMenuController.setup(viewControllers: viewControllers, options: options)
 ```
 * You should add `ContainerView` into your view controller's view and set `PagingMenuController` as the embedded view controller's class
@@ -130,7 +130,7 @@ let viewControllers = [viewController]
 
 let options = PagingMenuOptions()
 options.menuItemMargin = 5
-options.menuDisplayMode = PagingMenuOptions.MenuDisplayMode.SegmentedControl
+options.menuDisplayMode = .SegmentedControl
 let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
 
 self.addChildViewController(pagingMenuController)
