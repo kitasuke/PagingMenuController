@@ -15,6 +15,17 @@ See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHA
 *** Swift 2.0 ***  
 Please use swift_2.0 branch if you want to try in Swift 2.0
 
+Podfile  
+`pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_2.0'
+`
+
+Carfile  
+`github "kitasuke/PagingMenuController" "swift_2.0"
+`
+
+before run `carthage update`, the following code should be run in terminal  
+`sudo xcode-select -s /Applications/Xcode-beta.app/Contents/Developer/`
+
 ## Description
 
 ### Flexible menu width mode
