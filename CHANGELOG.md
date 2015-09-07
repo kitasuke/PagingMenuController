@@ -1,3 +1,9 @@
+# 0.5.0 Release notes (2015/09-06)
+
+### Enhancements
+
+- Support adding/deleting menu. Use `rebuild` method.
+
 # 0.4.7 Release notes (2015/09-05)
 
 ### Enhancements

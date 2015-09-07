@@ -1,5 +1,5 @@
 PODS:
-  - PagingMenuController (0.4.7)
+  - PagingMenuController (0.5.0)
 
 DEPENDENCIES:
   - PagingMenuController (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  PagingMenuController: 51e29ef957190d461fe767d424a4137fd0f8b342
+  PagingMenuController: da0016cb6e52f8d14c7510746391d802efca4b2d
 
 COCOAPODS: 0.38.0
