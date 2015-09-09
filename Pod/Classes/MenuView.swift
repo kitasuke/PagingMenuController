@@ -14,6 +14,7 @@ class MenuView: UIScrollView {
     private var options: PagingMenuOptions!
     private var contentView: UIView!
     private var underlineView: UIView!
+    private var roundRectView: UIView!
     private var currentPage: Int = 0
     
     // MARK: - Lifecycle
@@ -26,9 +27,9 @@ class MenuView: UIScrollView {
         setupScrollView()
         constructContentView()
         layoutContentView()
+        constructRoundRectViewIfNeeded()
         constructMenuItemViews(titles: menuItemTitles)
         layoutMenuItemViews()
-        
         constructUnderlineViewIfNeeded()
     }
     
@@ -53,13 +54,8 @@ class MenuView: UIScrollView {
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.contentOffset.x = contentOffsetX
             
-            if case .Underline(_, _, let horizontalPadding, _) = self.options.menuItemMode {
-                if let underlineView = self.underlineView {
-                    let targetFrame = self.menuItemViews[self.currentPage].frame
-                    underlineView.frame.origin.x = targetFrame.origin.x + horizontalPadding
-                    underlineView.frame.size.width = targetFrame.width - horizontalPadding * 2
-                }
-            }
+            self.animateUnderlineViewIfNeeded()
+            self.animateRoundRectViewIfNeeded()
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.changeMenuItemColor()
@@ -78,7 +74,11 @@ class MenuView: UIScrollView {
     // MARK: - Private method
     
     private func setupScrollView() {
-        backgroundColor = options.backgroundColor
+        if case .RoundRect(_, _, _, _) = options.menuItemMode {
+            backgroundColor = UIColor.clearColor()
+        } else {
+            backgroundColor = options.backgroundColor
+        }
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
         bounces = bounces()
@@ -136,10 +136,48 @@ class MenuView: UIScrollView {
     
     private func constructUnderlineViewIfNeeded() {
         if case .Underline(let height, let color, let horizontalPadding, let verticalPadding) = options.menuItemMode {
-            let width = menuItemViews.first!.bounds.size.width - horizontalPadding * 2
+            let width = menuItemViews.first!.bounds.width - horizontalPadding * 2
             underlineView = UIView(frame: CGRectMake(horizontalPadding, options.menuHeight - (height + verticalPadding), width, height))
             underlineView.backgroundColor = color
             contentView.addSubview(underlineView)
+        }
+    }
+    
+    private func constructRoundRectViewIfNeeded() {
+        switch options.menuItemMode {
+        case .RoundRect(let radius, _, let verticalPadding, let selectedColor):
+            let height = options.menuHeight - verticalPadding * 2
+            roundRectView = UIView(frame: CGRectMake(0, verticalPadding, 0, height))
+            roundRectView.frame.origin.y = verticalPadding
+            roundRectView.userInteractionEnabled = true
+            roundRectView.layer.cornerRadius = radius
+            roundRectView.backgroundColor = selectedColor
+            contentView.addSubview(roundRectView)
+        default: break
+        }
+    }
+    
+    private func animateUnderlineViewIfNeeded() {
+        switch self.options.menuItemMode {
+        case .Underline(_, _, let horizontalPadding, _):
+            if let underlineView = self.underlineView {
+                let targetFrame = self.menuItemViews[self.currentPage].frame
+                underlineView.frame.origin.x = targetFrame.origin.x + horizontalPadding
+                underlineView.frame.size.width = targetFrame.width - horizontalPadding * 2
+            }
+        default: break
+        }
+    }
+    
+    private func animateRoundRectViewIfNeeded() {
+        switch self.options.menuItemMode {
+        case .RoundRect(_, let horizontalPadding, _, _):
+            if let roundRectView = self.roundRectView {
+                let targetFrame = self.menuItemViews[self.currentPage].frame
+                roundRectView.frame.origin.x = targetFrame.origin.x + horizontalPadding
+                roundRectView.frame.size.width = targetFrame.width - horizontalPadding * 2
+            }
+        default: break
         }
     }
     
@@ -220,7 +258,7 @@ class MenuView: UIScrollView {
     
     private func changeMenuItemColor() {
         for (index, menuItemView) in menuItemViews.enumerate() {
-            menuItemView.changeColor(selected: index == currentPage)
+            menuItemView.changeColor(index == currentPage)
         }
     }
 }

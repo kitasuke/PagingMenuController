@@ -77,7 +77,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         // validate
         validateDefaultPage()
-        validateRoundRectScaleIfNeeded()
         
         cleanup()
         
@@ -351,16 +350,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     private func validateDefaultPage() {
         if options.defaultPage >= options.menuItemCount || options.defaultPage < 0 {
             NSException(name: ExceptionName, reason: "default page is invalid", userInfo: nil).raise()
-        }
-    }
-    
-    private func validateRoundRectScaleIfNeeded() {
-        switch options.menuItemMode {
-        case .RoundRect(_, let horizontalScale, let verticalScale, _):
-            if horizontalScale < 0 || horizontalScale > 1 || verticalScale < 0 || verticalScale > 1 {
-                NSException(name: ExceptionName, reason: "scale value should be between 0 and 1", userInfo: nil).raise()
-            }
-        default: break
         }
     }
 }
