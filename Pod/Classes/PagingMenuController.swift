@@ -159,10 +159,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         menuView.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(menuView)
         
-        for menuItemView in menuView.menuItemViews {
-            menuItemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTapGesture:"))
-        }
-        
+        addTapGestureHandlers()
         addSwipeGestureHandlersIfNeeded()
     }
     
@@ -241,15 +238,15 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             if (options.menuItemCount == options.minumumSupportedViewCount) {
                 horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]|"
             } else {
-                if (index == 0) {
+                if index == 0 {
                     horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]"
-                } else if (index == pagingViewControllers.count - 1) {
-                    horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)]|"
-                    viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
                 } else {
-                    horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)][nextPagingView]"
                     viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
-                    viewsDictionary["nextPagingView"] = pagingViewControllers[index + 1].view
+                    if index == pagingViewControllers.count - 1 {
+                        horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)]|"
+                    } else {
+                        horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)]"
+                    }
                 }
             }
             
@@ -274,6 +271,12 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK: - Gesture handler
+    
+    private func addTapGestureHandlers() {
+        for menuItemView in menuView.menuItemViews {
+            menuItemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTapGesture:"))
+        }
+    }
     
     private func addSwipeGestureHandlersIfNeeded() {
         switch options.menuDisplayMode {
