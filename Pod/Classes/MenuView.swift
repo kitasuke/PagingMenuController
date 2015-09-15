@@ -106,11 +106,11 @@ class MenuView: UIScrollView {
     
     private func constructMenuItemViews(#titles: [String]) {
         for title in titles {
-            let menuView = MenuItemView(title: title, options: options)
-            menuView.setTranslatesAutoresizingMaskIntoConstraints(false)
-            contentView.addSubview(menuView)
+            let menuItemView = MenuItemView(title: title, options: options)
+            menuItemView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            contentView.addSubview(menuItemView)
             
-            menuItemViews.append(menuView)
+            menuItemViews.append(menuItemView)
         }
     }
     
@@ -120,13 +120,13 @@ class MenuView: UIScrollView {
             var viewsDicrionary = ["menuItemView": menuItemView]
             if index == 0 {
                 visualFormat = "H:|[menuItemView]"
-            } else if index == menuItemViews.count - 1 {
-                viewsDicrionary["previousMenuItemView"] = menuItemViews[index - 1]
-                visualFormat = "H:[previousMenuItemView][menuItemView]|"
             } else {
-                visualFormat = "H:[previousMenuItemView][menuItemView][nextMenuItemView]"
-                viewsDicrionary["nextMenuItemView"] = menuItemViews[index + 1]
                 viewsDicrionary["previousMenuItemView"] = menuItemViews[index - 1]
+                if index == menuItemViews.count - 1 {
+                    visualFormat = "H:[previousMenuItemView][menuItemView]|"
+                } else {
+                    visualFormat = "H:[previousMenuItemView][menuItemView]"
+                }
             }
             
             let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(visualFormat, options: .allZeros, metrics: nil, views: viewsDicrionary)
