@@ -1,3 +1,13 @@
+# 0.5.1 Release notes (2015/09-14)
+
+### Enhancements
+
+- Support animated `RoundRect`
+
+### Breaking changes
+
+- `RoundRect` associated values changed
+
 # 0.5.0 Release notes (2015/09-06)
 
 ### Enhancements
