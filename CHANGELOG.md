@@ -1,3 +1,13 @@
+# 0.6.0 Release notes (2015/09-15)
+
+### Enhancements
+
+- Big performance improvements. Won't load all the view controllers anymore.
+
+### Bug fixed 
+
+- Fix incorrect behaviour of delegate method
+
 # 0.5.1 Release notes (2015/09-14)
 
 ### Enhancements
