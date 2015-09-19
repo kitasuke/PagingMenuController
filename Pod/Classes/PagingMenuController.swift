@@ -391,15 +391,12 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         UIView.animateWithDuration(duration, animations: {
             [unowned self] () -> Void in
             self.contentScrollView.contentOffset.x = self.currentViewController.view!.frame.minX
-        }) {
-            (finished: Bool) -> Void in
-            if finished {
-                self.delegate?.didMoveToMenuPage?(self.currentPage)
-                self.constructPagingViewControllers()
-                self.layoutPagingViewControllers()
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-            }
+        }) { (_) -> Void in
+            self.delegate?.didMoveToMenuPage?(self.currentPage)
+            self.constructPagingViewControllers()
+            self.layoutPagingViewControllers()
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
         }
     }
 
