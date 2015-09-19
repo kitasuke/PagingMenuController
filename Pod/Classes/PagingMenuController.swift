@@ -80,7 +80,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
         
         // fix unnecessary inset for menu view when implemented by programmatically
-        menuView.contentInset = UIEdgeInsetsZero
+        menuView.contentInset.top = 0
 
         if let currentViewController = currentViewController {
             contentScrollView.contentOffset.x = currentViewController.view!.frame.minX
