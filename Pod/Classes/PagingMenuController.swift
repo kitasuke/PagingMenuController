@@ -80,7 +80,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
         
         // fix unnecessary inset for menu view when implemented by programmatically
-        menuView.contentInset = UIEdgeInsetsZero
+        menuView.contentInset.top = 0
 
         if let currentViewController = currentViewController {
             contentScrollView.contentOffset.x = currentViewController.view!.frame.minX
@@ -391,15 +391,12 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         UIView.animateWithDuration(duration, animations: {
             [unowned self] () -> Void in
             self.contentScrollView.contentOffset.x = self.currentViewController.view!.frame.minX
-        }) {
-            (finished: Bool) -> Void in
-            if finished {
-                self.delegate?.didMoveToMenuPage?(self.currentPage)
-                self.constructPagingViewControllers()
-                self.layoutPagingViewControllers()
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-            }
+        }) { (_) -> Void in
+            self.delegate?.didMoveToMenuPage?(self.currentPage)
+            self.constructPagingViewControllers()
+            self.layoutPagingViewControllers()
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
         }
     }
 
