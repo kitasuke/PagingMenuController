@@ -110,7 +110,7 @@ class MenuItemView: UIView {
     // MARK: - Size calculator
     
     private func calculateLableSize(size: CGSize = UIScreen.mainScreen().bounds.size) -> CGSize {
-        let labelSize = NSString(string: title).boundingRectWithSize(CGSizeMake(1000, 1000), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: options.font], context: nil).size
+        let labelSize = NSString(string: title).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: options.font], context: nil).size
         
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
