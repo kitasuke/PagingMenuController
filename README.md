@@ -15,6 +15,9 @@ See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHA
 **Swift 2.0**  
 Swift 2.0 branch has merged with 0.6.1 :tada:
 
+**Swift 1.2**  
+Please use swift_1.2 branch
+
 Podfile  
 `pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_2.0'
 `
