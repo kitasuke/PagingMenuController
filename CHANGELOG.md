@@ -1,3 +1,13 @@
+# 0.6.1 Release notes (2015/09-20)
+
+### Enhancements
+
+- Supported `selectedFont`
+
+### Bug fixed
+
+- Significant bug fixes
+
 # 0.6.0 Release notes (2015/09-15)
 
 ### Enhancements
