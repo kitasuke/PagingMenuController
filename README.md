@@ -66,6 +66,10 @@ selectedTextColor: UIColor
 ```Swift
 font: UIFont
 ```
+* font for selected menu item text
+```Swift
+selectedFont: UIFont
+```
 * menu position
 ```Swift
 menuPosition: MenuPosition
