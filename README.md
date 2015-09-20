@@ -12,8 +12,8 @@ This library is inspired by [PageMenu](https://github.com/uacaps/PageMenu)
 
 See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHANGELOG.md) for details
 
-*** Swift 2.0 ***  
-Please use swift_2.0 branch if you want to try in Swift 2.0
+**Swift 2.0**  
+Swift 2.0 branch has merged with 0.6.1 :tada:
 
 Podfile  
 `pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_2.0'
