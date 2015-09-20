@@ -50,8 +50,8 @@ class MenuView: UIScrollView {
         
         currentPage = page
 
+        focusMenuItem()
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
-            self.focusMenuItem()
             self.contentOffset.x = self.targetContentOffsetX()
 
             self.animateUnderlineViewIfNeeded()
