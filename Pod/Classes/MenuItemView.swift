@@ -13,6 +13,7 @@ class MenuItemView: UIView {
     private var options: PagingMenuOptions!
     private var title: String!
     private var titleLabel: UILabel!
+    private var titleLabelFont: UIFont!
     private var widthLabelConstraint: NSLayoutConstraint!
     private var horizontalViewScale: CGFloat!
     private var verticalViewScale: CGFloat!
@@ -63,7 +64,7 @@ class MenuItemView: UIView {
         backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
         }
         titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
-        titleLabel.font = selected ? options.selectedFont : options.font
+        titleLabelFont = selected ? options.selectedFont : options.font
 
         // adjust label width if needed
         let labelSize = calculateLableSize()
@@ -86,7 +87,8 @@ class MenuItemView: UIView {
         titleLabel = UILabel()
         titleLabel.text = title
         titleLabel.textColor = options.textColor
-        titleLabel.font = options.font
+        titleLabelFont = options.font
+        titleLabel.font = titleLabelFont
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.userInteractionEnabled = true
@@ -111,7 +113,7 @@ class MenuItemView: UIView {
     // MARK: - Size calculator
     
     private func calculateLableSize(size: CGSize = UIScreen.mainScreen().bounds.size) -> CGSize {
-        let labelSize = NSString(string: title).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: titleLabel.font], context: nil).size
+        let labelSize = NSString(string: title).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: titleLabelFont], context: nil).size
 
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
