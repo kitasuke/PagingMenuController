@@ -34,7 +34,7 @@ class MenuItemView: UIView {
         layoutLabel()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -44,11 +44,11 @@ class MenuItemView: UIView {
     
     // MARK: - Constraints manager
     
-    internal func updateLabelConstraints(#size: CGSize) {
+    internal func updateLabelConstraints(size size: CGSize) {
         // set width manually to support ratotaion
         switch options.menuDisplayMode {
         case .SegmentedControl:
-            let labelSize = calculateLableSize(size: size)
+            let labelSize = calculateLableSize(size)
             widthLabelConstraint.constant = labelSize.width
         default: break
         }
@@ -56,12 +56,11 @@ class MenuItemView: UIView {
     
     // MARK: - Label changer
     
-    internal func focusLabel(#selected: Bool) {
-        switch options.menuItemMode {
-        case .RoundRect(_, _, _, _):
-        backgroundColor = UIColor.clearColor()
-        default:
-        backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
+    internal func focusLabel(selected: Bool) {
+        if case .RoundRect(_, _, _, _) = options.menuItemMode {
+            backgroundColor = UIColor.clearColor()
+        } else {
+            backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
         }
         titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
         titleLabelFont = selected ? options.selectedFont : options.font
@@ -74,13 +73,12 @@ class MenuItemView: UIView {
     // MARK: - Constructor
     
     private func setupView() {
-        switch options.menuItemMode {
-        case .RoundRect(_, _, _, _):
+        if case .RoundRect(_, _, _, _) = options.menuItemMode {
             backgroundColor = UIColor.clearColor()
-        default:
+        } else {
             backgroundColor = options.backgroundColor
         }
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func constructLabel() {
@@ -92,7 +90,7 @@ class MenuItemView: UIView {
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = NSTextAlignment.Center
         titleLabel.userInteractionEnabled = true
-        titleLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
     }
     
@@ -101,8 +99,8 @@ class MenuItemView: UIView {
         
         let labelSize = calculateLableSize()
 
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[label]|", options: .allZeros, metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label]|", options: .allZeros, metrics: nil, views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[label]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
         

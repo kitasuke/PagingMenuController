@@ -22,8 +22,12 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         let task = session.dataTaskWithRequest(request) { [unowned self] data, response, error in
-            let result = NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments, error: nil) as! [[String: AnyObject]]
-            self.repositories = result
+            do {
+                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
+                self.repositories = result
+            } catch _ {
+                
+            }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadData()
@@ -41,7 +45,7 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         
         let repository = repositories[indexPath.row]
         cell.textLabel?.text = repository["name"] as? String
