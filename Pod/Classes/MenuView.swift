@@ -47,19 +47,16 @@ class MenuView: UIScrollView {
     
     internal func moveToMenu(#page: Int, animated: Bool) {
         let duration = animated ? options.animationDuration : 0
-        let contentOffsetX = targetContentOffsetX(nextIndex: page)
 
+        let previousIndex = currentPage
         currentPage = page
 
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
-            self.contentOffset.x = contentOffsetX
-            
+            self.focusMenuItem()
+            self.contentOffset.x = self.targetContentOffsetX()
+
             self.animateUnderlineViewIfNeeded()
             self.animateRoundRectViewIfNeeded()
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.changeMenuItemColor()
-            })
         })
     }
     
@@ -71,6 +68,11 @@ class MenuView: UIScrollView {
             }
         default: break
         }
+        contentView.setNeedsLayout()
+        contentView.layoutIfNeeded()
+
+        self.animateUnderlineViewIfNeeded()
+        self.animateRoundRectViewIfNeeded()
     }
     
     // MARK: - Private method
@@ -252,39 +254,40 @@ class MenuView: UIScrollView {
         contentInset = inset
     }
     
-    private func targetContentOffsetX(#nextIndex: Int) -> CGFloat {
+    private func targetContentOffsetX() -> CGFloat {
         switch options.menuDisplayMode {
         case .FlexibleItemWidth(let centerItem, _):
             if centerItem != true {
-                return contentOffsetXForCurrentPage(nextIndex: nextIndex)
+                return contentOffsetXForCurrentPage()
             }
-            return centerOfScreenWidth(nextIndex: nextIndex)
+            return centerOfScreenWidth()
         case .FixedItemWidth(_, let centerItem, _):
             if centerItem != true {
-                return contentOffsetXForCurrentPage(nextIndex: nextIndex)
+                return contentOffsetXForCurrentPage()
             }
-            return centerOfScreenWidth(nextIndex: nextIndex)
+            return centerOfScreenWidth()
         case .SegmentedControl:
             return contentOffset.x
         }
     }
     
-    private func centerOfScreenWidth(#nextIndex: Int) -> CGFloat {
-        return menuItemViews[nextIndex].frame.origin.x + menuItemViews[nextIndex].frame.width / 2 - frame.width / 2
+    private func centerOfScreenWidth() -> CGFloat {
+        return menuItemViews[currentPage].frame.origin.x + menuItemViews[currentPage].frame.width / 2 - frame.width / 2
     }
     
-    private func contentOffsetXForCurrentPage(#nextIndex: Int) -> CGFloat {
+    private func contentOffsetXForCurrentPage() -> CGFloat {
         if menuItemViews.count == options.minumumSupportedViewCount {
             return 0.0
         }
-        let ratio = CGFloat(nextIndex) / CGFloat(menuItemViews.count - 1)
-        let previousMenuItem = menuItemViews[currentPage]
+        let ratio = CGFloat(currentPage) / CGFloat(menuItemViews.count - 1)
         return (contentSize.width - frame.width) * ratio
     }
     
-    private func changeMenuItemColor() {
+    private func focusMenuItem() {
         for (index, menuItemView) in enumerate(menuItemViews) {
-            menuItemView.changeColor(selected: index == currentPage)
+            menuItemView.focusLabel(selected: index == currentPage)
         }
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }
