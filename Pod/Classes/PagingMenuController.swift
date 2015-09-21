@@ -361,8 +361,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             }
         case .SegmentedControl:
             return
-        case .Infinite(_):
-            return
+        case .Infinite(_): break
         }
         
         let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: "handleSwipeGesture:")
@@ -430,7 +429,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         case .SegmentedControl:
             return tappedPage
         case .Infinite(_):
-            return tappedPage
+            return tappedPage < currentPage ? currentPage-1 : currentPage+1
         }
         return tappedPage
     }

@@ -46,11 +46,9 @@ class MenuItemView: UIView {
     
     internal func updateLabelConstraints(size size: CGSize) {
         // set width manually to support ratotaion
-        switch options.menuDisplayMode {
-        case .SegmentedControl:
+        if case .SegmentedControl = options.menuDisplayMode {
             let labelSize = calculateLableSize(size)
             widthLabelConstraint.constant = labelSize.width
-        default: break
         }
     }
     
@@ -116,31 +114,29 @@ class MenuItemView: UIView {
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
         case .Normal(let widthMode, _, _):
-            switch widthMode {
-            case .Flexible:
-                itemWidth = ceil(labelSize.width)
-            case .Fixed(let width):
-                itemWidth = width
-            }
+            itemWidth = labelWidth(labelSize, widthMode: widthMode)
         case .SegmentedControl:
             itemWidth = size.width / CGFloat(options.menuItemCount)
-        case .Infinite(_):
-            return CGSizeZero
+        case .Infinite(let widthMode):
+            itemWidth = labelWidth(labelSize, widthMode: widthMode)
         }
         
         let itemHeight = floor(labelSize.height)
         return CGSizeMake(itemWidth + calculateHorizontalMargin() * 2, itemHeight)
     }
     
-    private func calculateHorizontalMargin() -> CGFloat {
-        let horizontalMargin: CGFloat
-        switch options.menuDisplayMode {
-        case .SegmentedControl:
-            horizontalMargin = 0.0
-        default:
-            horizontalMargin = options.menuItemMargin
+    private func labelWidth(labelSize: CGSize, widthMode: PagingMenuOptions.MenuItemWidthMode) -> CGFloat {
+        switch widthMode {
+        case .Flexible: return ceil(labelSize.width)
+        case .Fixed(let width): return width
         }
-        return horizontalMargin
+    }
+    
+    private func calculateHorizontalMargin() -> CGFloat {
+        if case .SegmentedControl = options.menuDisplayMode {
+            return 0.0
+        }
+        return options.menuItemMargin
     }
     
     private func calculateViewScale() {

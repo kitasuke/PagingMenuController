@@ -145,8 +145,7 @@ class MenuView: UIScrollView {
     }
     
     private func constructRoundRectViewIfNeeded() {
-        switch options.menuItemMode {
-        case .RoundRect(let radius, _, let verticalPadding, let selectedColor):
+        if case .RoundRect(let radius, _, let verticalPadding, let selectedColor) = options.menuItemMode {
             let height = options.menuHeight - verticalPadding * 2
             roundRectView = UIView(frame: CGRectMake(0, verticalPadding, 0, height))
             roundRectView.frame.origin.y = verticalPadding
@@ -154,65 +153,53 @@ class MenuView: UIScrollView {
             roundRectView.layer.cornerRadius = radius
             roundRectView.backgroundColor = selectedColor
             contentView.addSubview(roundRectView)
-        default: break
         }
     }
     
     private func animateUnderlineViewIfNeeded() {
-        switch self.options.menuItemMode {
-        case .Underline(_, _, let horizontalPadding, _):
+        if case .Underline(_, _, let horizontalPadding, _) = options.menuItemMode {
             if let underlineView = self.underlineView {
                 let targetFrame = self.menuItemViews[self.currentPage].frame
                 underlineView.frame.origin.x = targetFrame.origin.x + horizontalPadding
                 underlineView.frame.size.width = targetFrame.width - horizontalPadding * 2
             }
-        default: break
         }
     }
     
     private func animateRoundRectViewIfNeeded() {
-        switch self.options.menuItemMode {
-        case .RoundRect(_, let horizontalPadding, _, _):
+        if case .RoundRect(_, let horizontalPadding, _, _) = options.menuItemMode {
             if let roundRectView = self.roundRectView {
                 let targetFrame = self.menuItemViews[self.currentPage].frame
                 roundRectView.frame.origin.x = targetFrame.origin.x + horizontalPadding
                 roundRectView.frame.size.width = targetFrame.width - horizontalPadding * 2
             }
-        default: break
         }
     }
     
     private func bounces() -> Bool {
-        switch options.menuDisplayMode {
-        case .Normal(_, _, let scrollingMode):
+        if case .Normal(_, _, let scrollingMode) = options.menuDisplayMode {
             if case .ScrollEnabledAndBouces = scrollingMode {
                 return true
             }
-        case .SegmentedControl:
-            return false
-        case .Infinite(_):
-            return false
         }
         return false
     }
     
     private func scrollEnabled() -> Bool {
-        switch options.menuDisplayMode {
-        case .Normal(_, _, let scrollingMode):
-            if case .PagingEnabled = scrollingMode {
-                return false
+        if case .Normal(_, _, let scrollingMode) = options.menuDisplayMode {
+            switch scrollingMode {
+            case .ScrollEnabled, .ScrollEnabledAndBouces: return true
+            case .PagingEnabled: return false
             }
-        default:
-            return false
         }
-        return true
+        return false
     }
     
     private func adjustmentContentInsetIfNeeded() {
         switch options.menuDisplayMode {
         case .Normal(_, let centerItem, _) where centerItem != true: return
         case .SegmentedControl: return
-        case .Infinite(_): return
+        case .Infinite(_): break
         default: break
         }
         
@@ -232,6 +219,8 @@ class MenuView: UIScrollView {
             return centerOfScreenWidth()
         case .SegmentedControl:
             return contentOffset.x
+        case .Infinite(_):
+            return centerOfScreenWidth()
         default:
             return contentOffsetXForCurrentPage()
         }
