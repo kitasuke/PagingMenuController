@@ -15,8 +15,6 @@ class MenuItemView: UIView {
     private var titleLabel: UILabel!
     private var titleLabelFont: UIFont!
     private var widthLabelConstraint: NSLayoutConstraint!
-    private var horizontalViewScale: CGFloat!
-    private var verticalViewScale: CGFloat!
     
     // MARK: - Lifecycle
     
@@ -25,9 +23,6 @@ class MenuItemView: UIView {
         
         self.options = options
         self.title = title
-        
-        // scale for title view
-        calculateViewScale()
         
         setupView()
         constructLabel()
@@ -137,16 +132,5 @@ class MenuItemView: UIView {
             return 0.0
         }
         return options.menuItemMargin
-    }
-    
-    private func calculateViewScale() {
-        switch options.menuItemMode {
-        case .RoundRect(_, let horizontalScale, let verticalScale, _):
-            self.horizontalViewScale = horizontalScale
-            self.verticalViewScale = verticalScale
-        default:
-            horizontalViewScale = 0
-            verticalViewScale = 0
-        }
     }
 }
