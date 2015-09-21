@@ -184,15 +184,13 @@ class MenuView: UIScrollView {
     
     private func bounces() -> Bool {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(_, let scrollingMode):
-            if case .ScrollEnabledAndBouces = scrollingMode {
-                return true
-            }
-        case .FixedItemWidth(_, _, let scrollingMode):
+        case .Normal(_, _, let scrollingMode):
             if case .ScrollEnabledAndBouces = scrollingMode {
                 return true
             }
         case .SegmentedControl:
+            return false
+        case .Infinite(_):
             return false
         }
         return false
@@ -200,11 +198,7 @@ class MenuView: UIScrollView {
     
     private func scrollEnabled() -> Bool {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(_, let scrollingMode):
-            if case .PagingEnabled = scrollingMode {
-                return false
-            }
-        case .FixedItemWidth(_, _, let scrollingMode):
+        case .Normal(_, _, let scrollingMode):
             if case .PagingEnabled = scrollingMode {
                 return false
             }
@@ -216,9 +210,9 @@ class MenuView: UIScrollView {
     
     private func adjustmentContentInsetIfNeeded() {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, _) where centerItem != true: return
-        case .FixedItemWidth(_, let centerItem, _) where centerItem != true: return
+        case .Normal(_, let centerItem, _) where centerItem != true: return
         case .SegmentedControl: return
+        case .Infinite(_): return
         default: break
         }
         
@@ -234,9 +228,7 @@ class MenuView: UIScrollView {
     
     private func targetContentOffsetX() -> CGFloat {
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(let centerItem, _) where centerItem:
-            return centerOfScreenWidth()
-        case .FixedItemWidth(_, let centerItem, _) where centerItem:
+        case .Normal(_, let centerItem, _) where centerItem:
             return centerOfScreenWidth()
         case .SegmentedControl:
             return contentOffset.x

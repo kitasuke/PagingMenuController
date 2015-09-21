@@ -115,12 +115,17 @@ class MenuItemView: UIView {
 
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(_, _):
-            itemWidth = ceil(labelSize.width)
-        case .FixedItemWidth(let width, _, _):
-            itemWidth = width
+        case .Normal(let widthMode, _, _):
+            switch widthMode {
+            case .Flexible:
+                itemWidth = ceil(labelSize.width)
+            case .Fixed(let width):
+                itemWidth = width
+            }
         case .SegmentedControl:
             itemWidth = size.width / CGFloat(options.menuItemCount)
+        case .Infinite(_):
+            return CGSizeZero
         }
         
         let itemHeight = floor(labelSize.height)
