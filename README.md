@@ -76,6 +76,11 @@ selectedFont: UIFont
 * menu position
 ```Swift
 menuPosition: MenuPosition
+
+public enum MenuPosition {
+    case Top
+    case Bottom
+}
 ```
 * height for menu view
 ```Swift
@@ -94,9 +99,13 @@ animationDuration: NSTimeInterval
 menuDisplayMode: MenuDisplayMode
 
 public enum MenuDisplayMode {
-  case FlexibleItemWidth(centerItem: Bool, scrollingMode: MenuScrollingMode)
-  case FixedItemWidth(width: CGFloat, centerItem: Bool, scrollingMode: MenuScrollingMode)
-  case SegmentedControl
+    case Normal(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
+    case SegmentedControl
+}
+
+public enum MenuItemWidthMode {
+    case Flexible
+    case Fixed(width: CGFloat)
 }
 
 public enum MenuScrollingMode {
