@@ -13,7 +13,7 @@ This library is inspired by [PageMenu](https://github.com/uacaps/PageMenu)
 See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHANGELOG.md) for details
 
 **Swift 2.0**  
-Swift 2.0 branch has merged with 0.6.1 :tada:
+Swift 2.0 branch has merged since it's not beta any more :tada:
 
 **Swift 1.2**  
 Please use swift_1.2 branch, but it might not be updated...
