@@ -1,3 +1,17 @@
+# 0.7.0 Release notes (2015/09-30)
+
+### Enhancements
+
+- Add `Infinite` mode
+
+### Breaking changes
+
+- `Normal` display mode renamed to `Standard`
+
+### Bug fixed
+
+- `defaultPage` didn't work with specific options
+
 # 0.6.1 Release notes (2015/09-20)
 
 ### Enhancements
