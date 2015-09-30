@@ -191,6 +191,9 @@ iOS8 or later
 Swift 1.2 or later  
 Xcode 6.3 or later  
 
+*For iOS7 support*  
+Follow [Manual Installation](#manual)
+
 ## Installation
 
 ### CocoaPods
