@@ -19,11 +19,11 @@ Swift 2.0 branch has merged since it's not beta any more :tada:
 Please use swift_1.2 branch, but it might not be updated...
 
 Podfile  
-`pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_2.0'
+`pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_1.2'
 `
 
 Carfile  
-`github "kitasuke/PagingMenuController" "swift_2.0"
+`github "kitasuke/PagingMenuController" "swift_1.2"
 `
 
 before run `carthage update`, the following code should be run in terminal  
