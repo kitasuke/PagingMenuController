@@ -15,7 +15,7 @@ public class PagingMenuOptions {
     public var textColor = UIColor.lightGrayColor()
     public var selectedTextColor = UIColor.blackColor()
     public var font = UIFont.systemFontOfSize(16)
-    public var selectedFont = UIFont.systemFontOfSize(18)
+    public var selectedFont = UIFont.systemFontOfSize(16)
     public var menuPosition: MenuPosition = .Top
     public var menuHeight: CGFloat = 50
     public var menuItemMargin: CGFloat = 20
