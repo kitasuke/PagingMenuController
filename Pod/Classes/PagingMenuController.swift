@@ -111,7 +111,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             
             // reset selected menu item view position
             switch self.options.menuDisplayMode {
-            case .Normal(_, _, _), .Infinite(_):
+            case .Standard(_, _, _), .Infinite(_):
                 self.menuView.moveToMenu(page: self.currentPage, animated: true)
             default: break
             }
@@ -393,7 +393,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     private func addSwipeGestureHandlersIfNeeded() {
         switch options.menuDisplayMode {
-        case .Normal(_, _, let scrollingMode):
+        case .Standard(_, _, let scrollingMode):
             switch scrollingMode {
             case .PagingEnabled: break
             default: return
@@ -488,7 +488,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     private func targetPage(tappedPage tappedPage: Int) -> Int {
         switch options.menuDisplayMode {
-        case .Normal(_, _, let scrollingMode):
+        case .Standard(_, _, let scrollingMode):
             if case .PagingEnabled = scrollingMode {
                 return tappedPage < currentPage ? currentPage-1 : currentPage+1
             }

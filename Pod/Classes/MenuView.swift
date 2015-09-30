@@ -209,7 +209,7 @@ class MenuView: UIScrollView {
     }
     
     private func bounces() -> Bool {
-        if case .Normal(_, _, let scrollingMode) = options.menuDisplayMode {
+        if case .Standard(_, _, let scrollingMode) = options.menuDisplayMode {
             if case .ScrollEnabledAndBouces = scrollingMode {
                 return true
             }
@@ -218,7 +218,7 @@ class MenuView: UIScrollView {
     }
     
     private func scrollEnabled() -> Bool {
-        if case .Normal(_, _, let scrollingMode) = options.menuDisplayMode {
+        if case .Standard(_, _, let scrollingMode) = options.menuDisplayMode {
             switch scrollingMode {
             case .ScrollEnabled, .ScrollEnabledAndBouces: return true
             case .PagingEnabled: return false
@@ -229,7 +229,7 @@ class MenuView: UIScrollView {
     
     private func adjustmentContentInsetIfNeeded() {
         switch options.menuDisplayMode {
-        case .Normal(_, let centerItem, _) where centerItem: break
+        case .Standard(_, let centerItem, _) where centerItem: break
         default: return
         }
         
@@ -245,7 +245,7 @@ class MenuView: UIScrollView {
     
     private func targetContentOffsetX() -> CGFloat {
         switch options.menuDisplayMode {
-        case .Normal(_, let centerItem, _) where centerItem:
+        case .Standard(_, let centerItem, _) where centerItem:
             return centerOfScreenWidth()
         case .SegmentedControl:
             return contentOffset.x
