@@ -31,17 +31,22 @@ before run `carthage update`, the following code should be run in terminal
 
 ## Description
 
-### Flexible menu width mode
+### Standard menu mode
+#### Flexible width
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo4.gif" width="160" height="284">
 
-### Fixed menu width mode
+#### Fixed width
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo2.gif" width="284" height="160">
 
 ### Segmented control mode
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo3.gif" width="160" height="284">
+
+### Infinite mode
+
+To be updated soon...
 
 ## Customization
 
@@ -99,8 +104,9 @@ animationDuration: NSTimeInterval
 menuDisplayMode: MenuDisplayMode
 
 public enum MenuDisplayMode {
-    case Normal(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
+    case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
     case SegmentedControl
+    case Infinite(widthMode: MenuItemWidthMode) // Requires three paging views al least
 }
 
 public enum MenuItemWidthMode {
@@ -144,7 +150,7 @@ let pagingMenuController = self.childViewControllers.first as! PagingMenuControl
 
 let options = PagingMenuOptions()
 options.menuHeight = 60
-options.menuDisplayMode = .FlexibleItemWidth(centerItem: true, scrollingMode: .PagingEnabled)
+options.menuDisplayMode = .Standard(widthMode: .Flexible, centerItem: true, scrollingMode: .PagingEnabled)
 pagingMenuController.setup(viewControllers: viewControllers, options: options)
 ```
 * You should add `ContainerView` into your view controller's view and set `PagingMenuController` as the embedded view controller's class
