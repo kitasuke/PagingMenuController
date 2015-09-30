@@ -15,8 +15,6 @@ class MenuItemView: UIView {
     private var titleLabel: UILabel!
     private var titleLabelFont: UIFont!
     private var widthLabelConstraint: NSLayoutConstraint!
-    private var horizontalViewScale: CGFloat!
-    private var verticalViewScale: CGFloat!
     
     // MARK: - Lifecycle
     
@@ -25,9 +23,6 @@ class MenuItemView: UIView {
         
         self.options = options
         self.title = title
-        
-        // scale for title view
-        calculateViewScale()
         
         setupView()
         constructLabel()
@@ -46,11 +41,9 @@ class MenuItemView: UIView {
     
     internal func updateLabelConstraints(size size: CGSize) {
         // set width manually to support ratotaion
-        switch options.menuDisplayMode {
-        case .SegmentedControl:
+        if case .SegmentedControl = options.menuDisplayMode {
             let labelSize = calculateLableSize(size)
             widthLabelConstraint.constant = labelSize.width
-        default: break
         }
     }
     
@@ -115,37 +108,29 @@ class MenuItemView: UIView {
 
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
-        case .FlexibleItemWidth(_, _):
-            itemWidth = ceil(labelSize.width)
-        case .FixedItemWidth(let width, _, _):
-            itemWidth = width
+        case .Normal(let widthMode, _, _):
+            itemWidth = labelWidth(labelSize, widthMode: widthMode)
         case .SegmentedControl:
             itemWidth = size.width / CGFloat(options.menuItemCount)
+        case .Infinite(let widthMode):
+            itemWidth = labelWidth(labelSize, widthMode: widthMode)
         }
         
         let itemHeight = floor(labelSize.height)
         return CGSizeMake(itemWidth + calculateHorizontalMargin() * 2, itemHeight)
     }
     
-    private func calculateHorizontalMargin() -> CGFloat {
-        let horizontalMargin: CGFloat
-        switch options.menuDisplayMode {
-        case .SegmentedControl:
-            horizontalMargin = 0.0
-        default:
-            horizontalMargin = options.menuItemMargin
+    private func labelWidth(labelSize: CGSize, widthMode: PagingMenuOptions.MenuItemWidthMode) -> CGFloat {
+        switch widthMode {
+        case .Flexible: return ceil(labelSize.width)
+        case .Fixed(let width): return width
         }
-        return horizontalMargin
     }
     
-    private func calculateViewScale() {
-        switch options.menuItemMode {
-        case .RoundRect(_, let horizontalScale, let verticalScale, _):
-            self.horizontalViewScale = horizontalScale
-            self.verticalViewScale = verticalScale
-        default:
-            horizontalViewScale = 0
-            verticalViewScale = 0
+    private func calculateHorizontalMargin() -> CGFloat {
+        if case .SegmentedControl = options.menuDisplayMode {
+            return 0.0
         }
+        return options.menuItemMargin
     }
 }
