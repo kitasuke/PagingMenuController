@@ -187,9 +187,9 @@ func didMoveToMenuPage(page: Int) {
 
 ## Requirements
 
-iOS8 or later  
-Swift 1.2 or later  
-Xcode 6.3 or later  
+iOS8+
+Swift 1.2+
+Xcode 6.3+
 
 *For iOS7 support*  
 Follow [Manual Installation](#manual)
