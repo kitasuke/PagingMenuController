@@ -209,10 +209,10 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     internal func handleTapGesture(recognizer: UITapGestureRecognizer) {
         let tappedMenuView = recognizer.view as! MenuItemView
-        if let tappedPage = menuView.menuItemViews.indexOf(tappedMenuView) where tappedPage != currentPage {
-            let page = targetPage(tappedPage: tappedPage)
-            moveToMenuPage(page, animated: true)
-        }
+        guard let tappedPage = menuView.menuItemViews.indexOf(tappedMenuView) where tappedPage != currentPage else { return }
+        
+        let page = targetPage(tappedPage: tappedPage)
+        moveToMenuPage(page, animated: true)
     }
     
     internal func handleSwipeGesture(recognizer: UISwipeGestureRecognizer) {
@@ -221,7 +221,10 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             newPage = min(nextIndex, menuView.menuItemViews.count - 1)
         } else if recognizer.direction == .Right {
             newPage = max(previousIndex, 0)
+        } else {
+            return
         }
+        
         moveToMenuPage(newPage, animated: true)
     }
     
