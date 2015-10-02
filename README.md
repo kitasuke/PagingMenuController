@@ -12,23 +12,6 @@ This library is inspired by [PageMenu](https://github.com/uacaps/PageMenu)
 
 See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHANGELOG.md) for details
 
-**Swift 2.0**  
-Swift 2.0 branch has merged since it's not beta any more :tada:
-
-**Swift 1.2**  
-Please use swift_1.2 branch, but it might not be updated...
-
-Podfile  
-`pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_1.2'
-`
-
-Carfile  
-`github "kitasuke/PagingMenuController" "swift_1.2"
-`
-
-before run `carthage update`, the following code should be run in terminal  
-`sudo xcode-select -s /Applications/Xcode-beta.app/Contents/Developer/`
-
 ## Description
 
 ### Standard menu mode
@@ -193,6 +176,17 @@ Xcode 6.3+
 
 *For iOS7 support*  
 Follow [Manual Installation](#manual)
+
+*Swift 1.2*   
+Please use swift_1.2 branch, but it doesn't have full features.
+
+Podfile  
+`pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_1.2'
+`
+
+Carfile  
+`github "kitasuke/PagingMenuController" "swift_1.2"
+`
 
 ## Installation
 
