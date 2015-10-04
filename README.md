@@ -37,6 +37,10 @@ To be updated soon...
 ```Swift
 defaultPage: Int
 ```
+* scrollEnabled for paging view. **Set false in case of using swipe-to-delete on your table view**
+```swift
+scrollEnabled: Bool
+```
 * background color for menu view
 ```Swift
 backgroundColor: UIColor
