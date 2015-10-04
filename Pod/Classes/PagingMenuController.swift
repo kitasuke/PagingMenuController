@@ -31,7 +31,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         }
     }
     private var currentPage: Int = 0
-    private var currentViewController: UIViewController!
+    public var currentViewController: UIViewController!
     private var menuItemTitles: [String] {
         get {
             return pagingViewControllers.map {
@@ -86,13 +86,14 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    public override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        moveToMenuPage(currentPage, animated: false)
-    }
-    
+	
+	public override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		
+		moveToMenuPage(currentPage, animated: false)
+	}
+	
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -152,7 +153,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
 
         currentPosition = currentPagingViewPosition()
         currentViewController = pagingViewControllers[currentPage]
-    }
+		
+	}
     
     public func rebuild(viewControllers: [UIViewController], options: PagingMenuOptions) {
         setup(viewControllers: viewControllers, options: options)
