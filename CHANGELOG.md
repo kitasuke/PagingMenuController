@@ -1,3 +1,13 @@
+# 0.7.1 Release notes (2015/10-04)
+
+### Enhancements
+
+- Add `scrollEnabled` for paging view in case you want to swipe-to-delete on your table view
+
+### Bug fixed
+
+- lazy load of paging view works fine
+
 # 0.7.0 Release notes (2015/09-30)
 
 ### Enhancements
