@@ -30,6 +30,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             options.menuItemCount = newValue.count
         }
     }
+    private var visiblePagingViewControllers = [UIViewController]()
     private var currentPage: Int = 0
     public var currentViewController: UIViewController!
     private var menuItemTitles: [String] {
@@ -131,6 +132,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     public func setup(viewControllers viewControllers: [UIViewController], options: PagingMenuOptions) {
         self.options = options
         pagingViewControllers = viewControllers
+        visiblePagingViewControllers.reserveCapacity(visiblePagingViewNumber)
         
         // validate
         validateDefaultPage()
@@ -334,6 +336,10 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
                     pagingViewController.willMoveToParentViewController(nil)
                     pagingViewController.view!.removeFromSuperview()
                     pagingViewController.removeFromParentViewController()
+                    
+                    if let viewIndex = visiblePagingViewControllers.indexOf(pagingViewController) {
+                        visiblePagingViewControllers.removeAtIndex(viewIndex)
+                    }
                 }
                 continue
             }
@@ -349,6 +355,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             contentView.addSubview(pagingViewController.view!)
             addChildViewController(pagingViewController as UIViewController)
             pagingViewController.didMoveToParentViewController(self)
+            
+            visiblePagingViewControllers.append(pagingViewController)
         }
     }
     
@@ -461,7 +469,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             self.contentScrollView.contentOffset.x = self.currentViewController.view!.frame.minX
         }) { [unowned self] (_) -> Void in
             // show paging views
-            self.pagingViewControllers.forEach { $0.view.alpha = 1 }
+            self.visiblePagingViewControllers.forEach { $0.view.alpha = 1 }
             
             // reconstruct visible paging views
             self.constructPagingViewControllers()
@@ -478,7 +486,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         if lastPage == previousIndex || lastPage == nextIndex {
             return
         }
-        pagingViewControllers.forEach { $0.view.alpha = 0 }
+        visiblePagingViewControllers.forEach { $0.view.alpha = 0 }
     }
 
     private func shouldLoadPage(index: Int) -> Bool {
