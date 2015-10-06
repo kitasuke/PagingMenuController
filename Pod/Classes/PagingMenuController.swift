@@ -254,7 +254,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     private func layoutMenuView() {
-		if options.menuPosition != .Standalone { return }
 		
         let viewsDictionary = ["menuView": menuView]
         let metrics = ["height": options.menuHeight]
