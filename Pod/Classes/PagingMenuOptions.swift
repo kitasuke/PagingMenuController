@@ -23,12 +23,13 @@ public class PagingMenuOptions {
     public var animationDuration: NSTimeInterval = 0.3
     public var menuDisplayMode = MenuDisplayMode.Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: false, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
     public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 0, verticalPadding: 0)
-    internal var menuItemCount = 0
-    internal let minumumSupportedViewCount = 1
+    public var menuItemCount = 0
+    public let minumumSupportedViewCount = 1
     
     public enum MenuPosition {
         case Top
         case Bottom
+		case Standalone
     }
     
     public enum MenuScrollingMode {

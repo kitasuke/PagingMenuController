@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuItemView: UIView {
+public class MenuItemView: UIView {
     
     private var options: PagingMenuOptions!
     private var title: String!
@@ -29,7 +29,7 @@ class MenuItemView: UIView {
         layoutLabel()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

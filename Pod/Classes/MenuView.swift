@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MenuView: UIScrollView {
+public class MenuView: UIScrollView {
     
-    internal var menuItemViews = [MenuItemView]()
+    public var menuItemViews = [MenuItemView]()
     private var sortedMenuItemViews = [MenuItemView]()
     private var options: PagingMenuOptions!
     private var contentView: UIView!
@@ -20,10 +20,11 @@ class MenuView: UIScrollView {
     
     // MARK: - Lifecycle
     
-    internal init(menuItemTitles: [String], options: PagingMenuOptions) {
+    public init(menuItemTitles: [String], options: PagingMenuOptions) {
         super.init(frame: CGRectZero)
         
         self.options = options
+		options.menuItemCount = menuItemTitles.count
         
         setupScrollView()
         constructContentView()
@@ -34,19 +35,20 @@ class MenuView: UIScrollView {
         constructUnderlineViewIfNeeded()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
-        
+		
         adjustmentContentInsetIfNeeded()
     }
-    
+	
     // MARK: - Public method
     
-    internal func moveToMenu(page page: Int, animated: Bool) {
+    public func moveToMenu(page page: Int, animated: Bool) {
+		
         let duration = animated ? options.animationDuration : 0
         currentPage = page
         
