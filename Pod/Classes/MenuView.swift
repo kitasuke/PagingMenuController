@@ -76,11 +76,7 @@ class MenuView: UIScrollView {
     // MARK: - Private method
     
     private func setupScrollView() {
-        if case .RoundRect(_, _, _, _) = options.menuItemMode {
-            backgroundColor = UIColor.clearColor()
-        } else {
-            backgroundColor = options.backgroundColor
-        }
+        backgroundColor = options.backgroundColor
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
         bounces = bounces()
