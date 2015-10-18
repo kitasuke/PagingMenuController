@@ -14,22 +14,17 @@ See [CHANGELOG](https://github.com/kitasuke/PagingMenuController/blob/master/CHA
 
 ## Description
 
-### Standard menu mode
-#### Flexible width
+### Standard mode with flexible item width
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo4.gif" width="160" height="284">
 
-#### Fixed width
+### Segmented control mode
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo2.gif" width="284" height="160">
 
-### Segmented control mode
+### Infinite mode with fixed item width
 
 <img src="https://raw.githubusercontent.com/wiki/kitasuke/PagingMenuController/images/demo3.gif" width="160" height="284">
-
-### Infinite mode
-
-To be updated soon...
 
 ## Customization
 
