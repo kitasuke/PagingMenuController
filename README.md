@@ -93,7 +93,7 @@ menuDisplayMode: MenuDisplayMode
 public enum MenuDisplayMode {
     case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
     case SegmentedControl
-    case Infinite(widthMode: MenuItemWidthMode) // Requires three paging views al least
+    case Infinite(widthMode: MenuItemWidthMode) // Requires three paging views at least
 }
 
 public enum MenuItemWidthMode {
