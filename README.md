@@ -81,6 +81,10 @@ menuItemMargin: CGFloat
 ```Swift
 animationDuration: NSTimeInterval
 ```
+* decelerating rate for menu view
+```swift
+deceleratingRate: CGFloat
+```
 * menu display mode and scrolling mode
 ```Swift
 menuDisplayMode: MenuDisplayMode
