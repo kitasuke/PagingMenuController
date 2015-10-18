@@ -1,3 +1,17 @@
+# 0.7.2 Release notes (2015/10-18)
+
+### Enhancements
+
+- Add `deceleratingRate` for menu view
+
+### Bug fixed
+
+- Fix incorrect reload of content view
+
+### Breaking changes
+
+- Not allowed to subclass PagingMenuController any more
+
 # 0.7.1 Release notes (2015/10-04)
 
 ### Enhancements
