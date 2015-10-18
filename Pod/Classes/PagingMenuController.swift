@@ -86,7 +86,8 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        moveToMenuPage(currentPage, animated: false)
+        // position properly for Infinite mode
+        menuView.moveToMenu(page: currentPage, animated: false)
     }
     
     override public func viewDidLayoutSubviews() {
@@ -144,6 +145,7 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
 
         currentPosition = currentPagingViewPosition()
         currentViewController = pagingViewControllers[currentPage]
+        moveToMenuPage(currentPage, animated: false)
     }
     
     public func rebuild(viewControllers: [UIViewController], options: PagingMenuOptions) {

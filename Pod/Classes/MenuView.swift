@@ -59,6 +59,8 @@ class MenuView: UIScrollView {
                 self.relayoutMenuItemViews()
             }
             self.positionMenuItemViews()
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
         }
     }
     
