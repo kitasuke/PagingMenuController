@@ -50,6 +50,10 @@ class MenuView: UIScrollView {
         let duration = animated ? options.animationDuration : 0
         currentPage = page
         
+        // hide menu view when constructing itself
+        if !animated {
+            alpha = 0
+        }
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.focusMenuItem()
             self.positionMenuItemViews()
@@ -61,6 +65,11 @@ class MenuView: UIScrollView {
             self.positionMenuItemViews()
             self.setNeedsLayout()
             self.layoutIfNeeded()
+            
+            // show menu view when constructing is done
+            if !animated {
+                self.alpha = 1
+            }
         }
     }
     
