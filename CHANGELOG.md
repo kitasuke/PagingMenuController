@@ -2,7 +2,7 @@
 
 ### Bug fixed
 
-- Background color didn't work with `RoundRect` mode
+- Fix `backgroundColor` with `RoundRect` mode thanks to fabianpimminger
 - `selectedFont` didn't work properly
 
 # 0.7.2 Release notes (2015/10-18)
