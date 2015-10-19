@@ -1,3 +1,10 @@
+# 0.7.3 Release notes (2015/10-19)
+
+### Bug fixed
+
+- Background color didn't work with `RoundRect` mode
+- `selectedFont` didn't work properly
+
 # 0.7.2 Release notes (2015/10-18)
 
 ### Enhancements
