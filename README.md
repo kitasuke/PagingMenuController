@@ -141,6 +141,8 @@ pagingMenuController.setup(viewControllers: viewControllers, options: options)
 ```
 * You should add `ContainerView` into your view controller's view and set `PagingMenuController` as the embedded view controller's class
 
+See `PagingMenuControllerDemo` target in demo project for more details
+
 ### Coding only
 ```Swift
 let viewController = UIViewController()
@@ -156,6 +158,8 @@ self.addChildViewController(pagingMenuController)
 self.view.addSubview(pagingMenuController.view)
 pagingMenuController.didMoveToParentViewController(self)
 ```
+
+See `PagingMenuControllerDemo2` target in demo project for more details
 
 ### Delegate methods (optional)
 
