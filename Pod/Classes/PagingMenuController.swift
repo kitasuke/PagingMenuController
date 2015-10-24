@@ -53,16 +53,14 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     private var currentPosition: PagingViewPosition = .Left
     private let visiblePagingViewNumber: Int = 3
     private var previousIndex: Int {
-        if case .Infinite(_) = options.menuDisplayMode {
-            return currentPage - 1 < 0 ? options.menuItemCount - 1 : currentPage - 1
-        }
-        return currentPage - 1
+        guard case .Infinite(_) = options.menuDisplayMode else { return currentPage - 1 }
+        
+        return currentPage - 1 < 0 ? options.menuItemCount - 1 : currentPage - 1
     }
     private var nextIndex: Int {
-        if case .Infinite(_) = options.menuDisplayMode {
-            return currentPage + 1 > options.menuItemCount - 1 ? 0 : currentPage + 1
-        }
-        return currentPage + 1
+        guard case .Infinite(_) = options.menuDisplayMode else { return currentPage + 1 }
+        
+        return currentPage + 1 > options.menuItemCount - 1 ? 0 : currentPage + 1
     }
 
     private let ExceptionName = "PMCException"
@@ -158,9 +156,7 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     // MARK: - UISCrollViewDelegate
     
     public func scrollViewDidScroll(scrollView: UIScrollView) {
-        if !scrollView.isEqual(contentScrollView) || !scrollView.dragging {
-            return
-        }
+        guard scrollView.isEqual(contentScrollView) && scrollView.dragging else { return }
         
         // calculate current direction
         let position = currentPagingViewPosition()
@@ -177,14 +173,12 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     }
     
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if !scrollView.isEqual(contentScrollView) {
-            return
-        }
+        guard scrollView.isEqual(contentScrollView) else { return }
 
         let position = currentPagingViewPosition()
 
         // go back to starting position if it's same page after all
-        if currentPosition == position {
+        guard currentPosition != position else {
             menuView.moveToMenu(page: currentPage, animated: true)
             return
         }
@@ -456,21 +450,15 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     }
     
     private func hidePagingViewsIfNeeded(lastPage: Int) {
-        if lastPage == previousIndex || lastPage == nextIndex {
-            return
-        }
+        guard lastPage != previousIndex && lastPage != nextIndex else { return }
         visiblePagingViewControllers.forEach { $0.view.alpha = 0 }
     }
 
     private func shouldLoadPage(index: Int) -> Bool {
         if case .Infinite(_) = options.menuDisplayMode {
-            if index != currentPage && index != previousIndex && index != nextIndex {
-                return false
-            }
+            guard index == currentPage || index == previousIndex || index == nextIndex else { return false }
         } else {
-            if index < previousIndex || index > nextIndex {
-                return false
-            }
+            guard index >= previousIndex && index <= nextIndex else { return false }
         }
         return true
     }
@@ -490,38 +478,28 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
         }
         
         // consider left edge menu as center position
-        if currentPage == 0 &&
-                contentScrollView.contentSize.width < (pageWidth * CGFloat(visiblePagingViewNumber)) {
-            return PagingViewPosition(order: order + 1)
-        }
+        guard currentPage != 0 || contentScrollView.contentSize.width >= (pageWidth * CGFloat(visiblePagingViewNumber)) else { return PagingViewPosition(order: order + 1) }
         return PagingViewPosition(order: order)
     }
     
     private func targetPage(tappedPage tappedPage: Int) -> Int {
-        switch options.menuDisplayMode {
-        case .Standard(_, _, let scrollingMode):
-            if case .PagingEnabled = scrollingMode {
-                return tappedPage < currentPage ? currentPage-1 : currentPage+1
-            }
-        default:
-            return tappedPage
-        }
-        return tappedPage
+        guard case .Standard(_, _, let scrollingMode) = options.menuDisplayMode else { return tappedPage }
+        guard case .PagingEnabled = scrollingMode else { return tappedPage }
+        return tappedPage < currentPage ? currentPage - 1 : currentPage + 1
     }
     
     // MARK: - Validator
     
     private func validateDefaultPage() {
-        if options.defaultPage >= options.menuItemCount || options.defaultPage < 0 {
-            NSException(name: ExceptionName, reason: "default page is invalid", userInfo: nil).raise()
-        }
+        guard options.defaultPage >= options.menuItemCount || options.defaultPage < 0 else { return }
+        
+        NSException(name: ExceptionName, reason: "default page is invalid", userInfo: nil).raise()
     }
     
     private func validatePageNumbers() {
-        if case .Infinite(_) = options.menuDisplayMode {
-            if options.menuItemCount < visiblePagingViewNumber {
-                NSException(name: ExceptionName, reason: "the number of view controllers should be more than three with Infinite display mode", userInfo: nil).raise()
-            }
-        }
+        guard case .Infinite(_) = options.menuDisplayMode else { return }
+        guard options.menuItemCount < visiblePagingViewNumber else { return }
+        
+        NSException(name: ExceptionName, reason: "the number of view controllers should be more than three with Infinite display mode", userInfo: nil).raise()
     }
 }
