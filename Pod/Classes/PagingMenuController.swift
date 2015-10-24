@@ -155,34 +155,11 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     
     // MARK: - UISCrollViewDelegate
     
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
-        guard scrollView.isEqual(contentScrollView) && scrollView.dragging else { return }
-        
-        // calculate current direction
-        let position = currentPagingViewPosition()
-        if currentPosition != position {
-            let newPage: Int
-            switch position {
-            case .Left: newPage = previousIndex
-            case .Right: newPage = nextIndex
-            default: newPage = currentPage
-            }
-
-            menuView.moveToMenu(page: newPage, animated: true)
-        }
-    }
-    
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         guard scrollView.isEqual(contentScrollView) else { return }
 
         let position = currentPagingViewPosition()
-
-        // go back to starting position if it's same page after all
-        guard currentPosition != position else {
-            menuView.moveToMenu(page: currentPage, animated: true)
-            return
-        }
-
+        
         // set new page number according to current moving direction
         switch position {
         case .Left: currentPage = previousIndex
@@ -191,6 +168,7 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
         }
 
         delegate?.willMoveToMenuPage?(currentPage)
+        menuView.moveToMenu(page: currentPage, animated: true)
         currentViewController = pagingViewControllers[currentPage]
         contentScrollView.contentOffset.x = currentViewController.view!.frame.minX
 
@@ -478,8 +456,8 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
         }
         
         // consider left edge menu as center position
-        guard currentPage != 0 || contentScrollView.contentSize.width >= (pageWidth * CGFloat(visiblePagingViewNumber)) else { return PagingViewPosition(order: order + 1) }
-        return PagingViewPosition(order: order)
+        guard currentPage == 0 && contentScrollView.contentSize.width < (pageWidth * CGFloat(visiblePagingViewNumber)) else { return PagingViewPosition(order: order) }
+        return PagingViewPosition(order: order + 1)
     }
     
     private func targetPage(tappedPage tappedPage: Int) -> Int {
