@@ -376,11 +376,8 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     
     private func addSwipeGestureHandlersIfNeeded() {
         switch options.menuDisplayMode {
-        case let .Standard(_, _, scrollingMode):
-            switch scrollingMode {
-            case .PagingEnabled: break
-            default: return
-            }
+        case .Standard(_, _, .PagingEnabled): break
+        case .Standard: return
         case .SegmentedControl: return
         case .Infinite: break
         }
