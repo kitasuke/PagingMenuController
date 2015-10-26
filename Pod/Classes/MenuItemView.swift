@@ -106,11 +106,11 @@ class MenuItemView: UIView {
 
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
-        case .Standard(let widthMode, _, _):
+        case let .Standard(widthMode, _, _):
             itemWidth = labelWidth(labelSize, widthMode: widthMode)
         case .SegmentedControl:
             itemWidth = size.width / CGFloat(options.menuItemCount)
-        case .Infinite(let widthMode):
+        case let .Infinite(widthMode):
             itemWidth = labelWidth(labelSize, widthMode: widthMode)
         }
         
@@ -121,7 +121,7 @@ class MenuItemView: UIView {
     private func labelWidth(labelSize: CGSize, widthMode: PagingMenuOptions.MenuItemWidthMode) -> CGFloat {
         switch widthMode {
         case .Flexible: return ceil(labelSize.width)
-        case .Fixed(let width): return width
+        case let .Fixed(width): return width
         }
     }
     
