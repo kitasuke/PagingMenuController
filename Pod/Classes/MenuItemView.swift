@@ -49,7 +49,7 @@ class MenuItemView: UIView {
     // MARK: - Label changer
     
     internal func focusLabel(selected: Bool) {
-        if case .RoundRect(_, _, _, _) = options.menuItemMode {
+        if case .RoundRect = options.menuItemMode {
             backgroundColor = UIColor.clearColor()
         } else {
             backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
@@ -65,7 +65,7 @@ class MenuItemView: UIView {
     // MARK: - Constructor
     
     private func setupView() {
-        if case .RoundRect(_, _, _, _) = options.menuItemMode {
+        if case .RoundRect = options.menuItemMode {
             backgroundColor = UIColor.clearColor()
         } else {
             backgroundColor = options.backgroundColor
