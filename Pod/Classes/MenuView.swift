@@ -59,7 +59,7 @@ class MenuView: UIScrollView {
             self.positionMenuItemViews()
         }) { [unowned self] (_) in
             // relayout menu item views dynamically
-            if case .Infinite(_) = self.options.menuDisplayMode {
+            if case .Infinite = self.options.menuDisplayMode {
                 self.relayoutMenuItemViews()
             }
             self.positionMenuItemViews()
@@ -128,7 +128,7 @@ class MenuView: UIScrollView {
             sortedMenuItemViews.removeAll()
         }
         
-        if case .Infinite(_) = options.menuDisplayMode {
+        if case .Infinite = options.menuDisplayMode {
             for i in 0..<options.menuItemCount {
                 let index = rawIndex(i)
                 sortedMenuItemViews.append(menuItemViews[index])
@@ -233,7 +233,7 @@ class MenuView: UIScrollView {
     
     private func adjustmentContentInsetIfNeeded() {
         switch options.menuDisplayMode {
-        case .Standard(_, let centerItem, _) where centerItem: break
+        case let .Standard(_, centerItem, _) where centerItem: break
         default: return
         }
         
@@ -249,11 +249,11 @@ class MenuView: UIScrollView {
     
     private func targetContentOffsetX() -> CGFloat {
         switch options.menuDisplayMode {
-        case .Standard(_, let centerItem, _) where centerItem:
+        case let .Standard(_, centerItem, _) where centerItem:
             return centerOfScreenWidth()
         case .SegmentedControl:
             return contentOffset.x
-        case .Infinite(_):
+        case .Infinite:
             return centerOfScreenWidth()
         default:
             return contentOffsetXForCurrentPage()
