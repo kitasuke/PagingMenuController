@@ -165,7 +165,7 @@ class MenuView: UIScrollView {
     }
     
     private func constructUnderlineViewIfNeeded() {
-        guard case .Underline(let height, let color, let horizontalPadding, let verticalPadding) = options.menuItemMode else { return }
+        guard case let .Underline(height, color, horizontalPadding, verticalPadding) = options.menuItemMode else { return }
         
         let width = menuItemViews[currentPage].bounds.width - horizontalPadding * 2
         underlineView = UIView(frame: CGRectMake(horizontalPadding, options.menuHeight - (height + verticalPadding), width, height))
@@ -174,7 +174,7 @@ class MenuView: UIScrollView {
     }
     
     private func constructRoundRectViewIfNeeded() {
-        guard case .RoundRect(let radius, _, let verticalPadding, let selectedColor) = options.menuItemMode else { return }
+        guard case let .RoundRect(radius, _, verticalPadding, selectedColor) = options.menuItemMode else { return }
         
         let height = options.menuHeight - verticalPadding * 2
         roundRectView = UIView(frame: CGRectMake(0, verticalPadding, 0, height))
@@ -186,7 +186,7 @@ class MenuView: UIScrollView {
     }
     
     private func animateUnderlineViewIfNeeded() {
-        guard case .Underline(_, _, let horizontalPadding, _) = options.menuItemMode else { return }
+        guard case let .Underline(_, _, horizontalPadding, _) = options.menuItemMode else { return }
         
         if let underlineView = underlineView {
             let targetFrame = menuItemViews[currentPage].frame
@@ -196,7 +196,7 @@ class MenuView: UIScrollView {
     }
     
     private func animateRoundRectViewIfNeeded() {
-        guard case .RoundRect(_, let horizontalPadding, _, _) = options.menuItemMode else { return }
+        guard case let .RoundRect(_, horizontalPadding, _, _) = options.menuItemMode else { return }
         
         if let roundRectView = roundRectView {
             let targetFrame = menuItemViews[currentPage].frame
@@ -217,13 +217,13 @@ class MenuView: UIScrollView {
     }
     
     private func bounces() -> Bool {
-        guard case .Standard(_, _, let scrollingMode) = options.menuDisplayMode else { return false }
+        guard case let .Standard(_, _, scrollingMode) = options.menuDisplayMode else { return false }
         guard case .ScrollEnabledAndBouces = scrollingMode else { return false }
         return true
     }
     
     private func scrollEnabled() -> Bool {
-        guard case .Standard(_, _, let scrollingMode) = options.menuDisplayMode else { return false }
+        guard case let .Standard(_, _, scrollingMode) = options.menuDisplayMode else { return false }
         
         switch scrollingMode {
         case .ScrollEnabled, .ScrollEnabledAndBouces: return true

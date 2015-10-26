@@ -53,12 +53,12 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     private var currentPosition: PagingViewPosition = .Left
     private let visiblePagingViewNumber: Int = 3
     private var previousIndex: Int {
-        guard case .Infinite(_) = options.menuDisplayMode else { return currentPage - 1 }
+        guard case .Infinite = options.menuDisplayMode else { return currentPage - 1 }
         
         return currentPage - 1 < 0 ? options.menuItemCount - 1 : currentPage - 1
     }
     private var nextIndex: Int {
-        guard case .Infinite(_) = options.menuDisplayMode else { return currentPage + 1 }
+        guard case .Infinite = options.menuDisplayMode else { return currentPage + 1 }
         
         return currentPage + 1 > options.menuItemCount - 1 ? 0 : currentPage + 1
     }
@@ -461,7 +461,7 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     }
     
     private func targetPage(tappedPage tappedPage: Int) -> Int {
-        guard case .Standard(_, _, let scrollingMode) = options.menuDisplayMode else { return tappedPage }
+        guard case let .Standard(_, _, scrollingMode) = options.menuDisplayMode else { return tappedPage }
         guard case .PagingEnabled = scrollingMode else { return tappedPage }
         return tappedPage < currentPage ? currentPage - 1 : currentPage + 1
     }
@@ -475,7 +475,7 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     }
     
     private func validatePageNumbers() {
-        guard case .Infinite(_) = options.menuDisplayMode else { return }
+        guard case .Infinite = options.menuDisplayMode else { return }
         guard options.menuItemCount < visiblePagingViewNumber else { return }
         
         NSException(name: ExceptionName, reason: "the number of view controllers should be more than three with Infinite display mode", userInfo: nil).raise()
