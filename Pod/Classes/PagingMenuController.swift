@@ -218,13 +218,13 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     private func layoutMenuView() {
         let viewsDictionary = ["menuView": menuView]
         let metrics = ["height": options.menuHeight]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuView]|", options: [], metrics: nil, views: viewsDictionary)
         let verticalConstraints: [NSLayoutConstraint]
         switch options.menuPosition {
         case .Top:
-            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuView(height)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: viewsDictionary)
+            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuView(height)]", options: [], metrics: metrics, views: viewsDictionary)
         case .Bottom:
-            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView(height)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: viewsDictionary)
+            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView(height)]|", options: [], metrics: metrics, views: viewsDictionary)
         }
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
@@ -248,13 +248,13 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     
     private func layoutContentScrollView() {
         let viewsDictionary = ["contentScrollView": contentScrollView, "menuView": menuView]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentScrollView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentScrollView]|", options: [], metrics: nil, views: viewsDictionary)
         let verticalConstraints: [NSLayoutConstraint]
         switch options.menuPosition {
         case .Top:
-            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView][contentScrollView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView][contentScrollView]|", options: [], metrics: nil, views: viewsDictionary)
         case .Bottom:
-            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentScrollView][menuView]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentScrollView][menuView]", options: [], metrics: nil, views: viewsDictionary)
         }
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
@@ -268,8 +268,8 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     
     private func layoutContentView() {
         let viewsDictionary = ["contentView": contentView, "contentScrollView": contentScrollView]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==contentScrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: [], metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==contentScrollView)]|", options: [], metrics: nil, views: viewsDictionary)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
@@ -348,8 +348,8 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
                 }
             }
             
-            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(horizontalVisualFormat, options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
-            let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[pagingView(==contentScrollView)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(horizontalVisualFormat, options: [], metrics: nil, views: viewsDictionary)
+            let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[pagingView(==contentScrollView)]|", options: [], metrics: nil, views: viewsDictionary)
             
             NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
         }

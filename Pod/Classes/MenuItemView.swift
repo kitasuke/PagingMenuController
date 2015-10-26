@@ -90,8 +90,8 @@ class MenuItemView: UIView {
         
         let labelSize = calculateLableSize()
 
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[label]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[label]|", options: [], metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label]|", options: [], metrics: nil, views: viewsDictionary)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
         
