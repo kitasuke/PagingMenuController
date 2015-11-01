@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MenuItemView: UIView {
+final public class MenuItemView: UIView {
     
+    public private(set) var titleLabel: UILabel!
     private var options: PagingMenuOptions!
     private var title: String!
-    private var titleLabel: UILabel!
     private var widthLabelConstraint: NSLayoutConstraint!
     
     // MARK: - Lifecycle
@@ -28,7 +28,7 @@ class MenuItemView: UIView {
         layoutLabel()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
