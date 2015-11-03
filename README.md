@@ -185,7 +185,7 @@ Xcode 6.3+
 Follow [Manual Installation](#manual)
 
 *Swift 1.2*   
-Please use swift_1.2 branch, but it doesn't have full features.
+Please use swift_1.2 branch, but it doesn't have full features. **It's no longer maintained...**
 
 Podfile  
 `pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_1.2'
