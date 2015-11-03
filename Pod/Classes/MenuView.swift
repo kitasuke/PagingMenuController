@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MenuView: UIScrollView {
+final public class MenuView: UIScrollView {
     
-    internal var menuItemViews = [MenuItemView]()
+    public private(set) var menuItemViews = [MenuItemView]()
     private var sortedMenuItemViews = [MenuItemView]()
     private var options: PagingMenuOptions!
     private var contentView: UIView!
@@ -34,11 +34,11 @@ class MenuView: UIScrollView {
         constructUnderlineViewIfNeeded()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         adjustmentContentInsetIfNeeded()

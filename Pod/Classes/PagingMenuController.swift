@@ -17,17 +17,18 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     
     public weak var delegate: PagingMenuControllerDelegate?
     private var options: PagingMenuOptions!
-    private var menuView: MenuView!
-    private var contentScrollView: UIScrollView!
-    private var contentView: UIView!
-    private var pagingViewControllers = [UIViewController]() {
+    public private(set) var menuView: MenuView!
+    public private(set) var currentPage: Int = 0
+    public private(set) var currentViewController: UIViewController!
+    public private(set) var visiblePagingViewControllers = [UIViewController]()
+    public private(set) var pagingViewControllers = [UIViewController]() {
         willSet {
             options.menuItemCount = newValue.count
         }
     }
-    private var visiblePagingViewControllers = [UIViewController]()
-    private var currentPage: Int = 0
-    private var currentViewController: UIViewController!
+    
+    private var contentScrollView: UIScrollView!
+    private var contentView: UIView!
     private var menuItemTitles: [String] {
         get {
             return pagingViewControllers.map {
