@@ -148,6 +148,17 @@ final public class PagingMenuController: UIViewController, UIScrollViewDelegate 
     }
     
     public func rebuild(viewControllers: [UIViewController], options: PagingMenuOptions) {
+        // cleanup properties to avoid memory leaks. This could also be placed inside the cleanup method, or in within didSet{} of the pagingViewController
+        visiblePagingViewControllers.removeAll()
+        currentViewController = nil
+        
+        for childViewController in childViewControllers {
+            childViewController.view.removeFromSuperview()
+            childViewController.removeFromParentViewController()
+        }
+
+        // perform setup
+        
         setup(viewControllers: viewControllers, options: options)
         
         view.setNeedsLayout()
