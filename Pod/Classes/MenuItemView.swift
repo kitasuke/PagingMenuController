@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class MenuItemView: UIView {
+public class MenuItemView: UIView {
     
     public private(set) var titleLabel: UILabel!
     private var options: PagingMenuOptions!
