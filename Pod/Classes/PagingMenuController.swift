@@ -13,7 +13,7 @@ import UIKit
     optional func didMoveToMenuPage(page: Int)
 }
 
-final public class PagingMenuController: UIViewController, UIScrollViewDelegate {
+public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     public weak var delegate: PagingMenuControllerDelegate?
     private var options: PagingMenuOptions!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final public class MenuView: UIScrollView {
+public class MenuView: UIScrollView {
     
     public private(set) var menuItemViews = [MenuItemView]()
     private var sortedMenuItemViews = [MenuItemView]()
