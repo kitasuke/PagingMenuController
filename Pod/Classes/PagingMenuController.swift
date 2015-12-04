@@ -221,19 +221,34 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
 
     public func scrollViewDidScroll(scrollView: UIScrollView) {
         guard toViewController == nil && scrollView.isEqual(contentScrollView) else { return }
+        guard let pagingViewControllers = pagingViewControllers else { return }
+
+        var isScrollingLeft = lastVisiblePage > currentPage
 
         if case .Infinite = options.menuDisplayMode {
             if scrollView.contentOffset.x < offsetXFirstPage { // index < page 0 -> copy last ViewController to image
+                isScrollingLeft = true
                 setupImageViewCopy(copyType: .Front)
-            } else if scrollView.contentOffset.x > pagingViewControllers!.last?.view.frame.origin.x {
+            } else if scrollView.contentOffset.x > pagingViewControllers.last?.view.frame.origin.x {
                 setupImageViewCopy(copyType: .Back)
             }
         }
 
-        let isScrollingLeft = lastVisiblePage > currentPage
-        guard let pagingViewControllers = pagingViewControllers else { return }
+        func nextPageIndex(currentPage currentPage: Int) -> Int {
+            let count = pagingViewControllers.count
+            let nextPage = currentPage + (isScrollingLeft ? -1 : 1)
 
-        let nextPage = self.nextPage(right: !isScrollingLeft)
+            switch nextPage {
+            case _ where nextPage >= count:
+                return 0
+            case _ where nextPage < 0:
+                return count - 1
+            default:
+                return nextPage
+            }
+        }
+
+        let nextPage = nextPageIndex(currentPage: lastVisiblePage)
         self.toViewController = pagingViewControllers[nextPage]
         toViewController?.beginAppearanceTransition(true, animated: true)
         toViewController?.endAppearanceTransition()
@@ -408,12 +423,13 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             [unowned self] in
             self.contentScrollView.contentOffset.x = offsetX
             }) { [unowned self] _ in
+                if let jumpPage = jumpPage {
+                    self.jumpToPage(jumpPage) // cann this before the toViewController is nilled
+                }
+
                 fromViewController.endAppearanceTransition()
                 self.toViewController?.endAppearanceTransition()
                 self.toViewController = nil
-                if let jumpPage = jumpPage {
-                    self.jumpToPage(jumpPage)
-                }
 
                 self.delegate?.didMoveToMenuPage?(page)
         }
@@ -469,21 +485,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
 
     // MARK: - Private
-
-    private func nextPage(right right: Bool) -> Int {
-        guard let count = pagingViewControllers?.count else { return 0 }
-
-        let nextPage = currentPage + (right ? 1 : -1)
-
-        switch nextPage {
-        case _ where nextPage >= count:
-            return 0
-        case _ where nextPage < 0:
-            return count - 1
-        default:
-            return nextPage
-        }
-    }
 
     private var lastVisiblePage: Int = 0
 
