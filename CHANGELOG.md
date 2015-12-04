@@ -1,3 +1,27 @@
+# 0.7.6 Release notes (2015/11-30)
+
+### Enhancements
+
+- Enable override classes
+- Memory performance improvements thanks to @benrudhart
+
+# 0.7.5 Release notes (2015/11-2)
+
+### Enhancements
+
+- Significant improvements thanks to @ikesyo
+- Make some properties public read only
+
+# 0.7.4 Release notes (2015/10-24)
+
+### Enhancements
+
+- Small improvements
+
+### Bug fixed
+
+- `selectedFont`
+
 # 0.7.3 Release notes (2015/10-19)
 
 ### Bug fixed
