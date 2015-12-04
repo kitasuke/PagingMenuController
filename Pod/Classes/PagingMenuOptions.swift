@@ -30,6 +30,14 @@ public class PagingMenuOptions {
     public enum MenuPosition {
         case Top
         case Bottom
+
+        /// Converts the `MenuPosition` to an `NSLayoutAttribute`
+        var layoutAttribute: NSLayoutAttribute {
+            switch self {
+            case .Top: return .Top
+            case .Bottom: return .Bottom
+            }
+        }
     }
     
     public enum MenuScrollingMode {
