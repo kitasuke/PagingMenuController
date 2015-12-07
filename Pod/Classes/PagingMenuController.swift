@@ -56,7 +56,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
                 pagingViewControllers = self.pagingViewControllers,
                 contentScrollView = contentScrollView else { return }
 
-            contentScrollView.backgroundColor = .redColor()
             let containerWidth = view.bounds.width
             assert(containerWidth > 0)
 
