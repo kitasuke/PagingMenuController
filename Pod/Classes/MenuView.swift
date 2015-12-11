@@ -57,18 +57,19 @@ public class MenuView: UIScrollView {
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.focusMenuItem()
             self.positionMenuItemViews()
-        }) { [unowned self] (_) in
+        }) { [weak self] (_) in
+			guard let _ = self else { return }
             // relayout menu item views dynamically
-            if case .Infinite = self.options.menuDisplayMode {
-                self.relayoutMenuItemViews()
+            if case .Infinite = self!.options.menuDisplayMode {
+                self!.relayoutMenuItemViews()
             }
-            self.positionMenuItemViews()
-            self.setNeedsLayout()
-            self.layoutIfNeeded()
+            self!.positionMenuItemViews()
+            self!.setNeedsLayout()
+            self!.layoutIfNeeded()
             
             // show menu view when constructing is done
             if !animated {
-                self.alpha = 1
+                self!.alpha = 1
             }
         }
     }
