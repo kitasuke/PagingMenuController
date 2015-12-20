@@ -1,3 +1,9 @@
+# 0.7.7 Release notes (2015/12-20)
+
+### Enhancements
+
+- Make `moveToMenuPage` method public
+
 # 0.7.6 Release notes (2015/11-30)
 
 ### Enhancements
