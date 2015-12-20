@@ -119,6 +119,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         }, completion: nil)
     }
     
+    // MARK: - Public
+    
     public func setup(viewControllers viewControllers: [UIViewController], options: PagingMenuOptions) {
         self.options = options
         pagingViewControllers = viewControllers
@@ -163,6 +165,39 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         view.setNeedsLayout()
         view.layoutIfNeeded()
+    }
+    
+    public func moveToMenuPage(page: Int, animated: Bool) {
+        // ignore an unexpected page number
+        guard page < options.menuItemCount else { return }
+        
+        let lastPage = currentPage
+        currentPage = page
+        currentViewController = pagingViewControllers[page]
+        menuView.moveToMenu(page: currentPage, animated: animated)
+        
+        delegate?.willMoveToMenuPage?(currentPage)
+        
+        // hide paging views if it's moving to far away
+        hidePagingViewsIfNeeded(lastPage)
+        
+        let duration = animated ? options.animationDuration : 0
+        UIView.animateWithDuration(duration, animations: {
+            [unowned self] () -> Void in
+            self.contentScrollView.contentOffset.x = self.currentViewController.view!.frame.minX
+            }) { [unowned self] (_) -> Void in
+                // show paging views
+                self.visiblePagingViewControllers.forEach { $0.view.alpha = 1 }
+                
+                // reconstruct visible paging views
+                self.constructPagingViewControllers()
+                self.layoutPagingViewControllers()
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+                
+                self.currentPosition = self.currentPagingViewPosition()
+                self.delegate?.didMoveToMenuPage?(self.currentPage)
+        }
     }
     
     // MARK: - UISCrollViewDelegate
@@ -405,36 +440,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK: - Page controller
-    
-    private func moveToMenuPage(page: Int, animated: Bool) {
-        let lastPage = currentPage
-        currentPage = page
-        currentViewController = pagingViewControllers[page]
-        menuView.moveToMenu(page: currentPage, animated: animated)
-
-        delegate?.willMoveToMenuPage?(currentPage)
-        
-        // hide paging views if it's moving to far away
-        hidePagingViewsIfNeeded(lastPage)
-
-        let duration = animated ? options.animationDuration : 0
-        UIView.animateWithDuration(duration, animations: {
-            [unowned self] () -> Void in
-            self.contentScrollView.contentOffset.x = self.currentViewController.view!.frame.minX
-        }) { [unowned self] (_) -> Void in
-            // show paging views
-            self.visiblePagingViewControllers.forEach { $0.view.alpha = 1 }
-            
-            // reconstruct visible paging views
-            self.constructPagingViewControllers()
-            self.layoutPagingViewControllers()
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
-            
-            self.currentPosition = self.currentPagingViewPosition()
-            self.delegate?.didMoveToMenuPage?(self.currentPage)
-        }
-    }
     
     private func hidePagingViewsIfNeeded(lastPage: Int) {
         guard lastPage != previousIndex && lastPage != nextIndex else { return }
