@@ -175,6 +175,13 @@ func didMoveToMenuPage(page: Int) {
 }
 ```
 
+### Moving to a menu tag programatically 
+
+```swift
+// if you pass a nonexistent page number, it'll be ignored
+pagingMenuController.moveToMenuPage(1, animated: true)
+```
+
 ## Requirements
 
 iOS8+  
