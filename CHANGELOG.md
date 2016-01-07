@@ -1,3 +1,9 @@
+# 0.7.8 Release notes (2016/01-07)
+
+### Enhancements
+
+- Crash fixes thanks to @patricks
+
 # 0.7.7 Release notes (2015/12-20)
 
 ### Enhancements
