@@ -106,14 +106,16 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         menuView.updateMenuViewConstraints(size: size)
         
-        coordinator.animateAlongsideTransition({ [unowned self] (_) -> Void in
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
+        coordinator.animateAlongsideTransition({ [weak self] (_) -> Void in
+            guard let _ = self else { return }
+            
+            self!.view.setNeedsLayout()
+            self!.view.layoutIfNeeded()
             
             // reset selected menu item view position
-            switch self.options.menuDisplayMode {
+            switch self!.options.menuDisplayMode {
             case .Standard, .Infinite:
-                self.menuView.moveToMenu(page: self.currentPage, animated: true)
+                self!.menuView.moveToMenu(page: self!.currentPage, animated: true)
             default: break
             }
         }, completion: nil)
@@ -183,20 +185,24 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         let duration = animated ? options.animationDuration : 0
         UIView.animateWithDuration(duration, animations: {
-            [unowned self] () -> Void in
-            self.contentScrollView.contentOffset.x = self.currentViewController.view!.frame.minX
-            }) { [unowned self] (_) -> Void in
+            [weak self] () -> Void in
+            guard let _ = self else { return }
+            
+            self!.contentScrollView.contentOffset.x = self!.currentViewController.view!.frame.minX
+            }) { [weak self] (_) -> Void in
+                guard let _ = self else { return }
+                
                 // show paging views
-                self.visiblePagingViewControllers.forEach { $0.view.alpha = 1 }
+                self!.visiblePagingViewControllers.forEach { $0.view.alpha = 1 }
                 
                 // reconstruct visible paging views
-                self.constructPagingViewControllers()
-                self.layoutPagingViewControllers()
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
+                self!.constructPagingViewControllers()
+                self!.layoutPagingViewControllers()
+                self!.view.setNeedsLayout()
+                self!.view.layoutIfNeeded()
                 
-                self.currentPosition = self.currentPagingViewPosition()
-                self.delegate?.didMoveToMenuPage?(self.currentPage)
+                self!.currentPosition = self!.currentPagingViewPosition()
+                self!.delegate?.didMoveToMenuPage?(self!.currentPage)
         }
     }
     

@@ -21,16 +21,16 @@ class OrganizationsViewController: UIViewController, UITableViewDataSource, UITa
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
-        let task = session.dataTaskWithRequest(request) { [unowned self] data, response, error in
+        let task = session.dataTaskWithRequest(request) { [weak self] data, response, error in
             do {
                 let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
-                self.organizations = result
+                self?.organizations = result
             } catch _ {
                 
             }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             })
         }
         task.resume()
