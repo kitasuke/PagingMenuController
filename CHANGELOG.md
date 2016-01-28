@@ -1,3 +1,9 @@
+# 0.7.9 Release notes (2016/01-28)
+
+### Bug fixed
+
+- Fix crash when PagingMenuController is initialized asynchronously
+
 # 0.7.8 Release notes (2016/01-07)
 
 ### Enhancements
