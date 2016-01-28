@@ -86,14 +86,14 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         
         // position properly for Infinite mode
-        menuView.moveToMenu(page: currentPage, animated: false)
+        menuView?.moveToMenu(page: currentPage, animated: false)
     }
     
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         // fix unnecessary inset for menu view when implemented by programmatically
-        menuView.contentInset.top = 0
+        menuView?.contentInset.top = 0
 
         // position paging views correctly after view size is decided
         if let currentViewController = currentViewController {
