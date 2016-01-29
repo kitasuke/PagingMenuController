@@ -28,6 +28,7 @@
 		EC7BA4121B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA4111B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.swift */; };
 		EC7BA41B1B524C04007FB8A5 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA4191B524C04007FB8A5 /* ViewController1.swift */; };
 		EC7BA41C1B524C04007FB8A5 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA41A1B524C04007FB8A5 /* ViewController2.swift */; };
+		EC9621601C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96215F1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = EC7BA3F61B524BB4007FB8A5;
 			remoteInfo = PagingMenuControllerDemo2;
+		};
+		EC9621621C5B4F1700DA6EE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 707C60D31AFF822100BDAB0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 707C60DA1AFF822100BDAB0B;
+			remoteInfo = PagingMenuControllerDemo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -95,6 +103,9 @@
 		EC7BA4111B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerDemo2Tests.swift; sourceTree = "<group>"; };
 		EC7BA4191B524C04007FB8A5 /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		EC7BA41A1B524C04007FB8A5 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		EC96215D1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuControllerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC96215F1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerDemoUITests.swift; sourceTree = "<group>"; };
+		EC9621611C5B4F1700DA6EE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4108687AE0EB5851561C508 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +141,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC96215A1C5B4F1700DA6EE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -150,6 +168,7 @@
 				707C60F31AFF822200BDAB0B /* PagingMenuControllerDemoTests */,
 				EC7BA3F81B524BB4007FB8A5 /* PagingMenuControllerDemo2 */,
 				EC7BA40E1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */,
+				EC96215E1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests */,
 				707C60DC1AFF822100BDAB0B /* Products */,
 				90D456DCC3386FD0738FA4C6 /* Pods */,
 				31C312B457D869AC3AD2B333 /* Frameworks */,
@@ -163,6 +182,7 @@
 				707C60F01AFF822200BDAB0B /* PagingMenuControllerDemoTests.xctest */,
 				EC7BA3F71B524BB4007FB8A5 /* PagingMenuControllerDemo2.app */,
 				EC7BA40B1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.xctest */,
+				EC96215D1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -262,6 +282,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EC96215E1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EC96215F1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.swift */,
+				EC9621611C5B4F1700DA6EE6 /* Info.plist */,
+			);
+			path = PagingMenuControllerDemoUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -345,13 +374,31 @@
 			productReference = EC7BA40B1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EC96215C1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC9621661C5B4F1700DA6EE6 /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemoUITests" */;
+			buildPhases = (
+				EC9621591C5B4F1700DA6EE6 /* Sources */,
+				EC96215A1C5B4F1700DA6EE6 /* Frameworks */,
+				EC96215B1C5B4F1700DA6EE6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC9621631C5B4F1700DA6EE6 /* PBXTargetDependency */,
+			);
+			name = PagingMenuControllerDemoUITests;
+			productName = PagingMenuControllerDemoUITests;
+			productReference = EC96215D1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		707C60D31AFF822100BDAB0B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = kitasuke;
 				TargetAttributes = {
@@ -368,6 +415,10 @@
 					EC7BA40A1B524BB4007FB8A5 = {
 						CreatedOnToolsVersion = 6.4;
 						TestTargetID = EC7BA3F61B524BB4007FB8A5;
+					};
+					EC96215C1C5B4F1700DA6EE6 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 707C60DA1AFF822100BDAB0B;
 					};
 				};
 			};
@@ -388,6 +439,7 @@
 				707C60EF1AFF822200BDAB0B /* PagingMenuControllerDemoTests */,
 				EC7BA3F61B524BB4007FB8A5 /* PagingMenuControllerDemo2 */,
 				EC7BA40A1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */,
+				EC96215C1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -420,6 +472,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EC7BA4091B524BB4007FB8A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC96215B1C5B4F1700DA6EE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -608,6 +667,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC9621591C5B4F1700DA6EE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC9621601C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -620,6 +687,11 @@
 			isa = PBXTargetDependency;
 			target = EC7BA3F61B524BB4007FB8A5 /* PagingMenuControllerDemo2 */;
 			targetProxy = EC7BA40C1B524BB4007FB8A5 /* PBXContainerItemProxy */;
+		};
+		EC9621631C5B4F1700DA6EE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 707C60DA1AFF822100BDAB0B /* PagingMenuControllerDemo */;
+			targetProxy = EC9621621C5B4F1700DA6EE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -865,6 +937,33 @@
 			};
 			name = Release;
 		};
+		EC9621641C5B4F1700DA6EE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = PagingMenuControllerDemoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kitasuke.PagingMenuControllerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = PagingMenuControllerDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		EC9621651C5B4F1700DA6EE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PagingMenuControllerDemoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kitasuke.PagingMenuControllerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = PagingMenuControllerDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -912,6 +1011,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EC9621661C5B4F1700DA6EE6 /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC9621641C5B4F1700DA6EE6 /* Debug */,
+				EC9621651C5B4F1700DA6EE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
