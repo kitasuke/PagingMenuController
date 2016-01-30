@@ -28,9 +28,21 @@ class PagingMenuControllerDemoUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testBehaviour() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let tablesQuery = XCUIApplication().tables
+        tablesQuery.elementBoundByIndex(0).swipeUp()
+        
+        let elementsQuery = XCUIApplication().scrollViews.otherElements
+        elementsQuery.staticTexts["Users"].swipeLeft()
+        elementsQuery.staticTexts["Repositories"].swipeLeft()
+        elementsQuery.staticTexts["Gists"].swipeLeft()
+        elementsQuery.staticTexts["Organizations"].swipeLeft()
+        
+        elementsQuery.staticTexts["Gists"].tap()
+        elementsQuery.staticTexts["Repositories"].tap()
+        elementsQuery.staticTexts["Users"].tap()
     }
-    
 }
