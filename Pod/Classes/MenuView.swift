@@ -268,11 +268,22 @@ public class MenuView: UIScrollView {
         return menuItemViews[currentPage].frame.midX - UIScreen.mainScreen().bounds.width / 2
     }
     
+    
     private func contentOffsetXForCurrentPage() -> CGFloat {
-        guard menuItemViews.count > options.minumumSupportedViewCount else { return 0.0 }
-        
-        let ratio = CGFloat(currentPage) / CGFloat(menuItemViews.count - 1)
-        return (contentSize.width - frame.width) * ratio
+        var offset: CGFloat = 0
+        if self.frame.width > self.contentSize.width {
+            return offset
+        }
+        if (currentPage == 0 && currentPage != 0) || (currentPage > 0 && currentPage != 0) {
+            for index in 0...currentPage - 1 {
+                let itemView = menuItemViews[index] as MenuItemView
+                offset += itemView.frame.width
+            }
+        }
+        if (offset + self.frame.width) > self.contentSize.width {
+            offset = self.contentSize.width - self.frame.width
+        }
+        return offset
     }
     
     private func focusMenuItem() {
