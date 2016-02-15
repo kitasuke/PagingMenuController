@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "kitasuke" => "yusuke2759@gmail.com" }
-  s.source           = { :git => "https://github.com/kitasuke/PagingMenuController.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/HorizonteNovasMidias/PagingMenuController.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
