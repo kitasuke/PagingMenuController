@@ -27,8 +27,21 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private var contentScrollView: UIScrollView!
-    private var contentView: UIView!
+    private let contentScrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.pagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.scrollsToTop = false
+        scrollView.bounces = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    private let contentView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     private var menuItemTitles: [String] {
         get {
             return pagingViewControllers.map {
@@ -138,10 +151,10 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         currentPage = options.defaultPage
         
         constructMenuView()
-        constructContentScrollView()
+        setupContentScrollView()
         layoutMenuView()
         layoutContentScrollView()
-        constructContentView()
+        setupContentView()
         layoutContentView()
         constructPagingViewControllers()
         layoutPagingViewControllers()
@@ -286,16 +299,9 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         menuView.layoutIfNeeded()
     }
     
-    private func constructContentScrollView() {
-        contentScrollView = UIScrollView(frame: CGRectZero)
+    private func setupContentScrollView() {
         contentScrollView.delegate = self
-        contentScrollView.pagingEnabled = true
-        contentScrollView.showsHorizontalScrollIndicator = false
-        contentScrollView.showsVerticalScrollIndicator = false
-        contentScrollView.scrollsToTop = false
-        contentScrollView.bounces = false
         contentScrollView.scrollEnabled = options.scrollEnabled
-        contentScrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(contentScrollView)
     }
     
@@ -313,9 +319,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
     
-    private func constructContentView() {
-        contentView = UIView(frame: CGRectZero)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupContentView() {
         contentScrollView.addSubview(contentView)
     }
     
@@ -349,7 +353,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
                 continue
             }
             
-            pagingViewController.view!.frame = CGRectZero
+            pagingViewController.view!.frame = .zero
             pagingViewController.view!.translatesAutoresizingMaskIntoConstraints = false
 
             contentView.addSubview(pagingViewController.view!)
@@ -414,7 +418,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - Cleanup
     
     private func cleanup() {
-        if let menuView = self.menuView, let contentScrollView = self.contentScrollView {
+        if let menuView = self.menuView {
             menuView.removeFromSuperview()
             contentScrollView.removeFromSuperview()
         }
