@@ -37,10 +37,12 @@ class ViewController: UIViewController, PagingMenuControllerDelegate {
 
     // MARK: - PagingMenuControllerDelegate
     
-    func willMoveToMenuPage(page: Int) {
+    func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
+
     }
     
-    func didMoveToMenuPage(page: Int) {
+    func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
+
     }
 }
 
