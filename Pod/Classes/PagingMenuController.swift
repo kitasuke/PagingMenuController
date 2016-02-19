@@ -378,7 +378,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             var horizontalVisualFormat = String()
             
             // only one view controller
-            if (options.menuItemCount == options.minumumSupportedViewCount) {
+            if options.menuItemCount == options.minumumSupportedViewCount ||
+                options.lazyLoadingPage == .One {
                 horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]|"
             } else {
                 if case .Infinite = options.menuDisplayMode {
@@ -452,15 +453,22 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - Page controller
     
     private func hidePagingViewsIfNeeded(lastPage: Int) {
-        guard lastPage != previousIndex && lastPage != nextIndex else { return }
+        if case .Three = options.lazyLoadingPage {
+            guard lastPage != previousIndex && lastPage != nextIndex else { return }
+        }
         visiblePagingViewControllers.forEach { $0.view.alpha = 0 }
     }
 
     private func shouldLoadPage(index: Int) -> Bool {
-        if case .Infinite = options.menuDisplayMode {
-            guard index == currentPage || index == previousIndex || index == nextIndex else { return false }
-        } else {
-            guard index >= previousIndex && index <= nextIndex else { return false }
+        switch options.lazyLoadingPage {
+        case .One:
+            guard index == currentPage else { return false }
+        case .Three:
+            if case .Infinite = options.menuDisplayMode {
+                guard index == currentPage || index == previousIndex || index == nextIndex else { return false }
+            } else {
+                guard index >= previousIndex && index <= nextIndex else { return false }
+            }
         }
         return true
     }
