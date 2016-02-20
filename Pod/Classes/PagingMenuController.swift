@@ -9,8 +9,8 @@
 import UIKit
 
 @objc public protocol PagingMenuControllerDelegate: class {
-    optional func willMoveToMenuPage(page: Int)
-    optional func didMoveToMenuPage(page: Int)
+    optional func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
+    optional func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
 }
 
 public class PagingMenuController: UIViewController, UIScrollViewDelegate {
@@ -186,15 +186,16 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         // ignore an unexpected page number
         guard page < options.menuItemCount else { return }
         
-        let lastPage = currentPage
-        currentPage = page
+        let previousPage = currentPage
+        let previousViewController = currentViewController
         currentViewController = pagingViewControllers[page]
+        delegate?.willMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
+        
+        currentPage = page
         menuView.moveToMenu(page: currentPage, animated: animated)
         
-        delegate?.willMoveToMenuPage?(currentPage)
-        
         // hide paging views if it's moving to far away
-        hidePagingViewsIfNeeded(lastPage)
+        hidePagingViewsIfNeeded(previousPage)
         
         let duration = animated ? options.animationDuration : 0
         UIView.animateWithDuration(duration, animations: {
@@ -215,11 +216,11 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
                 self!.view.layoutIfNeeded()
                 
                 self!.currentPosition = self!.currentPagingViewPosition()
-                self!.delegate?.didMoveToMenuPage?(self!.currentPage)
+                self!.delegate?.didMoveToPageMenuController?(self!.currentViewController, previousMenuController: previousViewController)
         }
     }
     
-    // MARK: - UISCrollViewDelegate
+    // MARK: - UIScrollViewDelegate
     
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         guard scrollView.isEqual(contentScrollView) else { return }
@@ -227,15 +228,19 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         let position = currentPagingViewPosition()
         
         // set new page number according to current moving direction
+        let nextPage: Int
         switch position {
-        case .Left: currentPage = previousIndex
-        case .Right: currentPage = nextIndex
+        case .Left: nextPage = previousIndex
+        case .Right: nextPage = nextIndex
         default: return
         }
-
-        delegate?.willMoveToMenuPage?(currentPage)
+        
+        let previousViewController = currentViewController
+        currentViewController = pagingViewControllers[nextPage]
+        delegate?.willMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
+        
+        currentPage = nextPage
         menuView.moveToMenu(page: currentPage, animated: true)
-        currentViewController = pagingViewControllers[currentPage]
         contentScrollView.contentOffset.x = currentViewController.view!.frame.minX
 
         constructPagingViewControllers()
@@ -244,7 +249,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         view.layoutIfNeeded()
 
         currentPosition = currentPagingViewPosition()
-        delegate?.didMoveToMenuPage?(currentPage)
+        delegate?.didMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
     }
     
     // MARK: - UIGestureRecognizer
