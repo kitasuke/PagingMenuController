@@ -25,6 +25,9 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         willSet {
             options.menuItemCount = newValue.count
         }
+        didSet {
+            cleanup()
+        }
     }
     
     private let contentScrollView: UIScrollView = {
@@ -144,9 +147,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         // validate
         validateDefaultPage()
         validatePageNumbers()
-        
-        // cleanup
-        cleanup()
         
         currentPage = options.defaultPage
         
@@ -405,11 +405,20 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - Cleanup
     
     private func cleanup() {
+        visiblePagingViewControllers.removeAll()
+        currentViewController = nil
+        
+        childViewControllers.forEach {
+            $0.willMoveToParentViewController(nil)
+            $0.view.removeFromSuperview()
+            $0.removeFromParentViewController()
+        }
+        
         if let menuView = self.menuView {
+            menuView.cleanup()
             menuView.removeFromSuperview()
             contentScrollView.removeFromSuperview()
         }
-        currentPage = options.defaultPage
     }
     
     // MARK: - Gesture handler
