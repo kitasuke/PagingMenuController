@@ -25,6 +25,9 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         willSet {
             options.menuItemCount = newValue.count
         }
+        didSet {
+            cleanup()
+        }
     }
     
     private let contentScrollView: UIScrollView = {
@@ -145,9 +148,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         validateDefaultPage()
         validatePageNumbers()
         
-        // cleanup
-        cleanup()
-        
         currentPage = options.defaultPage
         
         constructMenuView()
@@ -162,24 +162,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         currentPosition = currentPagingViewPosition()
         currentViewController = pagingViewControllers[currentPage]
         moveToMenuPage(currentPage, animated: false)
-    }
-    
-    public func rebuild(viewControllers: [UIViewController], options: PagingMenuOptions) {
-        // cleanup properties to avoid memory leaks. This could also be placed inside the cleanup method, or in within didSet{} of the pagingViewController
-        visiblePagingViewControllers.removeAll()
-        currentViewController = nil
-        
-        for childViewController in childViewControllers {
-            childViewController.view.removeFromSuperview()
-            childViewController.removeFromParentViewController()
-        }
-
-        // perform setup
-        
-        setup(viewControllers: viewControllers, options: options)
-        
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
     }
     
     public func moveToMenuPage(page: Int, animated: Bool) {
@@ -423,11 +405,20 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - Cleanup
     
     private func cleanup() {
+        visiblePagingViewControllers.removeAll()
+        currentViewController = nil
+        
+        childViewControllers.forEach {
+            $0.willMoveToParentViewController(nil)
+            $0.view.removeFromSuperview()
+            $0.removeFromParentViewController()
+        }
+        
         if let menuView = self.menuView {
+            menuView.cleanup()
             menuView.removeFromSuperview()
             contentScrollView.removeFromSuperview()
         }
-        currentPage = options.defaultPage
     }
     
     // MARK: - Gesture handler

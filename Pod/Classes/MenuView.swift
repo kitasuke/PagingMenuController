@@ -20,11 +20,11 @@ public class MenuView: UIScrollView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    private let underlineView: UIView = {
+    lazy private var underlineView: UIView = {
         let view = UIView(frame: .zero)
         return view
     }()
-    private let roundRectView: UIView = {
+    lazy private var roundRectView: UIView = {
         let view = UIView(frame: .zero)
         view.userInteractionEnabled = true
         return view
@@ -98,6 +98,22 @@ public class MenuView: UIScrollView {
 
         animateUnderlineViewIfNeeded()
         animateRoundRectViewIfNeeded()
+    }
+    
+    internal func cleanup() {
+        contentView.removeFromSuperview()
+        switch options.menuItemMode {
+        case .Underline(_, _, _, _): underlineView.removeFromSuperview()
+        case .RoundRect(_, _, _, _): roundRectView.removeFromSuperview()
+        case .None: break
+        }
+        
+        if !menuItemViews.isEmpty {
+            menuItemViews.forEach {
+                $0.cleanup()
+                $0.removeFromSuperview()
+            }
+        }
     }
     
     // MARK: - Private method

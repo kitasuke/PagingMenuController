@@ -41,6 +41,12 @@ public class MenuItemView: UIView {
         super.init(frame: frame)
     }
     
+    // MARK: - Cleanup
+    
+    internal func cleanup() {
+        titleLabel.removeFromSuperview()
+    }
+    
     // MARK: - Constraints manager
     
     internal func updateLabelConstraints(size size: CGSize) {
