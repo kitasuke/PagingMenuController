@@ -24,6 +24,7 @@ public class PagingMenuOptions {
     public var deceleratingRate: CGFloat = UIScrollViewDecelerationRateNormal
     public var menuDisplayMode = MenuDisplayMode.Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: false, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
     public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 0, verticalPadding: 0)
+    public var lazyLoadingPage: LazyLoadingPage = .Three
     internal var menuItemCount = 0
     internal let minumumSupportedViewCount = 1
     
@@ -55,7 +56,10 @@ public class PagingMenuOptions {
         case RoundRect(radius: CGFloat, horizontalPadding: CGFloat, verticalPadding: CGFloat, selectedColor: UIColor)
     }
     
-    public init() {
-        
+    public enum LazyLoadingPage {
+        case One
+        case Three
     }
+    
+    public init() {}
 }
