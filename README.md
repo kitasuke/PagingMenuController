@@ -121,6 +121,15 @@ public enum MenuItemMode {
 }
 ```
 
+* number of lazy loading pages
+```swift
+public var lazyLoadingPage: LazyLoadingPage = .Three
+public enum LazyLoadingPage {
+    case One
+    case Three
+}
+```
+
 ## Usage
 
 `import PagingMenuController` to use PagingMenuController in your file.
@@ -168,10 +177,10 @@ pagingMenuController.delegate = self
 ```
 
 ```Swift
-func willMoveToMenuPage(page: Int) {
+func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
 }
 
-func didMoveToMenuPage(page: Int) {
+func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
 }
 ```
 
@@ -181,6 +190,11 @@ func didMoveToMenuPage(page: Int) {
 // if you pass a nonexistent page number, it'll be ignored
 pagingMenuController.moveToMenuPage(1, animated: true)
 ```
+
+### Changing PagingMenuController's option
+
+Call `setup` method with new options again.
+It creates a new paging menu controller. Do not forget to cleanup properties in child view controller.
 
 ## Requirements
 
