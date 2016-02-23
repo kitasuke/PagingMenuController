@@ -1,3 +1,18 @@
+# 0.8.0 Release notes (2016/02-22)
+
+### Enhancements
+
+- `lazyLoadingPage` is added
+
+### Breaking changes
+
+- `PagingMenuControllerDelegate` methods now return previous and current menu controller, not order number
+- `rebuild` method is deleted. Use `setup` method instead
+
+### Bug fixed
+
+- fix memory leaks
+
 # 0.7.9 Release notes (2016/01-28)
 
 ### Bug fixed
