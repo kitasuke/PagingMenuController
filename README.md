@@ -125,7 +125,7 @@ public enum MenuItemMode {
 ```swift
 public var lazyLoadingPage: LazyLoadingPage = .Three
 public enum LazyLoadingPage {
-    case One
+    case One // Currently sets false to scrollingEnabled at this moment. Should be fixed in the future.
     case Three
 }
 ```
