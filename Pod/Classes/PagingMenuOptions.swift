@@ -23,6 +23,7 @@ public class PagingMenuOptions {
     public var animationDuration: NSTimeInterval = 0.3
     public var deceleratingRate: CGFloat = UIScrollViewDecelerationRateNormal
     public var menuDisplayMode = MenuDisplayMode.Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: false, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
+    public var menuSelectedItemCenter = true
     public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 0, verticalPadding: 0)
     public var lazyLoadingPage: LazyLoadingPage = .Three
     internal var menuItemCount = 0

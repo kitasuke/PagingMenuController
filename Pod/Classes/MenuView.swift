@@ -70,7 +70,9 @@ public class MenuView: UIScrollView {
             guard let _ = self else { return }
             
             self!.focusMenuItem()
-            self!.positionMenuItemViews()
+            if self!.options.menuSelectedItemCenter {
+                self!.positionMenuItemViews()
+            }
         }) { [weak self] (_) in
             guard let _ = self else { return }
             
@@ -78,7 +80,9 @@ public class MenuView: UIScrollView {
             if case .Infinite = self!.options.menuDisplayMode {
                 self!.relayoutMenuItemViews()
             }
-            self!.positionMenuItemViews()
+            if self!.options.menuSelectedItemCenter {
+                self!.positionMenuItemViews()
+            }
             self!.setNeedsLayout()
             self!.layoutIfNeeded()
             
