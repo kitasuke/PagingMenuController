@@ -20,6 +20,7 @@ public class PagingMenuOptions {
     public var menuPosition: MenuPosition = .Top
     public var menuHeight: CGFloat = 50
     public var menuItemMargin: CGFloat = 20
+    public var menuItemDividerImage: UIImage! = nil
     public var animationDuration: NSTimeInterval = 0.3
     public var deceleratingRate: CGFloat = UIScrollViewDecelerationRateNormal
     public var menuDisplayMode = MenuDisplayMode.Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: false, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
