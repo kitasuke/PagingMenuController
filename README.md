@@ -202,20 +202,6 @@ iOS8+
 Swift 1.2+  
 Xcode 6.3+  
 
-*For iOS7 support*  
-Follow [Manual Installation](#manual)
-
-*Swift 1.2*   
-Please use swift_1.2 branch, but it doesn't have full features. **It's no longer maintained...**
-
-Podfile  
-`pod 'PagingMenuController', :git => 'https://github.com/kitasuke/PagingMenuController', :branch => 'swift_1.2'
-`
-
-Carfile  
-`github "kitasuke/PagingMenuController" "swift_1.2"
-`
-
 ## Installation
 
 ### CocoaPods
