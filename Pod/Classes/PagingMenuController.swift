@@ -120,21 +120,23 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     override public func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
-        menuView.updateMenuViewConstraints(size: size)
-        
-        coordinator.animateAlongsideTransition({ [weak self] (_) -> Void in
-            guard let _ = self else { return }
+        if menuView != nil {
+            menuView.updateMenuViewConstraints(size: size)
             
-            self!.view.setNeedsLayout()
-            self!.view.layoutIfNeeded()
-            
-            // reset selected menu item view position
-            switch self!.options.menuDisplayMode {
-            case .Standard, .Infinite:
-                self!.menuView.moveToMenu(page: self!.currentPage, animated: true)
-            default: break
-            }
-        }, completion: nil)
+            coordinator.animateAlongsideTransition({ [weak self] (_) -> Void in
+                guard let _ = self else { return }
+                
+                self!.view.setNeedsLayout()
+                self!.view.layoutIfNeeded()
+                
+                // reset selected menu item view position
+                switch self!.options.menuDisplayMode {
+                case .Standard, .Infinite:
+                    self!.menuView.moveToMenu(page: self!.currentPage, animated: true)
+                default: break
+                }
+                }, completion: nil)
+        }
     }
     
     // MARK: - Public
