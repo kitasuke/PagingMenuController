@@ -31,14 +31,10 @@ public class MenuItemView: UIView {
         
         setupView()
         setupLabel(title: title)
-
-        if options.menuItemDividerImage != nil && addDivider {
-            setupDivider()
-        }
-
         layoutLabel()
 
         if options.menuItemDividerImage != nil && addDivider {
+            setupDivider()
             layoutDivider()
         }
     }
@@ -122,10 +118,10 @@ public class MenuItemView: UIView {
     }
     
     private func layoutDivider() {
-        var constraint = NSLayoutConstraint(item: dividerImage, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 1.0)
-        addConstraint(constraint)
-        constraint = NSLayoutConstraint(item: dividerImage, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        addConstraint(constraint)
+        let centerConstraint = NSLayoutConstraint(item: dividerImage, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 1.0)
+        addConstraint(centerConstraint)
+        let rightConstraint = NSLayoutConstraint(item: dividerImage, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        addConstraint(rightConstraint)
     }
 
     // MARK: - Size calculator
