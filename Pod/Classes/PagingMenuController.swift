@@ -427,7 +427,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     // MARK: - Gesture handler
     
     private func addTapGestureHandlers() {
-        menuView.menuItemViews.forEach { $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTapGesture:")) }
+        menuView.menuItemViews.forEach { $0.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PagingMenuController.handleTapGesture(_:)))) }
     }
     
     private func addSwipeGestureHandlersIfNeeded() {
@@ -438,11 +438,11 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         case .Infinite: break
         }
         
-        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: "handleSwipeGesture:")
+        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(PagingMenuController.handleSwipeGesture(_:)))
         leftSwipeGesture.direction = .Left
         menuView.panGestureRecognizer.requireGestureRecognizerToFail(leftSwipeGesture)
         menuView.addGestureRecognizer(leftSwipeGesture)
-        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: "handleSwipeGesture:")
+        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(PagingMenuController.handleSwipeGesture(_:)))
         rightSwipeGesture.direction = .Right
         menuView.panGestureRecognizer.requireGestureRecognizerToFail(rightSwipeGesture)
         menuView.addGestureRecognizer(rightSwipeGesture)
