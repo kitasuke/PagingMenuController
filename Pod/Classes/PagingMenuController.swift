@@ -271,18 +271,21 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     private func layoutMenuView() {
-        let viewsDictionary = ["menuView": menuView]
-        let metrics = ["height": options.menuHeight]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuView]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints: [NSLayoutConstraint]
+        // H:|[menuView]|
+        menuView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        menuView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        
         switch options.menuPosition {
         case .Top:
-            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[menuView(height)]", options: [], metrics: metrics, views: viewsDictionary)
+            // V:|[menuView]
+            menuView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
         case .Bottom:
-            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView(height)]|", options: [], metrics: metrics, views: viewsDictionary)
+            // V:[menuView]|
+            menuView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         }
         
-        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
+        // V:[menuView(height)]
+        menuView.heightAnchor.constraintEqualToConstant(options.menuHeight).active = true
         
         menuView.setNeedsLayout()
         menuView.layoutIfNeeded()
@@ -295,17 +298,20 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     private func layoutContentScrollView() {
-        let viewsDictionary = ["contentScrollView": contentScrollView, "menuView": menuView]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentScrollView]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints: [NSLayoutConstraint]
+        // H:|[contentScrollView]|
+        contentScrollView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
+        contentScrollView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        
         switch options.menuPosition {
         case .Top:
-            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView][contentScrollView]|", options: [], metrics: nil, views: viewsDictionary)
+            // V:[menuView][contentScrollView]|
+            menuView.bottomAnchor.constraintEqualToAnchor(contentScrollView.topAnchor, constant: 0).active = true
+            contentScrollView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         case .Bottom:
-            verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentScrollView][menuView]", options: [], metrics: nil, views: viewsDictionary)
+            // V:|[contentScrollView][menuView]
+            contentScrollView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
+            contentScrollView.bottomAnchor.constraintEqualToAnchor(menuView.topAnchor, constant: 0).active = true
         }
-        
-        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
     
     private func setupContentView() {
@@ -313,11 +319,14 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     private func layoutContentView() {
-        let viewsDictionary = ["contentView": contentView, "contentScrollView": contentScrollView]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==contentScrollView)]|", options: [], metrics: nil, views: viewsDictionary)
+        // H:|[contentView]|
+        contentView.leadingAnchor.constraintEqualToAnchor(contentScrollView.leadingAnchor).active = true
+        contentView.trailingAnchor.constraintEqualToAnchor(contentScrollView.trailingAnchor).active = true
         
-        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
+        // V:|[contentView(==contentScrollView)]|
+        contentView.topAnchor.constraintEqualToAnchor(contentScrollView.topAnchor).active = true
+        contentView.bottomAnchor.constraintEqualToAnchor(contentScrollView.bottomAnchor).active = true
+        contentView.heightAnchor.constraintEqualToAnchor(contentScrollView.heightAnchor).active = true
     }
     
     private func constructPagingViewControllers() {
@@ -356,49 +365,60 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     private func layoutPagingViewControllers() {
         // cleanup
         NSLayoutConstraint.deactivateConstraints(contentView.constraints)
-
-        var viewsDictionary: [String: AnyObject] = ["contentScrollView": contentScrollView]
+        
         for (index, pagingViewController) in pagingViewControllers.enumerate() {
             if !shouldLoadPage(index) {
                 continue
             }
             
-            viewsDictionary["pagingView"] = pagingViewController.view!
-            var horizontalVisualFormat = String()
+            let pagingView = pagingViewController.view
             
             // only one view controller
             if options.menuItemCount == options.minumumSupportedViewCount ||
                 options.lazyLoadingPage == .One {
-                horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]|"
+                // H:|[pagingView(==contentScrollView)]|
+                pagingView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
+                pagingView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true
+                pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor).active = true
             } else {
                 if case .Infinite = options.menuDisplayMode {
                     if index == currentPage {
-                        viewsDictionary["previousPagingView"] = pagingViewControllers[previousIndex].view
-                        viewsDictionary["nextPagingView"] = pagingViewControllers[nextIndex].view
-                        horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)][nextPagingView]"
+                        let previousPagingView = pagingViewControllers[previousIndex].view
+                        let nextPagingView = pagingViewControllers[nextIndex].view
+                        
+                        // H:[previousPagingView][pagingView][nextPagingView]
+                        previousPagingView.trailingAnchor.constraintEqualToAnchor(pagingView.leadingAnchor, constant: 0).active = true
+                        pagingView.trailingAnchor.constraintEqualToAnchor(nextPagingView.leadingAnchor, constant: 0).active = true
                     } else if index == previousIndex {
-                        horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]"
+                        // "H:|[pagingView]
+                        pagingView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
                     } else if index == nextIndex {
-                        horizontalVisualFormat = "H:[pagingView(==contentScrollView)]|"
+                        // H:[pagingView]|
+                        pagingView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true
                     }
+                    // H:[pagingView(==contentScrollView)]
+                    pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor).active = true
                 } else {
                     if index == 0 || index == previousIndex {
-                        horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]"
+                        pagingView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
                     } else {
-                        viewsDictionary["previousPagingView"] = pagingViewControllers[index - 1].view
+                        let previousPagingView = pagingViewControllers[index - 1].view
                         if index == pagingViewControllers.count - 1 || index == nextIndex {
-                            horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)]|"
-                        } else {
-                            horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)]"
+                            // H:[pagingView]|
+                            pagingView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true
                         }
+                        // H:[previousPagingView][pagingView]
+                        previousPagingView.trailingAnchor.constraintEqualToAnchor(pagingView.leadingAnchor, constant: 0).active = true
                     }
+                    // H:[pagingView(==contentScrollView)
+                    pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor).active = true
                 }
             }
             
-            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(horizontalVisualFormat, options: [], metrics: nil, views: viewsDictionary)
-            let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[pagingView(==contentScrollView)]|", options: [], metrics: nil, views: viewsDictionary)
-            
-            NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
+            // V:|[pagingView(==contentScrollView)]|
+            pagingView.topAnchor.constraintEqualToAnchor(contentView.topAnchor).active = true
+            pagingView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor).active = true
+            pagingView.heightAnchor.constraintEqualToAnchor(contentScrollView.heightAnchor).active = true
         }
 
         view.setNeedsLayout()

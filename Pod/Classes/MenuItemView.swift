@@ -92,17 +92,17 @@ public class MenuItemView: UIView {
     }
     
     private func layoutLabel() {
-        let viewsDictionary = ["label": titleLabel]
-        
         let labelSize = calculateLableSize()
-
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[label]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label]|", options: [], metrics: nil, views: viewsDictionary)
         
-        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
-        
-        widthLabelConstraint = NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: labelSize.width)
+        // H:|[titleLabel(==labelSize.width)]|
+        titleLabel.leadingAnchor.constraintEqualToAnchor(leadingAnchor).active = true
+        titleLabel.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
+        widthLabelConstraint = titleLabel.widthAnchor.constraintEqualToConstant(labelSize.width)
         widthLabelConstraint.active = true
+        
+        // V:|[titleLabel]|
+        titleLabel.topAnchor.constraintEqualToAnchor(topAnchor).active = true
+        titleLabel.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
     }
     
     // MARK: - Size calculator
