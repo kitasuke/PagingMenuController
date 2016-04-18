@@ -185,7 +185,8 @@ public class MenuView: UIScrollView {
     
     private func constructMenuItemViews(titles titles: [String]) {
         for i in 0..<options.menuItemCount {
-            let menuItemView = MenuItemView(title: titles[i], options: options)
+            let addDivider = i < options.menuItemCount - 1
+            let menuItemView = MenuItemView(title: titles[i], options: options, addDivider: addDivider)
             menuItemView.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(menuItemView)
             
