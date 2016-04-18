@@ -30,7 +30,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     }
     
     private var options: PagingMenuOptions!
-    private var currentPosition: PagingViewPosition = .Left
     private let visiblePagingViewNumber: Int = 3
     private let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
@@ -74,6 +73,40 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         return currentPage + 1 > options.menuItemCount - 1 ? 0 : currentPage + 1
     }
+    private var currentPagingViewPosition: PagingViewPosition {
+        let pageWidth = contentScrollView.frame.width
+        let order = Int(ceil((contentScrollView.contentOffset.x - pageWidth / 2) / pageWidth))
+        
+        if case .Infinite = options.menuDisplayMode {
+            return PagingViewPosition(order: order)
+        }
+        
+        // consider left edge menu as center position
+        guard currentPage == 0 && contentScrollView.contentSize.width < (pageWidth * CGFloat(visiblePagingViewNumber)) else { return PagingViewPosition(order: order) }
+        return PagingViewPosition(order: order + 1)
+    }
+    lazy private var targetPage: (Int) -> Int = {
+        guard case let .Standard(_, _, scrollingMode) = self.options.menuDisplayMode else { return $0 }
+        guard case .PagingEnabled = scrollingMode else { return $0 }
+        return $0 < self.currentPage ? self.currentPage - 1 : self.currentPage + 1
+    }
+    lazy private var shouldLoadPage: (Int) -> Bool = {
+        switch self.options.lazyLoadingPage {
+        case .One:
+            guard $0 == self.currentPage else { return false }
+        case .Three:
+            if case .Infinite = self.options.menuDisplayMode {
+                guard $0 == self.currentPage || $0 == self.previousIndex || $0 == self.nextIndex else { return false }
+            } else {
+                guard $0 >= self.previousIndex && $0 <= self.nextIndex else { return false }
+            }
+        }
+        return true
+    }
+    
+    lazy private var isVisiblePagingViewController: (UIViewController) -> Bool = {
+        return self.childViewControllers.contains($0)
+    }
     
     private let ExceptionName = "PMCException"
 
@@ -107,8 +140,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         menuView?.contentInset.top = 0
 
         // position paging views correctly after view size is decided
-        if let currentViewController = currentViewController {
-            contentScrollView.contentOffset.x = currentViewController.view!.frame.minX
+        if let currentViewController = currentViewController, let currentView = currentViewController.view {
+            contentScrollView.contentOffset.x = currentView.frame.minX
         }
     }
     
@@ -155,8 +188,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         layoutContentView()
         constructPagingViewControllers()
         layoutPagingViewControllers()
-
-        currentPosition = currentPagingViewPosition()
+        
         currentViewController = pagingViewControllers[currentPage]
         moveToMenuPage(currentPage, animated: false)
     }
@@ -194,7 +226,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
                 self!.view.setNeedsLayout()
                 self!.view.layoutIfNeeded()
                 
-                self!.currentPosition = self!.currentPagingViewPosition()
                 self!.delegate?.didMoveToPageMenuController?(self!.currentViewController, previousMenuController: previousViewController)
         }
     }
@@ -203,12 +234,10 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         guard scrollView.isEqual(contentScrollView) else { return }
-
-        let position = currentPagingViewPosition()
         
         // set new page number according to current moving direction
         let nextPage: Int
-        switch position {
+        switch currentPagingViewPosition {
         case .Left: nextPage = previousIndex
         case .Right: nextPage = nextIndex
         default: return
@@ -220,14 +249,15 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         currentPage = nextPage
         menuView.moveToMenu(page: currentPage, animated: true)
-        contentScrollView.contentOffset.x = currentViewController.view!.frame.minX
-
+        if let currentView = currentViewController.view {
+            contentScrollView.contentOffset.x = currentView.frame.minX
+        }
+        
         constructPagingViewControllers()
         layoutPagingViewControllers()
         view.setNeedsLayout()
         view.layoutIfNeeded()
-
-        currentPosition = currentPagingViewPosition()
+        
         delegate?.didMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
     }
     
@@ -237,8 +267,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         let tappedMenuView = recognizer.view as! MenuItemView
         guard let tappedPage = menuView.menuItemViews.indexOf(tappedMenuView) where tappedPage != currentPage else { return }
         
-        let page = targetPage(tappedPage: tappedPage)
-        moveToMenuPage(page, animated: true)
+        moveToMenuPage(targetPage(tappedPage), animated: true)
     }
     
     internal func handleSwipeGesture(recognizer: UISwipeGestureRecognizer) {
@@ -346,10 +375,14 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
                 continue
             }
             
-            pagingViewController.view!.frame = .zero
-            pagingViewController.view!.translatesAutoresizingMaskIntoConstraints = false
+            guard let pagingView = pagingViewController.view else {
+                fatalError("\(pagingViewController) doesn't have any view")
+            }
+            
+            pagingView.frame = .zero
+            pagingView.translatesAutoresizingMaskIntoConstraints = false
 
-            contentView.addSubview(pagingViewController.view!)
+            contentView.addSubview(pagingView)
             addChildViewController(pagingViewController as UIViewController)
             pagingViewController.didMoveToParentViewController(self)
             
@@ -470,45 +503,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             guard lastPage != previousIndex && lastPage != nextIndex else { return }
         }
         visiblePagingViewControllers.forEach { $0.view.alpha = 0 }
-    }
-
-    private func shouldLoadPage(index: Int) -> Bool {
-        switch options.lazyLoadingPage {
-        case .One:
-            guard index == currentPage else { return false }
-        case .Three:
-            if case .Infinite = options.menuDisplayMode {
-                guard index == currentPage || index == previousIndex || index == nextIndex else { return false }
-            } else {
-                guard index >= previousIndex && index <= nextIndex else { return false }
-            }
-        }
-        return true
-    }
-
-    private func isVisiblePagingViewController(pagingViewController: UIViewController) -> Bool {
-        return childViewControllers.contains(pagingViewController)
-    }
-    
-    // MARK: - Page calculator
-    
-    private func currentPagingViewPosition() -> PagingViewPosition {
-        let pageWidth = contentScrollView.frame.width
-        let order = Int(ceil((contentScrollView.contentOffset.x - pageWidth / 2) / pageWidth))
-        
-        if case .Infinite = options.menuDisplayMode {
-            return PagingViewPosition(order: order)
-        }
-        
-        // consider left edge menu as center position
-        guard currentPage == 0 && contentScrollView.contentSize.width < (pageWidth * CGFloat(visiblePagingViewNumber)) else { return PagingViewPosition(order: order) }
-        return PagingViewPosition(order: order + 1)
-    }
-    
-    private func targetPage(tappedPage tappedPage: Int) -> Int {
-        guard case let .Standard(_, _, scrollingMode) = options.menuDisplayMode else { return tappedPage }
-        guard case .PagingEnabled = scrollingMode else { return tappedPage }
-        return tappedPage < currentPage ? currentPage - 1 : currentPage + 1
     }
     
     // MARK: - Validator

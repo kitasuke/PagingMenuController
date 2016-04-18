@@ -39,6 +39,12 @@ public class MenuItemView: UIView {
         guard let text = titleLabel.text else { return .zero }
         return NSString(string: text).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: titleLabel.font], context: nil).size
     }
+    private let labelWidth: (CGSize, PagingMenuOptions.MenuItemWidthMode) -> CGFloat = { size, widthMode in
+        switch widthMode {
+        case .Flexible: return ceil(size.width)
+        case .Fixed(let width): return width
+        }
+    }
     private var horizontalMargin: CGFloat {
         switch options.menuDisplayMode {
         case .SegmentedControl: return 0.0
@@ -77,7 +83,7 @@ public class MenuItemView: UIView {
     internal func updateLabelConstraints(size size: CGSize) {
         // set width manually to support ratotaion
         if case .SegmentedControl = options.menuDisplayMode {
-            let labelSize = calculateLableSize(size: size)
+            let labelSize = calculateLableSize(size)
             widthLabelConstraint.constant = labelSize.width
         }
     }
@@ -116,27 +122,20 @@ public class MenuItemView: UIView {
     
     // MARK: - Size calculator
     
-    private func calculateLableSize(size size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
+    private func calculateLableSize(size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
         guard let text = titleLabel.text else { return .zero }
         
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
         case let .Standard(widthMode, _, _):
-            itemWidth = labelWidth(size: labelSize, widthMode: widthMode)
+            itemWidth = labelWidth(labelSize, widthMode)
         case .SegmentedControl:
             itemWidth = size.width / CGFloat(options.menuItemCount)
         case let .Infinite(widthMode):
-            itemWidth = labelWidth(size: labelSize, widthMode: widthMode)
+            itemWidth = labelWidth(labelSize, widthMode)
         }
         
         let itemHeight = floor(labelSize.height)
         return CGSizeMake(itemWidth + horizontalMargin * 2, itemHeight)
-    }
-    
-    private func labelWidth(size size: CGSize, widthMode: PagingMenuOptions.MenuItemWidthMode) -> CGFloat {
-        switch widthMode {
-        case .Flexible: return ceil(size.width)
-        case let .Fixed(width): return width
-        }
     }
 }
