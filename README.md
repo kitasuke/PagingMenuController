@@ -77,6 +77,10 @@ menuHeight: CGFloat
 ```Swift
 menuItemMargin: CGFloat
 ```
+* divider image to display right aligned in each menu item
+```Swift
+menuItemDividerImage: UIImage
+```
 * duration for menu item view animation
 ```Swift
 animationDuration: NSTimeInterval

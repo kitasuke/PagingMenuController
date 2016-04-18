@@ -18,12 +18,13 @@ public class MenuItemView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    public private(set) var dividerImage: UIImageView!
     private var options: PagingMenuOptions!
     private var widthLabelConstraint: NSLayoutConstraint!
     
     // MARK: - Lifecycle
     
-    internal init(title: String, options: PagingMenuOptions) {
+    internal init(title: String, options: PagingMenuOptions, addDivider: Bool) {
         super.init(frame: .zero)
         
         self.options = options
@@ -31,6 +32,11 @@ public class MenuItemView: UIView {
         setupView()
         setupLabel(title: title)
         layoutLabel()
+
+        if options.menuItemDividerImage != nil && addDivider {
+            setupDivider()
+            layoutDivider()
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -91,6 +97,12 @@ public class MenuItemView: UIView {
         addSubview(titleLabel)
     }
     
+    private func setupDivider() {
+        dividerImage = UIImageView(image: options.menuItemDividerImage)
+        dividerImage.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(dividerImage)
+    }
+
     private func layoutLabel() {
         let viewsDictionary = ["label": titleLabel]
         
@@ -105,6 +117,13 @@ public class MenuItemView: UIView {
         widthLabelConstraint.active = true
     }
     
+    private func layoutDivider() {
+        let centerConstraint = NSLayoutConstraint(item: dividerImage, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 1.0)
+        addConstraint(centerConstraint)
+        let rightConstraint = NSLayoutConstraint(item: dividerImage, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
+        addConstraint(rightConstraint)
+    }
+
     // MARK: - Size calculator
     
     private func calculateLableSize(size size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
