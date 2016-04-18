@@ -139,16 +139,14 @@ public class MenuItemView: UIView {
     private func layoutDivider() {
         guard let dividerImage = dividerImage else { return }
         
-        let centerConstraint = NSLayoutConstraint(item: dividerImage, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 1.0)
-        addConstraint(centerConstraint)
-        let rightConstraint = NSLayoutConstraint(item: dividerImage, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        addConstraint(rightConstraint)
+        dividerImage.centerYAnchor.constraintEqualToAnchor(centerYAnchor, constant: 1.0).active = true
+        dividerImage.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
     }
 
     // MARK: - Size calculator
     
     private func calculateLableSize(size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
-        guard let text = titleLabel.text else { return .zero }
+        guard let _ = titleLabel.text else { return .zero }
         
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
