@@ -16,7 +16,6 @@ import UIKit
 public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     
     public weak var delegate: PagingMenuControllerDelegate?
-    private var options: PagingMenuOptions!
     public private(set) var menuView: MenuView!
     public private(set) var currentPage: Int = 0
     public private(set) var currentViewController: UIViewController!
@@ -30,6 +29,9 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    private var options: PagingMenuOptions!
+    private var currentPosition: PagingViewPosition = .Left
+    private let visiblePagingViewNumber: Int = 3
     private let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.pagingEnabled = true
@@ -46,18 +48,13 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         return view
     }()
     private var menuItemTitles: [String] {
-        get {
-            return pagingViewControllers.map {
-                return $0.title ?? "Menu"
-            }
+        return pagingViewControllers.map {
+            return $0.title ?? "Menu"
         }
     }
     private enum PagingViewPosition {
-        case Left
-        case Center
-        case Right
-        case Unknown
-
+        case Left, Center, Right, Unknown
+        
         init(order: Int) {
             switch order {
             case 0: self = .Left
@@ -67,8 +64,6 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    private var currentPosition: PagingViewPosition = .Left
-    private let visiblePagingViewNumber: Int = 3
     private var previousIndex: Int {
         guard case .Infinite = options.menuDisplayMode else { return currentPage - 1 }
         
@@ -79,7 +74,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         
         return currentPage + 1 > options.menuItemCount - 1 ? 0 : currentPage + 1
     }
-
+    
     private let ExceptionName = "PMCException"
 
     // MARK: - Lifecycle
@@ -120,7 +115,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     override public func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
-        if menuView != nil {
+        if let menuView = menuView {
             menuView.updateMenuViewConstraints(size: size)
             
             coordinator.animateAlongsideTransition({ [weak self] (_) -> Void in
