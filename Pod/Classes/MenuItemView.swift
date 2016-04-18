@@ -18,6 +18,21 @@ public class MenuItemView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    public internal(set) var selected: Bool = false {
+        didSet {
+            if case .RoundRect = options.menuItemMode {
+                backgroundColor = UIColor.clearColor()
+            } else {
+                backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
+            }
+            titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
+            titleLabel.font = selected ? options.selectedFont : options.font
+            
+            // adjust label width if needed
+            let labelSize = calculateLableSize()
+            widthLabelConstraint.constant = labelSize.width
+        }
+    }
     private var options: PagingMenuOptions!
     private var widthLabelConstraint: NSLayoutConstraint!
     private var labelSize: CGSize {
@@ -65,22 +80,6 @@ public class MenuItemView: UIView {
             let labelSize = calculateLableSize(size: size)
             widthLabelConstraint.constant = labelSize.width
         }
-    }
-    
-    // MARK: - Label changer
-    
-    internal func focusLabel(selected selected: Bool) {
-        if case .RoundRect = options.menuItemMode {
-            backgroundColor = UIColor.clearColor()
-        } else {
-            backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
-        }
-        titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
-        titleLabel.font = selected ? options.selectedFont : options.font
-
-        // adjust label width if needed
-        let labelSize = calculateLableSize()
-        widthLabelConstraint.constant = labelSize.width
     }
     
     // MARK: - Constructor
