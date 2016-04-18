@@ -57,7 +57,6 @@ public class MenuView: UIScrollView {
     private var centerOfScreenWidth: CGFloat {
         return menuItemViews[currentPage].frame.midX - UIApplication.sharedApplication().keyWindow!.bounds.width / 2
     }
-    
     private var contentOffsetXForCurrentPage: CGFloat {
         guard menuItemViews.count > options.minumumSupportedViewCount else { return 0.0 }
         let ratio = CGFloat(currentPage) / CGFloat(menuItemViews.count - 1)
@@ -295,11 +294,13 @@ public class MenuView: UIScrollView {
     }
     
     private func focusMenuItem() {
+        let selected: (MenuItemView) -> Bool = { self.menuItemViews.indexOf($0) == self.currentPage }
+        
         // make selected item focused
-        menuItemViews.forEach { $0.focusLabel(selected: menuItemViews.indexOf($0) == currentPage) }
+        menuItemViews.forEach { $0.selected = selected($0) }
 
         // make selected item foreground
-        sortedMenuItemViews.forEach { $0.layer.zPosition = menuItemViews.indexOf($0) == currentPage ? 0 : -1 }
+        sortedMenuItemViews.forEach { $0.layer.zPosition = selected($0) ? 0 : -1 }
         
         setNeedsLayout()
         layoutIfNeeded()
