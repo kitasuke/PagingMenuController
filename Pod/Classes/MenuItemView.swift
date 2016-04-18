@@ -20,6 +20,16 @@ public class MenuItemView: UIView {
     }()
     private var options: PagingMenuOptions!
     private var widthLabelConstraint: NSLayoutConstraint!
+    private var labelSize: CGSize {
+        guard let text = titleLabel.text else { return .zero }
+        return NSString(string: text).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: titleLabel.font], context: nil).size
+    }
+    private var horizontalMargin: CGFloat {
+        switch options.menuDisplayMode {
+        case .SegmentedControl: return 0.0
+        default: return options.menuItemMargin
+        }
+    }
     
     // MARK: - Lifecycle
     
@@ -110,8 +120,6 @@ public class MenuItemView: UIView {
     private func calculateLableSize(size size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
         guard let text = titleLabel.text else { return .zero }
         
-        let labelSize = NSString(string: text).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: titleLabel.font], context: nil).size
-
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
         case let .Standard(widthMode, _, _):
@@ -123,7 +131,7 @@ public class MenuItemView: UIView {
         }
         
         let itemHeight = floor(labelSize.height)
-        return CGSizeMake(itemWidth + calculateHorizontalMargin() * 2, itemHeight)
+        return CGSizeMake(itemWidth + horizontalMargin * 2, itemHeight)
     }
     
     private func labelWidth(size size: CGSize, widthMode: PagingMenuOptions.MenuItemWidthMode) -> CGFloat {
@@ -131,12 +139,5 @@ public class MenuItemView: UIView {
         case .Flexible: return ceil(size.width)
         case let .Fixed(width): return width
         }
-    }
-    
-    private func calculateHorizontalMargin() -> CGFloat {
-        if case .SegmentedControl = options.menuDisplayMode {
-            return 0.0
-        }
-        return options.menuItemMargin
     }
 }
