@@ -62,6 +62,11 @@ public class MenuView: UIScrollView {
         let ratio = CGFloat(currentPage) / CGFloat(menuItemViews.count - 1)
         return (contentSize.width - frame.width) * ratio
     }
+    lazy private var rawIndex: (Int) -> Int = {
+        let count = self.options.menuItemCount
+        let startIndex = self.currentPage - count / 2
+        return (startIndex + $0 + count) % count
+    }
     
     // MARK: - Lifecycle
     
@@ -304,11 +309,5 @@ public class MenuView: UIScrollView {
         
         setNeedsLayout()
         layoutIfNeeded()
-    }
-    
-    private func rawIndex(sortedIndex: Int) -> Int {
-        let count = options.menuItemCount
-        let startIndex = currentPage - count / 2
-        return (startIndex + sortedIndex + count) % count
     }
 }
