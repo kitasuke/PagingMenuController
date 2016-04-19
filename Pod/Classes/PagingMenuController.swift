@@ -130,7 +130,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         
         // position properly for Infinite mode
-        menuView?.moveToMenu(page: currentPage, animated: false)
+        menuView?.moveToMenu(currentPage, animated: false)
     }
     
     override public func viewDidLayoutSubviews() {
@@ -160,7 +160,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
                 // reset selected menu item view position
                 switch self!.options.menuDisplayMode {
                 case .Standard, .Infinite:
-                    self!.menuView.moveToMenu(page: self!.currentPage, animated: true)
+                    self!.menuView.moveToMenu(self!.currentPage, animated: true)
                 default: break
                 }
                 }, completion: nil)
@@ -203,7 +203,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         delegate?.willMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
         
         currentPage = page
-        menuView.moveToMenu(page: currentPage, animated: animated)
+        menuView.moveToMenu(currentPage, animated: animated)
         
         // hide paging views if it's moving to far away
         hidePagingViewsIfNeeded(previousPage)
@@ -248,7 +248,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         delegate?.willMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
         
         currentPage = nextPage
-        menuView.moveToMenu(page: currentPage, animated: true)
+        menuView.moveToMenu(currentPage, animated: true)
         if let currentView = currentViewController.view {
             contentScrollView.contentOffset.x = currentView.frame.minX
         }

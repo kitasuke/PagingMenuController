@@ -97,7 +97,7 @@ public class MenuView: UIScrollView {
     
     // MARK: - Public method
     
-    internal func moveToMenu(page page: Int, animated: Bool) {
+    internal func moveToMenu(page: Int, animated: Bool) {
         let duration = animated ? options.animationDuration : 0
         currentPage = page
         
