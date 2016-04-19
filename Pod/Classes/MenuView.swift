@@ -11,9 +11,10 @@ import UIKit
 public class MenuView: UIScrollView {
     
     public private(set) var menuItemViews = [MenuItemView]()
+    public private(set) var currentPage: Int = 0
+    public private(set) var currentMenuItemView: MenuItemView!
     private var sortedMenuItemViews = [MenuItemView]()
     private var options: PagingMenuOptions!
-    private var currentPage: Int = 0
     
     private let contentView: UIView = {
         let view = UIView(frame: .zero)
@@ -96,7 +97,7 @@ public class MenuView: UIScrollView {
     
     // MARK: - Public method
     
-    internal func moveToMenu(page page: Int, animated: Bool) {
+    internal func moveToMenu(page: Int, animated: Bool) {
         let duration = animated ? options.animationDuration : 0
         currentPage = page
         
@@ -303,7 +304,12 @@ public class MenuView: UIScrollView {
         let selected: (MenuItemView) -> Bool = { self.menuItemViews.indexOf($0) == self.currentPage }
         
         // make selected item focused
-        menuItemViews.forEach { $0.selected = selected($0) }
+        menuItemViews.forEach {
+            $0.selected = selected($0)
+            if $0.selected {
+                self.currentMenuItemView = $0
+            }
+        }
 
         // make selected item foreground
         sortedMenuItemViews.forEach { $0.layer.zPosition = selected($0) ? 0 : -1 }
