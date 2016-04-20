@@ -86,8 +86,7 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
         return PagingViewPosition(order: order + 1)
     }
     lazy private var targetPage: (Int) -> Int = {
-        guard case let .Standard(_, _, scrollingMode) = self.options.menuDisplayMode else { return $0 }
-        guard case .PagingEnabled = scrollingMode else { return $0 }
+        guard case let .Standard(_, _, .PagingEnabled) = self.options.menuDisplayMode else { return $0 }
         return $0 < self.currentPage ? self.currentPage - 1 : self.currentPage + 1
     }
     lazy private var shouldLoadPage: (Int) -> Bool = {
@@ -461,9 +460,8 @@ public class PagingMenuController: UIViewController, UIScrollViewDelegate {
     private func addSwipeGestureHandlersIfNeeded() {
         switch options.menuDisplayMode {
         case .Standard(_, _, .PagingEnabled): break
-        case .Standard: return
-        case .SegmentedControl: return
-        case .Infinite: break
+        case .Infinite(_, .PagingEnabled): break
+        default: return
         }
         
         let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(PagingMenuController.handleSwipeGesture(_:)))
