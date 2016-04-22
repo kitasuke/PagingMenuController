@@ -148,7 +148,7 @@ public class MenuItemView: UIView {
     // MARK: - Size calculator
     
     private func calculateLableSize(size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
-        guard let text = titleLabel.text else { return .zero }
+        guard let _ = titleLabel.text else { return .zero }
         
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
