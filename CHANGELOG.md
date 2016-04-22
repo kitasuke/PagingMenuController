@@ -1,3 +1,19 @@
+# 0.9.0 Release notes (2016/04-21)
+
+### Enhancements
+
+- Supported Swift 2.2 thanks to @newbdez33 
+- Added `selected` property to `MenuItemView`
+- Added `menuItemDividerImage` option thanks to @bojanp 
+- Added `menuSelectedItemCenter` option thanks to @newbdez33 
+- Added `currentPage` and `currentMenuItemView` to `MenuView`
+- Added `MenuScrollingMode` to `Infinite` mode
+
+### Bug fixed
+
+- Fix app crash on iPad thanks to @pableiros 
+
+
 # 0.8.0 Release notes (2016/02-22)
 
 ### Enhancements
@@ -11,7 +27,7 @@
 
 ### Bug fixed
 
-- fix memory leaks
+- Fix memory leaks
 
 # 0.7.9 Release notes (2016/01-28)
 
