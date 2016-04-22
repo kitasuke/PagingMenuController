@@ -22,13 +22,14 @@ public class PagingMenuOptions {
     public var menuItemMargin: CGFloat = 20
     public var menuItemDividerImage: UIImage?
     public var animationDuration: NSTimeInterval = 0.3
-    public var deceleratingRate: CGFloat = UIScrollViewDecelerationRateNormal
+    public var deceleratingRate: CGFloat = UIScrollViewDecelerationRateFast
     public var menuDisplayMode = MenuDisplayMode.Standard(widthMode: PagingMenuOptions.MenuItemWidthMode.Flexible, centerItem: false, scrollingMode: PagingMenuOptions.MenuScrollingMode.PagingEnabled)
     public var menuSelectedItemCenter = true
     public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 0, verticalPadding: 0)
     public var lazyLoadingPage: LazyLoadingPage = .Three
     internal var menuItemCount = 0
     internal let minumumSupportedViewCount = 1
+    internal let dummyMenuItemViewsSet = 3
     
     public enum MenuPosition {
         case Top
@@ -49,7 +50,7 @@ public class PagingMenuOptions {
     public enum MenuDisplayMode {
         case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
         case SegmentedControl
-        case Infinite(widthMode: MenuItemWidthMode)
+        case Infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode)
     }
     
     public enum MenuItemMode {
