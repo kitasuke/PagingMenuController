@@ -156,7 +156,7 @@ public class MenuItemView: UIView {
             itemWidth = labelWidth(labelSize, widthMode)
         case .SegmentedControl:
             itemWidth = size.width / CGFloat(options.menuItemCount)
-        case let .Infinite(widthMode):
+        case let .Infinite(widthMode, _):
             itemWidth = labelWidth(labelSize, widthMode)
         }
         
