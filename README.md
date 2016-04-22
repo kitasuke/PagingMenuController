@@ -79,7 +79,7 @@ menuItemMargin: CGFloat
 ```
 * divider image to display right aligned in each menu item
 ```Swift
-menuItemDividerImage: UIImage
+menuItemDividerImage: UIImage?
 ```
 * duration for menu item view animation
 ```Swift
@@ -89,6 +89,10 @@ animationDuration: NSTimeInterval
 ```swift
 deceleratingRate: CGFloat
 ```
+* menu item position
+```swift
+menuSelectedItemCenter: Bool
+```
 * menu display mode and scrolling mode
 ```Swift
 menuDisplayMode: MenuDisplayMode
@@ -96,7 +100,7 @@ menuDisplayMode: MenuDisplayMode
 public enum MenuDisplayMode {
     case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
     case SegmentedControl
-    case Infinite(widthMode: MenuItemWidthMode) // Requires three paging views at least
+    case Infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode) // Requires three paging views at least
 }
 
 public enum MenuItemWidthMode {
