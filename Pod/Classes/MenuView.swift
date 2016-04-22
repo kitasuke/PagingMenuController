@@ -116,7 +116,7 @@ public class MenuView: UIScrollView {
         currentPage = page
         
         let menuItemView = menuItemViews[page]
-        let index = menuItemViews.indexOf(menuItemView)
+        let _ = menuItemViews.indexOf(menuItemView)
         
         // hide menu view when constructing itself
         if !animated {
