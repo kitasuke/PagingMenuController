@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  PagingMenuController: 5816eb234a33ad3ef8d4e3270435e70f966c3ef8
+  PagingMenuController: 227f1d1658e77394a90fae959dedc8b32f28a687
 
 COCOAPODS: 0.39.0
