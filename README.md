@@ -210,7 +210,7 @@ iOS8+
 Swift 2.0+  
 Xcode 7.3+  
 
-* Please use 0.8.0 tag for Swift 1.2
+*Please use 0.8.0 tag for Swift 1.2*
 
 ## Installation
 
