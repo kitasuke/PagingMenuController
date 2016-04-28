@@ -86,10 +86,11 @@ public class PagingMenuController: UIViewController {
         return PagingViewPosition(order: order + 1)
     }
     lazy private var shouldLoadPage: (Int) -> Bool = {
-        switch self.options.lazyLoadingPage {
-        case .One:
+        switch (self.options.menuControllerSet, self.options.lazyLoadingPage) {
+        case (.Single, _),
+             (_, .One):
             guard $0 == self.currentPage else { return false }
-        case .Three:
+        case (_, .Three):
             if case .Infinite = self.options.menuDisplayMode {
                 guard $0 == self.currentPage || $0 == self.previousIndex || $0 == self.nextIndex else { return false }
             } else {
@@ -116,7 +117,7 @@ public class PagingMenuController: UIViewController {
     convenience public init(viewControllers: [UIViewController]) {
         self.init(viewControllers: viewControllers, options: PagingMenuOptions())
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -388,7 +389,8 @@ public class PagingMenuController: UIViewController {
             
             // only one view controller
             if options.menuItemCount == options.minumumSupportedViewCount ||
-                options.lazyLoadingPage == .One {
+                options.lazyLoadingPage == .One ||
+                options.menuControllerSet == .Single {
                 horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]|"
             } else {
                 if case .Infinite = options.menuDisplayMode {
