@@ -1,3 +1,9 @@
+# 0.9.1 Release notes (2016/04-27)
+
+### Bug fixed
+
+- Fix incorrect menu controller pass
+
 # 0.9.0 Release notes (2016/04-21)
 
 ### Enhancements

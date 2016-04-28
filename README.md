@@ -207,8 +207,10 @@ It creates a new paging menu controller. Do not forget to cleanup properties in 
 ## Requirements
 
 iOS8+  
-Swift 1.2+  
-Xcode 6.3+  
+Swift 2.0+  
+Xcode 7.3+  
+
+*Please use 0.8.0 tag for Swift 1.2*
 
 ## Installation
 
