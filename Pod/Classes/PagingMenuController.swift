@@ -212,9 +212,8 @@ public class PagingMenuController: UIViewController {
         }
         
         let previousViewController = currentViewController
-        delegate?.willMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
-        
         updateCurrentPage(page)
+        delegate?.willMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
         
         menuView.moveToMenu(page, animated: animated)
         
