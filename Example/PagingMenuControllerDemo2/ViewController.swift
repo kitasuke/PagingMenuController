@@ -28,9 +28,18 @@ class ViewController: UIViewController {
         options.menuItemMargin = 5
         options.menuHeight = 60
         options.menuDisplayMode = .SegmentedControl
+        options.menuComponentType = .Separated
         let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
-        pagingMenuController.view.frame.origin.y += 64
-        pagingMenuController.view.frame.size.height -= 64
+        pagingMenuController.view.frame.origin.y += 64 + options.menuHeight
+        pagingMenuController.view.frame.size.height -= 64 - options.menuHeight
+        
+        let menuView = pagingMenuController.menuView
+        view.addSubview(menuView)
+        
+        let viewsDictionary = ["menuView": menuView]
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuView]|", options: [], metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-64-[menuView]", options: [], metrics: nil, views: viewsDictionary)
+        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
         
         addChildViewController(pagingMenuController)
         view.addSubview(pagingMenuController.view)
