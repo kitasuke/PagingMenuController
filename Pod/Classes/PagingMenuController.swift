@@ -299,8 +299,12 @@ public class PagingMenuController: UIViewController {
     
     private func layoutMenuView() {
         // H:|[menuView]|
-        menuView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        menuView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        // V:[menuView(height)]
+        NSLayoutConstraint.activateConstraints([
+            menuView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor),
+            menuView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor),
+            menuView.heightAnchor.constraintEqualToConstant(options.menuHeight)
+            ])
         
         switch options.menuPosition {
         case .Top:
@@ -310,9 +314,6 @@ public class PagingMenuController: UIViewController {
             // V:[menuView]|
             menuView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
         }
-        
-        // V:[menuView(height)]
-        menuView.heightAnchor.constraintEqualToConstant(options.menuHeight).active = true
         
         menuView.setNeedsLayout()
         menuView.layoutIfNeeded()
@@ -326,18 +327,24 @@ public class PagingMenuController: UIViewController {
     
     private func layoutContentScrollView() {
         // H:|[contentScrollView]|
-        contentScrollView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor).active = true
-        contentScrollView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor).active = true
+        NSLayoutConstraint.activateConstraints([
+            contentScrollView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor),
+            contentScrollView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor)
+            ])
         
         switch options.menuPosition {
         case .Top:
             // V:[menuView][contentScrollView]|
-            menuView.bottomAnchor.constraintEqualToAnchor(contentScrollView.topAnchor, constant: 0).active = true
-            contentScrollView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor).active = true
+            NSLayoutConstraint.activateConstraints([
+                menuView.bottomAnchor.constraintEqualToAnchor(contentScrollView.topAnchor, constant: 0),
+                contentScrollView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor)
+                ])
         case .Bottom:
             // V:|[contentScrollView][menuView]
-            contentScrollView.topAnchor.constraintEqualToAnchor(view.topAnchor).active = true
-            contentScrollView.bottomAnchor.constraintEqualToAnchor(menuView.topAnchor, constant: 0).active = true
+            NSLayoutConstraint.activateConstraints([
+                contentScrollView.topAnchor.constraintEqualToAnchor(view.topAnchor),
+                contentScrollView.bottomAnchor.constraintEqualToAnchor(menuView.topAnchor, constant: 0)
+                ])
         }
     }
     
@@ -347,13 +354,14 @@ public class PagingMenuController: UIViewController {
     
     private func layoutContentView() {
         // H:|[contentView]|
-        contentView.leadingAnchor.constraintEqualToAnchor(contentScrollView.leadingAnchor).active = true
-        contentView.trailingAnchor.constraintEqualToAnchor(contentScrollView.trailingAnchor).active = true
-        
         // V:|[contentView(==contentScrollView)]|
-        contentView.topAnchor.constraintEqualToAnchor(contentScrollView.topAnchor).active = true
-        contentView.bottomAnchor.constraintEqualToAnchor(contentScrollView.bottomAnchor).active = true
-        contentView.heightAnchor.constraintEqualToAnchor(contentScrollView.heightAnchor).active = true
+        NSLayoutConstraint.activateConstraints([
+            contentView.leadingAnchor.constraintEqualToAnchor(contentScrollView.leadingAnchor),
+            contentView.trailingAnchor.constraintEqualToAnchor(contentScrollView.trailingAnchor),
+            contentView.topAnchor.constraintEqualToAnchor(contentScrollView.topAnchor),
+            contentView.bottomAnchor.constraintEqualToAnchor(contentScrollView.bottomAnchor),
+            contentView.heightAnchor.constraintEqualToAnchor(contentScrollView.heightAnchor)
+            ])
     }
     
     private func constructPagingViewControllers() {
@@ -409,9 +417,11 @@ public class PagingMenuController: UIViewController {
                 options.lazyLoadingPage == .One ||
                 options.menuControllerSet == .Single {
                 // H:|[pagingView(==contentScrollView)]|
-                pagingView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
-                pagingView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true
-                pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor).active = true
+                NSLayoutConstraint.activateConstraints([
+                    pagingView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor),
+                    pagingView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor),
+                    pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor)
+                    ])
             } else {
                 if case .Infinite = options.menuDisplayMode {
                     if index == currentPage {
@@ -419,8 +429,10 @@ public class PagingMenuController: UIViewController {
                         let nextPagingView = pagingViewControllers[nextIndex].view
                         
                         // H:[previousPagingView][pagingView][nextPagingView]
-                        previousPagingView.trailingAnchor.constraintEqualToAnchor(pagingView.leadingAnchor, constant: 0).active = true
-                        pagingView.trailingAnchor.constraintEqualToAnchor(nextPagingView.leadingAnchor, constant: 0).active = true
+                        NSLayoutConstraint.activateConstraints([
+                            previousPagingView.trailingAnchor.constraintEqualToAnchor(pagingView.leadingAnchor, constant: 0),
+                            pagingView.trailingAnchor.constraintEqualToAnchor(nextPagingView.leadingAnchor, constant: 0)
+                            ])
                     } else if index == previousIndex {
                         // "H:|[pagingView]
                         pagingView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
@@ -448,9 +460,11 @@ public class PagingMenuController: UIViewController {
             }
             
             // V:|[pagingView(==contentScrollView)]|
-            pagingView.topAnchor.constraintEqualToAnchor(contentView.topAnchor).active = true
-            pagingView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor).active = true
-            pagingView.heightAnchor.constraintEqualToAnchor(contentScrollView.heightAnchor).active = true
+            NSLayoutConstraint.activateConstraints([
+                pagingView.topAnchor.constraintEqualToAnchor(contentView.topAnchor),
+                pagingView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor),
+                pagingView.heightAnchor.constraintEqualToAnchor(contentScrollView.heightAnchor)
+                ])
         }
 
         view.setNeedsLayout()

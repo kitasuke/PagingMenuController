@@ -167,22 +167,19 @@ public class MenuItemView: UIView {
         let labelSize = calculateLableSize()
         
         // H:|[titleLabel(==labelSize.width)]|
-        titleLabel.leadingAnchor.constraintEqualToAnchor(leadingAnchor).active = true
-        titleLabel.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
-        widthLabelConstraint = titleLabel.widthAnchor.constraintEqualToConstant(labelSize.width)
-        widthLabelConstraint.active = true
-        
         // V:|[titleLabel]|
-        titleLabel.topAnchor.constraintEqualToAnchor(topAnchor).active = true
-        titleLabel.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
+        widthConstraint = titleLabel.widthAnchor.constraintEqualToConstant(labelSize.width)
+        NSLayoutConstraint.activateConstraints([
+            titleLabel.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
+            titleLabel.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
+            widthConstraint,
+            titleLabel.topAnchor.constraintEqualToAnchor(topAnchor),
+            titleLabel.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
+            ])
     }
     
     private func layoutImageView() {
         guard let image = menuImageView.image else { return }
-        
-        // H:|[menuImageView(image.size.width)]|
-        menuImageView.leadingAnchor.constraintEqualToAnchor(leadingAnchor).active = true
-        menuImageView.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
         
         let width: CGFloat
         switch options.menuDisplayMode {
@@ -191,16 +188,24 @@ public class MenuItemView: UIView {
         }
         widthConstraint = menuImageView.widthAnchor.constraintEqualToConstant(width)
         
+        // H:|[menuImageView(image.size.width)]|
         // V:|[menuImageView(image.size.height)]|
-        menuImageView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
-        menuImageView.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
+        NSLayoutConstraint.activateConstraints([
+            menuImageView.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
+            menuImageView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
+            widthConstraint,
+            menuImageView.topAnchor.constraintEqualToAnchor(topAnchor),
+            menuImageView.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
+            ])
     }
     
     private func layoutDivider() {
         guard let dividerImageView = dividerImageView else { return }
         
-        dividerImageView.centerYAnchor.constraintEqualToAnchor(centerYAnchor, constant: 1.0).active = true
-        dividerImageView.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
+        NSLayoutConstraint.activateConstraints([
+            dividerImageView.centerYAnchor.constraintEqualToAnchor(centerYAnchor, constant: 1.0),
+            dividerImageView.trailingAnchor.constraintEqualToAnchor(trailingAnchor)
+            ])
     }
 
     // MARK: - Size calculator

@@ -205,13 +205,14 @@ public class MenuView: UIScrollView {
     
     private func layoutContentView() {
         // H:|[contentView]|
-        contentView.leadingAnchor.constraintEqualToAnchor(leadingAnchor).active = true
-        contentView.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
-        
         // V:|[contentView(==scrollView)]|
-        contentView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
-        contentView.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
-        contentView.heightAnchor.constraintEqualToAnchor(heightAnchor).active = true
+        NSLayoutConstraint.activateConstraints([
+            contentView.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
+            contentView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
+            contentView.topAnchor.constraintEqualToAnchor(topAnchor),
+            contentView.bottomAnchor.constraintEqualToAnchor(bottomAnchor),
+            contentView.heightAnchor.constraintEqualToAnchor(heightAnchor)
+            ])
     }
     
     private func constructMenuItemViews(titles: [String]) {
@@ -268,8 +269,10 @@ public class MenuView: UIScrollView {
             }
             
             // V:|[menuItemView]|
-            menuItemView.topAnchor.constraintEqualToAnchor(contentView.topAnchor).active = true
-            menuItemView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor).active = true
+            NSLayoutConstraint.activateConstraints([
+                menuItemView.topAnchor.constraintEqualToAnchor(contentView.topAnchor),
+                menuItemView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor)
+                ])
         }
         
         setNeedsLayout()
