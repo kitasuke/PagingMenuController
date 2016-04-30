@@ -51,6 +51,11 @@ public class PagingMenuController: UIViewController {
             return $0.title ?? "Menu"
         }
     }
+    private var menuItemImages: [UIImage] {
+        return pagingViewControllers.map {
+            return $0.menuItemImage ?? UIImage()
+        }
+    }
     private enum PagingViewPosition {
         case Left, Center, Right, Unknown
         
@@ -278,7 +283,12 @@ public class PagingMenuController: UIViewController {
     // MARK: - Constructor
     
     private func constructMenuView() {
-        menuView = MenuView(menuItemTitles: menuItemTitles, options: options)
+        options.menuItemViewContent = pagingViewControllers.flatMap({ $0.menuItemImage }).isEmpty ? .Text : .Image
+        switch options.menuItemViewContent {
+        case .Text: menuView = MenuView(menuItemTitles: menuItemTitles, options: options)
+        case .Image: menuView = MenuView(menuItemImages: menuItemImages, options: options)
+        }
+        
         menuView.delegate = self
         menuView.translatesAutoresizingMaskIntoConstraints = false
         
