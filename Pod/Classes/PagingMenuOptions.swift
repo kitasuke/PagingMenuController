@@ -31,6 +31,7 @@ public class PagingMenuOptions {
     internal var menuItemCount = 0
     internal let minumumSupportedViewCount = 1
     internal let dummyMenuItemViewsSet = 3
+    internal var menuItemViewContent: MenuItemViewContent = .Text
     
     public enum MenuPosition {
         case Top
@@ -68,6 +69,10 @@ public class PagingMenuOptions {
     public enum MenuControllerSet {
         case Single
         case Multiple
+    }
+    
+    internal enum MenuItemViewContent {
+        case Text, Image
     }
     
     public init() {}
