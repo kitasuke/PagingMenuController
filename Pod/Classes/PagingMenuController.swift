@@ -51,6 +51,11 @@ public class PagingMenuController: UIViewController {
             return $0.title ?? "Menu"
         }
     }
+    private var menuItemImages: [UIImage] {
+        return pagingViewControllers.map {
+            return $0.menuItemImage ?? UIImage()
+        }
+    }
     private enum PagingViewPosition {
         case Left, Center, Right, Unknown
         
@@ -86,10 +91,11 @@ public class PagingMenuController: UIViewController {
         return PagingViewPosition(order: order + 1)
     }
     lazy private var shouldLoadPage: (Int) -> Bool = {
-        switch self.options.lazyLoadingPage {
-        case .One:
+        switch (self.options.menuControllerSet, self.options.lazyLoadingPage) {
+        case (.Single, _),
+             (_, .One):
             guard $0 == self.currentPage else { return false }
-        case .Three:
+        case (_, .Three):
             if case .Infinite = self.options.menuDisplayMode {
                 guard $0 == self.currentPage || $0 == self.previousIndex || $0 == self.nextIndex else { return false }
             } else {
@@ -116,7 +122,7 @@ public class PagingMenuController: UIViewController {
     convenience public init(viewControllers: [UIViewController]) {
         self.init(viewControllers: viewControllers, options: PagingMenuOptions())
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -277,7 +283,12 @@ public class PagingMenuController: UIViewController {
     // MARK: - Constructor
     
     private func constructMenuView() {
-        menuView = MenuView(menuItemTitles: menuItemTitles, options: options)
+        options.menuItemViewContent = pagingViewControllers.flatMap({ $0.menuItemImage }).isEmpty ? .Text : .Image
+        switch options.menuItemViewContent {
+        case .Text: menuView = MenuView(menuItemTitles: menuItemTitles, options: options)
+        case .Image: menuView = MenuView(menuItemImages: menuItemImages, options: options)
+        }
+        
         menuView.delegate = self
         menuView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(menuView)
@@ -395,7 +406,8 @@ public class PagingMenuController: UIViewController {
             
             // only one view controller
             if options.menuItemCount == options.minumumSupportedViewCount ||
-                options.lazyLoadingPage == .One {
+                options.lazyLoadingPage == .One ||
+                options.menuControllerSet == .Single {
                 // H:|[pagingView(==contentScrollView)]|
                 pagingView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor).active = true
                 pagingView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor).active = true

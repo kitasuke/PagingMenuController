@@ -10,13 +10,19 @@ import UIKit
 
 public class MenuItemView: UIView {
     
-    public let titleLabel: UILabel = {
-        let label = UILabel()
+    lazy public var titleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
         label.numberOfLines = 1
         label.textAlignment = .Center
         label.userInteractionEnabled = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    lazy public var menuImageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.userInteractionEnabled = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     public internal(set) var selected: Bool = false {
         didSet {
@@ -25,21 +31,26 @@ public class MenuItemView: UIView {
             } else {
                 backgroundColor = selected ? options.selectedBackgroundColor : options.backgroundColor
             }
-            titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
-            titleLabel.font = selected ? options.selectedFont : options.font
             
-            // adjust label width if needed
-            let labelSize = calculateLableSize()
-            widthLabelConstraint.constant = labelSize.width
+            switch options.menuItemViewContent {
+            case .Text:
+                titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
+                titleLabel.font = selected ? options.selectedFont : options.font
+                
+                // adjust label width if needed
+                let labelSize = calculateLableSize()
+                widthConstraint.constant = labelSize.width
+            case .Image: break
+            }
         }
     }
-    lazy public private(set) var dividerImage: UIImageView? = {
-        let image = UIImageView(image: self.options.menuItemDividerImage)
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
+    lazy public private(set) var dividerImageView: UIImageView? = {
+        let imageView = UIImageView(image: self.options.menuItemDividerImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     private var options: PagingMenuOptions!
-    private var widthLabelConstraint: NSLayoutConstraint!
+    private var widthConstraint: NSLayoutConstraint!
     private var labelSize: CGSize {
         guard let text = titleLabel.text else { return .zero }
         return NSString(string: text).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: titleLabel.font], context: nil).size
@@ -61,13 +72,29 @@ public class MenuItemView: UIView {
     
     internal init(title: String, options: PagingMenuOptions, addDivider: Bool) {
         super.init(frame: .zero)
-        
         self.options = options
         
+        commonInit(addDivider) {
+            self.setupLabel(title)
+            self.layoutLabel()
+        }
+    }
+    
+    internal init(image: UIImage, options: PagingMenuOptions, addDivider: Bool) {
+        super.init(frame: .zero)
+        self.options = options
+        
+        commonInit(addDivider) {
+            self.setupImageView(image)
+            self.layoutImageView()
+        }
+    }
+    
+    private func commonInit(addDivider: Bool, setup: () -> Void) {
         setupView()
-        setupLabel(title: title)
-        layoutLabel()
-
+        
+        setup()
+        
         if let _ = options.menuItemDividerImage where addDivider {
             setupDivider()
             layoutDivider()
@@ -85,16 +112,25 @@ public class MenuItemView: UIView {
     // MARK: - Cleanup
     
     internal func cleanup() {
-        titleLabel.removeFromSuperview()
+        switch options.menuItemViewContent {
+        case .Text: titleLabel.removeFromSuperview()
+        case .Image: menuImageView.removeFromSuperview()
+        }
+        
+        dividerImageView?.removeFromSuperview()
     }
     
     // MARK: - Constraints manager
     
-    internal func updateLabelConstraints(size size: CGSize) {
+    internal func updateConstraints(size: CGSize) {
         // set width manually to support ratotaion
-        if case .SegmentedControl = options.menuDisplayMode {
+        switch (options.menuDisplayMode, options.menuItemViewContent) {
+        case (.SegmentedControl, .Text):
             let labelSize = calculateLableSize(size)
-            widthLabelConstraint.constant = labelSize.width
+            widthConstraint.constant = labelSize.width
+        case (.SegmentedControl, .Image):
+            widthConstraint.constant = size.width / CGFloat(options.menuItemCount)
+        default: break
         }
     }
     
@@ -109,17 +145,22 @@ public class MenuItemView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func setupLabel(title title: String) {
+    private func setupLabel(title: String) {
         titleLabel.text = title
         titleLabel.textColor = options.textColor
         titleLabel.font = options.font
         addSubview(titleLabel)
     }
     
+    private func setupImageView(image: UIImage) {
+        menuImageView.image = image
+        addSubview(menuImageView)
+    }
+    
     private func setupDivider() {
-        guard let dividerImage = dividerImage else { return }
+        guard let dividerImageView = dividerImageView else { return }
         
-        addSubview(dividerImage)
+        addSubview(dividerImageView)
     }
 
     private func layoutLabel() {
@@ -136,11 +177,30 @@ public class MenuItemView: UIView {
         titleLabel.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
     }
     
-    private func layoutDivider() {
-        guard let dividerImage = dividerImage else { return }
+    private func layoutImageView() {
+        guard let image = menuImageView.image else { return }
         
-        dividerImage.centerYAnchor.constraintEqualToAnchor(centerYAnchor, constant: 1.0).active = true
-        dividerImage.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
+        // H:|[menuImageView(image.size.width)]|
+        menuImageView.leadingAnchor.constraintEqualToAnchor(leadingAnchor).active = true
+        menuImageView.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
+        
+        let width: CGFloat
+        switch options.menuDisplayMode {
+        case .SegmentedControl: width = UIApplication.sharedApplication().keyWindow!.bounds.size.width / CGFloat(options.menuItemCount)
+        default: width = image.size.width
+        }
+        widthConstraint = menuImageView.widthAnchor.constraintEqualToConstant(width)
+        
+        // V:|[menuImageView(image.size.height)]|
+        menuImageView.topAnchor.constraintEqualToAnchor(topAnchor).active = true
+        menuImageView.bottomAnchor.constraintEqualToAnchor(bottomAnchor).active = true
+    }
+    
+    private func layoutDivider() {
+        guard let dividerImageView = dividerImageView else { return }
+        
+        dividerImageView.centerYAnchor.constraintEqualToAnchor(centerYAnchor, constant: 1.0).active = true
+        dividerImageView.trailingAnchor.constraintEqualToAnchor(trailingAnchor).active = true
     }
 
     // MARK: - Size calculator
