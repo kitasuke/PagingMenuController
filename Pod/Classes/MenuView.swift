@@ -89,12 +89,22 @@ public class MenuView: UIScrollView {
         super.init(frame: .zero)
         
         self.options = options
+        commonInit({ self.constructMenuItemViews(menuItemTitles) })
+    }
+    
+    internal init(menuItemImages: [UIImage], options: PagingMenuOptions) {
+        super.init(frame: .zero)
         
+        self.options = options
+        commonInit({ self.constructMenuItemViews(menuItemImages) })
+    }
+    
+    private func commonInit(constructor: () -> Void) {
         setupScrollView()
         setupContentView()
         layoutContentView()
         setupRoundRectViewIfNeeded()
-        constructMenuItemViews(titles: menuItemTitles)
+        constructor()
         layoutMenuItemViews()
         setupUnderlineViewIfNeeded()
     }
@@ -151,7 +161,7 @@ public class MenuView: UIScrollView {
     
     internal func updateMenuViewConstraints(size size: CGSize) {
         if case .SegmentedControl = options.menuDisplayMode {
-            menuItemViews.forEach { $0.updateLabelConstraints(size: size) }
+            menuItemViews.forEach { $0.updateConstraints(size) }
         }
         contentView.setNeedsLayout()
         contentView.layoutIfNeeded()
@@ -201,10 +211,18 @@ public class MenuView: UIScrollView {
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
     
-    private func constructMenuItemViews(titles titles: [String]) {
-        for i in 0..<menuItemCount {
-            let addDivider = i < menuItemCount - 1
-            let menuItemView = MenuItemView(title: titles[i % options.menuItemCount], options: options, addDivider: addDivider)
+    private func constructMenuItemViews(titles: [String]) {
+        constructMenuItemViews({ MenuItemView(title: titles[$0], options: self.options, addDivider: $1) })
+    }
+    
+    private func constructMenuItemViews(images: [UIImage]) {
+        constructMenuItemViews({ MenuItemView(image: images[$0], options: self.options, addDivider: $1) })
+    }
+    
+    private func constructMenuItemViews(constructor: (Int, Bool) -> MenuItemView) {
+        for index in 0..<menuItemCount {
+            let addDivider = index < menuItemCount - 1
+            let menuItemView = constructor(index % options.menuItemCount, addDivider)
             menuItemView.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(menuItemView)
             

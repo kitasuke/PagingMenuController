@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC7AD8791CD487D200A1B30D /* UIViewController+MenuItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7AD8781CD487D200A1B30D /* UIViewController+MenuItemImage.swift */; };
 		ECE5306D1B6DEB18001CF201 /* PagingMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = ECE5306C1B6DEB18001CF201 /* PagingMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECE530871B6DEB68001CF201 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE530831B6DEB68001CF201 /* MenuItemView.swift */; };
 		ECE530881B6DEB68001CF201 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE530841B6DEB68001CF201 /* MenuView.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC7AD8781CD487D200A1B30D /* UIViewController+MenuItemImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+MenuItemImage.swift"; path = "Pod/Classes/UIViewController+MenuItemImage.swift"; sourceTree = SOURCE_ROOT; };
 		ECE530671B6DEB18001CF201 /* PagingMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PagingMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECE5306B1B6DEB18001CF201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECE5306C1B6DEB18001CF201 /* PagingMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingMenuController.h; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				ECE530841B6DEB68001CF201 /* MenuView.swift */,
 				ECE530851B6DEB68001CF201 /* PagingMenuController.swift */,
 				ECE530861B6DEB68001CF201 /* PagingMenuOptions.swift */,
+				EC7AD8781CD487D200A1B30D /* UIViewController+MenuItemImage.swift */,
 				ECE5306C1B6DEB18001CF201 /* PagingMenuController.h */,
 				ECE5306A1B6DEB18001CF201 /* Supporting Files */,
 			);
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECE530871B6DEB68001CF201 /* MenuItemView.swift in Sources */,
+				EC7AD8791CD487D200A1B30D /* UIViewController+MenuItemImage.swift in Sources */,
 				ECE5308A1B6DEB68001CF201 /* PagingMenuOptions.swift in Sources */,
 				ECE530891B6DEB68001CF201 /* PagingMenuController.swift in Sources */,
 				ECE530881B6DEB68001CF201 /* MenuView.swift in Sources */,
