@@ -90,7 +90,7 @@ public class PagingMenuController: UIViewController {
         guard currentPage == 0 && contentScrollView.contentSize.width < (pageWidth * CGFloat(visiblePagingViewNumber)) else { return PagingViewPosition(order: order) }
         return PagingViewPosition(order: order + 1)
     }
-    lazy private var shouldLoadPage: (Int) -> Bool = {
+    lazy private var shouldLoadPage: (Int) -> Bool = { [unowned self] in
         switch (self.options.menuControllerSet, self.options.lazyLoadingPage) {
         case (.Single, _),
              (_, .One):
@@ -105,7 +105,7 @@ public class PagingMenuController: UIViewController {
         return true
     }
     
-    lazy private var isVisiblePagingViewController: (UIViewController) -> Bool = {
+    lazy private var isVisiblePagingViewController: (UIViewController) -> Bool = { [unowned self] in
         return self.childViewControllers.contains($0)
     }
     
@@ -153,16 +153,14 @@ public class PagingMenuController: UIViewController {
         if let menuView = menuView {
             menuView.updateMenuViewConstraints(size: size)
             
-            coordinator.animateAlongsideTransition({ [weak self] (_) -> Void in
-                guard let _ = self else { return }
-                
-                self!.view.setNeedsLayout()
-                self!.view.layoutIfNeeded()
+            coordinator.animateAlongsideTransition({ [unowned self] (_) -> Void in
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
                 
                 // reset selected menu item view position
-                switch self!.options.menuDisplayMode {
+                switch self.options.menuDisplayMode {
                 case .Standard, .Infinite:
-                    self!.moveToMenuPage(self!.currentPage, animated: true)
+                    self.moveToMenuPage(self.currentPage, animated: true)
                 default: break
                 }
                 }, completion: nil)
@@ -225,11 +223,9 @@ public class PagingMenuController: UIViewController {
         
         let duration = animated ? options.animationDuration : 0
         UIView.animateWithDuration(duration, animations: {
-            [weak self] () -> Void in
-            guard let _ = self else { return }
-            
-            if let currentView = self!.currentViewController.view {
-                self!.contentScrollView.contentOffset.x = currentView.frame.minX
+            [unowned self] () -> Void in
+            if let currentView = self.currentViewController.view {
+                self .contentScrollView.contentOffset.x = currentView.frame.minX
             }
             }) { [weak self] (_) -> Void in
                 guard let _ = self else { return }
