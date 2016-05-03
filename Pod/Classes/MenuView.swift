@@ -132,12 +132,10 @@ public class MenuView: UIScrollView {
         if !animated {
             alpha = 0
         }
-        UIView.animateWithDuration(duration, animations: { [weak self] () -> Void in
-            guard let _ = self else { return }
-            
-            self!.focusMenuItem()
-            if self!.options.menuSelectedItemCenter {
-                self!.positionMenuItemViews()
+        UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
+            self.focusMenuItem()
+            if self.options.menuSelectedItemCenter {
+                self.positionMenuItemViews()
             }
         }) { [weak self] (_) in
             guard let _ = self else { return }
