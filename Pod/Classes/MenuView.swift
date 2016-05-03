@@ -77,7 +77,7 @@ public class MenuView: UIScrollView {
         let ratio = CGFloat(currentPage) / CGFloat(menuItemCount - 1)
         return (contentSize.width - frame.width) * ratio
     }
-    lazy private var rawIndex: (Int) -> Int = {
+    lazy private var rawIndex: (Int) -> Int = { [unowned self] in
         let count = self.menuItemCount
         let startIndex = self.currentPage - count / 2
         return (startIndex + $0 + count) % count
