@@ -77,7 +77,7 @@ public class MenuView: UIScrollView {
         let ratio = CGFloat(currentPage) / CGFloat(menuItemCount - 1)
         return (contentSize.width - frame.width) * ratio
     }
-    lazy private var rawIndex: (Int) -> Int = {
+    lazy private var rawIndex: (Int) -> Int = { [unowned self] in
         let count = self.menuItemCount
         let startIndex = self.currentPage - count / 2
         return (startIndex + $0 + count) % count
@@ -132,12 +132,10 @@ public class MenuView: UIScrollView {
         if !animated {
             alpha = 0
         }
-        UIView.animateWithDuration(duration, animations: { [weak self] () -> Void in
-            guard let _ = self else { return }
-            
-            self!.focusMenuItem()
-            if self!.options.menuSelectedItemCenter {
-                self!.positionMenuItemViews()
+        UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
+            self.focusMenuItem()
+            if self.options.menuSelectedItemCenter {
+                self.positionMenuItemViews()
             }
         }) { [weak self] (_) in
             guard let _ = self else { return }
