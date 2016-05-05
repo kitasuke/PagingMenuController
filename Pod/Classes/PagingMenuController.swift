@@ -286,7 +286,6 @@ public class PagingMenuController: UIViewController {
         }
         
         menuView.delegate = self
-        menuView.translatesAutoresizingMaskIntoConstraints = false
         
         addTapGestureHandlers()
         addSwipeGestureHandlersIfNeeded()
@@ -296,15 +295,9 @@ public class PagingMenuController: UIViewController {
     }
     
     private func layoutMenuView() {
-        let viewsDictionary = ["menuView": menuView]
-        let metrics = ["height": options.menuHeight]
-        let heightConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView(height)]", options: [], metrics: metrics, views: viewsDictionary)
-        
-        let constraints: [NSLayoutConstraint]
         switch options.menuComponentType {
-        case .Separated:
-            constraints = heightConstraints
         case .Combined:
+            let viewsDictionary = ["menuView": menuView]
             let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[menuView]|", options: [], metrics: nil, views: viewsDictionary)
             let verticalConstraints: [NSLayoutConstraint]
             switch options.menuPosition {
@@ -314,10 +307,9 @@ public class PagingMenuController: UIViewController {
                 verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView]|", options: [], metrics: nil, views: viewsDictionary)
             }
             
-            constraints = horizontalConstraints + verticalConstraints + heightConstraints
+            NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
+        case .Separated: break
         }
-        
-        NSLayoutConstraint.activateConstraints(constraints)
         
         menuView.setNeedsLayout()
         menuView.layoutIfNeeded()

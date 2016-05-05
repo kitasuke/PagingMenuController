@@ -85,22 +85,25 @@ public class MenuView: UIScrollView {
     
     // MARK: - Lifecycle
     
-    internal init(menuItemTitles: [String], options: PagingMenuOptions) {
+    public init(menuItemTitles: [String], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
         self.options = options
+        self.options.menuItemCount = menuItemTitles.count
         commonInit({ self.constructMenuItemViews(menuItemTitles) })
     }
     
-    internal init(menuItemImages: [UIImage], options: PagingMenuOptions) {
+    public init(menuItemImages: [UIImage], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
         self.options = options
+        self.options.menuItemCount = menuItemImages.count
         commonInit({ self.constructMenuItemViews(menuItemImages) })
     }
     
     private func commonInit(constructor: () -> Void) {
         setupScrollView()
+        layoutScrollView()
         setupContentView()
         layoutContentView()
         setupRoundRectViewIfNeeded()
@@ -121,7 +124,7 @@ public class MenuView: UIScrollView {
     
     // MARK: - Public method
     
-    internal func moveToMenu(page: Int, animated: Bool) {
+    public func moveToMenu(page: Int, animated: Bool) {
         let duration = animated ? options.animationDuration : 0
         currentPage = page
         
@@ -157,7 +160,7 @@ public class MenuView: UIScrollView {
         }
     }
     
-    internal func updateMenuViewConstraints(size size: CGSize) {
+    public func updateMenuViewConstraints(size size: CGSize) {
         if case .SegmentedControl = options.menuDisplayMode {
             menuItemViews.forEach { $0.updateConstraints(size) }
         }
@@ -168,7 +171,7 @@ public class MenuView: UIScrollView {
         animateRoundRectViewIfNeeded()
     }
     
-    internal func cleanup() {
+    public func cleanup() {
         contentView.removeFromSuperview()
         switch options.menuItemMode {
         case .Underline(_, _, _, _): underlineView.removeFromSuperview()
@@ -195,6 +198,14 @@ public class MenuView: UIScrollView {
         decelerationRate = options.deceleratingRate
         scrollsToTop = false
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func layoutScrollView() {
+        let viewsDictionary = ["menuView": self]
+        let metrics = ["height": options.menuHeight]
+        NSLayoutConstraint.activateConstraints(
+            NSLayoutConstraint.constraintsWithVisualFormat("V:[menuView(height)]", options: [], metrics: metrics, views: viewsDictionary)
+        )
     }
     
     private func setupContentView() {
@@ -318,6 +329,7 @@ public class MenuView: UIScrollView {
     }
     
     private func adjustmentContentInsetIfNeeded() {
+        contentInset = UIEdgeInsetsZero
         switch options.menuDisplayMode {
         case let .Standard(_, centerItem, _) where centerItem: break
         default: return
