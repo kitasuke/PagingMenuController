@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         options.menuItemMargin = 5
         options.menuHeight = 60
         options.menuDisplayMode = .SegmentedControl
+        options.menuItemViewContent = .MultilineText
         let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
         pagingMenuController.view.frame.origin.y += 64
         pagingMenuController.view.frame.size.height -= 64

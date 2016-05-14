@@ -11,5 +11,4 @@ end
 
 target 'PagingMenuControllerDemoTests', :exclusive => true do
   pod "PagingMenuController", :path => "../"
-
 end

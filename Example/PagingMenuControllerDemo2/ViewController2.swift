@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import PagingMenuController
 
-class ViewController2: UIViewController {
+class ViewController2: UIViewController, MultilinePagingMenuController {
+    var desc = "VC2"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

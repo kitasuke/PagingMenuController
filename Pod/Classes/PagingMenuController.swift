@@ -13,6 +13,10 @@ import UIKit
     optional func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
 }
 
+@objc public protocol MultilinePagingMenuController {
+    var desc: String { get }
+}
+
 public class PagingMenuController: UIViewController {
     
     public weak var delegate: PagingMenuControllerDelegate?
@@ -49,6 +53,11 @@ public class PagingMenuController: UIViewController {
     private var menuItemTitles: [String] {
         return pagingViewControllers.map {
             return $0.title ?? "Menu"
+        }
+    }
+    private var menuItemDescs: [String] {
+        return pagingViewControllers.map {
+            return ($0 as! MultilinePagingMenuController).desc ?? "Desc"
         }
     }
     private var menuItemImages: [UIImage] {
@@ -279,10 +288,10 @@ public class PagingMenuController: UIViewController {
     // MARK: - Constructor
     
     private func constructMenuView() {
-        options.menuItemViewContent = pagingViewControllers.flatMap({ $0.menuItemImage }).isEmpty ? .Text : .Image
         switch options.menuItemViewContent {
         case .Text: menuView = MenuView(menuItemTitles: menuItemTitles, options: options)
         case .Image: menuView = MenuView(menuItemImages: menuItemImages, options: options)
+        case .MultilineText: menuView = MenuView(menuItemTitles: menuItemTitles, menuItemDescs: menuItemDescs, options: options)
         }
         
         menuView.delegate = self

@@ -85,6 +85,13 @@ public class MenuView: UIScrollView {
     
     // MARK: - Lifecycle
     
+    internal init(menuItemTitles: [String], menuItemDescs: [String], options: PagingMenuOptions) {
+        super.init(frame: .zero)
+        
+        self.options = options
+        commonInit({ self.constructMenuItemViews(menuItemTitles, descs: menuItemDescs) })
+    }
+    
     internal init(menuItemTitles: [String], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
@@ -211,6 +218,10 @@ public class MenuView: UIScrollView {
     
     private func constructMenuItemViews(titles: [String]) {
         constructMenuItemViews({ MenuItemView(title: titles[$0], options: self.options, addDivider: $1) })
+    }
+    
+    private func constructMenuItemViews(titles: [String], descs: [String]) {
+        constructMenuItemViews({ MenuItemView(title: titles[$0], desc: descs[$0], options: self.options, addDivider: $1) })
     }
     
     private func constructMenuItemViews(images: [UIImage]) {
