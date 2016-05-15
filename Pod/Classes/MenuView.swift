@@ -85,21 +85,21 @@ public class MenuView: UIScrollView {
     
     // MARK: - Lifecycle
     
-    internal init(menuItemTitles: [String], menuItemDescs: [String], options: PagingMenuOptions) {
+    public init(menuItemTitles: [String], menuItemDescs: [String], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
         self.options = options
         commonInit({ self.constructMenuItemViews(menuItemTitles, descs: menuItemDescs) })
     }
     
-    internal init(menuItemTitles: [String], options: PagingMenuOptions) {
+    public init(menuItemTitles: [String], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
         self.options = options
         commonInit({ self.constructMenuItemViews(menuItemTitles) })
     }
     
-    internal init(menuItemImages: [UIImage], options: PagingMenuOptions) {
+    public init(menuItemImages: [UIImage], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
         self.options = options

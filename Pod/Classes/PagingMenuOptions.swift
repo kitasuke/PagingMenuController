@@ -33,7 +33,7 @@ public class PagingMenuOptions {
     public var lazyLoadingPage: LazyLoadingPage = .Three
     public var menuControllerSet: MenuControllerSet = .Multiple
     public var menuItemViewContent: MenuItemViewContent = .Text
-    internal var menuItemCount = 0
+    public var menuItemCount = 0
     internal let minumumSupportedViewCount = 1
     internal let dummyMenuItemViewsSet = 3
     
