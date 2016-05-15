@@ -249,26 +249,28 @@ public class PagingMenuController: UIViewController {
     }
     
     public func moveToMenuPage(page: Int, animated: Bool = true) {
-        // ignore an unexpected page number
-        guard page < menuView.menuItemCount else { return }
-        
-        let lastPage = menuView.currentPage
-        guard page != lastPage else {
-            // place views on appropriate position
-            menuView.moveToMenu(page, animated: animated)
-            positionMenuController()
-            return
-        }
-        
-        defer {
-            updateCurrentPage(page)
-            menuView.moveToMenu(page, animated: animated)
-        }
-        
-        // just move menu view
         switch options.menuComponentType {
-        case .MenuView: return
-        default: break
+        case .MenuView, .All:
+            // ignore an unexpected page number
+            guard page < menuView.menuItemCount else { return }
+            
+            let lastPage = menuView.currentPage
+            guard page != lastPage else {
+                // place views on appropriate position
+                menuView.moveToMenu(page, animated: animated)
+                positionMenuController()
+                return
+            }
+            
+            defer {
+                updateCurrentPage(page)
+                menuView.moveToMenu(page, animated: animated)
+            }
+            
+            guard options.menuComponentType == .All else { return }
+        case .MenuController:
+            guard page < pagingViewControllers.count else { return }
+            guard page != currentPage else { return }
         }
         
         // hide paging views if it's moving to far away
@@ -321,6 +323,8 @@ public class PagingMenuController: UIViewController {
     }
     
     internal func handleSwipeGesture(recognizer: UISwipeGestureRecognizer) {
+        guard let menuView = recognizer.view as? MenuView else { return }
+        
         let newPage: Int
         if recognizer.direction == .Left {
             newPage = menuView.nextPage
@@ -384,7 +388,14 @@ public class PagingMenuController: UIViewController {
     }
     
     private func layoutContentScrollView() {
-        let viewsDictionary = ["contentScrollView": contentScrollView, "menuView": menuView]
+        let viewsDictionary: [String: UIView]
+        switch options.menuComponentType {
+        case .MenuController:
+            viewsDictionary = ["contentScrollView": contentScrollView]
+        default:
+            viewsDictionary = ["contentScrollView": contentScrollView, "menuView": menuView]
+        }
+        
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentScrollView]|", options: [], metrics: nil, views: viewsDictionary)
         let verticalConstraints: [NSLayoutConstraint]
         switch (options.menuComponentType, options.menuPosition) {
@@ -601,8 +612,10 @@ extension PagingMenuController: UIScrollViewDelegate {
         // set new page number according to current moving direction
         let nextPage: Int
         switch currentPagingViewPosition {
-        case .Left: nextPage = menuView.previousPage
-        case .Right: nextPage = menuView.nextPage
+        case .Left:
+            nextPage = options.menuComponentType == .MenuController ? max(currentPage - 1, 0) : menuView.previousPage
+        case .Right:
+            nextPage = options.menuComponentType == .MenuController ? min(currentPage + 1, pagingViewControllers.count - 1) : menuView.nextPage
         default: nextPage = currentPage
         }
         return nextPage
