@@ -613,9 +613,9 @@ extension PagingMenuController: UIScrollViewDelegate {
         let nextPage: Int
         switch currentPagingViewPosition {
         case .Left:
-            nextPage = options.menuComponentType == .MenuController ? currentPage - 1 < 0 ? pagingViewControllers.count - 1 : currentPage - 1 : menuView.previousPage
+            nextPage = options.menuComponentType == .MenuController ? previousIndex : menuView.previousPage
         case .Right:
-            nextPage = options.menuComponentType == .MenuController ? currentPage + 1 > pagingViewControllers.count - 1 ? 0 : currentPage + 1 : menuView.nextPage
+            nextPage = options.menuComponentType == .MenuController ? nextIndex : menuView.nextPage
         default: nextPage = currentPage
         }
         return nextPage
