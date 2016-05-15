@@ -54,7 +54,7 @@ public class MenuItemView: UIView {
                 titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
                 titleLabel.font = selected ? options.selectedFont : options.font
 
-                descLabel.textColor = options.descTextColor
+                descLabel.textColor = selected ? options.selectedTextColor : options.descTextColor
                 descLabel.font = options.descFont
 
                 // adjust label width if needed
@@ -217,8 +217,8 @@ public class MenuItemView: UIView {
         
         let labelSize = calculateLabelSize()
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[titleLabel]|", options: [], metrics: metrics, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-margin-[titleLabel(titleHeight)]-[descLabel(descHeight)]-margin-|", options: [], metrics: metrics, views: viewsDictionary)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[titleLabel]|", options: [], metrics: metrics, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel(titleHeight)][descLabel(descHeight)]-|", options: [], metrics: metrics, views: viewsDictionary)
         
         let descHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[descLabel]|", options: [], metrics: nil, views: viewsDictionary)
         
