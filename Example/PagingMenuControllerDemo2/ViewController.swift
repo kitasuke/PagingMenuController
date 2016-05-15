@@ -10,6 +10,8 @@ import UIKit
 import PagingMenuController
 
 class ViewController: UIViewController {
+    var navigationBar: UINavigationBar?
+    var navigationBarHeight = CGFloat(64)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +32,13 @@ class ViewController: UIViewController {
         options.menuDisplayMode = .SegmentedControl
         options.menuItemViewContent = .MultilineText
         let pagingMenuController = PagingMenuController(viewControllers: viewControllers, options: options)
-        pagingMenuController.view.frame.origin.y += 64
-        pagingMenuController.view.frame.size.height -= 64
+        pagingMenuController.view.frame.origin.y += navigationBarHeight
+        pagingMenuController.view.frame.size.height -= navigationBarHeight
         
         addChildViewController(pagingMenuController)
         view.addSubview(pagingMenuController.view)
+        
+        addNavigationBar()
         pagingMenuController.didMoveToParentViewController(self)
     }
 
@@ -42,7 +46,29 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func addNavigationBar() {
+        navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, navigationBarHeight))
+        navigationBar!.delegate = self
+        
+        let navigationItem = UINavigationItem()
+        navigationItem.title = "Navigation Bar"
+        
+        let btnDone = UIBarButtonItem(title: "Done", style: .Done, target: self, action: #selector(ViewController.dismiss))
+        navigationItem.rightBarButtonItem = btnDone
+        
+        navigationBar!.items = [navigationItem]
+        self.view.addSubview(navigationBar!)
+    }
 
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
 
+extension ViewController: UINavigationBarDelegate {
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.TopAttached;
+    }
 }
 

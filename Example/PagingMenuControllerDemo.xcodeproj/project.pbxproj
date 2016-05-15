@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		106F89341CE7FB9E0070F521 /* RootViewControoler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F89331CE7FB9E0070F521 /* RootViewControoler.swift */; };
 		707C60E11AFF822100BDAB0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60E01AFF822100BDAB0B /* AppDelegate.swift */; };
 		707C60E31AFF822100BDAB0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60E21AFF822100BDAB0B /* ViewController.swift */; };
 		707C60E61AFF822100BDAB0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707C60E41AFF822100BDAB0B /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		106F89331CE7FB9E0070F521 /* RootViewControoler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControoler.swift; sourceTree = "<group>"; };
 		61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67405852A888E9A94CB40B0C /* Pods-PagingMenuControllerDemo2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo2.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2.release.xcconfig"; sourceTree = "<group>"; };
 		707C60DB1AFF822100BDAB0B /* PagingMenuControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingMenuControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +250,7 @@
 			children = (
 				EC7BA3FB1B524BB4007FB8A5 /* AppDelegate.swift */,
 				EC7BA3FD1B524BB4007FB8A5 /* ViewController.swift */,
+				106F89331CE7FB9E0070F521 /* RootViewControoler.swift */,
 				EC7BA4191B524C04007FB8A5 /* ViewController1.swift */,
 				EC7BA41A1B524C04007FB8A5 /* ViewController2.swift */,
 				EC7BA4021B524BB4007FB8A5 /* Images.xcassets */,
@@ -652,6 +655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				106F89341CE7FB9E0070F521 /* RootViewControoler.swift in Sources */,
 				EC7BA41B1B524C04007FB8A5 /* ViewController1.swift in Sources */,
 				EC7BA41C1B524C04007FB8A5 /* ViewController2.swift in Sources */,
 				EC7BA3FE1B524BB4007FB8A5 /* ViewController.swift in Sources */,
