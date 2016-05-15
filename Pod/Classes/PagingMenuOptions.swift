@@ -28,7 +28,7 @@ public class PagingMenuOptions {
     public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 0, verticalPadding: 0)
     public var lazyLoadingPage: LazyLoadingPage = .Three
     public var menuControllerSet: MenuControllerSet = .Multiple
-    public var menuComponentType: MenuComponentType = .Combined
+    public var menuComponentType: MenuComponentType = .All
     internal var menuItemCount = 0
     internal let minumumSupportedViewCount = 1
     internal let dummyMenuItemViewsSet = 3
@@ -73,8 +73,9 @@ public class PagingMenuOptions {
     }
     
     public enum MenuComponentType {
-        case Separated
-        case Combined
+        case MenuView
+        case MenuController
+        case All
     }
     
     internal enum MenuItemViewContent {

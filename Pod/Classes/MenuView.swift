@@ -8,7 +8,13 @@
 
 import UIKit
 
+@objc public protocol MenuViewDelegate: class {
+    optional func willMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
+    optional func didMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
+}
+
 public class MenuView: UIScrollView {
+    weak public var viewDelegate: MenuViewDelegate?
     public private(set) var menuItemViews = [MenuItemView]()
     public private(set) var currentPage: Int = 0
     public private(set) var currentMenuItemView: MenuItemView!
@@ -124,17 +130,23 @@ public class MenuView: UIScrollView {
     
     // MARK: - Public method
     
-    public func moveToMenu(page: Int, animated: Bool) {
+    public func moveToMenu(page: Int, animated: Bool = true) {
         let duration = animated ? options.animationDuration : 0
+        let previousPage = currentPage
         currentPage = page
-        
-        let menuItemView = menuItemViews[page]
-        let _ = menuItemViews.indexOf(menuItemView)
         
         // hide menu view when constructing itself
         if !animated {
             alpha = 0
         }
+        
+        let menuItemView = menuItemViews[page]
+        let previousMenuItemView = currentMenuItemView
+        
+        if let previousMenuItemView = previousMenuItemView where page != previousPage {
+            viewDelegate?.willMoveToMenuItemView?(menuItemView, previousMenuItemView: previousMenuItemView)
+        }
+        
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.focusMenuItem()
             if self.options.menuSelectedItemCenter {
@@ -157,6 +169,10 @@ public class MenuView: UIScrollView {
             if !animated {
                 self!.alpha = 1
             }
+            
+            if let previousMenuItemView = previousMenuItemView where page != previousPage {
+                self!.viewDelegate?.didMoveToMenuItemView?(self!.currentMenuItemView, previousMenuItemView: previousMenuItemView)
+            }
         }
     }
     
@@ -164,8 +180,8 @@ public class MenuView: UIScrollView {
         if case .SegmentedControl = options.menuDisplayMode {
             menuItemViews.forEach { $0.updateConstraints(size) }
         }
-        contentView.setNeedsLayout()
-        contentView.layoutIfNeeded()
+        setNeedsLayout()
+        layoutIfNeeded()
 
         animateUnderlineViewIfNeeded()
         animateRoundRectViewIfNeeded()
@@ -329,7 +345,6 @@ public class MenuView: UIScrollView {
     }
     
     private func adjustmentContentInsetIfNeeded() {
-        contentInset = UIEdgeInsetsZero
         switch options.menuDisplayMode {
         case let .Standard(_, centerItem, _) where centerItem: break
         default: return
