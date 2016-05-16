@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol MenuItemType {}
+extension String: MenuItemType {}
+extension UIImage: MenuItemType {}
+
 @objc public protocol MenuViewDelegate: class {
     optional func willMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
     optional func didMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
@@ -91,20 +95,12 @@ public class MenuView: UIScrollView {
     
     // MARK: - Lifecycle
     
-    public init(menuItemTitles: [String], options: PagingMenuOptions) {
+    public init<Element: MenuItemType>(menuItemTypes: [Element], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
         self.options = options
-        self.options.menuItemCount = menuItemTitles.count
-        commonInit({ self.constructMenuItemViews(menuItemTitles) })
-    }
-    
-    public init(menuItemImages: [UIImage], options: PagingMenuOptions) {
-        super.init(frame: .zero)
-        
-        self.options = options
-        self.options.menuItemCount = menuItemImages.count
-        commonInit({ self.constructMenuItemViews(menuItemImages) })
+        self.options.menuItemCount = menuItemTypes.count
+        commonInit({ self.constructMenuItemViews(menuItemTypes) })
     }
     
     private func commonInit(constructor: () -> Void) {
@@ -236,12 +232,13 @@ public class MenuView: UIScrollView {
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
     
-    private func constructMenuItemViews(titles: [String]) {
-        constructMenuItemViews({ MenuItemView(title: titles[$0], options: self.options, addDivider: $1) })
-    }
-    
-    private func constructMenuItemViews(images: [UIImage]) {
-        constructMenuItemViews({ MenuItemView(image: images[$0], options: self.options, addDivider: $1) })
+    private func constructMenuItemViews<Element: MenuItemType>(menuItemTypes: [Element]) {
+        constructMenuItemViews({
+            switch self.options.menuItemViewContent {
+            case .Text: return MenuItemView(title: menuItemTypes[$0] as! String, options: self.options, addDivider: $1)
+            case .Image: return MenuItemView(image: menuItemTypes[$0] as! UIImage, options: self.options, addDivider: $1)
+            }
+        })
     }
     
     private func constructMenuItemViews(constructor: (Int, Bool) -> MenuItemView) {

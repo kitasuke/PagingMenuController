@@ -8,6 +8,9 @@
 
 import UIKit
 
+public protocol MenuControllerType {}
+extension UIViewController: MenuControllerType {}
+
 @objc public protocol PagingMenuControllerDelegate: class {
     optional func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
     optional func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
@@ -110,34 +113,24 @@ public class PagingMenuController: UIViewController {
 
     // MARK: - Lifecycle
     
-    public init(viewControllers: [UIViewController], options: PagingMenuOptions) {
+    public init<Element: MenuControllerType>(menuControllerTypes: [Element], options: PagingMenuOptions) {
         super.init(nibName: nil, bundle: nil)
         
-        setup(viewControllers, options: options)
+        setup(menuControllerTypes, options: options)
     }
     
-    convenience public init(viewControllers: [UIViewController]) {
-        self.init(viewControllers: viewControllers, options: PagingMenuOptions())
+    convenience public init<Element: MenuControllerType>(menuControllerTypes: [Element]) {
+        self.init(menuControllerTypes: menuControllerTypes, options: PagingMenuOptions())
     }
     
-    public init(menuItemTitles: [String], options: PagingMenuOptions) {
+    public init<Element: MenuItemType>(menuItemTypes: [Element], options: PagingMenuOptions) {
         super.init(nibName: nil, bundle: nil)
         
-        setup(menuItemTitles, options: options)
+        setup(menuItemTypes, options: options)
     }
     
-    convenience public init(menuItemTitles: [String]) {
-        self.init(menuItemTitles: menuItemTitles, options: PagingMenuOptions())
-    }
-    
-    public init(menuItemImages: [UIImage], options: PagingMenuOptions) {
-        super.init(nibName: nil, bundle: nil)
-        
-        setup(menuItemImages, options: options)
-    }
-    
-    convenience public init(menuItemImages: [UIImage]) {
-        self.init(menuItemImages: menuItemImages, options: PagingMenuOptions())
+    convenience public init<Element: MenuItemType>(menuItemTypes: [Element]) {
+        self.init(menuItemTypes: menuItemTypes, options: PagingMenuOptions())
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -182,9 +175,9 @@ public class PagingMenuController: UIViewController {
     
     // MARK: - Public
     
-    public func setup(viewControllers: [UIViewController], options: PagingMenuOptions) {
+    public func setup<Element: MenuControllerType>(menuControllerTypes: [Element], options: PagingMenuOptions) {
         self.options = options
-        pagingViewControllers = viewControllers
+        pagingViewControllers = menuControllerTypes.map { $0 as! UIViewController }
         visiblePagingViewControllers.reserveCapacity(visiblePagingViewNumber)
         
         // validate
@@ -224,24 +217,18 @@ public class PagingMenuController: UIViewController {
         layoutPagingViewControllers()
     }
     
-    public func setup(menuItemTitles: [String], options: PagingMenuOptions) {
+    public func setup<Element: MenuItemType>(menuItemTypes: [Element], options: PagingMenuOptions) {
         self.options = options
-        options.menuComponentType = .MenuView
-        options.menuItemViewContent = .Text
-        self.menuItemTitles = menuItemTitles
         currentPage = options.defaultPage
-        
-        setupMenuView()
-        
-        menuView.moveToMenu(currentPage, animated: false)
-    }
-    
-    public func setup(menuItemImages: [UIImage], options: PagingMenuOptions) {
-        self.options = options
         options.menuComponentType = .MenuView
-        options.menuItemViewContent = .Image
-        self.menuItemImages = menuItemImages
-        currentPage = options.defaultPage
+        
+        if let title = menuItemTypes.first where title is String {
+            options.menuItemViewContent = .Text
+            menuItemTitles = menuItemTypes.map { $0 as! String }
+        } else if let image = menuItemTypes.first where image is UIImage {
+            options.menuItemViewContent = .Image
+            menuItemImages = menuItemTypes.map { $0 as! UIImage }
+        }
         
         setupMenuView()
         
@@ -346,8 +333,8 @@ public class PagingMenuController: UIViewController {
         }
         
         switch options.menuItemViewContent {
-        case .Text: menuView = MenuView(menuItemTitles: menuItemTitles, options: options)
-        case .Image: menuView = MenuView(menuItemImages: menuItemImages, options: options)
+        case .Text: menuView = MenuView(menuItemTypes: menuItemTitles, options: options)
+        case .Image: menuView = MenuView(menuItemTypes: menuItemImages, options: options)
         }
         
         menuView.delegate = self
