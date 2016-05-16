@@ -27,7 +27,7 @@ class ViewController: UIViewController, PagingMenuControllerDelegate {
         
         let pagingMenuController = self.childViewControllers.first as! PagingMenuController
         pagingMenuController.delegate = self
-        pagingMenuController.setup(viewControllers: viewControllers, options: options)
+        pagingMenuController.setup(viewControllers, options: options)
     }
 
     override func didReceiveMemoryWarning() {
