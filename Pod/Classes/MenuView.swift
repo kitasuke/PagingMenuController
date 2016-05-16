@@ -124,9 +124,9 @@ public class MenuView: UIScrollView {
         adjustmentContentInsetIfNeeded()
     }
     
-    // MARK: - Public method
+    // MARK: - Internal method
     
-    public func moveToMenu(page: Int, animated: Bool = true) {
+    internal func moveToMenu(page: Int, animated: Bool = true) {
         let duration = animated ? options.animationDuration : 0
         let previousPage = currentPage
         currentPage = page
@@ -172,7 +172,7 @@ public class MenuView: UIScrollView {
         }
     }
     
-    public func updateMenuViewConstraints(size size: CGSize) {
+    internal func updateMenuViewConstraints(size size: CGSize) {
         if case .SegmentedControl = options.menuDisplayMode {
             menuItemViews.forEach { $0.updateConstraints(size) }
         }
@@ -183,7 +183,7 @@ public class MenuView: UIScrollView {
         animateRoundRectViewIfNeeded()
     }
     
-    public func cleanup() {
+    internal func cleanup() {
         contentView.removeFromSuperview()
         switch options.menuItemMode {
         case .Underline(_, _, _, _): underlineView.removeFromSuperview()
