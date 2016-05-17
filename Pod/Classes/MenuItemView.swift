@@ -164,7 +164,7 @@ public class MenuItemView: UIView {
     }
 
     private func layoutLabel() {
-        let labelSize = calculateLableSize()
+        let labelSize = calculateLabelSize()
         
         // H:|[titleLabel(==labelSize.width)]|
         // V:|[titleLabel]|
