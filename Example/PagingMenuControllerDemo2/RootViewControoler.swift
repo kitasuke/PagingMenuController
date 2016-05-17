@@ -33,14 +33,15 @@ class RootViewControoler: UIViewController {
         
         let options = PagingMenuOptions()
         let navigationBarHeight = CGFloat(64)
+        let menuViewHeight = CGFloat(40)
         options.menuItemMargin = 5
-        options.menuHeight = 40
+        options.menuHeight = menuViewHeight
         options.menuDisplayMode = .SegmentedControl
         options.menuItemMode = PagingMenuOptions.MenuItemMode.None
 
         let pagingMenuController = PagingMenuController(menuItemTypes: ["Viewable Menu1", "Viewable Menu 2"], options: options)
         pagingMenuController.view.frame.origin.y += navigationBarHeight
-        pagingMenuController.view.frame.size.height -= navigationBarHeight
+        pagingMenuController.view.frame.size.height = menuViewHeight
         view.addSubview(pagingMenuController.view)
     }
     
