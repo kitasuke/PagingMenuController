@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PagingMenuController
 
 class RootViewControoler: UIViewController {
     override func viewDidLoad() {
@@ -29,6 +30,18 @@ class RootViewControoler: UIViewController {
         view.addSubview(multiLineButton)
         
         multiLineButton.addTarget(self, action: #selector(RootViewControoler.multiLineButtonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let options = PagingMenuOptions()
+        let navigationBarHeight = CGFloat(64)
+        options.menuItemMargin = 5
+        options.menuHeight = 40
+        options.menuDisplayMode = .SegmentedControl
+        options.menuItemMode = PagingMenuOptions.MenuItemMode.None
+
+        let pagingMenuController = PagingMenuController(menuItemTypes: ["Viewable Menu1", "Viewable Menu 2"], options: options)
+        pagingMenuController.view.frame.origin.y += navigationBarHeight
+        pagingMenuController.view.frame.size.height -= navigationBarHeight
+        view.addSubview(pagingMenuController.view)
     }
     
     func buttonTapped(sender: UIButton) {
