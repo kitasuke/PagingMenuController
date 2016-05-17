@@ -9,9 +9,7 @@
 import UIKit
 import PagingMenuController
 
-class ViewController1: UIViewController, MultilinePagingMenuController {
-    var desc = "VC1"
-
+class ViewController1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,5 +21,18 @@ class ViewController1: UIViewController, MultilinePagingMenuController {
         textLabel.font = UIFont.systemFontOfSize(24)
         textLabel.text = "View Controller 1"
         view.addSubview(textLabel)
+        
+        let button = UIButton(type: UIButtonType.System)
+        button.setTitle("Change Menu", forState: UIControlState.Normal)
+        button.frame = CGRectMake(80, 300, 300, 30)
+        button.titleLabel!.textColor = UIColor.blackColor()
+        view.addSubview(button)
+        
+        button.addTarget(self, action: #selector(ViewController1.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+    }
+
+    func buttonTapped(sender: UIButton) {
+        self.menuItemDesc = "Changed"
+        self.updateMenuContent()
     }
 }

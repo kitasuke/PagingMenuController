@@ -9,24 +9,36 @@
 import UIKit
 
 class RootViewControoler: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = UIColor.whiteColor()
         
         let button = UIButton(type: UIButtonType.System)
-        button.setTitle("Open Menu Controller", forState: UIControlState.Normal)
-        button.frame = CGRectMake(0, 0, 200, 30)
-        button.center = view.center
+        button.setTitle("Open Title Menu Controller", forState: UIControlState.Normal)
+        button.frame = CGRectMake(80, 300, 300, 30)
         button.titleLabel!.textColor = UIColor.blackColor()
         view.addSubview(button)
         
         button.addTarget(self, action: #selector(RootViewControoler.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let multiLineButton = UIButton(type: UIButtonType.System)
+        multiLineButton.setTitle("Open Multiline Menu Controller", forState: UIControlState.Normal)
+        multiLineButton.frame = CGRectMake(80, 380, 300, 30)
+        multiLineButton.titleLabel!.textColor = UIColor.blackColor()
+        view.addSubview(multiLineButton)
+        
+        multiLineButton.addTarget(self, action: #selector(RootViewControoler.multiLineButtonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func buttonTapped(sender: UIButton) {
         let vc = ViewController()
+        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+        presentViewController(vc, animated: true, completion: nil)
+    }
+
+    func multiLineButtonTapped(sender: UIButton) {
+        let vc = MultiLineMenuViewController()
         vc.modalPresentationStyle = UIModalPresentationStyle.Popover
         presentViewController(vc, animated: true, completion: nil)
     }

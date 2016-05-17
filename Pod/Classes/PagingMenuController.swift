@@ -16,10 +16,6 @@ extension UIViewController: MenuControllerType {}
     optional func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
 }
 
-@objc public protocol MultilinePagingMenuController {
-    var desc: String { get }
-}
-
 public class PagingMenuController: UIViewController {
     
     weak public var delegate: PagingMenuControllerDelegate?
@@ -30,7 +26,16 @@ public class PagingMenuController: UIViewController {
     public private(set) var pagingViewControllers = [UIViewController]() {
         willSet {
             options.menuItemCount = newValue.count
-            options.menuItemViewContent = newValue.flatMap({ $0.menuItemImage }).isEmpty ? .Text : .Image
+            if newValue.flatMap({ $0.menuItemImage }).isEmpty {
+                if newValue.flatMap({ $0.menuItemDesc }).isEmpty {
+                    options.menuItemViewContent = .Text
+                } else {
+                    options.menuItemViewContent = .MultilineText
+                }
+            } else {
+                options.menuItemViewContent = .Image
+            }
+
             switch options.menuItemViewContent {
             case .Text: menuItemTitles = newValue.map { $0.title ?? "Menu" }
             case .Image: menuItemImages = newValue.map { $0.menuItemImage ?? UIImage() }
@@ -424,6 +429,7 @@ public class PagingMenuController: UIViewController {
     
     private func constructPagingViewControllers() {
         for (index, pagingViewController) in pagingViewControllers.enumerate() {
+            pagingViewController.menuItemView = menuView.menuItemViews[index]
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
             if !shouldLoadPage(index) {
                 // remove unnecessary child view controllers
