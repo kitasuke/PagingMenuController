@@ -38,7 +38,7 @@ public class MenuItemView: UIView {
                 titleLabel.font = selected ? options.selectedFont : options.font
                 
                 // adjust label width if needed
-                let labelSize = calculateLableSize()
+                let labelSize = calculateLabelSize()
                 widthConstraint.constant = labelSize.width
             case .Image: break
             }
@@ -126,7 +126,7 @@ public class MenuItemView: UIView {
         // set width manually to support ratotaion
         switch (options.menuDisplayMode, options.menuItemViewContent) {
         case (.SegmentedControl, .Text):
-            let labelSize = calculateLableSize(size)
+            let labelSize = calculateLabelSize(size)
             widthConstraint.constant = labelSize.width
         case (.SegmentedControl, .Image):
             widthConstraint.constant = size.width / CGFloat(options.menuItemCount)
@@ -210,7 +210,7 @@ public class MenuItemView: UIView {
 
     // MARK: - Size calculator
     
-    private func calculateLableSize(size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
+    private func calculateLabelSize(size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
         guard let _ = titleLabel.text else { return .zero }
         
         let itemWidth: CGFloat
