@@ -8,9 +8,13 @@
 
 import UIKit
 
-class RepositoriesViewController: UIViewController {
-    @IBOutlet weak private var tableView: UITableView!
+class RepositoriesViewController: UITableViewController {
     var repositories = [[String: AnyObject]]()
+    
+    class func instantiateFromStoryboard() -> RepositoriesViewController {
+        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        return storyboard.instantiateViewControllerWithIdentifier(String(self)) as! RepositoriesViewController
+    }
     
     // MARK: - Lifecycle
     
@@ -33,16 +37,16 @@ class RepositoriesViewController: UIViewController {
     }
 }
 
-extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate {
+extension RepositoriesViewController {
     // MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repositories.count
     }
     
     // MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         
         let repository = repositories[indexPath.row]
@@ -50,14 +54,7 @@ extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        navigationController?.pushViewController(detailViewController, animated: true)
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
 }

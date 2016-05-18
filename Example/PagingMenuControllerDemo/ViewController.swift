@@ -15,10 +15,10 @@ class ViewController: UIViewController, PagingMenuControllerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let usersViewController = self.storyboard?.instantiateViewControllerWithIdentifier("UsersViewController") as! UsersViewController
-        let repositoriesViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RepositoriesViewController") as! RepositoriesViewController
-        let gistsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("GistsViewController") as! GistsViewController
-        let organizationsViewController = self.storyboard?.instantiateViewControllerWithIdentifier("OrganizationsViewController") as! OrganizationsViewController
+        let usersViewController = UsersViewController.instantiateFromStoryboard()
+        let repositoriesViewController = RepositoriesViewController.instantiateFromStoryboard()
+        let gistsViewController = GistsViewController.instantiateFromStoryboard()
+        let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
         
         let viewControllers = [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController]
         

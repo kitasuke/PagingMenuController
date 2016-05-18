@@ -8,9 +8,13 @@
 
 import UIKit
 
-class OrganizationsViewController: UIViewController {
-    @IBOutlet weak private var tableView: UITableView!
+class OrganizationsViewController: UITableViewController {
     var organizations = [[String: AnyObject]]()
+    
+    class func instantiateFromStoryboard() -> OrganizationsViewController {
+        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        return storyboard.instantiateViewControllerWithIdentifier(String(self)) as! OrganizationsViewController
+    }
     
     // MARK: - Lifecycle
     
@@ -33,16 +37,16 @@ class OrganizationsViewController: UIViewController {
     }
 }
 
-extension OrganizationsViewController: UITableViewDataSource, UITableViewDelegate {
+extension OrganizationsViewController {
     // MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return organizations.count
     }
     
     // MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         
         let organization = organizations[indexPath.row]
@@ -50,14 +54,7 @@ extension OrganizationsViewController: UITableViewDataSource, UITableViewDelegat
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        navigationController?.pushViewController(detailViewController, animated: true)
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
 }
