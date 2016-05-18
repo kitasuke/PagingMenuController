@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GistsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
+class GistsViewController: UIViewController {
+    @IBOutlet weak private var tableView: UITableView!
     var gists = [[String: AnyObject]]()
     
     // MARK: - Lifecycle
@@ -22,12 +22,8 @@ class GistsViewController: UIViewController, UITableViewDataSource, UITableViewD
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         let task = session.dataTaskWithRequest(request) { [weak self] data, response, error in
-            do {
-                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
-                self?.gists = result
-            } catch _ {
-                
-            }
+            let result = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
+            self?.gists = result ?? []
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self?.tableView.reloadData()
@@ -35,7 +31,9 @@ class GistsViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         task.resume()
     }
-    
+}
+
+extension GistsViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

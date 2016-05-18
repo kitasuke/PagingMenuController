@@ -8,8 +8,8 @@
 
 import UIKit
 
-class RepositoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
+class RepositoriesViewController: UIViewController {
+    @IBOutlet weak private var tableView: UITableView!
     var repositories = [[String: AnyObject]]()
     
     // MARK: - Lifecycle
@@ -22,12 +22,8 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         let task = session.dataTaskWithRequest(request) { [weak self] data, response, error in
-            do {
-                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
-                self?.repositories = result
-            } catch _ {
-                
-            }
+            let result = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
+            self?.repositories = result ?? []
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self?.tableView.reloadData()
@@ -35,7 +31,9 @@ class RepositoriesViewController: UIViewController, UITableViewDataSource, UITab
         }
         task.resume()
     }
-    
+}
+
+extension RepositoriesViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,8 +8,8 @@
 
 import UIKit
 
-class OrganizationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
+class OrganizationsViewController: UIViewController {
+    @IBOutlet weak private var tableView: UITableView!
     var organizations = [[String: AnyObject]]()
     
     // MARK: - Lifecycle
@@ -22,12 +22,8 @@ class OrganizationsViewController: UIViewController, UITableViewDataSource, UITa
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         let task = session.dataTaskWithRequest(request) { [weak self] data, response, error in
-            do {
-                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
-                self?.organizations = result
-            } catch _ {
-                
-            }
+            let result = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
+            self?.organizations = result ?? []
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self?.tableView.reloadData()
@@ -35,7 +31,9 @@ class OrganizationsViewController: UIViewController, UITableViewDataSource, UITa
         }
         task.resume()
     }
-    
+}
+
+extension OrganizationsViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,8 +8,8 @@
 
 import UIKit
 
-class UsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
+class UsersViewController: UIViewController {
+    @IBOutlet weak private var tableView: UITableView!
     var users = [[String: AnyObject]]()
     
     // MARK: - Lifecycle
@@ -22,12 +22,8 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         let task = session.dataTaskWithRequest(request) { [weak self] data, response, error in
-            do {
-                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
-                self?.users = result
-            } catch _ {
-                
-            }
+            let result = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
+            self?.users = result ?? []
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self?.tableView.reloadData()
@@ -35,7 +31,9 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         task.resume()
     }
-    
+}
+
+extension UsersViewController: UITableViewDataSource, UITableViewDelegate {
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
