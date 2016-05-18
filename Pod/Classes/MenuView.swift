@@ -8,9 +8,14 @@
 
 import UIKit
 
-internal struct MultilineMenuItem: MenuItemType {
-    var title = "Menu"
-    var desc = "Desc"
+public struct MultilineMenuItem: MenuItemType {
+    var title = ""
+    var desc = ""
+    
+    public init(title: String, desc: String) {
+        self.title = title
+        self.desc = desc
+    }
 }
 
 public protocol MenuItemType {}
