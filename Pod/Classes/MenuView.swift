@@ -95,7 +95,7 @@ public class MenuView: UIScrollView {
     
     // MARK: - Lifecycle
     
-    public init<Element: MenuItemType>(menuItemTypes: [Element], options: PagingMenuOptions) {
+    internal init<Element: MenuItemType>(menuItemTypes: [Element], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
         self.options = options
