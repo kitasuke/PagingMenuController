@@ -47,13 +47,11 @@ class RootViewControoler: UIViewController {
     
     func buttonTapped(sender: UIButton) {
         let vc = ViewController()
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
         presentViewController(vc, animated: true, completion: nil)
     }
 
     func multiLineButtonTapped(sender: UIButton) {
         let vc = MultiLineMenuViewController()
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
         presentViewController(vc, animated: true, completion: nil)
     }
 }

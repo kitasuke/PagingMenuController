@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100E66171CEC21430030C8AF /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100E66161CEC21430030C8AF /* ViewController3.swift */; };
 		104F65281CEADE440090787E /* MultiLineMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F65271CEADE440090787E /* MultiLineMenuViewController.swift */; };
 		106F89341CE7FB9E0070F521 /* RootViewControoler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F89331CE7FB9E0070F521 /* RootViewControoler.swift */; };
 		5B051CCF05076F2CB0AE4F7F /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A52D7C292ED3CC2E86BC598D /* Pods_PagingMenuControllerDemoTests.framework */; };
@@ -71,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		100E66161CEC21430030C8AF /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		104F65271CEADE440090787E /* MultiLineMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiLineMenuViewController.swift; sourceTree = "<group>"; };
 		106F89331CE7FB9E0070F521 /* RootViewControoler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControoler.swift; sourceTree = "<group>"; };
 		3D4569952078C36B256EDDC5 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				104F65271CEADE440090787E /* MultiLineMenuViewController.swift */,
 				106F89331CE7FB9E0070F521 /* RootViewControoler.swift */,
 				EC7BA4191B524C04007FB8A5 /* ViewController1.swift */,
+				100E66161CEC21430030C8AF /* ViewController3.swift */,
 				EC7BA41A1B524C04007FB8A5 /* ViewController2.swift */,
 				EC7BA4021B524BB4007FB8A5 /* Images.xcassets */,
 				EC7BA4041B524BB4007FB8A5 /* LaunchScreen.xib */,
@@ -663,6 +666,7 @@
 				EC7BA41B1B524C04007FB8A5 /* ViewController1.swift in Sources */,
 				EC7BA41C1B524C04007FB8A5 /* ViewController2.swift in Sources */,
 				EC7BA3FE1B524BB4007FB8A5 /* ViewController.swift in Sources */,
+				100E66171CEC21430030C8AF /* ViewController3.swift in Sources */,
 				EC7BA3FC1B524BB4007FB8A5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

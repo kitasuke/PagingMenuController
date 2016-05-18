@@ -22,11 +22,11 @@ class MultiLineMenuViewController: UIViewController {
         viewController.title = "Multi 1"
         viewController.menuItemDesc = "Desc 1"
         
-        let viewController2 = ViewController2()
-        viewController2.title = "Multi 2"
-        viewController.menuItemDesc = "Desc 1"
+        let viewController3 = ViewController3()
+        viewController3.title = "Multi 3"
+        viewController.menuItemDesc = "Desc 3"
         
-        let viewControllers = [viewController, viewController2]
+        let viewControllers = [viewController, viewController3]
         
         let options = PagingMenuOptions()
         options.menuItemMargin = 5
