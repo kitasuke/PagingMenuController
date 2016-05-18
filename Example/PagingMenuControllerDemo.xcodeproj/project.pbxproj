@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		104F65281CEADE440090787E /* MultiLineMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104F65271CEADE440090787E /* MultiLineMenuViewController.swift */; };
 		106F89341CE7FB9E0070F521 /* RootViewControoler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F89331CE7FB9E0070F521 /* RootViewControoler.swift */; };
+		1A4915476E84149DEF5F6C4F /* Pods_PagingMenuControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 640A090301535F115BD3DBD9 /* Pods_PagingMenuControllerDemo.framework */; };
 		707C60E11AFF822100BDAB0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60E01AFF822100BDAB0B /* AppDelegate.swift */; };
 		707C60E31AFF822100BDAB0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C60E21AFF822100BDAB0B /* ViewController.swift */; };
 		707C60E61AFF822100BDAB0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 707C60E41AFF822100BDAB0B /* Main.storyboard */; };
@@ -19,9 +20,8 @@
 		707C61031AFF843F00BDAB0B /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61021AFF843F00BDAB0B /* RepositoriesViewController.swift */; };
 		707C61051AFF845200BDAB0B /* GistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61041AFF845200BDAB0B /* GistsViewController.swift */; };
 		707C61071AFF846800BDAB0B /* OrganizationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707C61061AFF846800BDAB0B /* OrganizationsViewController.swift */; };
-		B47D044F762BB5D827DD6DC6 /* Pods_PagingMenuControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */; };
-		CC9834AF445FD5D22067BC36 /* Pods_PagingMenuControllerDemo2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7973CCC1BB7BBFC90BA94CC3 /* Pods_PagingMenuControllerDemo2.framework */; };
-		DDA172CA689446F04F4C9097 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */; };
+		B50B36C1B3DC846362BC2BCC /* Pods_PagingMenuControllerDemo2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7502E520266C60B11B332CB2 /* Pods_PagingMenuControllerDemo2.framework */; };
+		B9F017891B193BEF77464B67 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D35A0E13518EFEC406EDFEF /* Pods_PagingMenuControllerDemoTests.framework */; };
 		EC13F4A01B84A92D00685199 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13F49F1B84A92D00685199 /* DetailViewController.swift */; };
 		EC7BA3FC1B524BB4007FB8A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA3FB1B524BB4007FB8A5 /* AppDelegate.swift */; };
 		EC7BA3FE1B524BB4007FB8A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7BA3FD1B524BB4007FB8A5 /* ViewController.swift */; };
@@ -73,8 +73,12 @@
 /* Begin PBXFileReference section */
 		104F65271CEADE440090787E /* MultiLineMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiLineMenuViewController.swift; sourceTree = "<group>"; };
 		106F89331CE7FB9E0070F521 /* RootViewControoler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControoler.swift; sourceTree = "<group>"; };
-		61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		67405852A888E9A94CB40B0C /* Pods-PagingMenuControllerDemo2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo2.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2.release.xcconfig"; sourceTree = "<group>"; };
+		03C427477DB91E6E85218AD2 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2.debug.xcconfig"; sourceTree = "<group>"; };
+		376ABED07EA31AA4F8DEAD32 /* Pods-PagingMenuControllerDemo2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo2.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2.release.xcconfig"; sourceTree = "<group>"; };
+		37DB6C408095AB6AE01575DD /* Pods-PagingMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		3D35A0E13518EFEC406EDFEF /* Pods_PagingMenuControllerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55CF464B33595E0DB123AF77 /* Pods-PagingMenuControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		640A090301535F115BD3DBD9 /* Pods_PagingMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		707C60DB1AFF822100BDAB0B /* PagingMenuControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingMenuControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		707C60DF1AFF822100BDAB0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		707C60E01AFF822100BDAB0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,12 +93,9 @@
 		707C61021AFF843F00BDAB0B /* RepositoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
 		707C61041AFF845200BDAB0B /* GistsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GistsViewController.swift; sourceTree = "<group>"; };
 		707C61061AFF846800BDAB0B /* OrganizationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationsViewController.swift; sourceTree = "<group>"; };
-		7973CCC1BB7BBFC90BA94CC3 /* Pods_PagingMenuControllerDemo2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A43A77E541E67E86AA41BE0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A8444D2212F28EF990A1A4B6 /* Pods-PagingMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		BFECDBB98E484B88553F4AA0 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
-		C67F4ECA52F2CFD5663796DB /* Pods-PagingMenuControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		7502E520266C60B11B332CB2 /* Pods_PagingMenuControllerDemo2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PagingMenuControllerDemo2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86E133660B679D5777BC191C /* Pods-PagingMenuControllerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		A77A4C2595FFFC7D39FB9291 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC13F49F1B84A92D00685199 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EC7BA3F71B524BB4007FB8A5 /* PagingMenuControllerDemo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PagingMenuControllerDemo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7BA3FA1B524BB4007FB8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,7 +111,6 @@
 		EC96215D1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PagingMenuControllerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC96215F1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerDemoUITests.swift; sourceTree = "<group>"; };
 		EC9621611C5B4F1700DA6EE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4108687AE0EB5851561C508 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PagingMenuControllerDemo2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B47D044F762BB5D827DD6DC6 /* Pods_PagingMenuControllerDemo.framework in Frameworks */,
+				1A4915476E84149DEF5F6C4F /* Pods_PagingMenuControllerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDA172CA689446F04F4C9097 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */,
+				B9F017891B193BEF77464B67 /* Pods_PagingMenuControllerDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC9834AF445FD5D22067BC36 /* Pods_PagingMenuControllerDemo2.framework in Frameworks */,
+				B50B36C1B3DC846362BC2BCC /* Pods_PagingMenuControllerDemo2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,12 +155,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		31C312B457D869AC3AD2B333 /* Frameworks */ = {
+		588AF2C45BDFB4ECF2A050B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				61E6E7408F0D9240F2125EDE /* Pods_PagingMenuControllerDemo.framework */,
-				8377B6E77661C5AA6112CC74 /* Pods_PagingMenuControllerDemoTests.framework */,
-				7973CCC1BB7BBFC90BA94CC3 /* Pods_PagingMenuControllerDemo2.framework */,
+				640A090301535F115BD3DBD9 /* Pods_PagingMenuControllerDemo.framework */,
+				7502E520266C60B11B332CB2 /* Pods_PagingMenuControllerDemo2.framework */,
+				3D35A0E13518EFEC406EDFEF /* Pods_PagingMenuControllerDemoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -174,8 +174,8 @@
 				EC7BA40E1B524BB4007FB8A5 /* PagingMenuControllerDemo2Tests */,
 				EC96215E1C5B4F1700DA6EE6 /* PagingMenuControllerDemoUITests */,
 				707C60DC1AFF822100BDAB0B /* Products */,
-				90D456DCC3386FD0738FA4C6 /* Pods */,
-				31C312B457D869AC3AD2B333 /* Frameworks */,
+				FDA9C79E41CDD8CF2282BA90 /* Pods */,
+				588AF2C45BDFB4ECF2A050B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,19 +234,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		90D456DCC3386FD0738FA4C6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A8444D2212F28EF990A1A4B6 /* Pods-PagingMenuControllerDemo.debug.xcconfig */,
-				C67F4ECA52F2CFD5663796DB /* Pods-PagingMenuControllerDemo.release.xcconfig */,
-				8A43A77E541E67E86AA41BE0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */,
-				BFECDBB98E484B88553F4AA0 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */,
-				F4108687AE0EB5851561C508 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */,
-				67405852A888E9A94CB40B0C /* Pods-PagingMenuControllerDemo2.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		EC7BA3F81B524BB4007FB8A5 /* PagingMenuControllerDemo2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +284,19 @@
 			path = PagingMenuControllerDemoUITests;
 			sourceTree = "<group>";
 		};
+		FDA9C79E41CDD8CF2282BA90 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37DB6C408095AB6AE01575DD /* Pods-PagingMenuControllerDemo.debug.xcconfig */,
+				55CF464B33595E0DB123AF77 /* Pods-PagingMenuControllerDemo.release.xcconfig */,
+				03C427477DB91E6E85218AD2 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */,
+				376ABED07EA31AA4F8DEAD32 /* Pods-PagingMenuControllerDemo2.release.xcconfig */,
+				A77A4C2595FFFC7D39FB9291 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */,
+				86E133660B679D5777BC191C /* Pods-PagingMenuControllerDemoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -304,13 +304,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 707C60FA1AFF822200BDAB0B /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemo" */;
 			buildPhases = (
-				150B61640FE80BFE11290D76 /* Check Pods Manifest.lock */,
+				81D7254A1C3EA86418ABA06D /* 📦 Check Pods Manifest.lock */,
 				707C60D71AFF822100BDAB0B /* Sources */,
 				707C60D81AFF822100BDAB0B /* Frameworks */,
 				707C60D91AFF822100BDAB0B /* Resources */,
-				68E076C7307454405A028714 /* Copy Pods Resources */,
-				3B692420AF8A248B54B401FD /* Embed Pods Frameworks */,
 				70C505481B0058B10007571E /* Embed Frameworks */,
+				8EBB653436FDCF3C48E9A04C /* 📦 Embed Pods Frameworks */,
+				4912F03CF8BCA040ACEF6BB3 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -325,12 +325,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 707C60FD1AFF822200BDAB0B /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemoTests" */;
 			buildPhases = (
-				48B0D7FEB6BCE59756124826 /* Check Pods Manifest.lock */,
+				064F5A6B604DDCD41EF6E479 /* 📦 Check Pods Manifest.lock */,
 				707C60EC1AFF822200BDAB0B /* Sources */,
 				707C60ED1AFF822200BDAB0B /* Frameworks */,
 				707C60EE1AFF822200BDAB0B /* Resources */,
-				992D543DCFD6E4B881B0FFB1 /* Copy Pods Resources */,
-				749B3D4BCEB2F00E6585CDC8 /* Embed Pods Frameworks */,
+				EE6D7E4E867A74F09D5D2603 /* 📦 Embed Pods Frameworks */,
+				A76777B0290FC45617EB6DD0 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -346,12 +346,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC7BA4171B524BB4007FB8A5 /* Build configuration list for PBXNativeTarget "PagingMenuControllerDemo2" */;
 			buildPhases = (
-				1EE1D53FA9DCE7D4714ED3F5 /* Check Pods Manifest.lock */,
+				57D5C21541759D87796E93F9 /* 📦 Check Pods Manifest.lock */,
 				EC7BA3F31B524BB4007FB8A5 /* Sources */,
 				EC7BA3F41B524BB4007FB8A5 /* Frameworks */,
 				EC7BA3F51B524BB4007FB8A5 /* Resources */,
-				595CEFE90AE8BA5CA5D5B438 /* Embed Pods Frameworks */,
-				97342B74FEB3AF257732083F /* Copy Pods Resources */,
+				229F81CB8BD76DBAF1B4719F /* 📦 Embed Pods Frameworks */,
+				DB74A7466A8710147CF4667C /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -494,14 +494,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		150B61640FE80BFE11290D76 /* Check Pods Manifest.lock */ = {
+		064F5A6B604DDCD41EF6E479 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,59 +509,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		1EE1D53FA9DCE7D4714ED3F5 /* Check Pods Manifest.lock */ = {
+		229F81CB8BD76DBAF1B4719F /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		3B692420AF8A248B54B401FD /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		48B0D7FEB6BCE59756124826 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		595CEFE90AE8BA5CA5D5B438 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,14 +524,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		68E076C7307454405A028714 /* Copy Pods Resources */ = {
+		4912F03CF8BCA040ACEF6BB3 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,29 +539,74 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		749B3D4BCEB2F00E6585CDC8 /* Embed Pods Frameworks */ = {
+		57D5C21541759D87796E93F9 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		97342B74FEB3AF257732083F /* Copy Pods Resources */ = {
+		81D7254A1C3EA86418ABA06D /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8EBB653436FDCF3C48E9A04C /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemo/Pods-PagingMenuControllerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A76777B0290FC45617EB6DD0 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB74A7466A8710147CF4667C /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,19 +614,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemo2/Pods-PagingMenuControllerDemo2-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		992D543DCFD6E4B881B0FFB1 /* Copy Pods Resources */ = {
+		EE6D7E4E867A74F09D5D2603 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PagingMenuControllerDemoTests/Pods-PagingMenuControllerDemoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -815,7 +815,7 @@
 		};
 		707C60FB1AFF822200BDAB0B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8444D2212F28EF990A1A4B6 /* Pods-PagingMenuControllerDemo.debug.xcconfig */;
+			baseConfigurationReference = 37DB6C408095AB6AE01575DD /* Pods-PagingMenuControllerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PagingMenuControllerDemo/Info.plist;
@@ -828,7 +828,7 @@
 		};
 		707C60FC1AFF822200BDAB0B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C67F4ECA52F2CFD5663796DB /* Pods-PagingMenuControllerDemo.release.xcconfig */;
+			baseConfigurationReference = 55CF464B33595E0DB123AF77 /* Pods-PagingMenuControllerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PagingMenuControllerDemo/Info.plist;
@@ -841,7 +841,7 @@
 		};
 		707C60FE1AFF822200BDAB0B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A43A77E541E67E86AA41BE0 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */;
+			baseConfigurationReference = A77A4C2595FFFC7D39FB9291 /* Pods-PagingMenuControllerDemoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -862,7 +862,7 @@
 		};
 		707C60FF1AFF822200BDAB0B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFECDBB98E484B88553F4AA0 /* Pods-PagingMenuControllerDemoTests.release.xcconfig */;
+			baseConfigurationReference = 86E133660B679D5777BC191C /* Pods-PagingMenuControllerDemoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -879,7 +879,7 @@
 		};
 		EC7BA4131B524BB4007FB8A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4108687AE0EB5851561C508 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */;
+			baseConfigurationReference = 03C427477DB91E6E85218AD2 /* Pods-PagingMenuControllerDemo2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -897,7 +897,7 @@
 		};
 		EC7BA4141B524BB4007FB8A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67405852A888E9A94CB40B0C /* Pods-PagingMenuControllerDemo2.release.xcconfig */;
+			baseConfigurationReference = 376ABED07EA31AA4F8DEAD32 /* Pods-PagingMenuControllerDemo2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PagingMenuControllerDemo2/Info.plist;
