@@ -8,9 +8,13 @@
 
 import UIKit
 
-class UsersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
+class UsersViewController: UITableViewController {
     var users = [[String: AnyObject]]()
+    
+    class func instantiateFromStoryboard() -> UsersViewController {
+        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        return storyboard.instantiateViewControllerWithIdentifier(String(self)) as! UsersViewController
+    }
     
     // MARK: - Lifecycle
     
@@ -22,12 +26,8 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         let task = session.dataTaskWithRequest(request) { [weak self] data, response, error in
-            do {
-                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
-                self?.users = result
-            } catch _ {
-                
-            }
+            let result = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
+            self?.users = result ?? []
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self?.tableView.reloadData()
@@ -35,16 +35,18 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         task.resume()
     }
-    
+}
+
+extension UsersViewController {
     // MARK: - UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
     
     // MARK: - UITableViewDelegate
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
         
         let user = users[indexPath.row]
@@ -52,14 +54,7 @@ class UsersViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        let detailViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        navigationController?.pushViewController(detailViewController, animated: true)
-    }
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
 }

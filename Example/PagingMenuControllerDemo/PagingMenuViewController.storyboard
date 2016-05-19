@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E2066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="poJ-9M-ZJD">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Paging Menu View Controller-->
+        <scene sceneID="R6v-o0-VGc">
+            <objects>
+                <viewController id="poJ-9M-ZJD" customClass="PagingMenuViewController" customModule="PagingMenuControllerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VZU-h8-Ycs"/>
+                        <viewControllerLayoutGuide type="bottom" id="ckr-QK-BZZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g7C-G6-ZJJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ta5-a5-SIb">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <connections>
+                                    <segue destination="Gqx-nb-aMA" kind="embed" id="tyV-kY-OFU"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ta5-a5-SIb" secondAttribute="trailing" id="FQq-Fm-Miq"/>
+                            <constraint firstItem="ckr-QK-BZZ" firstAttribute="top" secondItem="ta5-a5-SIb" secondAttribute="bottom" id="WMF-fr-oIi"/>
+                            <constraint firstItem="ta5-a5-SIb" firstAttribute="leading" secondItem="g7C-G6-ZJJ" secondAttribute="leading" id="X3F-Em-sUh"/>
+                            <constraint firstItem="ta5-a5-SIb" firstAttribute="top" secondItem="VZU-h8-Ycs" secondAttribute="bottom" id="fPr-Qk-WdX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2PQ-NL-bo9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89" y="260"/>
+        </scene>
+        <!--Paging Menu Controller-->
+        <scene sceneID="HVj-s0-pkt">
+            <objects>
+                <viewController id="Gqx-nb-aMA" customClass="PagingMenuController" customModule="PagingMenuController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8qh-J3-bOU"/>
+                        <viewControllerLayoutGuide type="bottom" id="s8f-eB-2x6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XwM-oC-K90">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RmB-pe-e8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815" y="260"/>
+        </scene>
+    </scenes>
+</document>
