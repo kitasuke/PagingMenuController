@@ -52,10 +52,12 @@ private enum Section {
             switch content {
             case .Underline:
                 options.menuComponentType = .MenuView
-                options.menuItemMode = .Underline(height: 1, color: UIColor.blueColor(), horizontalPadding: 2, verticalPadding: 0)
+                options.menuItemMode = .Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 10, verticalPadding: 0)
+                options.menuDisplayMode = .SegmentedControl
             case .RoundRect:
                 options.menuComponentType = .MenuView
                 options.menuItemMode = .RoundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGrayColor())
+                options.menuDisplayMode = .Infinite(widthMode: .Flexible, scrollingMode: .PagingEnabled)
             }
         case .MenuController(let content):
             switch content {
