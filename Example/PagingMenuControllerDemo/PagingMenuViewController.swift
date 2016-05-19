@@ -23,11 +23,15 @@ class PagingMenuViewController: UIViewController {
         
         let viewControllers = [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController]
         
-        options.menuHeight = 50
-        
         let pagingMenuController = self.childViewControllers.first as! PagingMenuController
         pagingMenuController.delegate = self
-        pagingMenuController.setup(viewControllers, options: options)
+        
+        switch options.menuComponentType {
+        case .All, .MenuController:
+            pagingMenuController.setup(viewControllers, options: options)
+        case .MenuView:
+            pagingMenuController.setup(viewControllers.map { $0.title! }, options: options)
+        }
     }
 }
 
