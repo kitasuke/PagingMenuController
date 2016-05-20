@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "PagingMenuController"
-  s.version          = "0.9.1"
+  s.version          = "0.10.1"
   s.summary          = "A paging view with customizable menu"
   s.homepage         = "https://github.com/kitasuke/PagingMenuController"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
@@ -21,7 +21,4 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'PagingMenuController' => ['Pod/Assets/*.png']
-  }
 end
