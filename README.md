@@ -138,6 +138,25 @@ public enum LazyLoadingPage {
 }
 ```
 
+* a set of menu controller
+```swift
+public var menuControllerSet: MenuControllerSet = .Multiple
+public enum MenuControllerSet {
+        case Single
+        case Multiple
+    }
+```
+
+* component type of PagingMenuController
+```swift
+public var menuComponentType: MenuComponentType = .All
+public enum MenuComponentType {
+    case MenuView
+    case MenuController
+    case All
+}
+```
+
 ## Usage
 
 `import PagingMenuController` to use PagingMenuController in your file.
