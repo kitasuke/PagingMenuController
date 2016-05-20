@@ -16,7 +16,7 @@ private enum Section {
     
     private enum AllContent: Int { case Standard, SegmentedControl, Infinite }
     private enum MenuViewContent: Int { case Underline, RoundRect }
-    private enum MenuControllerContent: Int { case Standard }
+    private enum MenuControllerContent: Int { case Standard, Infinite }
     
     init?(indexPath: NSIndexPath) {
         switch (indexPath.section, indexPath.row) {
@@ -47,22 +47,25 @@ private enum Section {
             case .Infinite:
                 options.menuDisplayMode = .Infinite(widthMode: .Fixed(width: 80), scrollingMode: .ScrollEnabled)
                 options.menuItemMode = .None
+                options.lazyLoadingPage = .Three
             }
         case .MenuView(let content):
+            options.menuComponentType = .MenuView
             switch content {
             case .Underline:
-                options.menuComponentType = .MenuView
                 options.menuItemMode = .Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 10, verticalPadding: 0)
                 options.menuDisplayMode = .SegmentedControl
             case .RoundRect:
-                options.menuComponentType = .MenuView
                 options.menuItemMode = .RoundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGrayColor())
                 options.menuDisplayMode = .Infinite(widthMode: .Flexible, scrollingMode: .PagingEnabled)
             }
         case .MenuController(let content):
+            options.menuComponentType = .MenuController
             switch content {
             case .Standard:
-                options.menuComponentType = .MenuController
+                options.defaultPage = 1
+            case .Infinite:
+                options.menuDisplayMode = .Infinite(widthMode: .Flexible, scrollingMode: .PagingEnabled)
             }
         }
         return options
