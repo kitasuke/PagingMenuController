@@ -313,12 +313,16 @@ public class PagingMenuController: UIViewController {
         guard let menuView = recognizer.view as? MenuView else { return }
         
         let newPage: Int
-        if recognizer.direction == .Left {
+        switch (recognizer.direction, options.menuDisplayMode) {
+        case (UISwipeGestureRecognizerDirection.Left, .Infinite):
             newPage = menuView.nextPage
-        } else if recognizer.direction == .Right {
+        case (UISwipeGestureRecognizerDirection.Left, _):
+            newPage = min(nextIndex, options.menuItemCount - 1)
+        case (UISwipeGestureRecognizerDirection.Right, .Infinite):
             newPage = menuView.previousPage
-        } else {
-            return
+        case (UISwipeGestureRecognizerDirection.Right, _):
+            newPage = max(previousIndex, 0)
+        default: return
         }
         
         moveToMenuPage(newPage)
