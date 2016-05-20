@@ -1,3 +1,17 @@
+# 0.10.0 Release notes (2016/05-19)
+
+### Enhancements
+
+- Added more examples
+- Upgraded CocoaPods to 1.0.0
+- Added `menuControllerSet` option to choose single or multiple controller
+- Added `menuComponentType` option that provides component which are MenuView + MenuController, MenuView or MenuController
+- Supported UIImage for MenuItemView
+
+### Bug fixed
+
+- Fixed memory leaks thanks to @minhtran129
+
 # 0.9.1 Release notes (2016/04-27)
 
 ### Bug fixed
