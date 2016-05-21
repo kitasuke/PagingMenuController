@@ -1,5 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
+workspace './PagingMenuControllerDemo.xcworkspace'
 
 target 'PagingMenuControllerDemo' do
   pod "PagingMenuController", :path => "../"

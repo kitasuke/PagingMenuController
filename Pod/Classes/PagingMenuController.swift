@@ -26,10 +26,21 @@ public class PagingMenuController: UIViewController {
     public private(set) var pagingViewControllers = [UIViewController]() {
         willSet {
             options.menuItemCount = newValue.count
-            options.menuItemViewContent = newValue.flatMap({ $0.menuItemImage }).isEmpty ? .Text : .Image
+            if newValue.flatMap({ $0.menuItemImage }).isEmpty {
+                if newValue.flatMap({ $0.menuItemDescription }).isEmpty {
+                    options.menuItemViewContent = .Text
+                } else {
+                    options.menuItemViewContent = .MultilineText
+                }
+            } else {
+                options.menuItemViewContent = .Image
+            }
+
             switch options.menuItemViewContent {
             case .Text: menuItemTitles = newValue.map { $0.title ?? "Menu" }
             case .Image: menuItemImages = newValue.map { $0.menuItemImage ?? UIImage() }
+            case .MultilineText:
+                multiLineMenuItems = newValue.map { MultilineMenuItem(title: $0.title ?? "Menu", description: $0.menuItemDescription ?? "Description") }
             }
         }
         didSet {
@@ -54,8 +65,11 @@ public class PagingMenuController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
     private var menuItemTitles: [String] = []
+    private var multiLineMenuItems: [MultilineMenuItem] = []
     private var menuItemImages: [UIImage] = []
+
     private enum PagingViewPosition {
         case Left, Center, Right, Unknown
         
@@ -228,6 +242,9 @@ public class PagingMenuController: UIViewController {
         } else if let image = menuItemTypes.first where image is UIImage {
             options.menuItemViewContent = .Image
             menuItemImages = menuItemTypes.map { $0 as! UIImage }
+        } else if let item = menuItemTypes.first where item is MultilineMenuItem {
+            options.menuItemViewContent = .MultilineText
+            multiLineMenuItems = menuItemTypes.map { $0 as! MultilineMenuItem }
         }
         
         setupMenuView()
@@ -339,6 +356,7 @@ public class PagingMenuController: UIViewController {
         switch options.menuItemViewContent {
         case .Text: menuView = MenuView(menuItemTypes: menuItemTitles, options: options)
         case .Image: menuView = MenuView(menuItemTypes: menuItemImages, options: options)
+        case .MultilineText: menuView = MenuView(menuItemTypes: multiLineMenuItems, options: options)
         }
         
         menuView.delegate = self
@@ -430,6 +448,7 @@ public class PagingMenuController: UIViewController {
     
     private func constructPagingViewControllers() {
         for (index, pagingViewController) in pagingViewControllers.enumerate() {
+            pagingViewController.menuItemView = menuView?.menuItemViews[index]
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
             if !shouldLoadPage(index) {
                 // remove unnecessary child view controllers

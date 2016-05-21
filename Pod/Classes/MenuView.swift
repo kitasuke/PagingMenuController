@@ -8,6 +8,16 @@
 
 import UIKit
 
+public struct MultilineMenuItem: MenuItemType {
+    var title: String
+    var description: String
+    
+    public init(title: String, description: String) {
+        self.title = title
+        self.description = description
+    }
+}
+
 public protocol MenuItemType {}
 extension String: MenuItemType {}
 extension UIImage: MenuItemType {}
@@ -94,7 +104,6 @@ public class MenuView: UIScrollView {
     }
     
     // MARK: - Lifecycle
-    
     internal init<Element: MenuItemType>(menuItemTypes: [Element], options: PagingMenuOptions) {
         super.init(frame: .zero)
         
@@ -235,12 +244,13 @@ public class MenuView: UIScrollView {
             contentView.heightAnchor.constraintEqualToAnchor(heightAnchor)
             ])
     }
-    
+
     private func constructMenuItemViews<Element: MenuItemType>(menuItemTypes: [Element]) {
         constructMenuItemViews({
             switch self.options.menuItemViewContent {
             case .Text: return MenuItemView(title: menuItemTypes[$0] as! String, options: self.options, addDivider: $1)
             case .Image: return MenuItemView(image: menuItemTypes[$0] as! UIImage, options: self.options, addDivider: $1)
+            case .MultilineText: return MenuItemView(title: (menuItemTypes[$0] as! MultilineMenuItem).title, desc:  (menuItemTypes[$0] as! MultilineMenuItem).description, options: self.options, addDivider: $1)
             }
         })
     }

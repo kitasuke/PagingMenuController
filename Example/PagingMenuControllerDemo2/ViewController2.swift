@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PagingMenuController
 
 class ViewController2: UIViewController {
     override func viewDidLoad() {

@@ -17,9 +17,13 @@ class PagingMenuViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let usersViewController = UsersViewController.instantiateFromStoryboard()
+        usersViewController.menuItemDescription = menuItemDescription
         let repositoriesViewController = RepositoriesViewController.instantiateFromStoryboard()
+        repositoriesViewController.menuItemDescription = menuItemDescription
         let gistsViewController = GistsViewController.instantiateFromStoryboard()
+        gistsViewController.menuItemDescription = menuItemDescription
         let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
+        organizationsViewController.menuItemDescription = menuItemDescription
         
         let viewControllers = [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController]
         
