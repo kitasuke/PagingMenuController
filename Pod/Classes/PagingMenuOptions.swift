@@ -22,7 +22,7 @@ public class PagingMenuOptions {
     public var menuPosition: MenuPosition = .Top
     public var menuTitleHeight: CGFloat = 30
     public var menuDescriptionHeight: CGFloat = 21
-    public var menuHeight: CGFloat = 60
+    public var menuHeight: CGFloat = 50
     public var menuItemMargin: CGFloat = 20
     public var menuItemDividerImage: UIImage?
     public var animationDuration: NSTimeInterval = 0.3
