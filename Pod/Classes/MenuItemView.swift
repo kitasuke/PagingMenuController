@@ -215,9 +215,8 @@ public class MenuItemView: UIView {
             descriptionLabel.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
             titleLabel.topAnchor.constraintEqualToAnchor(topAnchor),
             titleLabel.heightAnchor.constraintEqualToConstant(options.menuTitleHeight),
-            titleLabel.bottomAnchor.constraintEqualToAnchor(descriptionLabel.topAnchor),
+            descriptionLabel.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor),
             descriptionLabel.heightAnchor.constraintEqualToConstant(options.menuDescriptionHeight),
-            descriptionLabel.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
             ])
     }
 
