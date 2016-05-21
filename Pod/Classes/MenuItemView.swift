@@ -222,7 +222,7 @@ public class MenuItemView: UIView {
         descriptionWidthConstraint.active = true
         
         NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: options.menuTitleHeight).active = true
-        NSLayoutConstraint(item: descriptionLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: options.menuDescHeight).active = true
+        NSLayoutConstraint(item: descriptionLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: options.menuDescriptionHeight).active = true
     }
 
     private func layoutLabel() {

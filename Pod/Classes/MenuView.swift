@@ -9,12 +9,12 @@
 import UIKit
 
 public struct MultilineMenuItem: MenuItemType {
-    var title = ""
-    var desc = ""
+    var title: String
+    var description: String
     
-    public init(title: String, desc: String) {
+    public init(title: String, description: String) {
         self.title = title
-        self.desc = desc
+        self.description = description
     }
 }
 
@@ -246,7 +246,7 @@ public class MenuView: UIScrollView {
             switch self.options.menuItemViewContent {
             case .Text: return MenuItemView(title: menuItemTypes[$0] as! String, options: self.options, addDivider: $1)
             case .Image: return MenuItemView(image: menuItemTypes[$0] as! UIImage, options: self.options, addDivider: $1)
-            case .MultilineText: return MenuItemView(title: (menuItemTypes[$0] as! MultilineMenuItem).title, desc:  (menuItemTypes[$0] as! MultilineMenuItem).desc, options: self.options, addDivider: $1)
+            case .MultilineText: return MenuItemView(title: (menuItemTypes[$0] as! MultilineMenuItem).title, desc:  (menuItemTypes[$0] as! MultilineMenuItem).description, options: self.options, addDivider: $1)
             }
         })
     }

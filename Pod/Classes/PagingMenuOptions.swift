@@ -21,7 +21,7 @@ public class PagingMenuOptions {
     public var descTextColor = UIColor.lightGrayColor()
     public var menuPosition: MenuPosition = .Top
     public var menuTitleHeight: CGFloat = 30
-    public var menuDescHeight: CGFloat = 21
+    public var menuDescriptionHeight: CGFloat = 21
     public var menuHeight: CGFloat = 60
     public var menuItemMargin: CGFloat = 20
     public var menuItemDividerImage: UIImage?

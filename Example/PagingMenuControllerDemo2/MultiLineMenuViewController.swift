@@ -24,7 +24,7 @@ class MultiLineMenuViewController: UIViewController {
         
         let viewController3 = ViewController3()
         viewController3.title = "Multi 3"
-        viewController.menuItemDescription = "Desc 3"
+        viewController3.menuItemDescription = "Desc 3"
         
         let viewControllers = [viewController, viewController3]
         
