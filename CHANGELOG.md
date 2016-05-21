@@ -1,3 +1,10 @@
+# 0.10.1 Release notes (2016/05-20)
+
+### Bug fixed
+
+- Fixed seeing white page when jumping to previous or next page
+- Fixed incorrect behaviout when swiping on menu view
+
 # 0.10.0 Release notes (2016/05-19)
 
 ### Enhancements

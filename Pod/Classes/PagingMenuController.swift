@@ -266,12 +266,11 @@ public class PagingMenuController: UIViewController {
                 return
             }
             
-            defer {
+            guard options.menuComponentType == .All else {
                 updateCurrentPage(page)
                 menuView.moveToMenu(page, animated: animated)
+                return
             }
-            
-            guard options.menuComponentType == .All else { return }
         case .MenuController:
             guard page < pagingViewControllers.count else { return }
             guard page != currentPage else { return }
@@ -285,6 +284,7 @@ public class PagingMenuController: UIViewController {
         updateCurrentPage(page)
         currentViewController = pagingViewControllers[currentPage]
         delegate?.willMoveToPageMenuController?(currentViewController, previousMenuController: previousViewController)
+        menuView?.moveToMenu(page)
         
         let duration = animated ? options.animationDuration : 0
         UIView.animateWithDuration(duration, animations: {
@@ -330,12 +330,16 @@ public class PagingMenuController: UIViewController {
         guard let menuView = recognizer.view as? MenuView else { return }
         
         let newPage: Int
-        if recognizer.direction == .Left {
+        switch (recognizer.direction, options.menuDisplayMode) {
+        case (UISwipeGestureRecognizerDirection.Left, .Infinite):
             newPage = menuView.nextPage
-        } else if recognizer.direction == .Right {
+        case (UISwipeGestureRecognizerDirection.Left, _):
+            newPage = min(nextIndex, options.menuItemCount - 1)
+        case (UISwipeGestureRecognizerDirection.Right, .Infinite):
             newPage = menuView.previousPage
-        } else {
-            return
+        case (UISwipeGestureRecognizerDirection.Right, _):
+            newPage = max(previousIndex, 0)
+        default: return
         }
         
         moveToMenuPage(newPage)
@@ -560,7 +564,9 @@ public class PagingMenuController: UIViewController {
     
     private func hidePagingMenuControllers(page: Int) {
         switch (options.lazyLoadingPage, options.menuDisplayMode, page) {
-        case (.Three, _, previousIndex),
+        case (.Three, .Infinite, menuView?.previousPage ?? previousIndex),
+             (.Three, .Infinite, menuView?.nextPage ?? nextIndex),
+             (.Three, _, previousIndex),
              (.Three, _, nextIndex): break
         default: visiblePagingViewControllers.forEach { $0.view.alpha = 0 }
         }
