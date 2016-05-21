@@ -41,6 +41,7 @@ private enum Section {
             case .Standard:
                 options.menuDisplayMode = .Standard(widthMode: .Flexible, centerItem: false, scrollingMode: .PagingEnabled)
                 options.menuItemMode = .None
+                options.menuHeight = 60
             case .SegmentedControl:
                 options.menuDisplayMode = .SegmentedControl
                 options.menuControllerSet = .Single
@@ -87,6 +88,11 @@ class RootViewController: UITableViewController {
             let viewController = segue.destinationViewController as? PagingMenuViewController else { return }
         
         viewController.title = cell.textLabel?.text
+        switch sectionType {
+        case .All(let content) where content == .Standard:
+            viewController.menuItemDescription = "Description"
+        default: break
+        }
         viewController.options = sectionType.options
     }
 }
