@@ -9,24 +9,8 @@
 import UIKit
 
 public class MenuItemView: UIView {
-    
-    lazy public var titleLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.numberOfLines = 1
-        label.textAlignment = .Center
-        label.userInteractionEnabled = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    lazy public var descLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.numberOfLines = 1
-        label.textAlignment = .Center
-        label.userInteractionEnabled = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    lazy public var titleLabel: UILabel = MenuItemView.initLabel()
+    lazy public var descriptionLabel: UILabel = MenuItemView.initLabel()
 
     lazy public var menuImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -34,6 +18,7 @@ public class MenuItemView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
     public internal(set) var selected: Bool = false {
         didSet {
             if case .RoundRect = options.menuItemMode {
@@ -54,12 +39,13 @@ public class MenuItemView: UIView {
                 titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
                 titleLabel.font = selected ? options.selectedFont : options.font
 
-                descLabel.textColor = selected ? options.selectedTextColor : options.descTextColor
-                descLabel.font = options.descFont
+                descriptionLabel.textColor = selected ? options.selectedTextColor : options.descTextColor
+                descriptionLabel.font = options.descFont
 
                 // adjust label width if needed
                 let labelSize = calculateLabelSize()
                 widthConstraint.constant = labelSize.width
+                descriptionWidthConstraint.constant = labelSize.width
             case .Image: break
             }
         }
@@ -71,6 +57,7 @@ public class MenuItemView: UIView {
     }()
     private var options: PagingMenuOptions!
     private var widthConstraint: NSLayoutConstraint!
+    private var descriptionWidthConstraint: NSLayoutConstraint!
     private var labelSize: CGSize {
         guard let text = titleLabel.text else { return .zero }
         return NSString(string: text).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: titleLabel.font], context: nil).size
@@ -89,13 +76,13 @@ public class MenuItemView: UIView {
     }
     
     // MARK: - Lifecycle
-    
+
     internal init(title: String, desc: String, options: PagingMenuOptions, addDivider: Bool) {
         super.init(frame: .zero)
         self.options = options
         
         commonInit(addDivider) {
-            self.setupLabels(title, desc: desc)
+            self.setupDescriptionLabel(title, desc: desc)
             self.layoutMultiLineLabel()
         }
     }
@@ -105,7 +92,7 @@ public class MenuItemView: UIView {
         self.options = options
         
         commonInit(addDivider) {
-            self.setupLabel(title)
+            self.setupTitleLabel(title)
             self.layoutLabel()
         }
     }
@@ -118,6 +105,15 @@ public class MenuItemView: UIView {
             self.setupImageView(image)
             self.layoutImageView()
         }
+    }
+    
+    private class func initLabel() -> UILabel{
+        let label = UILabel(frame: .zero)
+        label.numberOfLines = 1
+        label.textAlignment = .Center
+        label.userInteractionEnabled = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }
     
     private func commonInit(addDivider: Bool, setup: () -> Void) {
@@ -146,7 +142,7 @@ public class MenuItemView: UIView {
         case .Text: titleLabel.removeFromSuperview()
         case .MultilineText:
             titleLabel.removeFromSuperview()
-            descLabel.removeFromSuperview()
+            descriptionLabel.removeFromSuperview()
         case .Image: menuImageView.removeFromSuperview()
         }
         
@@ -161,6 +157,10 @@ public class MenuItemView: UIView {
         case (.SegmentedControl, .Text):
             let labelSize = calculateLabelSize(size)
             widthConstraint.constant = labelSize.width
+        case (.SegmentedControl, .MultilineText):
+            let labelSize = calculateLabelSize(size)
+            widthConstraint.constant = labelSize.width
+            descriptionWidthConstraint.constant = labelSize.width
         case (.SegmentedControl, .Image):
             widthConstraint.constant = size.width / CGFloat(options.menuItemCount)
         default: break
@@ -178,19 +178,15 @@ public class MenuItemView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func setupLabels(title: String, desc: String) {
-        titleLabel.text = title
-        titleLabel.textColor = options.textColor
-        titleLabel.font = options.font
-        addSubview(titleLabel)
-        
-        descLabel.text = desc
-        descLabel.textColor = options.textColor
-        descLabel.font = options.font
-        addSubview(descLabel)
+    private func setupDescriptionLabel(title: String, desc: String) {
+        setupTitleLabel(title)
+        descriptionLabel.text = desc
+        descriptionLabel.textColor = options.descTextColor
+        descriptionLabel.font = options.descFont
+        addSubview(descriptionLabel)
     }
     
-    private func setupLabel(title: String) {
+    private func setupTitleLabel(title: String) {
         titleLabel.text = title
         titleLabel.textColor = options.textColor
         titleLabel.font = options.font
@@ -209,25 +205,24 @@ public class MenuItemView: UIView {
     }
     
     private func layoutMultiLineLabel() {
-        let viewsDictionary = ["titleLabel": titleLabel, "descLabel": descLabel]
-        let metrics = ["margin": options.menuItemMargin,
-                       "titleHeight": options.menuTitleHeight,
-                       "descHeight": options.menuDescHeight
-                       ]
+        let viewsDictionary = ["titleLabel": titleLabel, "descLabel": descriptionLabel]
+        let metrics = ["margin": options.menuItemMargin]
         
         let labelSize = calculateLabelSize()
         
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[titleLabel]|", options: [], metrics: metrics, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[titleLabel(titleHeight)][descLabel(descHeight)]-|", options: [], metrics: metrics, views: viewsDictionary)
-        
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[titleLabel][descLabel]", options: [], metrics: metrics, views: viewsDictionary)
         let descHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[descLabel]|", options: [], metrics: nil, views: viewsDictionary)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints + descHorizontalConstraints)
         
         widthConstraint = NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: labelSize.width)
         widthConstraint.active = true
-        widthConstraint = NSLayoutConstraint(item: descLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: labelSize.width)
-        widthConstraint.active = true
+        descriptionWidthConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: labelSize.width)
+        descriptionWidthConstraint.active = true
+        
+        NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: options.menuTitleHeight).active = true
+        NSLayoutConstraint(item: descriptionLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: options.menuDescHeight).active = true
     }
 
     private func layoutLabel() {

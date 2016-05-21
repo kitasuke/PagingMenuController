@@ -22,7 +22,7 @@ public extension UIViewController {
         }
     }
     
-    var menuItemDesc: String? {
+    var menuItemDescription: String? {
         get {
             guard let desc = objc_getAssociatedObject(self, &MenuItemDescKey) as? String else { return nil }
             return desc
@@ -44,6 +44,6 @@ public extension UIViewController {
     
     func updateMenuContent() {
         menuItemView!.titleLabel.text = self.title
-        menuItemView!.descLabel.text = self.menuItemDesc
+        menuItemView!.descriptionLabel.text = self.menuItemDescription
     }
 }

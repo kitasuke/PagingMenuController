@@ -27,7 +27,7 @@ public class PagingMenuController: UIViewController {
         willSet {
             options.menuItemCount = newValue.count
             if newValue.flatMap({ $0.menuItemImage }).isEmpty {
-                if newValue.flatMap({ $0.menuItemDesc }).isEmpty {
+                if newValue.flatMap({ $0.menuItemDescription }).isEmpty {
                     options.menuItemViewContent = .Text
                 } else {
                     options.menuItemViewContent = .MultilineText
@@ -40,7 +40,7 @@ public class PagingMenuController: UIViewController {
             case .Text: menuItemTitles = newValue.map { $0.title ?? "Menu" }
             case .Image: menuItemImages = newValue.map { $0.menuItemImage ?? UIImage() }
             case .MultilineText:
-                multiLineMenuItems = newValue.map { MultilineMenuItem(title: $0.title ?? "Menu", desc: $0.menuItemDesc ?? "Desc") }
+                multiLineMenuItems = newValue.map { MultilineMenuItem(title: $0.title ?? "Menu", desc: $0.menuItemDescription ?? "Desc") }
             }
         }
         didSet {

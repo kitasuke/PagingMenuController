@@ -20,11 +20,11 @@ class MultiLineMenuViewController: UIViewController {
         
         let viewController = ViewController1()
         viewController.title = "Multi 1"
-        viewController.menuItemDesc = "Desc 1"
+        viewController.menuItemDescription = "Desc 1"
         
         let viewController3 = ViewController3()
         viewController3.title = "Multi 3"
-        viewController.menuItemDesc = "Desc 3"
+        viewController.menuItemDescription = "Desc 3"
         
         let viewControllers = [viewController, viewController3]
         
@@ -32,8 +32,7 @@ class MultiLineMenuViewController: UIViewController {
         options.menuItemMargin = 5
         options.menuHeight = 60
         options.menuDisplayMode = .SegmentedControl
-        
-        options.menuItemViewContent = .MultilineText
+
         let pagingMenuController = PagingMenuController(menuControllerTypes: viewControllers, options: options)
         pagingMenuController.view.frame.origin.y += navigationBarHeight
         pagingMenuController.view.frame.size.height -= navigationBarHeight

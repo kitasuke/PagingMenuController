@@ -21,8 +21,8 @@ public class PagingMenuOptions {
     public var descTextColor = UIColor.lightGrayColor()
     public var menuPosition: MenuPosition = .Top
     public var menuTitleHeight: CGFloat = 30
-    public var menuDescHeight: CGFloat = 24
-    public var menuHeight: CGFloat = 54
+    public var menuDescHeight: CGFloat = 21
+    public var menuHeight: CGFloat = 60
     public var menuItemMargin: CGFloat = 20
     public var menuItemDividerImage: UIImage?
     public var animationDuration: NSTimeInterval = 0.3
@@ -32,8 +32,8 @@ public class PagingMenuOptions {
     public var menuItemMode = MenuItemMode.Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 0, verticalPadding: 0)
     public var lazyLoadingPage: LazyLoadingPage = .Three
     public var menuControllerSet: MenuControllerSet = .Multiple
-    public var menuItemViewContent: MenuItemViewContent = .Text
     public var menuComponentType: MenuComponentType = .All
+    internal var menuItemViewContent: MenuItemViewContent = .Text
     internal var menuItemCount = 0
 
     internal let minumumSupportedViewCount = 1

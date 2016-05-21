@@ -32,7 +32,7 @@ class ViewController3: UIViewController {
     }
     
     func buttonTapped(sender: UIButton) {
-        self.menuItemDesc = "Changed"
+        self.menuItemDescription = "Changed"
         self.updateMenuContent()
     }
 }
