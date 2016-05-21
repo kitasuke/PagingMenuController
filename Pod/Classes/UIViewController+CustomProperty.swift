@@ -1,5 +1,5 @@
 //
-//  UIViewController+MenuItemImage.swift
+//  UIViewController+CustomProperty.swift
 //  PagingMenuController
 //
 //  Created by Yusuke Kita on 4/29/16.
@@ -9,7 +9,7 @@
 import Foundation
 
 var MenuItemImageKey: UInt8 = 0
-var MenuItemDescKey: UInt8 = 1
+var MenuItemDescriptionKey: UInt8 = 1
 var MenuItemViewKey: UInt8 = 2
 public extension UIViewController {
     var menuItemImage: UIImage? {
@@ -24,11 +24,11 @@ public extension UIViewController {
     
     var menuItemDescription: String? {
         get {
-            guard let desc = objc_getAssociatedObject(self, &MenuItemDescKey) as? String else { return nil }
-            return desc
+            guard let menuItemdescription = objc_getAssociatedObject(self, &MenuItemDescriptionKey) as? String else { return nil }
+            return menuItemdescription
         }
         set {
-            objc_setAssociatedObject(self, &MenuItemDescKey, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &MenuItemDescriptionKey, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }
     
@@ -43,7 +43,7 @@ public extension UIViewController {
     }
     
     func updateMenuContent() {
-        menuItemView!.titleLabel.text = self.title
-        menuItemView!.descriptionLabel.text = self.menuItemDescription
+        menuItemView?.titleLabel.text = title
+        menuItemView?.descriptionLabel.text = menuItemDescription
     }
 }
