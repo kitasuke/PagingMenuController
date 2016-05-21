@@ -9,8 +9,8 @@
 import UIKit
 
 public class MenuItemView: UIView {
-    lazy public var titleLabel: UILabel = MenuItemView.initLabel()
-    lazy public var descriptionLabel: UILabel = MenuItemView.initLabel()
+    lazy public var titleLabel: UILabel = self.initLabel()
+    lazy public var descriptionLabel: UILabel = self.initLabel()
 
     lazy public var menuImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
@@ -33,7 +33,7 @@ public class MenuItemView: UIView {
                 titleLabel.font = selected ? options.selectedFont : options.font
                 
                 // adjust label width if needed
-                let labelSize = calculateLabelSize()
+                let labelSize = calculateLabelSize(titleLabel)
                 widthConstraint.constant = labelSize.width
             case .MultilineText:
                 titleLabel.textColor = selected ? options.selectedTextColor : options.textColor
@@ -43,9 +43,8 @@ public class MenuItemView: UIView {
                 descriptionLabel.font = options.descFont
 
                 // adjust label width if needed
-                let labelSize = calculateLabelSize()
-                widthConstraint.constant = labelSize.width
-                descriptionWidthConstraint.constant = labelSize.width
+                widthConstraint.constant = calculateLabelSize(titleLabel).width
+                descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel).width
             case .Image: break
             }
         }
@@ -58,9 +57,9 @@ public class MenuItemView: UIView {
     private var options: PagingMenuOptions!
     private var widthConstraint: NSLayoutConstraint!
     private var descriptionWidthConstraint: NSLayoutConstraint!
-    private var labelSize: CGSize {
-        guard let text = titleLabel.text else { return .zero }
-        return NSString(string: text).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: titleLabel.font], context: nil).size
+    private let labelSize: (UILabel) -> CGSize = { label in
+        guard let text = label.text else { return .zero }
+        return NSString(string: text).boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: label.font], context: nil).size
     }
     private let labelWidth: (CGSize, PagingMenuOptions.MenuItemWidthMode) -> CGFloat = { size, widthMode in
         switch widthMode {
@@ -107,7 +106,7 @@ public class MenuItemView: UIView {
         }
     }
     
-    private class func initLabel() -> UILabel{
+    private func initLabel() -> UILabel {
         let label = UILabel(frame: .zero)
         label.numberOfLines = 1
         label.textAlignment = .Center
@@ -153,15 +152,16 @@ public class MenuItemView: UIView {
     
     internal func updateConstraints(size: CGSize) {
         // set width manually to support ratotaion
-        switch (options.menuDisplayMode, options.menuItemViewContent) {
-        case (.SegmentedControl, .Text):
-            let labelSize = calculateLabelSize(size)
+        guard case .SegmentedControl = options.menuDisplayMode else { return }
+        
+        switch options.menuItemViewContent {
+        case .Text:
+            let labelSize = calculateLabelSize(titleLabel, windowSize: size)
             widthConstraint.constant = labelSize.width
-        case (.SegmentedControl, .MultilineText):
-            let labelSize = calculateLabelSize(size)
-            widthConstraint.constant = labelSize.width
-            descriptionWidthConstraint.constant = labelSize.width
-        case (.SegmentedControl, .Image):
+        case .MultilineText:
+            widthConstraint.constant = calculateLabelSize(titleLabel, windowSize: size).width
+            descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel, windowSize: size).width
+        case .Image:
             widthConstraint.constant = size.width / CGFloat(options.menuItemCount)
         default: break
         }
@@ -205,30 +205,25 @@ public class MenuItemView: UIView {
     }
     
     private func layoutMultiLineLabel() {
-        let viewsDictionary = ["titleLabel": titleLabel, "descLabel": descriptionLabel]
-        let metrics = ["margin": options.menuItemMargin]
-        
-        let labelSize = calculateLabelSize()
+        let viewsDictionary = ["titleLabel": titleLabel, "descriptionLabel": descriptionLabel]
+        let metrics = ["margin": options.menuItemMargin, "titleHeight": options.menuTitleHeight, "descriptionHeight": options.menuDescriptionHeight]
         
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[titleLabel]|", options: [], metrics: metrics, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[titleLabel][descLabel]", options: [], metrics: metrics, views: viewsDictionary)
-        let descHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[descLabel]|", options: [], metrics: nil, views: viewsDictionary)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[titleLabel(titleHeight)][descriptionLabel(descriptionHeight)]", options: [], metrics: metrics, views: viewsDictionary)
+        let descriptionHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[descriptionLabel]|", options: [], metrics: nil, views: viewsDictionary)
         
-        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints + descHorizontalConstraints)
+        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints + descriptionHorizontalConstraints)
         
-        widthConstraint = NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: labelSize.width)
+        widthConstraint = NSLayoutConstraint(item: titleLabel, attribute: .Width, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .Width, multiplier: 1.0, constant: calculateLabelSize(titleLabel).width)
         widthConstraint.active = true
-        descriptionWidthConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: labelSize.width)
+        descriptionWidthConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: .Width, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: .Width, multiplier: 1.0, constant: calculateLabelSize(descriptionLabel).width)
         descriptionWidthConstraint.active = true
-        
-        NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: options.menuTitleHeight).active = true
-        NSLayoutConstraint(item: descriptionLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: options.menuDescriptionHeight).active = true
     }
 
     private func layoutLabel() {
         let viewsDictionary = ["label": titleLabel]
         
-        let labelSize = calculateLabelSize()
+        let labelSize = calculateLabelSize(titleLabel)
 
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[label]|", options: [], metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[label]|", options: [], metrics: nil, views: viewsDictionary)
@@ -266,20 +261,20 @@ public class MenuItemView: UIView {
 
     // MARK: - Size calculator
     
-    private func calculateLabelSize(size: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
-        guard let _ = titleLabel.text else { return .zero }
+    private func calculateLabelSize(label: UILabel, windowSize: CGSize = UIApplication.sharedApplication().keyWindow!.bounds.size) -> CGSize {
+        guard let _ = label.text else { return .zero }
         
         let itemWidth: CGFloat
         switch options.menuDisplayMode {
         case let .Standard(widthMode, _, _):
-            itemWidth = labelWidth(labelSize, widthMode)
+            itemWidth = labelWidth(labelSize(label), widthMode)
         case .SegmentedControl:
-            itemWidth = size.width / CGFloat(options.menuItemCount)
+            itemWidth = windowSize.width / CGFloat(options.menuItemCount)
         case let .Infinite(widthMode, _):
-            itemWidth = labelWidth(labelSize, widthMode)
+            itemWidth = labelWidth(labelSize(label), widthMode)
         }
         
-        let itemHeight = floor(labelSize.height)
+        let itemHeight = floor(labelSize(label).height)
         return CGSizeMake(itemWidth + horizontalMargin * 2, itemHeight)
     }
 }

@@ -15,43 +15,24 @@ class RootViewControoler: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = UIColor.whiteColor()
         
-        let button = UIButton(type: UIButtonType.System)
-        button.setTitle("Open Title Menu Controller", forState: UIControlState.Normal)
-        button.frame = CGRectMake(80, 300, 300, 30)
-        button.titleLabel!.textColor = UIColor.blackColor()
-        view.addSubview(button)
+        let viewController = ViewController1()
+        viewController.title = "First title"
         
-        button.addTarget(self, action: #selector(RootViewControoler.buttonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        let viewController2 = ViewController2()
+        viewController2.title = "Second title"
         
-        let multiLineButton = UIButton(type: UIButtonType.System)
-        multiLineButton.setTitle("Open Multiline Menu Controller", forState: UIControlState.Normal)
-        multiLineButton.frame = CGRectMake(80, 380, 300, 30)
-        multiLineButton.titleLabel!.textColor = UIColor.blackColor()
-        view.addSubview(multiLineButton)
-        
-        multiLineButton.addTarget(self, action: #selector(RootViewControoler.multiLineButtonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        let viewControllers = [viewController, viewController2]
         
         let options = PagingMenuOptions()
-        let navigationBarHeight = CGFloat(64)
-        let menuViewHeight = CGFloat(40)
         options.menuItemMargin = 5
-        options.menuHeight = menuViewHeight
+        options.menuHeight = 60
         options.menuDisplayMode = .SegmentedControl
-        options.menuItemMode = PagingMenuOptions.MenuItemMode.None
-
-        let pagingMenuController = PagingMenuController(menuItemTypes: ["Viewable Menu1", "Viewable Menu 2"], options: options)
-        pagingMenuController.view.frame.origin.y += navigationBarHeight
-        pagingMenuController.view.frame.size.height = menuViewHeight
+        let pagingMenuController = PagingMenuController(menuControllerTypes: viewControllers, options: options)
+        pagingMenuController.view.frame.origin.y += 64
+        pagingMenuController.view.frame.size.height -= 64
+        
+        addChildViewController(pagingMenuController)
         view.addSubview(pagingMenuController.view)
-    }
-    
-    func buttonTapped(sender: UIButton) {
-        let vc = ViewController()
-        presentViewController(vc, animated: true, completion: nil)
-    }
-
-    func multiLineButtonTapped(sender: UIButton) {
-        let vc = MultiLineMenuViewController()
-        presentViewController(vc, animated: true, completion: nil)
+        pagingMenuController.didMoveToParentViewController(self)
     }
 }

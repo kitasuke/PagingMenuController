@@ -40,7 +40,7 @@ public class PagingMenuController: UIViewController {
             case .Text: menuItemTitles = newValue.map { $0.title ?? "Menu" }
             case .Image: menuItemImages = newValue.map { $0.menuItemImage ?? UIImage() }
             case .MultilineText:
-                multiLineMenuItems = newValue.map { MultilineMenuItem(title: $0.title ?? "Menu", description: $0.menuItemDescription ?? "Desc") }
+                multiLineMenuItems = newValue.map { MultilineMenuItem(title: $0.title ?? "Menu", description: $0.menuItemDescription ?? "Description") }
             }
         }
         didSet {
@@ -433,7 +433,7 @@ public class PagingMenuController: UIViewController {
     
     private func constructPagingViewControllers() {
         for (index, pagingViewController) in pagingViewControllers.enumerate() {
-            pagingViewController.menuItemView = menuView.menuItemViews[index]
+            pagingViewController.menuItemView = menuView?.menuItemViews[index]
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
             if !shouldLoadPage(index) {
                 // remove unnecessary child view controllers
