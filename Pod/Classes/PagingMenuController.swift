@@ -433,7 +433,7 @@ public class PagingMenuController: UIViewController {
     
     private func constructPagingViewControllers() {
         for (index, pagingViewController) in pagingViewControllers.enumerate() {
-            pagingViewController.menuItemView = menuView.menuItemViews[index]
+            pagingViewController.menuItemView = menuView?.menuItemViews[index]
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
             if !shouldLoadPage(index) {
                 // remove unnecessary child view controllers
