@@ -152,14 +152,16 @@ public class MenuItemView: UIView {
     
     internal func updateConstraints(size: CGSize) {
         // set width manually to support ratotaion
-        switch (options.menuDisplayMode, options.menuItemViewContent) {
-        case (.SegmentedControl, .Text):
+        guard case .SegmentedControl = options.menuDisplayMode else { return }
+        
+        switch options.menuItemViewContent {
+        case .Text:
             let labelSize = calculateLabelSize(titleLabel, windowSize: size)
             widthConstraint.constant = labelSize.width
-        case (.SegmentedControl, .MultilineText):
+        case .MultilineText:
             widthConstraint.constant = calculateLabelSize(titleLabel, windowSize: size).width
             descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel, windowSize: size).width
-        case (.SegmentedControl, .Image):
+        case .Image:
             widthConstraint.constant = size.width / CGFloat(options.menuItemCount)
         default: break
         }
