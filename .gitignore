@@ -44,3 +44,7 @@ Carthage/Build
 
 # fastlane
 fastlane
+
+# rvm
+.ruby-gemset
+.ruby-version

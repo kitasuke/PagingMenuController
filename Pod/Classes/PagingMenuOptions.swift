@@ -17,8 +17,12 @@ public class PagingMenuOptions {
     public var selectedTextColor = UIColor.blackColor()
     public var font = UIFont.systemFontOfSize(16)
     public var selectedFont = UIFont.systemFontOfSize(16)
+    public var descFont = UIFont.systemFontOfSize(12)
+    public var descTextColor = UIColor.lightGrayColor()
     public var menuPosition: MenuPosition = .Top
-    public var menuHeight: CGFloat = 50
+    public var menuTitleHeight: CGFloat = 30
+    public var menuDescriptionHeight: CGFloat = 21
+    public var menuHeight: CGFloat = 60
     public var menuItemMargin: CGFloat = 20
     public var menuItemDividerImage: UIImage?
     public var animationDuration: NSTimeInterval = 0.3
@@ -29,10 +33,11 @@ public class PagingMenuOptions {
     public var lazyLoadingPage: LazyLoadingPage = .Three
     public var menuControllerSet: MenuControllerSet = .Multiple
     public var menuComponentType: MenuComponentType = .All
+    internal var menuItemViewContent: MenuItemViewContent = .Text
     internal var menuItemCount = 0
+
     internal let minumumSupportedViewCount = 1
     internal let dummyMenuItemViewsSet = 3
-    internal var menuItemViewContent: MenuItemViewContent = .Text
     
     public enum MenuPosition {
         case Top
@@ -71,15 +76,15 @@ public class PagingMenuOptions {
         case Single
         case Multiple
     }
-    
+
     public enum MenuComponentType {
         case MenuView
         case MenuController
         case All
     }
     
-    internal enum MenuItemViewContent {
-        case Text, Image
+    public enum MenuItemViewContent {
+        case Text, Image, MultilineText
     }
     
     public init() {}
