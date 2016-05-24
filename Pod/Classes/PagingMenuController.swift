@@ -392,6 +392,7 @@ public class PagingMenuController: UIViewController {
     
     private func setupContentScrollView() {
         contentScrollView.delegate = self
+        contentScrollView.backgroundColor = options.menuControllerBackgroundColor
         contentScrollView.scrollEnabled = options.scrollEnabled
         view.addSubview(contentScrollView)
     }
@@ -420,6 +421,7 @@ public class PagingMenuController: UIViewController {
     }
     
     private func setupContentView() {
+        contentView.backgroundColor = options.menuControllerBackgroundColor
         contentScrollView.addSubview(contentView)
     }
     
