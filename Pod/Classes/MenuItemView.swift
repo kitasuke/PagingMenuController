@@ -238,19 +238,20 @@ public class MenuItemView: UIView {
         
         let width: CGFloat
         switch options.menuDisplayMode {
-        case .SegmentedControl: width = UIApplication.sharedApplication().keyWindow!.bounds.size.width / CGFloat(options.menuItemCount)
-        default: width = image.size.width
+        case .SegmentedControl:
+            width = UIApplication.sharedApplication().keyWindow!.bounds.size.width / CGFloat(options.menuItemCount)
+        default:
+            width = image.size.width + horizontalMargin * 2
         }
-        widthConstraint = menuImageView.widthAnchor.constraintEqualToConstant(width)
         
-        // H:|[menuImageView(image.size.width)]|
-        // V:|[menuImageView(image.size.height)]|
+        widthConstraint = widthAnchor.constraintEqualToConstant(width)
+        
         NSLayoutConstraint.activateConstraints([
-            menuImageView.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
-            menuImageView.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
-            widthConstraint,
-            menuImageView.topAnchor.constraintEqualToAnchor(topAnchor),
-            menuImageView.bottomAnchor.constraintEqualToAnchor(bottomAnchor)
+            menuImageView.centerXAnchor.constraintEqualToAnchor(centerXAnchor),
+            menuImageView.centerYAnchor.constraintEqualToAnchor(centerYAnchor),
+            menuImageView.widthAnchor.constraintEqualToConstant(image.size.width),
+            menuImageView.heightAnchor.constraintEqualToConstant(image.size.height),
+            widthConstraint
             ])
     }
     
