@@ -8,9 +8,6 @@
 
 import UIKit
 
-public protocol MenuControllerType {}
-extension UIViewController: MenuControllerType {}
-
 @objc public protocol PagingMenuControllerDelegate: class {
     optional func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
     optional func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
@@ -113,23 +110,23 @@ public class PagingMenuController: UIViewController {
 
     // MARK: - Lifecycle
     
-    public init<Element: MenuControllerType>(menuControllerTypes: [Element], options: PagingMenuOptions) {
+    public init(viewControllers: [UIViewController], options: PagingMenuOptions) {
         super.init(nibName: nil, bundle: nil)
         
-        setup(menuControllerTypes, options: options)
+        setup(viewControllers, options: options)
     }
     
-    convenience public init<Element: MenuControllerType>(menuControllerTypes: [Element]) {
-        self.init(menuControllerTypes: menuControllerTypes, options: PagingMenuOptions())
+    convenience public init(viewControllers: [UIViewController]) {
+        self.init(viewControllers: viewControllers, options: PagingMenuOptions())
     }
     
-    public init<Element: MenuItemType>(menuItemTypes: [Element], options: PagingMenuOptions) {
+    public init(menuItemTypes: [MenuItemType], options: PagingMenuOptions) {
         super.init(nibName: nil, bundle: nil)
         
         setup(menuItemTypes, options: options)
     }
     
-    convenience public init<Element: MenuItemType>(menuItemTypes: [Element]) {
+    convenience public init(menuItemTypes: [MenuItemType]) {
         self.init(menuItemTypes: menuItemTypes, options: PagingMenuOptions())
     }
     
@@ -175,9 +172,9 @@ public class PagingMenuController: UIViewController {
     
     // MARK: - Public
     
-    public func setup<Element: MenuControllerType>(menuControllerTypes: [Element], options: PagingMenuOptions) {
+    public func setup(viewControllers: [UIViewController], options: PagingMenuOptions) {
         self.options = options
-        pagingViewControllers = menuControllerTypes.map { $0 as! UIViewController }
+        pagingViewControllers = viewControllers
         visiblePagingViewControllers.reserveCapacity(visiblePagingViewNumber)
         
         // validate
@@ -217,7 +214,7 @@ public class PagingMenuController: UIViewController {
         layoutPagingViewControllers()
     }
     
-    public func setup<Element: MenuItemType>(menuItemTypes: [Element], options: PagingMenuOptions) {
+    public func setup(menuItemTypes: [MenuItemType], options: PagingMenuOptions) {
         self.options = options
         currentPage = options.defaultPage
         options.menuComponentType = .MenuView
