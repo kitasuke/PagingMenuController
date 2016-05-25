@@ -180,17 +180,26 @@ public class MenuItemView: UIView {
     private func layoutImageView() {
         guard let image = menuImageView.image else { return }
         
-        let viewsDictionary = ["imageView": menuImageView]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[imageView]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[imageView]|", options: [], metrics: nil, views: viewsDictionary)
-        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
-        
         let width: CGFloat
+        let margin: CGFloat
         switch options.menuDisplayMode {
-        case .SegmentedControl: width = UIApplication.sharedApplication().keyWindow!.bounds.size.width / CGFloat(options.menuItemCount)
-        default: width = image.size.width
+        case .SegmentedControl:
+            width = UIApplication.sharedApplication().keyWindow!.bounds.size.width / CGFloat(options.menuItemCount)
+            margin = (width - image.size.width) / 2
+        default:
+            width = image.size.width + horizontalMargin * 2
+            margin = horizontalMargin
         }
-        widthConstraint = NSLayoutConstraint(item: menuImageView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: width)
+        
+        let metrics = ["width": image.size.width, "margin": margin]
+        let viewsDictionary = ["imageView": menuImageView]
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-margin-[imageView(width)]-margin-|", options: [], metrics: metrics, views: viewsDictionary)
+        
+        NSLayoutConstraint.activateConstraints([
+            NSLayoutConstraint(item: menuImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
+            ] + horizontalConstraints)
+        
+        widthConstraint = NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: width)
         widthConstraint.active = true
     }
     
