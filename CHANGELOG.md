@@ -1,3 +1,11 @@
+# 0.10.2 Release notes (2016/05-25)
+
+### Bug fixed
+
+- Fixed delegate method call timing correctlly 
+- Fixed menu item image constraints
+- Fixed `Extranous argument label in .setup method` error
+
 # 0.10.1 Release notes (2016/05-20)
 
 ### Bug fixed
