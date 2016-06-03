@@ -13,11 +13,10 @@ public class MenuItemView: UIView {
     lazy public var descriptionLabel: UILabel = self.initLabel()
 
     lazy public var menuImageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
-        imageView.userInteractionEnabled = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+        $0.userInteractionEnabled = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIImageView(frame: .zero))
 
     public internal(set) var selected: Bool = false {
         didSet {
@@ -50,10 +49,9 @@ public class MenuItemView: UIView {
         }
     }
     lazy public private(set) var dividerImageView: UIImageView? = {
-        let imageView = UIImageView(image: self.options.menuItemDividerImage)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIImageView(image: self.options.menuItemDividerImage))
     private var options: PagingMenuOptions!
     private var widthConstraint: NSLayoutConstraint!
     private var descriptionWidthConstraint: NSLayoutConstraint!

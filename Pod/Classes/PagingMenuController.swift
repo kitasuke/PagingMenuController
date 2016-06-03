@@ -48,20 +48,18 @@ public class PagingMenuController: UIViewController {
     private var options: PagingMenuOptions!
     private let visiblePagingViewNumber: Int = 3
     private let contentScrollView: UIScrollView = {
-        let scrollView = UIScrollView(frame: .zero)
-        scrollView.pagingEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.scrollsToTop = false
-        scrollView.bounces = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
+        $0.pagingEnabled = true
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
+        $0.scrollsToTop = false
+        $0.bounces = false
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIScrollView(frame: .zero))
     private let contentView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIView(frame: .zero))
 
     private var menuItemTitles: [String] = []
     private var multiLineMenuItems: [MultilineMenuItem] = []

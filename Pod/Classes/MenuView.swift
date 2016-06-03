@@ -48,19 +48,16 @@ public class MenuView: UIScrollView {
     private var options: PagingMenuOptions!
     
     private let contentView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIView(frame: .zero))
     lazy private var underlineView: UIView = {
-        let view = UIView(frame: .zero)
-        return view
+        return UIView(frame: .zero)
     }()
     lazy private var roundRectView: UIView = {
-        let view = UIView(frame: .zero)
-        view.userInteractionEnabled = true
-        return view
-    }()
+        $0.userInteractionEnabled = true
+        return $0
+    }(UIView(frame: .zero))
     private var menuViewBounces: Bool {
         switch options.menuDisplayMode {
         case .Standard(_, _, .ScrollEnabledAndBouces),
