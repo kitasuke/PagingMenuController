@@ -30,7 +30,7 @@ extension UIImage: MenuItemType {}
 public class MenuView: UIScrollView {
     weak public var viewDelegate: MenuViewDelegate?
     public private(set) var menuItemViews = [MenuItemView]()
-    public private(set) var currentPage: Int = 0
+    public internal(set) var currentPage: Int = 0
     public private(set) var currentMenuItemView: MenuItemView!
     internal var menuItemCount: Int {
         switch options.menuDisplayMode {
@@ -48,19 +48,16 @@ public class MenuView: UIScrollView {
     private var options: PagingMenuOptions!
     
     private let contentView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIView(frame: .zero))
     lazy private var underlineView: UIView = {
-        let view = UIView(frame: .zero)
-        return view
+        return UIView(frame: .zero)
     }()
     lazy private var roundRectView: UIView = {
-        let view = UIView(frame: .zero)
-        view.userInteractionEnabled = true
-        return view
-    }()
+        $0.userInteractionEnabled = true
+        return $0
+    }(UIView(frame: .zero))
     private var menuViewBounces: Bool {
         switch options.menuDisplayMode {
         case .Standard(_, _, .ScrollEnabledAndBouces),
