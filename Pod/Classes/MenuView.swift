@@ -30,7 +30,7 @@ extension UIImage: MenuItemType {}
 public class MenuView: UIScrollView {
     weak public var viewDelegate: MenuViewDelegate?
     public private(set) var menuItemViews = [MenuItemView]()
-    public private(set) var currentPage: Int = 0
+    public internal(set) var currentPage: Int = 0
     public private(set) var currentMenuItemView: MenuItemView!
     internal var menuItemCount: Int {
         switch options.menuDisplayMode {
