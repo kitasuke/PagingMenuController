@@ -162,9 +162,8 @@ public class PagingViewController: UIViewController {
             var horizontalVisualFormat = String()
             
             // only one view controller
-            if case .One = options.lazyLoadingPage where
-                controllers.count == minumumSupportedViewCount,
-                case .Single = options.menuControllerSet {
+            if options.lazyLoadingPage == LazyLoadingPage.One ||
+                controllers.count == minimumSupportedViewCount || options.menuControllerSet == MenuControllerSet.Single {
                 horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]|"
             } else {
                 if case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode {

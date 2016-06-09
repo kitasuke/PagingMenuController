@@ -13,7 +13,7 @@ import UIKit
     optional func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
 }
 
-internal let minumumSupportedViewCount = 1
+internal let minimumSupportedViewCount = 1
 
 public class PagingMenuController: UIViewController {
     weak public var delegate: PagingMenuControllerDelegate?
