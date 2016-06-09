@@ -15,9 +15,10 @@ import UIKit
     optional func didMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
 }
 
-internal let minimumSupportedViewCount = 1
+internal let MinimumSupportedViewCount = 1
+internal let VisiblePagingViewNumber: Int = 3
 
-public class PagingMenuController: UIViewController {
+public class PagingMenuController: UIViewController, PagingValidator {
     weak public var delegate: PagingMenuControllerDelegate?
     public private(set) var menuView: MenuView!
     public private(set) var pagingViewController: PagingViewController!
@@ -70,11 +71,9 @@ public class PagingMenuController: UIViewController {
         }
         
         // consider left edge menu as center position
-        guard pagingViewController.currentPage == 0 && pagingViewController.contentScrollView.contentSize.width < (pageWidth * CGFloat(visiblePagingViewNumber)) else { return PagingViewPosition(order: order) }
+        guard pagingViewController.currentPage == 0 && pagingViewController.contentScrollView.contentSize.width < (pageWidth * CGFloat(VisiblePagingViewNumber)) else { return PagingViewPosition(order: order) }
         return PagingViewPosition(order: order + 1)
     }
-    private let visiblePagingViewNumber: Int = 3
-    private let ExceptionName = "PMCException"
     
     // MARK: - Lifecycle
     
@@ -127,7 +126,7 @@ public class PagingMenuController: UIViewController {
         }
         
         // validate
-        validate()
+        validate(options)
         
         setupMenuView()
         setupMenuController()
@@ -442,46 +441,5 @@ extension PagingMenuController: GestureHandler {
         }
         
         moveToMenuPage(newPage)
-    }
-}
-
-extension PagingMenuController: PagingValidator {
-    func validate() {
-        validateDefaultPage()
-        validateContentsCount()
-        validateInfiniteMenuItemNumbers()
-    }
-    
-    private func validateContentsCount() {
-        switch options.componentType {
-        case .All(let menuOptions, let pagingControllers):
-            guard menuOptions.itemsOptions.count == pagingControllers.count else {
-                NSException(name: ExceptionName, reason: "number of menu items and view controllers doesn't match", userInfo: nil).raise()
-                return
-            }
-        default: break
-        }
-    }
-    
-    private func validateDefaultPage() {
-        let maxCount: Int
-        switch options.componentType {
-        case .PagingController(let pagingControllers): maxCount = pagingControllers.count
-        case .All(_, let pagingControllers):
-            maxCount = pagingControllers.count
-        case .MenuView(let menuOptions): maxCount = menuOptions.itemsOptions.count
-        }
-        
-        guard options.defaultPage >= maxCount || options.defaultPage < 0 else { return }
-        
-        NSException(name: ExceptionName, reason: "default page is invalid", userInfo: nil).raise()
-    }
-    
-    private func validateInfiniteMenuItemNumbers() {
-        guard case .All(let menuOptions, _) = options.componentType,
-            case .Infinite = menuOptions.mode else { return }
-        guard menuOptions.itemsOptions.count < visiblePagingViewNumber else { return }
-        
-        NSException(name: ExceptionName, reason: "number of view controllers should be more than three with Infinite display mode", userInfo: nil).raise()
     }
 }

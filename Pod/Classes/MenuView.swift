@@ -71,7 +71,7 @@ public class MenuView: UIScrollView {
         return menuItemViews[currentPage].frame.midX - UIApplication.sharedApplication().keyWindow!.bounds.width / 2
     }
     private var contentOffsetXForCurrentPage: CGFloat {
-        guard menuItemCount > minimumSupportedViewCount else { return 0.0 }
+        guard menuItemCount > MinimumSupportedViewCount else { return 0.0 }
         let ratio = CGFloat(currentPage) / CGFloat(menuItemCount - 1)
         return (contentSize.width - frame.width) * ratio
     }
