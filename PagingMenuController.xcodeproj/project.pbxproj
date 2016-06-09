@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC0B07C11D0975DC00AD9CA1 /* PagingValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0B07C01D0975DC00AD9CA1 /* PagingValidator.swift */; };
 		EC0DC7CF1D09064E00857E1F /* MenuItemViewCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0DC7CC1D09064E00857E1F /* MenuItemViewCustomizable.swift */; };
 		EC0DC7D01D09064E00857E1F /* MenuViewCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0DC7CD1D09064E00857E1F /* MenuViewCustomizable.swift */; };
 		EC0DC7D11D09064E00857E1F /* PagingMenuControllerCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0DC7CE1D09064E00857E1F /* PagingMenuControllerCustomizable.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC0B07C01D0975DC00AD9CA1 /* PagingValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingValidator.swift; path = Pod/Classes/PagingValidator.swift; sourceTree = SOURCE_ROOT; };
 		EC0DC7CC1D09064E00857E1F /* MenuItemViewCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemViewCustomizable.swift; path = Pod/Classes/MenuItemViewCustomizable.swift; sourceTree = SOURCE_ROOT; };
 		EC0DC7CD1D09064E00857E1F /* MenuViewCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCustomizable.swift; path = Pod/Classes/MenuViewCustomizable.swift; sourceTree = SOURCE_ROOT; };
 		EC0DC7CE1D09064E00857E1F /* PagingMenuControllerCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingMenuControllerCustomizable.swift; path = Pod/Classes/PagingMenuControllerCustomizable.swift; sourceTree = SOURCE_ROOT; };
@@ -67,6 +69,7 @@
 				EC0DC7CC1D09064E00857E1F /* MenuItemViewCustomizable.swift */,
 				EC0DC7CD1D09064E00857E1F /* MenuViewCustomizable.swift */,
 				EC0DC7CE1D09064E00857E1F /* PagingMenuControllerCustomizable.swift */,
+				EC0B07C01D0975DC00AD9CA1 /* PagingValidator.swift */,
 				ECE5306C1B6DEB18001CF201 /* PagingMenuController.h */,
 				ECE5306A1B6DEB18001CF201 /* Supporting Files */,
 			);
@@ -164,6 +167,7 @@
 				ECE530871B6DEB68001CF201 /* MenuItemView.swift in Sources */,
 				ECE530891B6DEB68001CF201 /* PagingMenuController.swift in Sources */,
 				EC0DC7D01D09064E00857E1F /* MenuViewCustomizable.swift in Sources */,
+				EC0B07C11D0975DC00AD9CA1 /* PagingValidator.swift in Sources */,
 				ECE530881B6DEB68001CF201 /* MenuView.swift in Sources */,
 				EC0DC7D11D09064E00857E1F /* PagingMenuControllerCustomizable.swift in Sources */,
 				EC0DC7CF1D09064E00857E1F /* MenuItemViewCustomizable.swift in Sources */,

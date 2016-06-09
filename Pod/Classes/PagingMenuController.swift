@@ -127,8 +127,7 @@ public class PagingMenuController: UIViewController {
         }
         
         // validate
-        validateDefaultPage()
-        validatePageNumbers()
+        validate()
         
         setupMenuView()
         setupMenuController()
@@ -402,34 +401,6 @@ public class PagingMenuController: UIViewController {
         menuView.panGestureRecognizer.requireGestureRecognizerToFail(rightSwipeGesture)
         menuView.addGestureRecognizer(rightSwipeGesture)
     }
-    
-    // MARK: - Validator
-    
-    private func validateDefaultPage() {
-        let maxCount: Int
-        switch options.componentType {
-        case .PagingController(let pagingControllers): maxCount = pagingControllers.count
-        case .All(let menuOptions, let pagingControllers):
-            guard menuOptions.itemsOptions.count == pagingControllers.count else {
-                NSException(name: ExceptionName, reason: "number of menu items and view controllers doesn't match", userInfo: nil).raise()
-                return
-            }
-            maxCount = pagingControllers.count
-        case .MenuView(let menuOptions): maxCount = menuOptions.itemsOptions.count
-        }
-        
-        guard options.defaultPage >= maxCount || options.defaultPage < 0 else { return }
-        
-        NSException(name: ExceptionName, reason: "default page is invalid", userInfo: nil).raise()
-    }
-    
-    private func validatePageNumbers() {
-        guard case .All(let menuOptions, _) = options.componentType,
-            case .Infinite = menuOptions.mode else { return }
-        guard menuOptions.itemsOptions.count < visiblePagingViewNumber else { return }
-        
-        NSException(name: ExceptionName, reason: "number of view controllers should be more than three with Infinite display mode", userInfo: nil).raise()
-    }
 }
 
 extension PagingMenuController: UIScrollViewDelegate {
@@ -479,5 +450,46 @@ extension PagingMenuController: UIScrollViewDelegate {
         
         let nextPage = nextPageFromCurrentPoint
         moveToMenuPage(nextPage)
+    }
+}
+
+extension PagingMenuController: PagingValidator {
+    func validate() {
+        validateDefaultPage()
+        validateContentsCount()
+        validateInfiniteMenuItemNumbers()
+    }
+    
+    private func validateContentsCount() {
+        switch options.componentType {
+        case .All(let menuOptions, let pagingControllers):
+            guard menuOptions.itemsOptions.count == pagingControllers.count else {
+                NSException(name: ExceptionName, reason: "number of menu items and view controllers doesn't match", userInfo: nil).raise()
+                return
+            }
+        default: break
+        }
+    }
+    
+    private func validateDefaultPage() {
+        let maxCount: Int
+        switch options.componentType {
+        case .PagingController(let pagingControllers): maxCount = pagingControllers.count
+        case .All(_, let pagingControllers):
+            maxCount = pagingControllers.count
+        case .MenuView(let menuOptions): maxCount = menuOptions.itemsOptions.count
+        }
+        
+        guard options.defaultPage >= maxCount || options.defaultPage < 0 else { return }
+        
+        NSException(name: ExceptionName, reason: "default page is invalid", userInfo: nil).raise()
+    }
+    
+    private func validateInfiniteMenuItemNumbers() {
+        guard case .All(let menuOptions, _) = options.componentType,
+            case .Infinite = menuOptions.mode else { return }
+        guard menuOptions.itemsOptions.count < visiblePagingViewNumber else { return }
+        
+        NSException(name: ExceptionName, reason: "number of view controllers should be more than three with Infinite display mode", userInfo: nil).raise()
     }
 }
