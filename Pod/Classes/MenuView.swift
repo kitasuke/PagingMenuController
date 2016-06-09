@@ -25,10 +25,10 @@ public class MenuView: UIScrollView {
         }
     }
     internal var previousPage: Int {
-        return currentPage - 1 < 0 ? menuOptions.itemsOptions.count - 1 : currentPage - 1
+        return currentPage - 1 < 0 ? menuItemCount - 1 : currentPage - 1
     }
     internal var nextPage: Int {
-        return currentPage + 1 > menuOptions.itemsOptions.count - 1 ? 0 : currentPage + 1
+        return currentPage + 1 > menuItemCount - 1 ? 0 : currentPage + 1
     }
     internal private(set) var menuItemViews = [MenuItemView]()
     private var sortedMenuItemViews = [MenuItemView]()

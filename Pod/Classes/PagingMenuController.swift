@@ -218,7 +218,7 @@ public class PagingMenuController: UIViewController {
         let newPage: Int
         switch menuOptions.mode {
         case .Standard(_, _, .PagingEnabled):
-            newPage = page < self.menuView.currentPage ? self.menuView.currentPage - 1 : self.menuView.currentPage + 1
+            newPage = page < currentPage ? menuView.currentPage - 1 : menuView.currentPage + 1
         case .Infinite(_, .PagingEnabled):
             if menuItemView.frame.midX > menuView.currentMenuItemView.frame.midX {
                 newPage = menuView.nextPage
@@ -356,23 +356,14 @@ public class PagingMenuController: UIViewController {
     }
     
     private func hidePagingMenuControllers(page: Int) {
-        guard case .Three = options.lazyLoadingPage else {
-            pagingViewController.visibleControllers.forEach { $0.view.alpha = 0 }
-            return
-        }
+        guard let menuOptions = menuOptions else { return }
         
-        if let menuOptions = menuOptions,
-            case .Infinite = menuOptions.mode {
-            switch page {
-            case menuView?.previousPage ?? previousIndex,
-                 menuView?.nextPage ?? nextIndex: return
-            default: pagingViewController.visibleControllers.forEach { $0.view.alpha = 0 }
-            }
-        } else {
-            switch page {
-            case previousIndex, nextIndex: return
-            default: pagingViewController.visibleControllers.forEach { $0.view.alpha = 0 }
-            }
+        switch (options.lazyLoadingPage, menuOptions.mode, page) {
+        case (.Three, .Infinite, menuView?.previousPage ?? previousIndex),
+             (.Three, .Infinite, menuView?.nextPage ?? nextIndex),
+             (.Three, _, previousIndex),
+             (.Three, _, nextIndex): break
+        default: pagingViewController.visibleControllers.forEach { $0.view.alpha = 0 }
         }
     }
     
