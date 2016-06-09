@@ -24,20 +24,16 @@ public class PagingViewController: UIViewController {
         return $0
     }(UIScrollView(frame: .zero))
     
-    private let options: PagingMenuOptions
-    private let contentView: UIView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        return $0
-    }(UIView(frame: .zero))
+    private let options: PagingMenuControllerCustomizable
     private var previousIndex: Int {
-        guard case .Infinite = options.menuDisplayMode else { return currentPage - 1 }
+        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode else { return currentPage - 1 }
         
-        return currentPage - 1 < 0 ? options.menuItemCount - 1 : currentPage - 1
+        return currentPage - 1 < 0 ? menuOptions.itemsOptions.count - 1 : currentPage - 1
     }
     private var nextIndex: Int {
-        guard case .Infinite = options.menuDisplayMode else { return currentPage + 1 }
+        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode else { return currentPage + 1 }
         
-        return currentPage + 1 > options.menuItemCount - 1 ? 0 : currentPage + 1
+        return currentPage + 1 > menuOptions.itemsOptions.count - 1 ? 0 : currentPage + 1
     }
     
     lazy private var shouldLoadPage: (Int) -> Bool = { [unowned self] in
@@ -46,7 +42,7 @@ public class PagingViewController: UIViewController {
              (_, .One):
             guard $0 == self.currentPage else { return false }
         case (_, .Three):
-            if case .Infinite = self.options.menuDisplayMode {
+            if case .All(let menuOptions, _) = self.options.componentType, case .Infinite = menuOptions.mode {
                 guard $0 == self.currentPage || $0 == self.previousIndex || $0 == self.nextIndex else { return false }
             } else {
                 guard $0 >= self.previousIndex && $0 <= self.nextIndex else { return false }
@@ -58,7 +54,7 @@ public class PagingViewController: UIViewController {
         return self.childViewControllers.contains($0)
     }
     
-    init(viewControllers: [UIViewController], options: PagingMenuOptions) {
+    init(viewControllers: [UIViewController], options: PagingMenuControllerCustomizable) {
         controllers = viewControllers
         self.options = options
         
@@ -90,8 +86,6 @@ public class PagingViewController: UIViewController {
         setupView()
         setupContentScrollView()
         layoutContentScrollView()
-        setupContentView()
-        layoutContentView()
         constructPagingViewControllers()
         layoutPagingViewControllers()
         
@@ -113,18 +107,6 @@ public class PagingViewController: UIViewController {
         
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentScrollView]|", options: [], metrics: nil, views: viewsDictionary)
         let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentScrollView]|", options: [], metrics: nil, views: viewsDictionary)
-        
-        NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
-    }
-    
-    private func setupContentView() {
-        contentScrollView.addSubview(contentView)
-    }
-    
-    private func layoutContentView() {
-        let viewsDictionary = ["contentView": contentView, "contentScrollView": contentScrollView]
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(==contentScrollView)]|", options: [], metrics: nil, views: viewsDictionary)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
@@ -158,7 +140,7 @@ public class PagingViewController: UIViewController {
             pagingView.frame = .zero
             pagingView.translatesAutoresizingMaskIntoConstraints = false
             
-            contentView.addSubview(pagingView)
+            contentScrollView.addSubview(pagingView)
             addChildViewController(controller as UIViewController)
             controller.didMoveToParentViewController(self)
             
@@ -168,7 +150,7 @@ public class PagingViewController: UIViewController {
     
     private func layoutPagingViewControllers() {
         // cleanup
-        NSLayoutConstraint.deactivateConstraints(contentView.constraints)
+        NSLayoutConstraint.deactivateConstraints(contentScrollView.constraints)
         
         var viewsDictionary: [String: AnyObject] = ["contentScrollView": contentScrollView]
         for (index, controller) in controllers.enumerate() {
@@ -180,12 +162,12 @@ public class PagingViewController: UIViewController {
             var horizontalVisualFormat = String()
             
             // only one view controller
-            if options.menuItemCount == options.minumumSupportedViewCount ||
-                options.lazyLoadingPage == .One ||
-                options.menuControllerSet == .Single {
+            if case .One = options.lazyLoadingPage where
+                controllers.count == minumumSupportedViewCount,
+                case .Single = options.menuControllerSet {
                 horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]|"
             } else {
-                if case .Infinite = options.menuDisplayMode {
+                if case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode {
                     if index == currentPage {
                         viewsDictionary["previousPagingView"] = controllers[previousIndex].view
                         viewsDictionary["nextPagingView"] = controllers[nextIndex].view
@@ -238,7 +220,6 @@ public class PagingViewController: UIViewController {
             $0.removeFromParentViewController()
         }
         
-        contentView.removeFromSuperview()
         contentScrollView.removeFromSuperview()
     }
     
