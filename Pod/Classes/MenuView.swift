@@ -14,7 +14,7 @@ import UIKit
 }
 
 public class MenuView: UIScrollView {
-    weak public var viewDelegate: MenuViewDelegate?
+    weak internal var viewDelegate: MenuViewDelegate?
     private var menuOptions: MenuViewCustomizable!
     public internal(set) var currentPage: Int = 0
     public private(set) var currentMenuItemView: MenuItemView!

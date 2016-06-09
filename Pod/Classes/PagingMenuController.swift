@@ -17,6 +17,7 @@ internal let minimumSupportedViewCount = 1
 
 public class PagingMenuController: UIViewController {
     weak public var delegate: PagingMenuControllerDelegate?
+    weak public var menuViewDelegate: MenuViewDelegate?
     public private(set) var menuView: MenuView!
     public private(set) var pagingViewController: PagingViewController!
     public var currentPage: Int {
@@ -187,10 +188,10 @@ public class PagingMenuController: UIViewController {
         let nextPage = page % pagingViewController.controllers.count
         let nextPagingViewController = pagingViewController.controllers[nextPage]
         delegate?.willMoveToPageMenuController?(nextPagingViewController, previousMenuController: previousViewController)
+        menuView?.moveToMenu(page)
         
         pagingViewController.currentPage = nextPage
         pagingViewController.currentViewController = nextPagingViewController
-        menuView?.moveToMenu(page)
         
         let duration = animated ? options.animationDuration : 0
         UIView.animateWithDuration(duration, animations: {
@@ -260,6 +261,7 @@ public class PagingMenuController: UIViewController {
         
         menuView = MenuView(menuOptions: menuOptions)
         menuView.delegate = self
+        menuView.viewDelegate = menuViewDelegate
         view.addSubview(menuView)
         
         addTapGestureHandlers()
