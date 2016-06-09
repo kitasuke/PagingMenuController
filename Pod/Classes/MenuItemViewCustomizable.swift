@@ -10,16 +10,12 @@ import Foundation
 
 public protocol MenuItemViewCustomizable {
     var horizontalMargin: CGFloat { get }
-    var dividerImage: UIImage? { get }
     var mode: MenuItemMode { get }
 }
 
 public extension MenuItemViewCustomizable {
     var horizontalMargin: CGFloat {
         return 20
-    }
-    var dividerImage: UIImage? {
-        return nil
     }
     var mode: MenuItemMode {
         let title = MenuItemText()

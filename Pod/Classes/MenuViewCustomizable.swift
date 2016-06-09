@@ -19,6 +19,7 @@ public protocol MenuViewCustomizable {
     var focusMode: MenuFocusMode { get }
     var dummyItemViewsSet: Int { get }
     var menuPosition: MenuPosition { get }
+    var dividerImage: UIImage? { get }
     var itemsOptions: [MenuItemViewCustomizable] { get }
 }
 
@@ -52,6 +53,9 @@ public extension MenuViewCustomizable {
     }
     var menuPosition: MenuPosition {
         return .Top
+    }
+    var dividerImage: UIImage? {
+        return nil
     }
 }
 

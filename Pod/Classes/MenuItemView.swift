@@ -47,8 +47,8 @@ public class MenuItemView: UIView {
             }
         }
     }
-    lazy public private(set) var dividerImageView: UIImageView? = { [weak self] in
-        guard let image = self?.menuItemOptions.dividerImage else { return nil }
+    lazy public private(set) var dividerImageView: UIImageView? = { [unowned self] in
+        guard let image = self.menuOptions.dividerImage else { return nil }
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
