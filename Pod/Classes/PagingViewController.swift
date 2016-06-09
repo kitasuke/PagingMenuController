@@ -71,6 +71,7 @@ public class PagingViewController: UIViewController {
         super.viewDidAppear(animated)
         
         positionMenuController()
+        showVisibleControllersIfNeeded()
     }
     
     override public func viewDidLayoutSubviews() {
@@ -91,8 +92,9 @@ public class PagingViewController: UIViewController {
         
         currentPage = options.defaultPage
         currentViewController = controllers[currentPage]
+        hideVisibleControllersIfNeeded()
     }
-
+    
     private func setupView() {
         view.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -200,6 +202,8 @@ public class PagingViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
+    // MARK: - Internal
+    
     internal func relayoutPagingViewControllers() {
         constructPagingViewControllers()
         layoutPagingViewControllers()
@@ -207,7 +211,12 @@ public class PagingViewController: UIViewController {
         view.layoutIfNeeded()
     }
     
-    // MARK: - Cleanup
+    internal func positionMenuController() {
+        if let currentViewController = currentViewController,
+            let currentView = currentViewController.view {
+            contentScrollView.contentOffset.x = currentView.frame.minX
+        }
+    }
     
     internal func cleanup() {
         visibleControllers.removeAll(keepCapacity: true)
@@ -222,10 +231,26 @@ public class PagingViewController: UIViewController {
         contentScrollView.removeFromSuperview()
     }
     
-    internal func positionMenuController() {
-        if let currentViewController = currentViewController,
-            let currentView = currentViewController.view {
-            contentScrollView.contentOffset.x = currentView.frame.minX
+    // MARK: - Private
+    
+    private func hideVisibleControllersIfNeeded() {
+        guard shouldWaitForLayout() else { return }
+        visibleControllers.forEach { $0.view.alpha = 0 }
+    }
+    
+    private func showVisibleControllersIfNeeded() {
+        guard shouldWaitForLayout() else { return }
+        visibleControllers.forEach { $0.view.alpha = 1 }
+    }
+    
+    private func shouldWaitForLayout() -> Bool {
+        switch options.componentType {
+        case .All(let menuOptions, _):
+            guard case .Infinite = menuOptions.mode else { return false }
+        case .PagingController:
+            guard options.defaultPage > 0 else { return false }
+        default: return false
         }
+        return true
     }
 }
