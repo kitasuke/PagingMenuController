@@ -209,51 +209,6 @@ public class PagingMenuController: UIViewController {
         }
     }
     
-    // MARK: - UIGestureRecognizer
-    
-    internal func handleTapGesture(recognizer: UITapGestureRecognizer) {
-        guard let menuItemView = recognizer.view as? MenuItemView,
-            let page = menuView.menuItemViews.indexOf(menuItemView) where page != menuView.currentPage,
-            let menuOptions = menuOptions else { return }
-        
-        let newPage: Int
-        switch menuOptions.mode {
-        case .Standard(_, _, .PagingEnabled):
-            newPage = page < currentPage ? menuView.currentPage - 1 : menuView.currentPage + 1
-        case .Infinite(_, .PagingEnabled):
-            if menuItemView.frame.midX > menuView.currentMenuItemView.frame.midX {
-                newPage = menuView.nextPage
-            } else {
-                newPage = menuView.previousPage
-            }
-        case .Infinite: fallthrough
-        default:
-            newPage = page
-        }
-        
-        moveToMenuPage(newPage)
-    }
-    
-    internal func handleSwipeGesture(recognizer: UISwipeGestureRecognizer) {
-        guard let menuView = recognizer.view as? MenuView,
-            let menuOptions = menuOptions else { return }
-        
-        let newPage: Int
-        switch (recognizer.direction, menuOptions.mode) {
-        case (UISwipeGestureRecognizerDirection.Left, .Infinite):
-            newPage = menuView.nextPage
-        case (UISwipeGestureRecognizerDirection.Left, _):
-            newPage = min(nextIndex, menuOptions.itemsOptions.count - 1)
-        case (UISwipeGestureRecognizerDirection.Right, .Infinite):
-            newPage = menuView.previousPage
-        case (UISwipeGestureRecognizerDirection.Right, _):
-            newPage = max(previousIndex, 0)
-        default: return
-        }
-        
-        moveToMenuPage(newPage)
-    }
-    
     // MARK: - Constructor
     
     private func constructMenuView() {
@@ -264,8 +219,8 @@ public class PagingMenuController: UIViewController {
         menuView.viewDelegate = delegate
         view.addSubview(menuView)
         
-        addTapGestureHandlers()
-        addSwipeGestureHandlersIfNeeded()
+        addTapGestureHandler()
+        addSwipeGestureHandler()
     }
     
     private func layoutMenuView() {
@@ -372,35 +327,6 @@ public class PagingMenuController: UIViewController {
     private func showPagingMenuControllers() {
         pagingViewController.visibleControllers.forEach { $0.view.alpha = 1 }
     }
-    
-    // MARK: - Gesture handler
-    
-    private func addTapGestureHandlers() {
-        menuView.menuItemViews.forEach {
-            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PagingMenuController.handleTapGesture(_:)))
-            gestureRecognizer.numberOfTapsRequired = 1
-            $0.addGestureRecognizer(gestureRecognizer)
-        }
-    }
-    
-    private func addSwipeGestureHandlersIfNeeded() {
-        guard let menuOptions = menuOptions else { return }
-        
-        switch menuOptions.mode {
-        case .Standard(_, _, .PagingEnabled): break
-        case .Infinite(_, .PagingEnabled): break
-        default: return
-        }
-        
-        let leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(PagingMenuController.handleSwipeGesture(_:)))
-        leftSwipeGesture.direction = .Left
-        menuView.panGestureRecognizer.requireGestureRecognizerToFail(leftSwipeGesture)
-        menuView.addGestureRecognizer(leftSwipeGesture)
-        let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(PagingMenuController.handleSwipeGesture(_:)))
-        rightSwipeGesture.direction = .Right
-        menuView.panGestureRecognizer.requireGestureRecognizerToFail(rightSwipeGesture)
-        menuView.addGestureRecognizer(rightSwipeGesture)
-    }
 }
 
 extension PagingMenuController: UIScrollViewDelegate {
@@ -450,6 +376,72 @@ extension PagingMenuController: UIScrollViewDelegate {
         
         let nextPage = nextPageFromCurrentPoint
         moveToMenuPage(nextPage)
+    }
+}
+
+extension PagingMenuController: GestureHandler {
+    func addTapGestureHandler() {
+        menuView.menuItemViews.forEach {
+            $0.addGestureRecognizer(tapGestureRecognizer)
+        }
+    }
+    
+    func addSwipeGestureHandler() {
+        guard let menuOptions = menuOptions else { return }
+        
+        switch menuOptions.mode {
+        case .Standard(_, _, .PagingEnabled): break
+        case .Infinite(_, .PagingEnabled): break
+        default: return
+        }
+        
+        menuView.panGestureRecognizer.requireGestureRecognizerToFail(leftSwipeGestureRecognizer)
+        menuView.addGestureRecognizer(leftSwipeGestureRecognizer)
+        menuView.panGestureRecognizer.requireGestureRecognizerToFail(rightSwipeGestureRecognizer)
+        menuView.addGestureRecognizer(rightSwipeGestureRecognizer)
+    }
+    
+    internal func handleTapGesture(recognizer: UITapGestureRecognizer) {
+        guard let menuItemView = recognizer.view as? MenuItemView,
+            let page = menuView.menuItemViews.indexOf(menuItemView) where page != menuView.currentPage,
+            let menuOptions = menuOptions else { return }
+        
+        let newPage: Int
+        switch menuOptions.mode {
+        case .Standard(_, _, .PagingEnabled):
+            newPage = page < currentPage ? menuView.currentPage - 1 : menuView.currentPage + 1
+        case .Infinite(_, .PagingEnabled):
+            if menuItemView.frame.midX > menuView.currentMenuItemView.frame.midX {
+                newPage = menuView.nextPage
+            } else {
+                newPage = menuView.previousPage
+            }
+        case .Infinite: fallthrough
+        default:
+            newPage = page
+        }
+        
+        moveToMenuPage(newPage)
+    }
+    
+    internal func handleSwipeGesture(recognizer: UISwipeGestureRecognizer) {
+        guard let menuView = recognizer.view as? MenuView,
+            let menuOptions = menuOptions else { return }
+        
+        let newPage: Int
+        switch (recognizer.direction, menuOptions.mode) {
+        case (UISwipeGestureRecognizerDirection.Left, .Infinite):
+            newPage = menuView.nextPage
+        case (UISwipeGestureRecognizerDirection.Left, _):
+            newPage = min(nextIndex, menuOptions.itemsOptions.count - 1)
+        case (UISwipeGestureRecognizerDirection.Right, .Infinite):
+            newPage = menuView.previousPage
+        case (UISwipeGestureRecognizerDirection.Right, _):
+            newPage = max(previousIndex, 0)
+        default: return
+        }
+        
+        moveToMenuPage(newPage)
     }
 }
 
