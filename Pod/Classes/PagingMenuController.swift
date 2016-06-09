@@ -11,13 +11,14 @@ import UIKit
 @objc public protocol PagingMenuControllerDelegate: class {
     optional func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
     optional func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController)
+    optional func willMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
+    optional func didMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
 }
 
 internal let minimumSupportedViewCount = 1
 
 public class PagingMenuController: UIViewController {
     weak public var delegate: PagingMenuControllerDelegate?
-    weak public var menuViewDelegate: MenuViewDelegate?
     public private(set) var menuView: MenuView!
     public private(set) var pagingViewController: PagingViewController!
     public var currentPage: Int {
@@ -261,7 +262,7 @@ public class PagingMenuController: UIViewController {
         
         menuView = MenuView(menuOptions: menuOptions)
         menuView.delegate = self
-        menuView.viewDelegate = menuViewDelegate
+        menuView.viewDelegate = delegate
         view.addSubview(menuView)
         
         addTapGestureHandlers()

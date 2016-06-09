@@ -8,13 +8,8 @@
 
 import UIKit
 
-@objc public protocol MenuViewDelegate: class {
-    optional func willMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
-    optional func didMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
-}
-
 public class MenuView: UIScrollView {
-    weak internal var viewDelegate: MenuViewDelegate?
+    weak internal var viewDelegate: PagingMenuControllerDelegate?
     private var menuOptions: MenuViewCustomizable!
     public internal(set) var currentPage: Int = 0
     public private(set) var currentMenuItemView: MenuItemView!
