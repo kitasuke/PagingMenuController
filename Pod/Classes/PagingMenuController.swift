@@ -81,7 +81,7 @@ public class PagingMenuController: UIViewController, PagingValidator {
                 // reset selected menu item view position
                 switch menuOptions.mode {
                 case .Standard, .Infinite:
-                    self.moveToMenuPage(menuView.currentPage, animated: true)
+                    self.moveToMenuPage(menuView.currentPage)
                 default: break
                 }
                 }, completion: nil)
@@ -147,7 +147,7 @@ public class PagingMenuController: UIViewController, PagingValidator {
             }
         case .PagingController:
             guard let pagingViewController = pagingViewController where page < pagingViewController.controllers.count else { return }
-            guard page != pagingViewController.currentPage else { return }
+            guard page != pagingViewController.currentPage || !animated else { return }
         }
         
         guard let pagingViewController = pagingViewController else { return }
