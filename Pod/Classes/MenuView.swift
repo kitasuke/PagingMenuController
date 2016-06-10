@@ -9,18 +9,12 @@
 import UIKit
 
 public class MenuView: UIScrollView {
-    weak internal var viewDelegate: PagingMenuControllerDelegate?
-    private var menuOptions: MenuViewCustomizable!
     public private(set) var currentMenuItemView: MenuItemView!
     
-    internal var menuItemCount: Int {
-        switch menuOptions.mode {
-        case .Infinite: return menuOptions.itemsOptions.count * menuOptions.dummyItemViewsSet
-        default: return menuOptions.itemsOptions.count
-        }
-    }
+    weak internal var viewDelegate: PagingMenuControllerDelegate?
     internal private(set) var menuItemViews = [MenuItemView]()
     
+    private var menuOptions: MenuViewCustomizable!
     private var sortedMenuItemViews = [MenuItemView]()
     private let contentView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -70,11 +64,6 @@ public class MenuView: UIScrollView {
         return (contentSize.width - frame.width) * ratio
     }
     private var currentIndex: Int = 0
-    lazy private var rawIndex: (Int) -> Int = { [unowned self] in
-        let count = self.menuItemCount
-        let startIndex = self.currentPage - count / 2
-        return (startIndex + $0 + count) % count
-    }
     
     // MARK: - Lifecycle
     internal init(menuOptions: MenuViewCustomizable) {
@@ -154,7 +143,7 @@ public class MenuView: UIScrollView {
         }
     }
     
-    internal func updateMenuViewConstraints(size size: CGSize) {
+    internal func updateMenuViewConstraints(size: CGSize) {
         if case .SegmentedControl = menuOptions.mode {
             menuItemViews.forEach { $0.updateConstraints(size) }
         }
@@ -224,8 +213,8 @@ public class MenuView: UIScrollView {
         
         if case .Infinite = menuOptions.mode {
             for i in 0..<menuItemCount {
-                let index = rawIndex(i)
-                sortedMenuItemViews.append(menuItemViews[index])
+                let page = rawPage(i)
+                sortedMenuItemViews.append(menuItemViews[page])
             }
         } else {
             sortedMenuItemViews = menuItemViews
@@ -369,5 +358,18 @@ extension MenuView: ViewCleanable {
                 $0.removeFromSuperview()
             }
         }
+    }
+}
+
+extension MenuView: MenuItemMultipliable {
+    var menuItemCount: Int {
+        switch menuOptions.mode {
+        case .Infinite: return menuOptions.itemsOptions.count * menuOptions.dummyItemViewsSet
+        default: return menuOptions.itemsOptions.count
+        }
+    }
+    func rawPage(page: Int) -> Int {
+        let startIndex = currentPage - menuItemCount / 2
+        return (startIndex + page + menuItemCount) % menuItemCount
     }
 }

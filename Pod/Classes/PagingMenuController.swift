@@ -72,7 +72,7 @@ public class PagingMenuController: UIViewController, PagingValidator {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         
         if let menuView = menuView, let menuOptions = menuOptions {
-            menuView.updateMenuViewConstraints(size: size)
+            menuView.updateMenuViewConstraints(size)
             
             coordinator.animateAlongsideTransition({ [unowned self] (_) -> Void in
                 self.view.setNeedsLayout()
