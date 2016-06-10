@@ -11,7 +11,7 @@ import UIKit
 public class PagingViewController: UIViewController {
     public let controllers: [UIViewController]
     public internal(set) var currentViewController: UIViewController!
-    public internal(set) var currentPage: Int = 0
+    private var currentIndex: Int = 0
     public private(set) var visibleControllers = [UIViewController]()
     
     internal let contentScrollView: UIScrollView = {
@@ -25,16 +25,6 @@ public class PagingViewController: UIViewController {
     }(UIScrollView(frame: .zero))
     
     private let options: PagingMenuControllerCustomizable
-    private var previousIndex: Int {
-        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode else { return currentPage - 1 }
-        
-        return currentPage - 1 < 0 ? menuOptions.itemsOptions.count - 1 : currentPage - 1
-    }
-    private var nextIndex: Int {
-        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode else { return currentPage + 1 }
-        
-        return currentPage + 1 > menuOptions.itemsOptions.count - 1 ? 0 : currentPage + 1
-    }
     
     lazy private var shouldLoadPage: (Int) -> Bool = { [unowned self] in
         switch (self.options.menuControllerSet, self.options.lazyLoadingPage) {
@@ -43,9 +33,9 @@ public class PagingViewController: UIViewController {
             guard $0 == self.currentPage else { return false }
         case (_, .Three):
             if case .All(let menuOptions, _) = self.options.componentType, case .Infinite = menuOptions.mode {
-                guard $0 == self.currentPage || $0 == self.previousIndex || $0 == self.nextIndex else { return false }
+                guard $0 == self.currentPage || $0 == self.previousPage || $0 == self.nextPage else { return false }
             } else {
-                guard $0 >= self.previousIndex && $0 <= self.nextIndex else { return false }
+                guard $0 >= self.previousPage && $0 <= self.nextPage else { return false }
             }
         }
         return true
@@ -90,7 +80,7 @@ public class PagingViewController: UIViewController {
         constructPagingViewControllers()
         layoutPagingViewControllers()
         
-        currentPage = options.defaultPage
+        updateCurrentPage(options.defaultPage)
         currentViewController = controllers[currentPage]
         hideVisibleControllersIfNeeded()
     }
@@ -170,20 +160,20 @@ public class PagingViewController: UIViewController {
             } else {
                 if case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode {
                     if index == currentPage {
-                        viewsDictionary["previousPagingView"] = controllers[previousIndex].view
-                        viewsDictionary["nextPagingView"] = controllers[nextIndex].view
+                        viewsDictionary["previousPagingView"] = controllers[previousPage].view
+                        viewsDictionary["nextPagingView"] = controllers[nextPage].view
                         horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)][nextPagingView]"
-                    } else if index == previousIndex {
+                    } else if index == previousPage {
                         horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]"
-                    } else if index == nextIndex {
+                    } else if index == nextPage {
                         horizontalVisualFormat = "H:[pagingView(==contentScrollView)]|"
                     }
                 } else {
-                    if index == 0 || index == previousIndex {
+                    if index == 0 || index == previousPage {
                         horizontalVisualFormat = "H:|[pagingView(==contentScrollView)]"
                     } else {
                         viewsDictionary["previousPagingView"] = controllers[index - 1].view
-                        if index == controllers.count - 1 || index == nextIndex {
+                        if index == controllers.count - 1 || index == nextPage {
                             horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)]|"
                         } else {
                             horizontalVisualFormat = "H:[previousPagingView][pagingView(==contentScrollView)]"
@@ -252,5 +242,24 @@ public class PagingViewController: UIViewController {
         default: return false
         }
         return true
+    }
+}
+
+extension PagingViewController: Pagable {
+    public var currentPage: Int {
+        return currentIndex
+    }
+    var previousPage: Int {
+        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode else { return currentPage - 1 }
+        
+        return currentPage - 1 < 0 ? menuOptions.itemsOptions.count - 1 : currentPage - 1
+    }
+    var nextPage: Int {
+        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode else { return currentPage + 1 }
+        
+        return currentPage + 1 > menuOptions.itemsOptions.count - 1 ? 0 : currentPage + 1
+    }
+    func updateCurrentPage(page: Int) {
+        currentIndex = page
     }
 }

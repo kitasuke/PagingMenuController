@@ -163,7 +163,7 @@ public class PagingMenuController: UIViewController, PagingValidator {
         delegate?.willMoveToPageMenuController?(nextPagingViewController, previousMenuController: previousViewController)
         menuView?.moveToMenu(page)
         
-        pagingViewController.currentPage = nextPage
+        pagingViewController.updateCurrentPage(nextPage)
         pagingViewController.currentViewController = nextPagingViewController
         
         let duration = animated ? options.animationDuration : 0
@@ -273,11 +273,6 @@ public class PagingMenuController: UIViewController, PagingValidator {
     
     // MARK: - Private
     
-    private func updateCurrentPage(page: Int) {
-        menuView?.currentPage = page
-        pagingViewController?.currentPage = page
-    }
-    
     private func hidePagingMenuControllers(page: Int) {
         guard let menuOptions = menuOptions else { return }
         
@@ -327,7 +322,6 @@ extension PagingMenuController: Pagable {
         default: return pagingViewController?.currentPage ?? currentPage
         }
     }
-    
     var previousPage: Int {
         guard let menuOptions = menuOptions,
             case .Infinite = menuOptions.mode,

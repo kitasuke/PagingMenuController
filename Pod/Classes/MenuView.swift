@@ -11,23 +11,17 @@ import UIKit
 public class MenuView: UIScrollView {
     weak internal var viewDelegate: PagingMenuControllerDelegate?
     private var menuOptions: MenuViewCustomizable!
-    public internal(set) var currentPage: Int = 0
     public private(set) var currentMenuItemView: MenuItemView!
+    
     internal var menuItemCount: Int {
         switch menuOptions.mode {
         case .Infinite: return menuOptions.itemsOptions.count * menuOptions.dummyItemViewsSet
         default: return menuOptions.itemsOptions.count
         }
     }
-    internal var previousPage: Int {
-        return currentPage - 1 < 0 ? menuItemCount - 1 : currentPage - 1
-    }
-    internal var nextPage: Int {
-        return currentPage + 1 > menuItemCount - 1 ? 0 : currentPage + 1
-    }
     internal private(set) var menuItemViews = [MenuItemView]()
-    private var sortedMenuItemViews = [MenuItemView]()
     
+    private var sortedMenuItemViews = [MenuItemView]()
     private let contentView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -75,6 +69,7 @@ public class MenuView: UIScrollView {
         let ratio = CGFloat(currentPage) / CGFloat(menuItemCount - 1)
         return (contentSize.width - frame.width) * ratio
     }
+    private var currentIndex: Int = 0
     lazy private var rawIndex: (Int) -> Int = { [unowned self] in
         let count = self.menuItemCount
         let startIndex = self.currentPage - count / 2
@@ -114,9 +109,8 @@ public class MenuView: UIScrollView {
     // MARK: - Internal method
     
     internal func moveToMenu(page: Int, animated: Bool = true) {
-        let duration = animated ? menuOptions.animationDuration : 0
         let previousPage = currentPage
-        currentPage = page
+        updateCurrentPage(page)
         
         // hide menu view when constructing itself
         if !animated {
@@ -130,6 +124,7 @@ public class MenuView: UIScrollView {
             viewDelegate?.willMoveToMenuItemView?(menuItemView, previousMenuItemView: previousMenuItemView)
         }
         
+        let duration = animated ? menuOptions.animationDuration : 0
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
             self.focusMenuItem()
             if self.menuOptions.selectedItemCenter {
@@ -357,5 +352,20 @@ public class MenuView: UIScrollView {
         
         setNeedsLayout()
         layoutIfNeeded()
+    }
+}
+
+extension MenuView: Pagable {
+    var currentPage: Int {
+        return currentIndex
+    }
+    var previousPage: Int {
+        return currentPage - 1 < 0 ? menuItemCount - 1 : currentPage - 1
+    }
+    var nextPage: Int {
+        return currentPage + 1 > menuItemCount - 1 ? 0 : currentPage + 1
+    }
+    func updateCurrentPage(page: Int) {
+        currentIndex = page
     }
 }
