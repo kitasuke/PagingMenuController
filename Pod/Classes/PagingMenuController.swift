@@ -26,6 +26,7 @@ public class PagingMenuController: UIViewController, PagingValidator {
             
             menuView.delegate = self
             menuView.viewDelegate = delegate
+            menuView.updateCurrentPage(options.defaultPage)
             view.addSubview(menuView)
         }
     }
@@ -147,7 +148,7 @@ public class PagingMenuController: UIViewController, PagingValidator {
             }
         case .PagingController:
             guard let pagingViewController = pagingViewController where page < pagingViewController.controllers.count else { return }
-            guard page != pagingViewController.currentPage || !animated else { return }
+            guard page != pagingViewController.currentPage else { return }
         }
         
         guard let pagingViewController = pagingViewController else { return }
