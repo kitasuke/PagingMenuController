@@ -26,19 +26,15 @@ public class MenuItemView: UIView {
             
             switch menuItemOptions.mode {
             case .Text(let title):
-                titleLabel.textColor = selected ? title.selectedColor : title.color
-                titleLabel.font = selected ? title.selectedFont : title.font
+                updateLabel(titleLabel, text: title)
                 
                 // adjust label width if needed
                 let labelSize = calculateLabelSize(titleLabel)
                 widthConstraint.constant = labelSize.width
             case .MultilineText(let title, let description):
-                titleLabel.textColor = selected ? title.selectedColor : title.color
-                titleLabel.font = selected ? title.selectedFont : title.font
-
-                descriptionLabel.textColor = selected ? description.selectedColor : description.color
-                descriptionLabel.font = selected ? description.selectedFont : description.font
-
+                updateLabel(titleLabel, text: title)
+                updateLabel(descriptionLabel, text: description)
+                
                 // adjust label width if needed
                 widthConstraint.constant = calculateLabelSize(titleLabel).width
                 descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel).width
@@ -86,13 +82,12 @@ public class MenuItemView: UIView {
         switch menuItemOptions.mode {
         case .Text(let title):
             commonInit({
-                self.setupLabel(title, label: self.titleLabel)
+                self.setupTitleLabel(title)
                 self.layoutLabel()
             })
         case .MultilineText(let title, let description):
             commonInit({
-                self.setupLabel(title, label: self.titleLabel)
-                self.setupLabel(description, label: self.descriptionLabel)
+                self.setupMultilineLabel(title, description: description)
                 self.layoutMultiLineLabel()
             })
         case .Image(let image, _):
@@ -153,20 +148,24 @@ public class MenuItemView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func setupDescriptionLabel(title: MenuItemText, description: MenuItemText) {
-        setupLabel(title, label: titleLabel)
-        setupLabel(description, label: descriptionLabel)
+    private func setupTitleLabel(text: MenuItemText) {
+        setupLabel(titleLabel, text: text)
     }
     
-    private func setupTitleLabel(title: MenuItemText) {
-        setupLabel(title, label: titleLabel)
+    private func setupMultilineLabel(text: MenuItemText, description: MenuItemText) {
+        setupLabel(titleLabel, text: text)
+        setupLabel(descriptionLabel, text: description)
     }
     
-    private func setupLabel(text: MenuItemText, label: UILabel) {
+    private func setupLabel(label: UILabel, text: MenuItemText) {
         label.text = text.text
-        label.textColor = text.color
-        label.font = text.font
+        updateLabel(label, text: text)
         addSubview(label)
+    }
+    
+    private func updateLabel(label: UILabel, text: MenuItemText) {
+        label.textColor = selected ? text.selectedColor : text.color
+        label.font = selected ? text.selectedFont : text.font
     }
     
     private func setupImageView(image: UIImage) {
