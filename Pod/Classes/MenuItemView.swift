@@ -16,6 +16,13 @@ public class MenuItemView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIImageView(frame: .zero))
+    public private(set) var customView: UIView? {
+        didSet {
+            guard let customView = customView else { return }
+            
+            addSubview(customView)
+        }
+    }
     public internal(set) var selected: Bool = false {
         didSet {
             if case .RoundRect = menuOptions.focusMode {
@@ -40,6 +47,7 @@ public class MenuItemView: UIView {
                 descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel, maxWidth: maxWindowSize).width
             case .Image(let image, let selectedImage):
                 menuImageView.image = selected ? (selectedImage ?? image) : image
+            case .Custom: break
             }
         }
     }
@@ -85,6 +93,11 @@ public class MenuItemView: UIView {
                 self.setupImageView(image)
                 self.layoutImageView()
             })
+        case .Custom(let view):
+            commonInit({
+                self.setupCustomView(view)
+                self.layoutCustomView()
+            })
         }
     }
     
@@ -122,7 +135,7 @@ public class MenuItemView: UIView {
         case .MultilineText:
             widthConstraint.constant = calculateLabelSize(titleLabel, maxWidth: size.width).width
             descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel, maxWidth: size.width).width
-        case .Image:
+        case .Image, .Custom:
             widthConstraint.constant = size.width / CGFloat(menuOptions.itemsOptions.count)
         }
     }
@@ -161,6 +174,10 @@ public class MenuItemView: UIView {
     private func setupImageView(image: UIImage) {
         menuImageView.image = image
         addSubview(menuImageView)
+    }
+    
+    private func setupCustomView(view: UIView) {
+        customView = view
     }
     
     private func setupDivider() {
@@ -219,6 +236,20 @@ public class MenuItemView: UIView {
             ])
     }
     
+    private func layoutCustomView() {
+        guard let customView = customView else { return }
+        
+        widthConstraint = NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: customView.frame.width)
+        
+        NSLayoutConstraint.activateConstraints([
+            NSLayoutConstraint(item: customView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: customView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0),
+            NSLayoutConstraint(item: customView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: customView.frame.width),
+            NSLayoutConstraint(item: customView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: customView.frame.height),
+            widthConstraint
+            ])
+    }
+    
     private func layoutDivider() {
         guard let dividerImageView = dividerImageView else { return }
         
@@ -238,6 +269,8 @@ extension MenuItemView: ViewCleanable {
             descriptionLabel.removeFromSuperview()
         case .Image:
             menuImageView.removeFromSuperview()
+        case .Custom:
+            customView?.removeFromSuperview()
         }
         
         dividerImageView?.removeFromSuperview()
