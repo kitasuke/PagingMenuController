@@ -25,23 +25,6 @@ public class PagingViewController: UIViewController {
     
     private let options: PagingMenuControllerCustomizable
     private var currentIndex: Int = 0
-    lazy private var shouldLoadPage: (Int) -> Bool = { [unowned self] in
-        switch (self.options.menuControllerSet, self.options.lazyLoadingPage) {
-        case (.Single, _),
-             (_, .One):
-            guard $0 == self.currentPage else { return false }
-        case (_, .Three):
-            if case .All(let menuOptions, _) = self.options.componentType, case .Infinite = menuOptions.mode {
-                guard $0 == self.currentPage || $0 == self.previousPage || $0 == self.nextPage else { return false }
-            } else {
-                guard $0 >= self.previousPage && $0 <= self.nextPage else { return false }
-            }
-        }
-        return true
-    }
-    lazy private var isVisibleControllers: (UIViewController) -> Bool = { [unowned self] in
-        return self.childViewControllers.contains($0)
-    }
     
     init(viewControllers: [UIViewController], options: PagingMenuControllerCustomizable) {
         controllers = viewControllers
@@ -60,7 +43,7 @@ public class PagingViewController: UIViewController {
         super.viewDidAppear(animated)
         
         positionMenuController()
-        showVisibleControllersIfNeeded()
+        showVisibleControllers()
     }
     
     override public func viewDidLayoutSubviews() {
@@ -81,7 +64,7 @@ public class PagingViewController: UIViewController {
         
         updateCurrentPage(options.defaultPage)
         currentViewController = controllers[currentPage]
-        hideVisibleControllersIfNeeded()
+        hideVisibleControllers()
     }
     
     private func setupView() {
@@ -107,20 +90,18 @@ public class PagingViewController: UIViewController {
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
             if !shouldLoadPage(index) {
                 // remove unnecessary child view controllers
-                if isVisibleControllers(controller) {
+                if isVisibleController(controller) {
                     controller.willMoveToParentViewController(nil)
                     controller.view!.removeFromSuperview()
                     controller.removeFromParentViewController()
                     
-                    if let viewIndex = visibleControllers.indexOf(controller) {
-                        visibleControllers.removeAtIndex(viewIndex)
-                    }
+                    let _ = visibleControllers.indexOf(controller).flatMap { visibleControllers.removeAtIndex($0) }
                 }
                 continue
             }
             
             // ignore if it's already added
-            if isVisibleControllers(controller) {
+            if isVisibleController(controller) {
                 continue
             }
             
@@ -206,29 +187,6 @@ public class PagingViewController: UIViewController {
             contentScrollView.contentOffset.x = currentView.frame.minX
         }
     }
-    
-    // MARK: - Private
-    
-    private func hideVisibleControllersIfNeeded() {
-        guard shouldWaitForLayout() else { return }
-        visibleControllers.forEach { $0.view.alpha = 0 }
-    }
-    
-    private func showVisibleControllersIfNeeded() {
-        guard shouldWaitForLayout() else { return }
-        visibleControllers.forEach { $0.view.alpha = 1 }
-    }
-    
-    private func shouldWaitForLayout() -> Bool {
-        switch options.componentType {
-        case .All(let menuOptions, _):
-            guard case .Infinite = menuOptions.mode else { return false }
-        case .PagingController:
-            guard options.defaultPage > 0 else { return false }
-        default: return false
-        }
-        return true
-    }
 }
 
 extension PagingViewController: Pagable {
@@ -262,5 +220,51 @@ extension PagingViewController: ViewCleanable {
         }
         
         contentScrollView.removeFromSuperview()
+    }
+}
+
+extension PagingViewController: PageLoadable {
+    func shouldLoadPage(page: Int) -> Bool {
+        switch (options.menuControllerSet, options.lazyLoadingPage) {
+        case (.Single, _),
+             (_, .One):
+            guard page == currentPage else { return false }
+        case (_, .Three):
+            if case .All(let menuOptions, _) = options.componentType,
+                case .Infinite = menuOptions.mode {
+                guard page == currentPage ||
+                    page == previousPage ||
+                    page == nextPage else { return false }
+            } else {
+                guard page >= previousPage &&
+                    page <= nextPage else { return false }
+            }
+        }
+        return true
+    }
+    
+    func isVisibleController(controller: UIViewController) -> Bool {
+        return self.childViewControllers.contains(controller)
+    }
+    
+    func hideVisibleControllers() {
+        guard shouldWaitForLayout() else { return }
+        visibleControllers.forEach { $0.view.alpha = 0 }
+    }
+    
+    func showVisibleControllers() {
+        guard shouldWaitForLayout() else { return }
+        visibleControllers.forEach { $0.view.alpha = 1 }
+    }
+    
+    private func shouldWaitForLayout() -> Bool {
+        switch options.componentType {
+        case .All(let menuOptions, _):
+            guard case .Infinite = menuOptions.mode else { return false }
+        case .PagingController:
+            guard options.defaultPage > 0 else { return false }
+        default: return false
+        }
+        return true
     }
 }
