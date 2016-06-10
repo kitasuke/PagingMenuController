@@ -171,14 +171,12 @@ public class PagingMenuController: UIViewController, PagingValidator {
             () -> Void in
             pagingViewController.positionMenuController()
             }) { [weak self] (_) -> Void in
-                guard let _ = self else { return }
-                
                 pagingViewController.relayoutPagingViewControllers()
                 
                 // show paging views
-                self!.showPagingMenuControllers()
+                self?.showPagingMenuControllers()
                 
-                self!.delegate?.didMoveToPageMenuController?(nextPagingViewController, previousMenuController: previousViewController)
+                self?.delegate?.didMoveToPageMenuController?(nextPagingViewController, previousMenuController: previousViewController)
         }
     }
     
