@@ -68,10 +68,12 @@ public class PagingViewController: UIViewController {
     }
     
     private func setupView() {
+        view.backgroundColor = options.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupContentScrollView() {
+        contentScrollView.backgroundColor = options.backgroundColor
         contentScrollView.scrollEnabled = options.scrollEnabled
         view.addSubview(contentScrollView)
     }
@@ -110,6 +112,7 @@ public class PagingViewController: UIViewController {
             }
             
             pagingView.frame = .zero
+            pagingView.backgroundColor = options.backgroundColor
             pagingView.translatesAutoresizingMaskIntoConstraints = false
             
             contentScrollView.addSubview(pagingView)

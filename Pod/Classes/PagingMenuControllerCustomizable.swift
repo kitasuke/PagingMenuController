@@ -12,6 +12,7 @@ public protocol PagingMenuControllerCustomizable {
     var defaultPage: Int { get }
     var animationDuration: NSTimeInterval { get }
     var scrollEnabled: Bool { get }
+    var backgroundColor: UIColor { get }
     var lazyLoadingPage: LazyLoadingPage { get }
     var menuControllerSet: MenuControllerSet { get }
     var componentType: ComponentType { get }
@@ -26,6 +27,9 @@ public extension PagingMenuControllerCustomizable {
     }
     var scrollEnabled: Bool {
         return true
+    }
+    var backgroundColor: UIColor {
+        return UIColor.whiteColor()
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .Three
