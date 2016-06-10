@@ -26,6 +26,7 @@ public class PagingMenuController: UIViewController, PagingValidator {
             
             menuView.delegate = self
             menuView.viewDelegate = delegate
+            menuView.updateCurrentPage(options.defaultPage)
             view.addSubview(menuView)
         }
     }
@@ -81,7 +82,7 @@ public class PagingMenuController: UIViewController, PagingValidator {
                 // reset selected menu item view position
                 switch menuOptions.mode {
                 case .Standard, .Infinite:
-                    self.moveToMenuPage(menuView.currentPage, animated: true)
+                    self.moveToMenuPage(menuView.currentPage)
                 default: break
                 }
                 }, completion: nil)

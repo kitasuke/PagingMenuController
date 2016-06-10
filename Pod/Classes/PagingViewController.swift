@@ -31,7 +31,8 @@ public class PagingViewController: UIViewController {
         self.options = options
         
         super.init(nibName: nil, bundle: nil)
-
+        
+        updateCurrentPage(options.defaultPage)
         setup()
     }
     
@@ -68,10 +69,12 @@ public class PagingViewController: UIViewController {
     }
     
     private func setupView() {
+        view.backgroundColor = options.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupContentScrollView() {
+        contentScrollView.backgroundColor = options.backgroundColor
         contentScrollView.scrollEnabled = options.scrollEnabled
         view.addSubview(contentScrollView)
     }
@@ -110,6 +113,7 @@ public class PagingViewController: UIViewController {
             }
             
             pagingView.frame = .zero
+            pagingView.backgroundColor = options.backgroundColor
             pagingView.translatesAutoresizingMaskIntoConstraints = false
             
             contentScrollView.addSubview(pagingView)
@@ -272,11 +276,11 @@ extension PagingViewController: PageLoadable {
     }
     
     private func shouldWaitForLayout() -> Bool {
+        guard options.defaultPage > 0 else { return false }
+        
         switch options.componentType {
         case .All(let menuOptions, _):
             guard case .Infinite = menuOptions.mode else { return false }
-        case .PagingController:
-            guard options.defaultPage > 0 else { return false }
         default: return false
         }
         return true

@@ -27,6 +27,7 @@ public enum MenuItemMode {
     case Text(title: MenuItemText)
     case MultilineText(title: MenuItemText, description: MenuItemText)
     case Image(image: UIImage, selectedImage: UIImage?)
+    case Custom(view: UIView)
 }
 
 public struct MenuItemText {
