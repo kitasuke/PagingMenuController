@@ -302,8 +302,12 @@ extension PagingMenuController: UIScrollViewDelegate {
 extension PagingMenuController: Pagable {
     public var currentPage: Int {
         switch options.componentType {
-        case .MenuView: return menuView?.currentPage ?? currentPage
-        default: return pagingViewController?.currentPage ?? currentPage
+        case .MenuView:
+            guard let menuView = menuView else { return 0 }
+            return menuView.currentPage
+        default:
+            guard let pagingViewController = pagingViewController else { return 0 }
+            return pagingViewController.currentPage
         }
     }
     var previousPage: Int {
