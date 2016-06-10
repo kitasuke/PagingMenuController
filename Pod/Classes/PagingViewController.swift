@@ -134,11 +134,10 @@ public class PagingViewController: UIViewController {
             // only one view controller
             if options.lazyLoadingPage == LazyLoadingPage.One ||
                 controllers.count == MinimumSupportedViewCount || options.menuControllerSet == MenuControllerSet.Single {
-                // H:|[pagingView(==contentScrollView)]|
+                // H:|[pagingView]|
                 NSLayoutConstraint.activateConstraints([
                     pagingView.leadingAnchor.constraintEqualToAnchor(contentScrollView.leadingAnchor),
                     pagingView.trailingAnchor.constraintEqualToAnchor(contentScrollView.trailingAnchor),
-                    pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor)
                     ])
             } else {
                 if case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode {
@@ -170,10 +169,10 @@ public class PagingViewController: UIViewController {
                         // H:[previousPagingView][pagingView]
                         previousPagingView.trailingAnchor.constraintEqualToAnchor(pagingView.leadingAnchor, constant: 0).active = true
                     }
-                    // H:[pagingView(==contentScrollView)
-                    pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor).active = true
                 }
             }
+            // H:[pagingView(==contentScrollView)
+            pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor).active = true
             
             // V:|[pagingView(==contentScrollView)]|
             NSLayoutConstraint.activateConstraints([

@@ -184,10 +184,11 @@ public class MenuItemView: UIView {
             widthConstraint,
             descriptionLabel.leadingAnchor.constraintEqualToAnchor(leadingAnchor),
             descriptionLabel.trailingAnchor.constraintEqualToAnchor(trailingAnchor),
-            titleLabel.topAnchor.constraintEqualToAnchor(topAnchor, constant: verticalMargin),
-            descriptionLabel.topAnchor.constraintEqualToAnchor(titleLabel.bottomAnchor),
-            descriptionLabel.bottomAnchor.constraintEqualToAnchor(bottomAnchor, constant: verticalMargin),
             descriptionWidthConstraint,
+            titleLabel.topAnchor.constraintEqualToAnchor(topAnchor, constant: verticalMargin),
+            titleLabel.bottomAnchor.constraintEqualToAnchor(descriptionLabel.topAnchor, constant: 0),
+            descriptionLabel.bottomAnchor.constraintEqualToAnchor(bottomAnchor, constant: verticalMargin),
+            titleLabel.heightAnchor.constraintEqualToConstant(titleLabelSize.height),
             ])
     }
 
