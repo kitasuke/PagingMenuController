@@ -11,7 +11,6 @@ import UIKit
 public class PagingViewController: UIViewController {
     public let controllers: [UIViewController]
     public internal(set) var currentViewController: UIViewController!
-    private var currentIndex: Int = 0
     public private(set) var visibleControllers = [UIViewController]()
     
     internal let contentScrollView: UIScrollView = {
@@ -25,7 +24,7 @@ public class PagingViewController: UIViewController {
     }(UIScrollView(frame: .zero))
     
     private let options: PagingMenuControllerCustomizable
-    
+    private var currentIndex: Int = 0
     lazy private var shouldLoadPage: (Int) -> Bool = { [unowned self] in
         switch (self.options.menuControllerSet, self.options.lazyLoadingPage) {
         case (.Single, _),
@@ -52,7 +51,7 @@ public class PagingViewController: UIViewController {
 
         setup()
     }
-
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -208,19 +207,6 @@ public class PagingViewController: UIViewController {
         }
     }
     
-    internal func cleanup() {
-        visibleControllers.removeAll(keepCapacity: true)
-        currentViewController = nil
-        
-        childViewControllers.forEach {
-            $0.willMoveToParentViewController(nil)
-            $0.view.removeFromSuperview()
-            $0.removeFromParentViewController()
-        }
-        
-        contentScrollView.removeFromSuperview()
-    }
-    
     // MARK: - Private
     
     private func hideVisibleControllersIfNeeded() {
@@ -261,5 +247,20 @@ extension PagingViewController: Pagable {
     }
     func updateCurrentPage(page: Int) {
         currentIndex = page
+    }
+}
+
+extension PagingViewController: ViewCleanable {
+    func cleanup() {
+        visibleControllers.removeAll(keepCapacity: true)
+        currentViewController = nil
+        
+        childViewControllers.forEach {
+            $0.willMoveToParentViewController(nil)
+            $0.view.removeFromSuperview()
+            $0.removeFromParentViewController()
+        }
+        
+        contentScrollView.removeFromSuperview()
     }
 }

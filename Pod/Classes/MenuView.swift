@@ -109,20 +109,20 @@ public class MenuView: UIScrollView {
     // MARK: - Internal method
     
     internal func moveToMenu(page: Int, animated: Bool = true) {
-        let previousPage = currentPage
-        updateCurrentPage(page)
-        
         // hide menu view when constructing itself
         if !animated {
             alpha = 0
         }
         
         let menuItemView = menuItemViews[page]
+        let previousPage = currentPage
         let previousMenuItemView = currentMenuItemView
         
         if let previousMenuItemView = previousMenuItemView where page != previousPage {
             viewDelegate?.willMoveToMenuItemView?(menuItemView, previousMenuItemView: previousMenuItemView)
         }
+        
+        updateCurrentPage(page)
         
         let duration = animated ? menuOptions.animationDuration : 0
         UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
@@ -163,22 +163,6 @@ public class MenuView: UIScrollView {
 
         animateUnderlineViewIfNeeded()
         animateRoundRectViewIfNeeded()
-    }
-    
-    internal func cleanup() {
-        contentView.removeFromSuperview()
-        switch menuOptions.focusMode {
-        case .Underline: underlineView.removeFromSuperview()
-        case .RoundRect: roundRectView.removeFromSuperview()
-        case .None: break
-        }
-        
-        if !menuItemViews.isEmpty {
-            menuItemViews.forEach {
-                $0.cleanup()
-                $0.removeFromSuperview()
-            }
-        }
     }
     
     // MARK: - Private method
@@ -367,5 +351,23 @@ extension MenuView: Pagable {
     }
     func updateCurrentPage(page: Int) {
         currentIndex = page
+    }
+}
+
+extension MenuView: ViewCleanable {
+    func cleanup() {
+        contentView.removeFromSuperview()
+        switch menuOptions.focusMode {
+        case .Underline: underlineView.removeFromSuperview()
+        case .RoundRect: roundRectView.removeFromSuperview()
+        case .None: break
+        }
+        
+        if !menuItemViews.isEmpty {
+            menuItemViews.forEach {
+                $0.cleanup()
+                $0.removeFromSuperview()
+            }
+        }
     }
 }

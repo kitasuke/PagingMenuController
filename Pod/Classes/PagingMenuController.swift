@@ -43,6 +43,8 @@ public class PagingMenuController: UIViewController, PagingValidator {
     private var options: PagingMenuControllerCustomizable! {
         didSet {
             cleanup()
+            
+            validate(options)
         }
     }
     private var menuOptions: MenuViewCustomizable?
@@ -96,9 +98,6 @@ public class PagingMenuController: UIViewController, PagingValidator {
         case .MenuView(let menuOptions): self.menuOptions = menuOptions
         default: break
         }
-        
-        // validate
-        validate(options)
         
         setupMenuView()
         setupMenuController()
@@ -254,21 +253,6 @@ public class PagingMenuController: UIViewController, PagingValidator {
         }
 
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
-    }
-    
-    // MARK: - Cleanup
-    
-    private func cleanup() {
-        if let menuView = self.menuView {
-            menuView.cleanup()
-            menuView.removeFromSuperview()
-        }
-        if let pagingViewController = self.pagingViewController {
-            pagingViewController.cleanup()
-            pagingViewController.view.removeFromSuperview()
-            pagingViewController.removeFromParentViewController()
-            pagingViewController.willMoveToParentViewController(nil)
-        }
     }
     
     // MARK: - Private
@@ -444,5 +428,20 @@ extension PagingMenuController: GestureHandler {
         }
         
         moveToMenuPage(newPage)
+    }
+}
+
+extension PagingMenuController: ViewCleanable {
+    func cleanup() {
+        if let menuView = self.menuView {
+            menuView.cleanup()
+            menuView.removeFromSuperview()
+        }
+        if let pagingViewController = self.pagingViewController {
+            pagingViewController.cleanup()
+            pagingViewController.view.removeFromSuperview()
+            pagingViewController.removeFromParentViewController()
+            pagingViewController.willMoveToParentViewController(nil)
+        }
     }
 }

@@ -124,22 +124,6 @@ public class MenuItemView: UIView {
         super.init(coder: aDecoder)
     }
     
-    // MARK: - Cleanup
-    
-    internal func cleanup() {
-        switch menuItemOptions.mode {
-        case .Text:
-            titleLabel.removeFromSuperview()
-        case .MultilineText:
-            titleLabel.removeFromSuperview()
-            descriptionLabel.removeFromSuperview()
-        case .Image:
-            menuImageView.removeFromSuperview()
-        }
-        
-        dividerImageView?.removeFromSuperview()
-    }
-    
     // MARK: - Constraints manager
     
     internal func updateConstraints(size: CGSize) {
@@ -271,5 +255,21 @@ public class MenuItemView: UIView {
         
         let itemHeight = floor(labelSize(label).height)
         return CGSizeMake(itemWidth + horizontalMargin * 2, itemHeight)
+    }
+}
+
+extension MenuItemView: ViewCleanable {
+    func cleanup() {
+        switch menuItemOptions.mode {
+        case .Text:
+            titleLabel.removeFromSuperview()
+        case .MultilineText:
+            titleLabel.removeFromSuperview()
+            descriptionLabel.removeFromSuperview()
+        case .Image:
+            menuImageView.removeFromSuperview()
+        }
+        
+        dividerImageView?.removeFromSuperview()
     }
 }
