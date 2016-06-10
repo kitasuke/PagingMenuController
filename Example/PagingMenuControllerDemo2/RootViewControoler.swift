@@ -9,25 +9,46 @@
 import UIKit
 import PagingMenuController
 
+private struct PagingMenuOptions: PagingMenuControllerCustomizable {
+    private var componentType: ComponentType {
+        return .All(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+    }
+    
+    private var pagingControllers: [UIViewController] {
+        let viewController1 = ViewController1()
+        let viewController2 = ViewController2()
+        return [viewController1, viewController2]
+    }
+    
+    private struct MenuOptions: MenuViewCustomizable {
+        var mode: MenuViewMode {
+            return .SegmentedControl
+        }
+        var itemsOptions: [MenuItemViewCustomizable] {
+            return [MenuItem1(), MenuItem2()]
+        }
+    }
+    
+    private struct MenuItem1: MenuItemViewCustomizable {
+        var mode: MenuItemMode {
+            return .Text(title: MenuItemText(text: "First Menu"))
+        }
+    }
+    private struct MenuItem2: MenuItemViewCustomizable {
+        var mode: MenuItemMode {
+            return .Text(title: MenuItemText(text: "Second Menu"))
+        }
+    }
+}
+
 class RootViewControoler: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         view.backgroundColor = UIColor.whiteColor()
         
-        let viewController = ViewController1()
-        viewController.title = "First title"
-        
-        let viewController2 = ViewController2()
-        viewController2.title = "Second title"
-        
-        let viewControllers = [viewController, viewController2]
-        
         let options = PagingMenuOptions()
-        options.menuItemMargin = 5
-        options.menuHeight = 60
-        options.menuDisplayMode = .SegmentedControl
-        let pagingMenuController = PagingMenuController(menuControllerTypes: viewControllers, options: options)
+        let pagingMenuController = PagingMenuController(options: options)
         pagingMenuController.view.frame.origin.y += 64
         pagingMenuController.view.frame.size.height -= 64
         
