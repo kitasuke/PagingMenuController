@@ -1,3 +1,19 @@
+# 1.0.0 Release notes (2016/06-11)
+
+### Breaking changes
+
+- Protocol oriented programming
+
+### Enhancements
+
+- Added background color option for paging view
+- Added custom view support for menu item view
+
+### Bug fixed
+
+- Fixed incorrect behaviour of menu view delegate method
+- Fixed showing white page when jumping to pages
+
 # 0.10.2 Release notes (2016/05-25)
 
 ### Bug fixed
