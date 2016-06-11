@@ -28,14 +28,14 @@ public class MenuView: UIScrollView {
         return $0
     }(UIView(frame: .zero))
     private var menuViewBounces: Bool {
-        switch menuOptions.mode {
+        switch menuOptions.displayMode {
         case .Standard(_, _, .ScrollEnabledAndBouces),
              .Infinite(_, .ScrollEnabledAndBouces): return true
         default: return false
         }
     }
     private var menuViewScrollEnabled: Bool {
-        switch menuOptions.mode {
+        switch menuOptions.displayMode {
         case .Standard(_, _, .ScrollEnabledAndBouces),
              .Standard(_, _, .ScrollEnabled),
              .Infinite(_, .ScrollEnabledAndBouces),
@@ -44,7 +44,7 @@ public class MenuView: UIScrollView {
         }
     }
     private var contentOffsetX: CGFloat {
-        switch menuOptions.mode {
+        switch menuOptions.displayMode {
         case let .Standard(_, centerItem, _) where centerItem:
             return centerOfScreenWidth
         case .SegmentedControl:
@@ -123,7 +123,7 @@ public class MenuView: UIScrollView {
             guard let _ = self else { return }
             
             // relayout menu item views dynamically
-            if case .Infinite = self!.menuOptions.mode {
+            if case .Infinite = self!.menuOptions.displayMode {
                 self!.relayoutMenuItemViews()
             }
             if self!.menuOptions.selectedItemCenter {
@@ -144,7 +144,7 @@ public class MenuView: UIScrollView {
     }
     
     internal func updateMenuViewConstraints(size: CGSize) {
-        if case .SegmentedControl = menuOptions.mode {
+        if case .SegmentedControl = menuOptions.displayMode {
             menuItemViews.forEach { $0.updateConstraints(size) }
         }
         setNeedsLayout()
@@ -211,7 +211,7 @@ public class MenuView: UIScrollView {
             sortedMenuItemViews.removeAll()
         }
         
-        if case .Infinite = menuOptions.mode {
+        if case .Infinite = menuOptions.displayMode {
             for i in 0..<menuItemCount {
                 let page = rawPage(i)
                 sortedMenuItemViews.append(menuItemViews[page])
@@ -294,7 +294,7 @@ public class MenuView: UIScrollView {
     }
     
     private func adjustmentContentInsetIfNeeded() {
-        switch menuOptions.mode {
+        switch menuOptions.displayMode {
         case let .Standard(_, centerItem, _) where centerItem: break
         default: return
         }
@@ -363,7 +363,7 @@ extension MenuView: ViewCleanable {
 
 extension MenuView: MenuItemMultipliable {
     var menuItemCount: Int {
-        switch menuOptions.mode {
+        switch menuOptions.displayMode {
         case .Infinite: return menuOptions.itemsOptions.count * menuOptions.dummyItemViewsSet
         default: return menuOptions.itemsOptions.count
         }
