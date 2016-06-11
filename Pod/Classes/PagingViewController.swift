@@ -262,13 +262,14 @@ extension PagingViewController: PageLoadable {
     }
     
     private func shouldWaitForLayout() -> Bool {
-        guard options.defaultPage > 0 else { return false }
-        
         switch options.componentType {
         case .All(let menuOptions, _):
             guard case .Infinite = menuOptions.mode else { return false }
-        default: return false
+            return true
+        default: break
         }
+        
+        guard options.defaultPage > 0 else { return false }
         return true
     }
 }
