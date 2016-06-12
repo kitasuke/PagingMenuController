@@ -31,7 +31,7 @@ public class MenuItemView: UIView {
                 backgroundColor = selected ? menuOptions.selectedBackgroundColor : menuOptions.backgroundColor
             }
             
-            switch menuItemOptions.mode {
+            switch menuItemOptions.displayMode {
             case .Text(let title):
                 updateLabel(titleLabel, text: title)
                 
@@ -63,7 +63,7 @@ public class MenuItemView: UIView {
     private var widthConstraint: NSLayoutConstraint!
     private var descriptionWidthConstraint: NSLayoutConstraint!
     private var horizontalMargin: CGFloat {
-        switch menuOptions.mode {
+        switch menuOptions.displayMode {
         case .SegmentedControl: return 0.0
         default: return menuItemOptions.horizontalMargin
         }
@@ -77,7 +77,7 @@ public class MenuItemView: UIView {
         self.menuOptions = menuOptions
         self.menuItemOptions = menuItemOptions
         
-        switch menuItemOptions.mode {
+        switch menuItemOptions.displayMode {
         case .Text(let title):
             commonInit({
                 self.setupTitleLabel(title)
@@ -126,9 +126,9 @@ public class MenuItemView: UIView {
     
     internal func updateConstraints(size: CGSize) {
         // set width manually to support ratotaion
-        guard case .SegmentedControl = menuOptions.mode else { return }
+        guard case .SegmentedControl = menuOptions.displayMode else { return }
         
-        switch menuItemOptions.mode {
+        switch menuItemOptions.displayMode {
         case .Text:
             let labelSize = calculateLabelSize(titleLabel, maxWidth: size.width)
             widthConstraint.constant = labelSize.width
@@ -227,7 +227,7 @@ public class MenuItemView: UIView {
         guard let image = menuImageView.image else { return }
         
         let width: CGFloat
-        switch menuOptions.mode {
+        switch menuOptions.displayMode {
         case .SegmentedControl:
             width = UIApplication.sharedApplication().keyWindow!.bounds.size.width / CGFloat(menuOptions.itemsOptions.count)
         default:
@@ -271,7 +271,7 @@ public class MenuItemView: UIView {
 
 extension MenuItemView: ViewCleanable {
     func cleanup() {
-        switch menuItemOptions.mode {
+        switch menuItemOptions.displayMode {
         case .Text:
             titleLabel.removeFromSuperview()
         case .MultilineText:
@@ -304,7 +304,7 @@ extension MenuItemView: LabelSizeCalculatable {
         guard let _ = label.text else { return .zero }
         
         let itemWidth: CGFloat
-        switch menuOptions.mode {
+        switch menuOptions.displayMode {
         case let .Standard(widthMode, _, _):
             itemWidth = labelWidth(widthMode, estimatedSize: estimatedLabelSize(label))
         case .SegmentedControl:

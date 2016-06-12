@@ -144,7 +144,7 @@ public class PagingViewController: UIViewController {
                     pagingView.trailingAnchor.constraintEqualToAnchor(contentScrollView.trailingAnchor),
                     ])
             } else {
-                if case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode {
+                if case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.displayMode {
                     if index == currentPage {
                         let previousPagingView = controllers[previousPage].view
                         let nextPagingView = controllers[nextPage].view
@@ -212,12 +212,12 @@ extension PagingViewController: Pagable {
         return currentIndex
     }
     var previousPage: Int {
-        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode else { return currentPage - 1 }
+        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.displayMode else { return currentPage - 1 }
         
         return currentPage - 1 < 0 ? menuOptions.itemsOptions.count - 1 : currentPage - 1
     }
     var nextPage: Int {
-        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.mode else { return currentPage + 1 }
+        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.displayMode else { return currentPage + 1 }
         
         return currentPage + 1 > menuOptions.itemsOptions.count - 1 ? 0 : currentPage + 1
     }
@@ -249,7 +249,7 @@ extension PagingViewController: PageLoadable {
             guard page == currentPage else { return false }
         case (_, .Three):
             if case .All(let menuOptions, _) = options.componentType,
-                case .Infinite = menuOptions.mode {
+                case .Infinite = menuOptions.displayMode {
                 guard page == currentPage ||
                     page == previousPage ||
                     page == nextPage else { return false }
@@ -278,7 +278,7 @@ extension PagingViewController: PageLoadable {
     private func shouldWaitForLayout() -> Bool {
         switch options.componentType {
         case .All(let menuOptions, _):
-            guard case .Infinite = menuOptions.mode else { return false }
+            guard case .Infinite = menuOptions.displayMode else { return false }
             return true
         default: break
         }

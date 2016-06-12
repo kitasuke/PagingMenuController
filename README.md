@@ -113,9 +113,9 @@ menuSelectedItemCenter: Bool
 * menu mode and scrolling mode
 
 ```swift
-mode: MenuViewMode
+displayMode: MenuDisplayMode
 
-public enum MenuViewMode {
+public enum MenuDisplayMode {
     case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
     case SegmentedControl
     case Infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode) // Requires three paging views at least
@@ -179,8 +179,8 @@ horizontalMargin: CGFloat
 
 * menu item mode
 ```swift
-mode: MenuItemMode
-public enum MenuItemMode {
+displayMode: MenuItemDisplayMode
+public enum MenuItemDisplayMode {
     case Text(title: MenuItemText)
     case MultilineText(title: MenuItemText, description: MenuItemText)
     case Image(image: UIImage, selectedImage: UIImage?)
