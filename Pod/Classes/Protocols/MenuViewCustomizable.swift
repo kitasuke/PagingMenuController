@@ -15,7 +15,7 @@ public protocol MenuViewCustomizable {
     var animationDuration: NSTimeInterval { get }
     var deceleratingRate: CGFloat { get }
     var selectedItemCenter: Bool { get }
-    var mode: MenuViewMode { get }
+    var displayMode: MenuDisplayMode { get }
     var focusMode: MenuFocusMode { get }
     var dummyItemViewsSet: Int { get }
     var menuPosition: MenuPosition { get }
@@ -42,7 +42,7 @@ public extension MenuViewCustomizable {
     var selectedItemCenter: Bool {
         return true
     }
-    var mode: MenuViewMode {
+    var displayMode: MenuDisplayMode {
         return .Standard(widthMode: .Flexible, centerItem: false, scrollingMode: .PagingEnabled)
     }
     var focusMode: MenuFocusMode {
@@ -59,7 +59,7 @@ public extension MenuViewCustomizable {
     }
 }
 
-public enum MenuViewMode {
+public enum MenuDisplayMode {
     case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
     case SegmentedControl
     case Infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode)

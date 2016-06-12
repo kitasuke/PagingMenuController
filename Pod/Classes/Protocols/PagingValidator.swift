@@ -46,7 +46,7 @@ extension PagingValidator {
     
     private func validateInfiniteMenuItemNumbers(options: PagingMenuControllerCustomizable) {
         guard case .All(let menuOptions, _) = options.componentType,
-            case .Infinite = menuOptions.mode else { return }
+            case .Infinite = menuOptions.displayMode else { return }
         guard menuOptions.itemsOptions.count < VisiblePagingViewNumber else { return }
         
         raise("number of view controllers should be more than three with Infinite display mode")

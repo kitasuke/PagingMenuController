@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  PagingMenuController: 8d5eb5854e1b13e4c7ffd6186a8d8b3ecb7db4aa
+  PagingMenuController: b2e3a3c71eb462e8cf9a3bef643f5a0aa0a990eb
 
 PODFILE CHECKSUM: 182e65100ed4f1fc8683837abd55ef28346367f5
 

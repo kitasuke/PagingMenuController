@@ -10,20 +10,20 @@ import Foundation
 
 public protocol MenuItemViewCustomizable {
     var horizontalMargin: CGFloat { get }
-    var mode: MenuItemMode { get }
+    var displayMode: MenuItemDisplayMode { get }
 }
 
 public extension MenuItemViewCustomizable {
     var horizontalMargin: CGFloat {
         return 20
     }
-    var mode: MenuItemMode {
+    var displayMode: MenuItemDisplayMode {
         let title = MenuItemText()
         return .Text(title: title)
     }
 }
 
-public enum MenuItemMode {
+public enum MenuItemDisplayMode {
     case Text(title: MenuItemText)
     case MultilineText(title: MenuItemText, description: MenuItemText)
     case Image(image: UIImage, selectedImage: UIImage?)
