@@ -1,3 +1,7 @@
+# 1.1.0 Release notes (2016/06-11)
+
+- Renamed mode to displayMode
+
 # 1.0.0 Release notes (2016/06-11)
 
 ### Breaking changes
