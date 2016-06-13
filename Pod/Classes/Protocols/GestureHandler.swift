@@ -11,8 +11,8 @@ import Foundation
 @objc protocol GestureHandler {
     func addTapGestureHandler()
     func addSwipeGestureHandler()
-    optional func handleTapGesture(recognizer: UITapGestureRecognizer)
-    optional func handleSwipeGesture(recognizer: UISwipeGestureRecognizer)
+    @objc optional func handleTapGesture(_ recognizer: UITapGestureRecognizer)
+    @objc optional func handleSwipeGesture(_ recognizer: UISwipeGestureRecognizer)
 }
 
 extension GestureHandler {
@@ -24,13 +24,13 @@ extension GestureHandler {
     
     var leftSwipeGestureRecognizer: UISwipeGestureRecognizer {
         let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PagingMenuController.handleSwipeGesture(_:)))
-        gestureRecognizer.direction = .Left
+        gestureRecognizer.direction = .left
         return gestureRecognizer
     }
     
     var rightSwipeGestureRecognizer: UISwipeGestureRecognizer {
         let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(PagingMenuController.handleSwipeGesture(_:)))
-        gestureRecognizer.direction = .Right
+        gestureRecognizer.direction = .right
         return gestureRecognizer
     }
 }

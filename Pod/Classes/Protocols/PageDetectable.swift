@@ -9,14 +9,14 @@
 import Foundation
 
 enum PagingViewPosition {
-    case Left, Center, Right, Unknown
+    case left, center, right, unknown
     
     init(order: Int) {
         switch order {
-        case 0: self = .Left
-        case 1: self = .Center
-        case 2: self = .Right
-        default: self = .Unknown
+        case 0: self = .left
+        case 1: self = .center
+        case 2: self = .right
+        default: self = .unknown
         }
     }
 }
