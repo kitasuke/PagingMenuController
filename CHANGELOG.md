@@ -1,4 +1,4 @@
-# 1.1.0 Release notes (2016/06-12)
+# 1.1.1 Release notes (2016/06-12)
 
 ### Bug fixed
 
