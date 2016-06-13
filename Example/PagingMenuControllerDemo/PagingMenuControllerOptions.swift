@@ -28,7 +28,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     }
     
     struct MenuOptions: MenuViewCustomizable {
-        var mode: MenuViewMode {
+        var displayMode: MenuDisplayMode {
             return .Standard(widthMode: .Flexible, centerItem: false, scrollingMode: .PagingEnabled)
         }
         var focusMode: MenuFocusMode {
@@ -43,28 +43,28 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     }
     
     struct MenuItemUsers: MenuItemViewCustomizable {
-        var mode: MenuItemMode {
+        var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
             let description = MenuItemText(text: String(self))
             return .MultilineText(title: title, description: description)
         }
     }
     struct MenuItemRepository: MenuItemViewCustomizable {
-        var mode: MenuItemMode {
+        var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
             let description = MenuItemText(text: String(self))
             return .MultilineText(title: title, description: description)
         }
     }
     struct MenuItemGists: MenuItemViewCustomizable {
-        var mode: MenuItemMode {
+        var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
             let description = MenuItemText(text: String(self))
             return .MultilineText(title: title, description: description)
         }
     }
     struct MenuItemOrganization: MenuItemViewCustomizable {
-        var mode: MenuItemMode {
+        var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
             let description = MenuItemText(text: String(self))
             return .MultilineText(title: title, description: description)
@@ -81,7 +81,7 @@ struct PagingMenuOptions2: PagingMenuControllerCustomizable {
     }
     
     struct MenuOptions: MenuViewCustomizable {
-        var mode: MenuViewMode {
+        var displayMode: MenuDisplayMode {
             return .SegmentedControl
         }
         var itemsOptions: [MenuItemViewCustomizable] {
@@ -99,7 +99,7 @@ struct PagingMenuOptions3: PagingMenuControllerCustomizable {
     }
     
     struct MenuOptions: MenuViewCustomizable {
-        var mode: MenuViewMode {
+        var displayMode: MenuDisplayMode {
             return .Infinite(widthMode: .Fixed(width: 80), scrollingMode: .ScrollEnabled)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
@@ -114,7 +114,7 @@ struct PagingMenuOptions4: PagingMenuControllerCustomizable {
     }
     
     struct MenuOptions: MenuViewCustomizable {
-        var mode: MenuViewMode {
+        var displayMode: MenuDisplayMode {
             return .SegmentedControl
         }
         var focusMode: MenuFocusMode {
@@ -132,7 +132,7 @@ struct PagingMenuOptions5: PagingMenuControllerCustomizable {
     }
     
     struct MenuOptions: MenuViewCustomizable {
-        var mode: MenuViewMode {
+        var displayMode: MenuDisplayMode {
             return .Infinite(widthMode: .Flexible, scrollingMode: .PagingEnabled)
         }
         var focusMode: MenuFocusMode {
