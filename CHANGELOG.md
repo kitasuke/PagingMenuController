@@ -1,4 +1,12 @@
+# 1.1.0 Release notes (2016/06-12)
+
+### Bug fixed
+
+- Fix compile error in example project
+
 # 1.1.0 Release notes (2016/06-11)
+
+### Enhancements
 
 - Renamed mode to displayMode
 
