@@ -151,16 +151,15 @@ public class PagingMenuController: UIViewController, PagingValidator {
             guard page != pagingViewController.currentPage else { return }
         }
         
-        guard let pagingViewController = pagingViewController else { return }
+        guard let pagingViewController = pagingViewController,
+            let previousViewController = pagingViewController.currentViewController else { return }
         
         // hide paging views if it's moving to far away
         hidePagingMenuControllers(page)
         
-        let previousViewController = pagingViewController.currentViewController
-        
         let nextPage = page % pagingViewController.controllers.count
         let nextPagingViewController = pagingViewController.controllers[nextPage]
-        delegate?.willMoveToPageMenuController?(nextPagingViewController, previousMenuController: previousViewController!)
+        delegate?.willMoveToPageMenuController?(nextPagingViewController, previousMenuController: previousViewController)
         menuView?.moveToMenu(page)
         
         pagingViewController.updateCurrentPage(nextPage)
