@@ -21,7 +21,7 @@ private struct PagingMenuOptions: PagingMenuControllerCustomizable {
     }
     
     private struct MenuOptions: MenuViewCustomizable {
-        var mode: MenuViewMode {
+        var displayMode: MenuDisplayMode {
             return .SegmentedControl
         }
         var itemsOptions: [MenuItemViewCustomizable] {
@@ -30,12 +30,12 @@ private struct PagingMenuOptions: PagingMenuControllerCustomizable {
     }
     
     private struct MenuItem1: MenuItemViewCustomizable {
-        var mode: MenuItemMode {
+        var displayMode: MenuItemDisplayMode {
             return .Text(title: MenuItemText(text: "First Menu"))
         }
     }
     private struct MenuItem2: MenuItemViewCustomizable {
-        var mode: MenuItemMode {
+        var displayMode: MenuItemDisplayMode {
             return .Text(title: MenuItemText(text: "Second Menu"))
         }
     }

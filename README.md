@@ -5,6 +5,7 @@
 [![Version](https://img.shields.io/cocoapods/v/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![License](https://img.shields.io/cocoapods/l/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![Platform](https://img.shields.io/cocoapods/p/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
+![Swift 2.2.x](https://img.shields.io/badge/Swift-2.2.x-orange.svg)
 
 This library is inspired by [PageMenu](https://github.com/uacaps/PageMenu)
 
