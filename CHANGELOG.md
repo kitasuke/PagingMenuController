@@ -1,3 +1,7 @@
+# 1.1.2 Release notes (2016/06-16)
+
+- Fix warning in iOS 8.1 thanks to @ahirusun
+
 # 1.1.1 Release notes (2016/06-12)
 
 ### Bug fixed
