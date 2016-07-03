@@ -108,7 +108,7 @@ public class MenuView: UIScrollView {
         let previousMenuItemView = currentMenuItemView
         
         if let previousMenuItemView = previousMenuItemView where page != previousPage {
-            viewDelegate?.willMoveToMenuItemView?(menuItemView, previousMenuItemView: previousMenuItemView)
+            viewDelegate?.willMoveToMenuItemView(menuItemView, previousMenuItemView: previousMenuItemView)
         }
         
         updateCurrentPage(page)
@@ -138,7 +138,7 @@ public class MenuView: UIScrollView {
             }
             
             if let previousMenuItemView = previousMenuItemView where page != previousPage {
-                self!.viewDelegate?.didMoveToMenuItemView?(self!.currentMenuItemView, previousMenuItemView: previousMenuItemView)
+                self!.viewDelegate?.didMoveToMenuItemView(self!.currentMenuItemView, previousMenuItemView: previousMenuItemView)
             }
         }
     }
