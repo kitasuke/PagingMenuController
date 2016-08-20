@@ -29,7 +29,7 @@ public extension PagingMenuControllerCustomizable {
         return true
     }
     var backgroundColor: UIColor {
-        return UIColor.white()
+        return UIColor.white
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .three

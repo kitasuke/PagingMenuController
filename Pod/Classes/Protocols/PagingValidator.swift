@@ -19,7 +19,7 @@ extension PagingValidator {
         validateInfiniteMenuItemNumbers(options)
     }
     
-    private func validateContentsCount(_ options: PagingMenuControllerCustomizable) {
+    fileprivate func validateContentsCount(_ options: PagingMenuControllerCustomizable) {
         switch options.componentType {
         case .all(let menuOptions, let pagingControllers):
             guard menuOptions.itemsOptions.count == pagingControllers.count else {
@@ -30,7 +30,7 @@ extension PagingValidator {
         }
     }
     
-    private func validateDefaultPage(_ options: PagingMenuControllerCustomizable) {
+    fileprivate func validateDefaultPage(_ options: PagingMenuControllerCustomizable) {
         let maxCount: Int
         switch options.componentType {
         case .pagingController(let pagingControllers): maxCount = pagingControllers.count
@@ -44,7 +44,7 @@ extension PagingValidator {
         raise("default page is invalid")
     }
     
-    private func validateInfiniteMenuItemNumbers(_ options: PagingMenuControllerCustomizable) {
+    fileprivate func validateInfiniteMenuItemNumbers(_ options: PagingMenuControllerCustomizable) {
         guard case .all(let menuOptions, _) = options.componentType,
             case .infinite = menuOptions.displayMode else { return }
         guard menuOptions.itemsOptions.count < VisiblePagingViewNumber else { return }
@@ -52,11 +52,11 @@ extension PagingValidator {
         raise("number of view controllers should be more than three with Infinite display mode")
     }
     
-    private var exceptionName: String {
+    fileprivate var exceptionName: String {
         return "PMCException"
     }
     
-    private func raise(_ reason: String) {
+    fileprivate func raise(_ reason: String) {
         NSException(name: NSExceptionName(rawValue: exceptionName), reason: reason, userInfo: nil).raise()
     }
 }

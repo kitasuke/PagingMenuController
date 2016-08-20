@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class PagingViewController: UIViewController {
-    public let controllers: [UIViewController]
-    public internal(set) var currentViewController: UIViewController!
-    public private(set) var visibleControllers = [UIViewController]()
+open class PagingViewController: UIViewController {
+    open let controllers: [UIViewController]
+    open internal(set) var currentViewController: UIViewController!
+    open fileprivate(set) var visibleControllers = [UIViewController]()
     
     internal let contentScrollView: UIScrollView = {
         $0.isPagingEnabled = true
@@ -23,8 +23,8 @@ public class PagingViewController: UIViewController {
         return $0
     }(UIScrollView(frame: .zero))
     
-    private let options: PagingMenuControllerCustomizable
-    private var currentIndex: Int = 0
+    fileprivate let options: PagingMenuControllerCustomizable
+    fileprivate var currentIndex: Int = 0
     
     init(viewControllers: [UIViewController], options: PagingMenuControllerCustomizable) {
         controllers = viewControllers
@@ -40,14 +40,14 @@ public class PagingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         positionMenuController()
         showVisibleControllers()
     }
     
-    override public func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         // position paging views correctly after view size is decided
@@ -68,18 +68,18 @@ public class PagingViewController: UIViewController {
         hideVisibleControllers()
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         view.backgroundColor = options.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func setupContentScrollView() {
+    fileprivate func setupContentScrollView() {
         contentScrollView.backgroundColor = options.backgroundColor
         contentScrollView.isScrollEnabled = options.scrollEnabled
         view.addSubview(contentScrollView)
     }
     
-    private func layoutContentScrollView() {
+    fileprivate func layoutContentScrollView() {
         let viewsDictionary = ["contentScrollView": contentScrollView]
         
         let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[contentScrollView]|", options: [], metrics: nil, views: viewsDictionary)
@@ -88,7 +88,7 @@ public class PagingViewController: UIViewController {
         NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
     }
     
-    private func constructPagingViewControllers() {
+    fileprivate func constructPagingViewControllers() {
         for (index, controller) in controllers.enumerated() {
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
             if !shouldLoadPage(index) {
@@ -124,7 +124,7 @@ public class PagingViewController: UIViewController {
         }
     }
     
-    private func layoutPagingViewControllers() {
+    fileprivate func layoutPagingViewControllers() {
         // cleanup
         NSLayoutConstraint.deactivate(contentScrollView.constraints)
         
@@ -261,7 +261,7 @@ extension PagingViewController: PageLoadable {
         visibleControllers.forEach { $0.view.alpha = 1 }
     }
     
-    private func shouldWaitForLayout() -> Bool {
+    fileprivate func shouldWaitForLayout() -> Bool {
         switch options.componentType {
         case .all(let menuOptions, _):
             guard case .infinite = menuOptions.displayMode else { return false }

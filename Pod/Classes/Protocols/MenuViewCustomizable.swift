@@ -25,10 +25,10 @@ public protocol MenuViewCustomizable {
 
 public extension MenuViewCustomizable {
     var backgroundColor: UIColor {
-        return UIColor.white()
+        return UIColor.white
     }
     var selectedBackgroundColor: UIColor {
-        return UIColor.white()
+        return UIColor.white
     }
     var height: CGFloat {
         return 50
@@ -46,7 +46,7 @@ public extension MenuViewCustomizable {
         return .standard(widthMode: .flexible, centerItem: false, scrollingMode: .pagingEnabled)
     }
     var focusMode: MenuFocusMode {
-        return .underline(height: 3, color: UIColor.blue(), horizontalPadding: 0, verticalPadding: 0)
+        return .underline(height: 3, color: UIColor.blue, horizontalPadding: 0, verticalPadding: 0)
     }
     var dummyItemViewsSet: Int {
         return 3
