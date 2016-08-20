@@ -45,28 +45,28 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     struct MenuItemUsers: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
-            let description = MenuItemText(text: String(self))
+            let description = MenuItemText(text: String(describing: self))
             return .multilineText(title: title, description: description)
         }
     }
     struct MenuItemRepository: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
-            let description = MenuItemText(text: String(self))
+            let description = MenuItemText(text: String(describing: self))
             return .multilineText(title: title, description: description)
         }
     }
     struct MenuItemGists: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
-            let description = MenuItemText(text: String(self))
+            let description = MenuItemText(text: String(describing: self))
             return .multilineText(title: title, description: description)
         }
     }
     struct MenuItemOrganization: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
-            let description = MenuItemText(text: String(self))
+            let description = MenuItemText(text: String(describing: self))
             return .multilineText(title: title, description: description)
         }
     }
@@ -118,7 +118,7 @@ struct PagingMenuOptions4: PagingMenuControllerCustomizable {
             return .segmentedControl
         }
         var focusMode: MenuFocusMode {
-            return .underline(height: 3, color: UIColor.blue(), horizontalPadding: 10, verticalPadding: 0)
+            return .underline(height: 3, color: UIColor.blue, horizontalPadding: 10, verticalPadding: 0)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
@@ -136,7 +136,7 @@ struct PagingMenuOptions5: PagingMenuControllerCustomizable {
             return .infinite(widthMode: .flexible, scrollingMode: .pagingEnabled)
         }
         var focusMode: MenuFocusMode {
-            return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGray())
+            return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGray)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]

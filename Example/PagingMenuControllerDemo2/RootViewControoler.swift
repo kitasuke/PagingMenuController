@@ -11,7 +11,7 @@ import PagingMenuController
 
 private struct PagingMenuOptions: PagingMenuControllerCustomizable {
     fileprivate var componentType: ComponentType {
-        return .All(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
     
     fileprivate var pagingControllers: [UIViewController] {
@@ -22,7 +22,7 @@ private struct PagingMenuOptions: PagingMenuControllerCustomizable {
     
     fileprivate struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
-            return .SegmentedControl
+            return .segmentedControl
         }
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItem1(), MenuItem2()]
@@ -31,12 +31,12 @@ private struct PagingMenuOptions: PagingMenuControllerCustomizable {
     
     fileprivate struct MenuItem1: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
-            return .Text(title: MenuItemText(text: "First Menu"))
+            return .text(title: MenuItemText(text: "First Menu"))
         }
     }
     fileprivate struct MenuItem2: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
-            return .Text(title: MenuItemText(text: "Second Menu"))
+            return .text(title: MenuItemText(text: "Second Menu"))
         }
     }
 }
@@ -54,6 +54,6 @@ class RootViewControoler: UIViewController {
         
         addChildViewController(pagingMenuController)
         view.addSubview(pagingMenuController.view)
-        pagingMenuController.didMoveToParentViewController(self)
+        pagingMenuController.didMove(toParentViewController: self)
     }
 }

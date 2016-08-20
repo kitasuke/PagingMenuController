@@ -68,11 +68,11 @@ class RootViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell),
             let sectionType = Section(indexPath: indexPath),
-            let viewController = segue.destinationViewController as? PagingMenuViewController else { return }
+            let viewController = segue.destination as? PagingMenuViewController else { return }
         
         viewController.title = cell.textLabel?.text
         viewController.options = sectionType.options

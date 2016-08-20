@@ -13,7 +13,7 @@ class RepositoriesViewController: UITableViewController {
     
     class func instantiateFromStoryboard() -> RepositoriesViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: String(self)) as! RepositoriesViewController
+        return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! RepositoriesViewController
     }
     
     // MARK: - Lifecycle
@@ -23,7 +23,7 @@ class RepositoriesViewController: UITableViewController {
         
         let url = URL(string: "https://api.github.com/repositories")
         let request = URLRequest(url: url!)
-        let session = URLSession(configuration: URLSessionConfiguration.default())
+        let session = URLSession(configuration: URLSessionConfiguration.default)
         
         let task = session.dataTask(with: request) { [weak self] data, response, error in
             let result = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: AnyObject]]

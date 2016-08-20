@@ -13,7 +13,7 @@ class UsersViewController: UITableViewController {
     
     class func instantiateFromStoryboard() -> UsersViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: String(self)) as! UsersViewController
+        return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! UsersViewController
     }
     
     // MARK: - Lifecycle
@@ -23,7 +23,7 @@ class UsersViewController: UITableViewController {
         
         let url = URL(string: "https://api.github.com/users")
         let request = URLRequest(url: url!)
-        let session = URLSession(configuration: URLSessionConfiguration.default())
+        let session = URLSession(configuration: URLSessionConfiguration.default)
         
         let task = session.dataTask(with: request) { [weak self] data, response, error in
             let result = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: AnyObject]]
