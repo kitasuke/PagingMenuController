@@ -45,7 +45,7 @@ open class MenuView: UIScrollView {
     }
     fileprivate var contentOffsetX: CGFloat {
         switch menuOptions.displayMode {
-        case let .standard(_, centerItem, _) where centerItem:
+        case .standard(_, let centerItem, _) where centerItem:
             return centerOfScreenWidth
         case .segmentedControl:
             return contentOffset.x
@@ -267,7 +267,7 @@ open class MenuView: UIScrollView {
     }
     
     fileprivate func animateUnderlineViewIfNeeded() {
-        guard case let .underline(_, _, horizontalPadding, _) = menuOptions.focusMode else { return }
+        guard case .underline(_, _, let horizontalPadding, _) = menuOptions.focusMode else { return }
         
         let targetFrame = menuItemViews[currentPage].frame
         underlineView.frame.origin.x = targetFrame.minX + horizontalPadding
@@ -275,7 +275,7 @@ open class MenuView: UIScrollView {
     }
     
     fileprivate func animateRoundRectViewIfNeeded() {
-        guard case let .roundRect(_, horizontalPadding, _, _) = menuOptions.focusMode else { return }
+        guard case .roundRect(_, let horizontalPadding, _, _) = menuOptions.focusMode else { return }
         
         let targetFrame = menuItemViews[currentPage].frame
         roundRectView.frame.origin.x = targetFrame.minX + horizontalPadding
@@ -295,7 +295,7 @@ open class MenuView: UIScrollView {
     
     fileprivate func adjustmentContentInsetIfNeeded() {
         switch menuOptions.displayMode {
-        case let .standard(_, centerItem, _) where centerItem: break
+        case .standard(_, let centerItem, _) where centerItem: break
         default: return
         }
         

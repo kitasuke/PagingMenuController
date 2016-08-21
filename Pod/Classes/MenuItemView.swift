@@ -38,14 +38,14 @@ open class MenuItemView: UIView {
                 // adjust label width if needed
                 let labelSize = calculateLabelSize(titleLabel, maxWidth: maxWindowSize)
                 widthConstraint.constant = labelSize.width
-            case .multilineText(let title, let description):
+            case let .multilineText(title, description):
                 updateLabel(titleLabel, text: title)
                 updateLabel(descriptionLabel, text: description)
                 
                 // adjust label width if needed
                 widthConstraint.constant = calculateLabelSize(titleLabel, maxWidth: maxWindowSize).width
                 descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel, maxWidth: maxWindowSize).width
-            case .image(let image, let selectedImage):
+            case let .image(image, selectedImage):
                 menuImageView.image = selected ? (selectedImage ?? image) : image
             case .custom: break
             }
@@ -83,7 +83,7 @@ open class MenuItemView: UIView {
                 self.setupTitleLabel(title)
                 self.layoutLabel()
             })
-        case .multilineText(let title, let description):
+        case let .multilineText(title, description):
             commonInit({
                 self.setupMultilineLabel(title, description: description)
                 self.layoutMultiLineLabel()
@@ -295,11 +295,11 @@ extension MenuItemView: LabelSizeCalculatable {
         
         let itemWidth: CGFloat
         switch menuOptions.displayMode {
-        case let .standard(widthMode, _, _):
+        case .standard(let widthMode, _, _):
             itemWidth = labelWidth(widthMode, estimatedSize: estimatedLabelSize(label))
         case .segmentedControl:
             itemWidth = maxWidth / CGFloat(menuOptions.itemsOptions.count)
-        case let .infinite(widthMode, _):
+        case .infinite(let widthMode, _):
             itemWidth = labelWidth(widthMode, estimatedSize: estimatedLabelSize(label))
         }
         
