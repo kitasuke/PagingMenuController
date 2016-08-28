@@ -14,9 +14,9 @@ private enum Section {
     case menuView(content: MenuViewContent)
     case menuController(content: MenuControllerContent)
     
-    private enum AllContent: Int { case standard, segmentedControl, infinite }
-    private enum MenuViewContent: Int { case underline, roundRect }
-    private enum MenuControllerContent: Int { case standard }
+    fileprivate enum AllContent: Int { case standard, segmentedControl, infinite }
+    fileprivate enum MenuViewContent: Int { case underline, roundRect }
+    fileprivate enum MenuControllerContent: Int { case standard }
     
     init?(indexPath: IndexPath) {
         switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
