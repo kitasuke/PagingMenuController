@@ -6,11 +6,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   PagingMenuController:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   PagingMenuController: a47a9669760b95f630cc3ef28bdce104f9107d14
 
 PODFILE CHECKSUM: 182e65100ed4f1fc8683837abd55ef28346367f5
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1
