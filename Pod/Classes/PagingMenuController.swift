@@ -269,10 +269,9 @@ open class PagingMenuController: UIViewController, PagingValidator {
         
         switch (options.lazyLoadingPage, menuOptions.displayMode, page) {
         case (.three, .infinite, menuView?.previousPage ?? previousPage),
-             (.three, .infinite, menuView?.nextPage ?? nextPage),
-             (.three, _, previousPage),
-             (.three, _, nextPage): break
-        default: pagingViewController?.visibleControllers.forEach { $0.view.alpha = 0 }
+             (.three, .infinite, menuView?.nextPage ?? nextPage): break
+        case (.three, .infinite, _): pagingViewController?.visibleControllers.forEach { $0.view.alpha = 0 }
+        default: break
         }
     }
     
