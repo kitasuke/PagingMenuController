@@ -9,17 +9,17 @@
 import UIKit
 
 public protocol PagingMenuControllerDelegate: class {
-    func willMoveToPageMenuController(_ menuController: UIViewController, previousMenuController: UIViewController)
-    func didMoveToPageMenuController(_ menuController: UIViewController, previousMenuController: UIViewController)
-    func willMoveToMenuItemView(_ menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
-    func didMoveToMenuItemView(_ menuItemView: MenuItemView, previousMenuItemView: MenuItemView)
+    func willMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController)
+    func didMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController)
+    func willMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView)
+    func didMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView)
 }
 
 public extension PagingMenuControllerDelegate {
-    func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {}
-    func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {}
-    func willMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView) {}
-    func didMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView) {}
+    func willMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
+    func didMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
+    func willMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
+    func didMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
 }
 
 internal let MinimumSupportedViewCount = 1
@@ -128,7 +128,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
         case .menuView: return
         default: break
         }
-
+        
         constructPagingViewController()
         layoutPagingViewController()
     }
@@ -159,14 +159,14 @@ open class PagingMenuController: UIViewController, PagingValidator {
         }
         
         guard let pagingViewController = pagingViewController,
-            let previousViewController = pagingViewController.currentViewController else { return }
+            let previousPagingViewController = pagingViewController.currentViewController else { return }
         
         // hide paging views if it's moving to far away
         hidePagingMenuControllers(page)
         
         let nextPage = page % pagingViewController.controllers.count
         let nextPagingViewController = pagingViewController.controllers[nextPage]
-        delegate?.willMoveToPageMenuController(nextPagingViewController, previousMenuController: previousViewController)
+        delegate?.willMove(toMenu: nextPagingViewController, fromMenu: previousPagingViewController)
         menuView?.moveToMenu(page)
         
         pagingViewController.updateCurrentPage(nextPage)
@@ -182,7 +182,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
                 // show paging views
                 self?.showPagingMenuControllers()
                 
-                self?.delegate?.didMoveToPageMenuController(nextPagingViewController, previousMenuController: previousViewController)
+                self?.delegate?.didMove(toMenu: nextPagingViewController, fromMenu: previousPagingViewController)
         }
     }
     
