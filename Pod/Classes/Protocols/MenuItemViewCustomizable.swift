@@ -19,15 +19,15 @@ public extension MenuItemViewCustomizable {
     }
     var displayMode: MenuItemDisplayMode {
         let title = MenuItemText()
-        return .Text(title: title)
+        return .text(title: title)
     }
 }
 
 public enum MenuItemDisplayMode {
-    case Text(title: MenuItemText)
-    case MultilineText(title: MenuItemText, description: MenuItemText)
-    case Image(image: UIImage, selectedImage: UIImage?)
-    case Custom(view: UIView)
+    case text(title: MenuItemText)
+    case multilineText(title: MenuItemText, description: MenuItemText)
+    case image(image: UIImage, selectedImage: UIImage?)
+    case custom(view: UIView)
 }
 
 public struct MenuItemText {
@@ -38,10 +38,10 @@ public struct MenuItemText {
     let selectedFont: UIFont
     
     public init(text: String = "Menu",
-                color: UIColor = UIColor.lightGrayColor(),
-                selectedColor: UIColor = UIColor.blackColor(),
-                font: UIFont = UIFont.systemFontOfSize(16),
-                selectedFont: UIFont = UIFont.systemFontOfSize(16)) {
+                color: UIColor = UIColor.lightGray,
+                selectedColor: UIColor = UIColor.black,
+                font: UIFont = UIFont.systemFont(ofSize: 16),
+                selectedFont: UIFont = UIFont.systemFont(ofSize: 16)) {
         self.text = text
         self.color = color
         self.selectedColor = selectedColor

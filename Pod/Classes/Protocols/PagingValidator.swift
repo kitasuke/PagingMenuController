@@ -9,19 +9,19 @@
 import Foundation
 
 protocol PagingValidator {
-    func validate(options: PagingMenuControllerCustomizable)
+    func validate(_ options: PagingMenuControllerCustomizable)
 }
 
 extension PagingValidator {
-    func validate(options: PagingMenuControllerCustomizable) {
+    func validate(_ options: PagingMenuControllerCustomizable) {
         validateDefaultPage(options)
         validateContentsCount(options)
         validateInfiniteMenuItemNumbers(options)
     }
     
-    private func validateContentsCount(options: PagingMenuControllerCustomizable) {
+    fileprivate func validateContentsCount(_ options: PagingMenuControllerCustomizable) {
         switch options.componentType {
-        case .All(let menuOptions, let pagingControllers):
+        case .all(let menuOptions, let pagingControllers):
             guard menuOptions.itemsOptions.count == pagingControllers.count else {
                 raise("number of menu items and view controllers doesn't match")
                 return
@@ -30,13 +30,13 @@ extension PagingValidator {
         }
     }
     
-    private func validateDefaultPage(options: PagingMenuControllerCustomizable) {
+    fileprivate func validateDefaultPage(_ options: PagingMenuControllerCustomizable) {
         let maxCount: Int
         switch options.componentType {
-        case .PagingController(let pagingControllers): maxCount = pagingControllers.count
-        case .All(_, let pagingControllers):
+        case .pagingController(let pagingControllers): maxCount = pagingControllers.count
+        case .all(_, let pagingControllers):
             maxCount = pagingControllers.count
-        case .MenuView(let menuOptions): maxCount = menuOptions.itemsOptions.count
+        case .menuView(let menuOptions): maxCount = menuOptions.itemsOptions.count
         }
         
         guard options.defaultPage >= maxCount || options.defaultPage < 0 else { return }
@@ -44,19 +44,19 @@ extension PagingValidator {
         raise("default page is invalid")
     }
     
-    private func validateInfiniteMenuItemNumbers(options: PagingMenuControllerCustomizable) {
-        guard case .All(let menuOptions, _) = options.componentType,
-            case .Infinite = menuOptions.displayMode else { return }
+    fileprivate func validateInfiniteMenuItemNumbers(_ options: PagingMenuControllerCustomizable) {
+        guard case .all(let menuOptions, _) = options.componentType,
+            case .infinite = menuOptions.displayMode else { return }
         guard menuOptions.itemsOptions.count < VisiblePagingViewNumber else { return }
         
         raise("number of view controllers should be more than three with Infinite display mode")
     }
     
-    private var exceptionName: String {
+    fileprivate var exceptionName: String {
         return "PMCException"
     }
     
-    private func raise(reason: String) {
-        NSException(name: exceptionName, reason: reason, userInfo: nil).raise()
+    fileprivate func raise(_ reason: String) {
+        NSException(name: NSExceptionName(rawValue: exceptionName), reason: reason, userInfo: nil).raise()
     }
 }

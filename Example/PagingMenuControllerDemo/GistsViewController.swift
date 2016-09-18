@@ -13,7 +13,7 @@ class GistsViewController: UITableViewController {
     
     class func instantiateFromStoryboard() -> GistsViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        return storyboard.instantiateViewControllerWithIdentifier(String(self)) as! GistsViewController
+        return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! GistsViewController
     }
     
     // MARK: - Lifecycle
@@ -21,15 +21,15 @@ class GistsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = NSURL(string: "https://api.github.com/gists/public")
-        let request = NSURLRequest(URL: url!)
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let url = URL(string: "https://api.github.com/gists/public")
+        let request = URLRequest(url: url!)
+        let session = URLSession(configuration: URLSessionConfiguration.default)
         
-        let task = session.dataTaskWithRequest(request) { [weak self] data, response, error in
-            let result = try? NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! [[String: AnyObject]]
+        let task = session.dataTask(with: request) { [weak self] data, response, error in
+            let result = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: AnyObject]]
             self?.gists = result ?? []
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self?.tableView.reloadData()
             })
         }
@@ -40,21 +40,21 @@ class GistsViewController: UITableViewController {
 extension GistsViewController {
     // MARK: - UITableViewDataSource
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gists.count
     }
     
     // MARK: - UITableViewDelegate
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
         
-        let gist = gists[indexPath.row]
+        let gist = gists[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = gist["description"] as? String
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 }

@@ -24,15 +24,15 @@ struct MenuItemOrganization: MenuItemViewCustomizable {}
 
 struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
-        return .All(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
     
     struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
-            return .Standard(widthMode: .Flexible, centerItem: false, scrollingMode: .PagingEnabled)
+            return .standard(widthMode: .flexible, centerItem: false, scrollingMode: .pagingEnabled)
         }
         var focusMode: MenuFocusMode {
-            return .None
+            return .none
         }
         var height: CGFloat {
             return 60
@@ -45,44 +45,44 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     struct MenuItemUsers: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
-            let description = MenuItemText(text: String(self))
-            return .MultilineText(title: title, description: description)
+            let description = MenuItemText(text: String(describing: self))
+            return .multilineText(title: title, description: description)
         }
     }
     struct MenuItemRepository: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
-            let description = MenuItemText(text: String(self))
-            return .MultilineText(title: title, description: description)
+            let description = MenuItemText(text: String(describing: self))
+            return .multilineText(title: title, description: description)
         }
     }
     struct MenuItemGists: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
-            let description = MenuItemText(text: String(self))
-            return .MultilineText(title: title, description: description)
+            let description = MenuItemText(text: String(describing: self))
+            return .multilineText(title: title, description: description)
         }
     }
     struct MenuItemOrganization: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Menu")
-            let description = MenuItemText(text: String(self))
-            return .MultilineText(title: title, description: description)
+            let description = MenuItemText(text: String(describing: self))
+            return .multilineText(title: title, description: description)
         }
     }
 }
 
 struct PagingMenuOptions2: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
-        return .All(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
     var menuControllerSet: MenuControllerSet {
-        return .Single
+        return .single
     }
     
     struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
-            return .SegmentedControl
+            return .segmentedControl
         }
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
@@ -92,15 +92,15 @@ struct PagingMenuOptions2: PagingMenuControllerCustomizable {
 
 struct PagingMenuOptions3: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
-        return .All(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
     var lazyLoadingPage: LazyLoadingPage {
-        return .Three
+        return .three
     }
     
     struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
-            return .Infinite(widthMode: .Fixed(width: 80), scrollingMode: .ScrollEnabled)
+            return .infinite(widthMode: .fixed(width: 80), scrollingMode: .scrollEnabled)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
@@ -110,15 +110,15 @@ struct PagingMenuOptions3: PagingMenuControllerCustomizable {
 
 struct PagingMenuOptions4: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
-        return .MenuView(menuOptions: MenuOptions())
+        return .menuView(menuOptions: MenuOptions())
     }
     
     struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
-            return .SegmentedControl
+            return .segmentedControl
         }
         var focusMode: MenuFocusMode {
-            return .Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 10, verticalPadding: 0)
+            return .underline(height: 3, color: UIColor.blue, horizontalPadding: 10, verticalPadding: 0)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
@@ -128,15 +128,15 @@ struct PagingMenuOptions4: PagingMenuControllerCustomizable {
 
 struct PagingMenuOptions5: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
-        return .MenuView(menuOptions: MenuOptions())
+        return .menuView(menuOptions: MenuOptions())
     }
     
     struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
-            return .Infinite(widthMode: .Flexible, scrollingMode: .PagingEnabled)
+            return .infinite(widthMode: .flexible, scrollingMode: .pagingEnabled)
         }
         var focusMode: MenuFocusMode {
-            return .RoundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGrayColor())
+            return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGray)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
@@ -146,7 +146,7 @@ struct PagingMenuOptions5: PagingMenuControllerCustomizable {
 
 struct PagingMenuOptions6: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
-        return .PagingController(pagingControllers: pagingControllers)
+        return .pagingController(pagingControllers: pagingControllers)
     }
     var defaultPage: Int {
         return 1

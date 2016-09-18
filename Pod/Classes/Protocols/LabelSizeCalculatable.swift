@@ -9,7 +9,7 @@
 import Foundation
 
 protocol LabelSizeCalculatable {
-    func labelWidth(widthMode: MenuItemWidthMode, estimatedSize: CGSize) -> CGFloat
-    func estimatedLabelSize(label: UILabel) -> CGSize
-    func calculateLabelSize(label: UILabel, maxWidth: CGFloat) -> CGSize
+    func labelWidth(_ widthMode: MenuItemWidthMode, estimatedSize: CGSize) -> CGFloat
+    func estimatedLabelSize(_ label: UILabel) -> CGSize
+    func calculateLabelSize(_ label: UILabel, maxWidth: CGFloat) -> CGSize
 }

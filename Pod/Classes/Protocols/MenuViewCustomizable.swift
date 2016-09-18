@@ -12,7 +12,7 @@ public protocol MenuViewCustomizable {
     var backgroundColor: UIColor { get }
     var selectedBackgroundColor: UIColor { get }
     var height: CGFloat { get }
-    var animationDuration: NSTimeInterval { get }
+    var animationDuration: TimeInterval { get }
     var deceleratingRate: CGFloat { get }
     var selectedItemCenter: Bool { get }
     var displayMode: MenuDisplayMode { get }
@@ -25,15 +25,15 @@ public protocol MenuViewCustomizable {
 
 public extension MenuViewCustomizable {
     var backgroundColor: UIColor {
-        return UIColor.whiteColor()
+        return UIColor.white
     }
     var selectedBackgroundColor: UIColor {
-        return UIColor.whiteColor()
+        return UIColor.white
     }
     var height: CGFloat {
         return 50
     }
-    var animationDuration: NSTimeInterval {
+    var animationDuration: TimeInterval {
         return 0.3
     }
     var deceleratingRate: CGFloat {
@@ -43,16 +43,16 @@ public extension MenuViewCustomizable {
         return true
     }
     var displayMode: MenuDisplayMode {
-        return .Standard(widthMode: .Flexible, centerItem: false, scrollingMode: .PagingEnabled)
+        return .standard(widthMode: .flexible, centerItem: false, scrollingMode: .pagingEnabled)
     }
     var focusMode: MenuFocusMode {
-        return .Underline(height: 3, color: UIColor.blueColor(), horizontalPadding: 0, verticalPadding: 0)
+        return .underline(height: 3, color: UIColor.blue, horizontalPadding: 0, verticalPadding: 0)
     }
     var dummyItemViewsSet: Int {
         return 3
     }
     var menuPosition: MenuPosition {
-        return .Top
+        return .top
     }
     var dividerImage: UIImage? {
         return nil
@@ -60,29 +60,29 @@ public extension MenuViewCustomizable {
 }
 
 public enum MenuDisplayMode {
-    case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
-    case SegmentedControl
-    case Infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode)
+    case standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
+    case segmentedControl
+    case infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode)
 }
 
 public enum MenuItemWidthMode {
-    case Flexible
-    case Fixed(width: CGFloat)
+    case flexible
+    case fixed(width: CGFloat)
 }
 
 public enum MenuScrollingMode {
-    case ScrollEnabled
-    case ScrollEnabledAndBouces
-    case PagingEnabled
+    case scrollEnabled
+    case scrollEnabledAndBouces
+    case pagingEnabled
 }
 
 public enum MenuFocusMode {
-    case None
-    case Underline(height: CGFloat, color: UIColor, horizontalPadding: CGFloat, verticalPadding: CGFloat)
-    case RoundRect(radius: CGFloat, horizontalPadding: CGFloat, verticalPadding: CGFloat, selectedColor: UIColor)
+    case none
+    case underline(height: CGFloat, color: UIColor, horizontalPadding: CGFloat, verticalPadding: CGFloat)
+    case roundRect(radius: CGFloat, horizontalPadding: CGFloat, verticalPadding: CGFloat, selectedColor: UIColor)
 }
 
 public enum MenuPosition {
-    case Top
-    case Bottom
+    case top
+    case bottom
 }
