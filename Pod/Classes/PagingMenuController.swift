@@ -33,7 +33,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
             
             menuView.delegate = self
             menuView.viewDelegate = delegate
-            menuView.updateCurrentPage(options.defaultPage)
+            menuView.update(currentPage: options.defaultPage)
             view.addSubview(menuView)
         }
     }
@@ -89,7 +89,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
                 // reset selected menu item view position
                 switch menuOptions.displayMode {
                 case .standard, .infinite:
-                    self.moveToMenuPage(menuView.currentPage)
+                    self.move(toPage: menuView.currentPage)
                 default: break
                 }
                 }, completion: nil)
@@ -110,7 +110,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
         setupMenuView()
         setupMenuController()
         
-        moveToMenuPage(currentPage, animated: false)
+        move(toPage: currentPage, animated: false)
     }
     
     fileprivate func setupMenuView() {
@@ -133,7 +133,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
         layoutPagingViewController()
     }
     
-    open func moveToMenuPage(_ page: Int, animated: Bool = true) {
+    open func move(toPage page: Int, animated: Bool = true) {
         switch options.componentType {
         case .menuView, .all:
             // ignore an unexpected page number
@@ -142,7 +142,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
             let lastPage = menuView.currentPage
             guard page != lastPage else {
                 // place views on appropriate position
-                menuView.moveToMenu(page, animated: animated)
+                menuView.move(toPage: page, animated: animated)
                 pagingViewController?.positionMenuController()
                 return
             }
@@ -150,7 +150,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
             switch options.componentType {
             case .all: break
             default:
-                menuView.moveToMenu(page, animated: animated)
+                menuView.move(toPage: page, animated: animated)
                 return
             }
         case .pagingController:
@@ -167,9 +167,9 @@ open class PagingMenuController: UIViewController, PagingValidator {
         let nextPage = page % pagingViewController.controllers.count
         let nextPagingViewController = pagingViewController.controllers[nextPage]
         delegate?.willMove(toMenu: nextPagingViewController, fromMenu: previousPagingViewController)
-        menuView?.moveToMenu(page)
+        menuView?.move(toPage: page)
         
-        pagingViewController.updateCurrentPage(nextPage)
+        pagingViewController.update(currentPage: nextPage)
         pagingViewController.currentViewController = nextPagingViewController
         
         let duration = animated ? options.animationDuration : 0
@@ -291,7 +291,7 @@ extension PagingMenuController: UIScrollViewDelegate {
         default: return
         }
         
-        moveToMenuPage(nextPage)
+        move(toPage: nextPage)
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -301,7 +301,7 @@ extension PagingMenuController: UIScrollViewDelegate {
         }
         
         let nextPage = nextPageFromCurrentPoint
-        moveToMenuPage(nextPage)
+        move(toPage: nextPage)
     }
 }
 
@@ -418,7 +418,7 @@ extension PagingMenuController: GestureHandler {
             newPage = page
         }
         
-        moveToMenuPage(newPage)
+        move(toPage: newPage)
     }
     
     internal func handleSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
@@ -438,7 +438,7 @@ extension PagingMenuController: GestureHandler {
         default: return
         }
         
-        moveToMenuPage(newPage)
+        move(toPage: newPage)
     }
 }
 
