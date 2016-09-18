@@ -97,7 +97,7 @@ open class MenuView: UIScrollView {
     
     // MARK: - Internal method
     
-    internal func moveToMenu(_ page: Int, animated: Bool = true) {
+    internal func move(toPage page: Int, animated: Bool = true) {
         // hide menu view when constructing itself
         if !animated {
             alpha = 0
@@ -109,10 +109,10 @@ open class MenuView: UIScrollView {
         
         if let previousMenuItemView = previousMenuItemView,
             page != previousPage {
-            viewDelegate?.willMoveToMenuItemView(menuItemView, previousMenuItemView: previousMenuItemView)
+            viewDelegate?.willMove(toMenuItem: menuItemView, fromMenuItem: previousMenuItemView)
         }
         
-        updateCurrentPage(page)
+        update(currentPage: page)
         
         let duration = animated ? menuOptions.animationDuration : 0
         UIView.animate(withDuration: duration, animations: { [unowned self] () -> Void in
@@ -140,7 +140,7 @@ open class MenuView: UIScrollView {
             
             if let previousMenuItemView = previousMenuItemView,
                 page != previousPage {
-                self!.viewDelegate?.didMoveToMenuItemView(self!.currentMenuItemView, previousMenuItemView: previousMenuItemView)
+                self!.viewDelegate?.didMove(toMenuItem: self!.currentMenuItemView, fromMenuItem: previousMenuItemView)
             }
         }
     }
@@ -340,7 +340,7 @@ extension MenuView: Pagable {
     var nextPage: Int {
         return currentPage + 1 > menuItemCount - 1 ? 0 : currentPage + 1
     }
-    func updateCurrentPage(_ page: Int) {
+    func update(currentPage page: Int) {
         currentIndex = page
     }
 }

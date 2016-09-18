@@ -32,7 +32,7 @@ open class PagingViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        updateCurrentPage(options.defaultPage)
+        update(currentPage: options.defaultPage)
         setup()
     }
     
@@ -63,7 +63,7 @@ open class PagingViewController: UIViewController {
         constructPagingViewControllers()
         layoutPagingViewControllers()
         
-        updateCurrentPage(options.defaultPage)
+        update(currentPage: options.defaultPage)
         currentViewController = controllers[currentPage]
         hideVisibleControllers()
     }
@@ -91,9 +91,9 @@ open class PagingViewController: UIViewController {
     fileprivate func constructPagingViewControllers() {
         for (index, controller) in controllers.enumerated() {
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
-            if !shouldLoadPage(index) {
+            if !shouldLoad(page: index) {
                 // remove unnecessary child view controllers
-                if isVisibleController(controller) {
+                if isVisible(controller: controller) {
                     controller.willMove(toParentViewController: nil)
                     controller.view!.removeFromSuperview()
                     controller.removeFromParentViewController()
@@ -104,7 +104,7 @@ open class PagingViewController: UIViewController {
             }
             
             // ignore if it's already added
-            if isVisibleController(controller) {
+            if isVisible(controller: controller) {
                 continue
             }
             
@@ -130,7 +130,7 @@ open class PagingViewController: UIViewController {
         
         var viewsDictionary: [String: AnyObject] = ["contentScrollView": contentScrollView]
         for (index, controller) in controllers.enumerated() {
-            if !shouldLoadPage(index) {
+            if !shouldLoad(page: index) {
                 continue
             }
             
@@ -207,7 +207,7 @@ extension PagingViewController: Pagable {
         
         return currentPage + 1 > menuOptions.itemsOptions.count - 1 ? 0 : currentPage + 1
     }
-    func updateCurrentPage(_ page: Int) {
+    func update(currentPage page: Int) {
         currentIndex = page
     }
 }
@@ -228,7 +228,7 @@ extension PagingViewController: ViewCleanable {
 }
 
 extension PagingViewController: PageLoadable {
-    func shouldLoadPage(_ page: Int) -> Bool {
+    func shouldLoad(page page: Int) -> Bool {
         switch (options.menuControllerSet, options.lazyLoadingPage) {
         case (.single, _),
              (_, .one):
@@ -247,7 +247,7 @@ extension PagingViewController: PageLoadable {
         return true
     }
     
-    func isVisibleController(_ controller: UIViewController) -> Bool {
+    func isVisible(controller controller: UIViewController) -> Bool {
         return self.childViewControllers.contains(controller)
     }
     
