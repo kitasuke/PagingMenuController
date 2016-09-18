@@ -1,3 +1,9 @@
+# 1.3.1 Release notes (2016/09-17)
+
+### Bug fixed
+
+- Fix carthage error
+
 # 1.3.0 Release notes (2016/09-17)
 
 ### Enhancements
