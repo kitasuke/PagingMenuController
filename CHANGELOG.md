@@ -1,5 +1,9 @@
 # 1.3.1 Release notes (2016/09-17)
 
+### Enhancements
+
+- Rename delegate method
+
 ### Bug fixed
 
 - Fix carthage error
