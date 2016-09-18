@@ -278,7 +278,9 @@ It creates a new paging menu controller. Do not forget to cleanup properties in 
 
 iOS8+  
 Swift 3.0+  
-Xcode 8.0+  
+Xcode 8.0+ 
+
+Please use [v1.2.0](https://github.com/kitasuke/PagingMenuController/releases/tag/1.2.0) for Swift 2.3
 
 ## Installation
 
