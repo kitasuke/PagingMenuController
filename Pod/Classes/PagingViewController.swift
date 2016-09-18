@@ -75,7 +75,7 @@ open class PagingViewController: UIViewController {
     
     fileprivate func setupContentScrollView() {
         contentScrollView.backgroundColor = options.backgroundColor
-        contentScrollView.isScrollEnabled = options.scrollEnabled
+        contentScrollView.isScrollEnabled = options.isScrollEnabled
         view.addSubview(contentScrollView)
     }
     
@@ -243,7 +243,7 @@ extension PagingViewController: ViewCleanable {
 }
 
 extension PagingViewController: PageLoadable {
-    func shouldLoad(page page: Int) -> Bool {
+    func shouldLoad(page: Int) -> Bool {
         switch (options.menuControllerSet, options.lazyLoadingPage) {
         case (.single, _),
              (_, .one):
@@ -262,7 +262,7 @@ extension PagingViewController: PageLoadable {
         return true
     }
     
-    func isVisible(controller controller: UIViewController) -> Bool {
+    func isVisible(controller: UIViewController) -> Bool {
         return self.childViewControllers.contains(controller)
     }
     

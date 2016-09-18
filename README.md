@@ -41,9 +41,9 @@ defaultPage: Int
 animationDuration: TimeInterval
 ```
 
-* scrollEnabled for paging view. **Set false in case of using swipe-to-delete on your table view**
+* isScrollEnabled for paging view. **Set false in case of using swipe-to-delete on your table view**
 ```swift
-scrollEnabled: Bool
+isScrollEnabled: Bool
 ```
 
 * background color for paging view
@@ -55,7 +55,7 @@ backgroundColor: UIColor
 ```swift
 lazyLoadingPage: LazyLoadingPage
 public enum LazyLoadingPage {
-    case one // Currently sets false to scrollEnabled at this moment. Should be fixed in the future.
+    case one // Currently sets false to isScrollEnabled at this moment. Should be fixed in the future.
     case three
 }
 ```
@@ -278,7 +278,9 @@ It creates a new paging menu controller. Do not forget to cleanup properties in 
 
 iOS8+  
 Swift 3.0+  
-Xcode 8.0+  
+Xcode 8.0+ 
+
+Please use [v1.2.0](https://github.com/kitasuke/PagingMenuController/releases/tag/1.2.0) for Swift 2.3
 
 ## Installation
 

@@ -23,12 +23,12 @@ open class MenuItemView: UIView {
             addSubview(customView)
         }
     }
-    open internal(set) var selected: Bool = false {
+    open internal(set) var isSelected: Bool = false {
         didSet {
             if case .roundRect = menuOptions.focusMode {
                 backgroundColor = UIColor.clear
             } else {
-                backgroundColor = selected ? menuOptions.selectedBackgroundColor : menuOptions.backgroundColor
+                backgroundColor = isSelected ? menuOptions.selectedBackgroundColor : menuOptions.backgroundColor
             }
             
             switch menuItemOptions.displayMode {
@@ -46,7 +46,7 @@ open class MenuItemView: UIView {
                 widthConstraint.constant = calculateLabelSize(titleLabel, maxWidth: maxWindowSize).width
                 descriptionWidthConstraint.constant = calculateLabelSize(descriptionLabel, maxWidth: maxWindowSize).width
             case let .image(image, selectedImage):
-                menuImageView.image = selected ? (selectedImage ?? image) : image
+                menuImageView.image = isSelected ? (selectedImage ?? image) : image
             case .custom: break
             }
         }
@@ -167,8 +167,8 @@ open class MenuItemView: UIView {
     }
     
     fileprivate func updateLabel(_ label: UILabel, text: MenuItemText) {
-        label.textColor = selected ? text.selectedColor : text.color
-        label.font = selected ? text.selectedFont : text.font
+        label.textColor = isSelected ? text.selectedColor : text.color
+        label.font = isSelected ? text.selectedFont : text.font
     }
     
     fileprivate func setupImageView(_ image: UIImage) {
