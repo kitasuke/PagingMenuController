@@ -312,18 +312,18 @@ open class MenuView: UIScrollView {
     }
     
     fileprivate func focusMenuItem() {
-        let selected: (MenuItemView) -> Bool = { self.menuItemViews.index(of: $0) == self.currentPage }
+        let isSelected: (MenuItemView) -> Bool = { self.menuItemViews.index(of: $0) == self.currentPage }
         
         // make selected item focused
         menuItemViews.forEach {
-            $0.selected = selected($0)
-            if $0.selected {
+            $0.isSelected = isSelected($0)
+            if $0.isSelected {
                 self.currentMenuItemView = $0
             }
         }
 
         // make selected item foreground
-        sortedMenuItemViews.forEach { $0.layer.zPosition = selected($0) ? 0 : -1 }
+        sortedMenuItemViews.forEach { $0.layer.zPosition = isSelected($0) ? 0 : -1 }
         
         setNeedsLayout()
         layoutIfNeeded()
