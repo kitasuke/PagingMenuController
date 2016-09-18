@@ -1,4 +1,14 @@
+# 1.2.0 Release notes (2016/09-17)
+
+### Enhancements
+
+- Support Swift 2.3
+- Delete @objc from `PagingMenuControllerDelegate` protocol thanks to @Guoxweii
+- Change behaviour of view hiding
+
 # 1.1.2 Release notes (2016/06-16)
+
+### Bug fixed
 
 - Fix warning in iOS 8.1 thanks to @ahirusun
 
