@@ -1,3 +1,9 @@
+# 1.4.0 Release notes (2016/09-18)
+
+### Enhancements
+
+- Rename `scrollEnabled`
+
 # 1.3.1 Release notes (2016/09-17)
 
 ### Enhancements
