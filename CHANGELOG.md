@@ -1,3 +1,9 @@
+# 1.3.0 Release notes (2016/09-17)
+
+### Enhancements
+
+- Support Swift 3.0
+
 # 1.2.0 Release notes (2016/09-17)
 
 ### Enhancements
