@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class PagingViewController: UIViewController {
-    public let controllers: [UIViewController]
-    public internal(set) var currentViewController: UIViewController!
-    public private(set) var visibleControllers = [UIViewController]()
+open class PagingViewController: UIViewController {
+    open let controllers: [UIViewController]
+    open internal(set) var currentViewController: UIViewController!
+    open fileprivate(set) var visibleControllers = [UIViewController]()
     
     internal let contentScrollView: UIScrollView = {
-        $0.pagingEnabled = true
+        $0.isPagingEnabled = true
         $0.showsHorizontalScrollIndicator = false
         $0.showsVerticalScrollIndicator = false
         $0.scrollsToTop = false
@@ -23,8 +23,8 @@ public class PagingViewController: UIViewController {
         return $0
     }(UIScrollView(frame: .zero))
     
-    private let options: PagingMenuControllerCustomizable
-    private var currentIndex: Int = 0
+    fileprivate let options: PagingMenuControllerCustomizable
+    fileprivate var currentIndex: Int = 0
     
     init(viewControllers: [UIViewController], options: PagingMenuControllerCustomizable) {
         controllers = viewControllers
@@ -32,7 +32,7 @@ public class PagingViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        updateCurrentPage(options.defaultPage)
+        update(currentPage: options.defaultPage)
         setup()
     }
     
@@ -40,14 +40,14 @@ public class PagingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func viewDidAppear(animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         positionMenuController()
         showVisibleControllers()
     }
     
-    override public func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         // position paging views correctly after view size is decided
@@ -63,48 +63,48 @@ public class PagingViewController: UIViewController {
         constructPagingViewControllers()
         layoutPagingViewControllers()
         
-        updateCurrentPage(options.defaultPage)
+        update(currentPage: options.defaultPage)
         currentViewController = controllers[currentPage]
         hideVisibleControllers()
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         view.backgroundColor = options.backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func setupContentScrollView() {
+    fileprivate func setupContentScrollView() {
         contentScrollView.backgroundColor = options.backgroundColor
-        contentScrollView.scrollEnabled = options.scrollEnabled
+        contentScrollView.isScrollEnabled = options.scrollEnabled
         view.addSubview(contentScrollView)
     }
     
-    private func layoutContentScrollView() {
-        NSLayoutConstraint.activateConstraints([
-            contentScrollView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor),
-            contentScrollView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor),
-            contentScrollView.topAnchor.constraintEqualToAnchor(view.topAnchor),
-            contentScrollView.bottomAnchor.constraintEqualToAnchor(view.bottomAnchor),
+    fileprivate func layoutContentScrollView() {
+        NSLayoutConstraint.activate([
+            contentScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            contentScrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            contentScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             ])
     }
     
-    private func constructPagingViewControllers() {
-        for (index, controller) in controllers.enumerate() {
+    fileprivate func constructPagingViewControllers() {
+        for (index, controller) in controllers.enumerated() {
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
-            if !shouldLoadPage(index) {
+            if !shouldLoad(page: index) {
                 // remove unnecessary child view controllers
-                if isVisibleController(controller) {
-                    controller.willMoveToParentViewController(nil)
+                if isVisible(controller: controller) {
+                    controller.willMove(toParentViewController: nil)
                     controller.view!.removeFromSuperview()
                     controller.removeFromParentViewController()
                     
-                    let _ = visibleControllers.indexOf(controller).flatMap { visibleControllers.removeAtIndex($0) }
+                    let _ = visibleControllers.index(of: controller).flatMap { visibleControllers.remove(at: $0) }
                 }
                 continue
             }
             
             // ignore if it's already added
-            if isVisibleController(controller) {
+            if isVisible(controller: controller) {
                 continue
             }
             
@@ -118,71 +118,72 @@ public class PagingViewController: UIViewController {
             
             contentScrollView.addSubview(pagingView)
             addChildViewController(controller as UIViewController)
-            controller.didMoveToParentViewController(self)
+            controller.didMove(toParentViewController: self)
             
             visibleControllers.append(controller)
         }
     }
     
-    private func layoutPagingViewControllers() {
+    fileprivate func layoutPagingViewControllers() {
         // cleanup
-        NSLayoutConstraint.deactivateConstraints(contentScrollView.constraints)
+        NSLayoutConstraint.deactivate(contentScrollView.constraints)
         
-        for (index, controller) in controllers.enumerate() {
-            if !shouldLoadPage(index) {
+        for (index, controller) in controllers.enumerated() {
+            if !shouldLoad(page: index) {
                 continue
             }
             
-            let pagingView = controller.view
+            guard let pagingView = controller.view else { continue }
             
             // only one view controller
-            if options.lazyLoadingPage == LazyLoadingPage.One ||
-                controllers.count == MinimumSupportedViewCount || options.menuControllerSet == MenuControllerSet.Single {
+            if options.lazyLoadingPage == LazyLoadingPage.one ||
+                controllers.count == MinimumSupportedViewCount ||
+            options.menuControllerSet == MenuControllerSet.single {
                 // H:|[pagingView]|
-                NSLayoutConstraint.activateConstraints([
-                    pagingView.leadingAnchor.constraintEqualToAnchor(contentScrollView.leadingAnchor),
-                    pagingView.trailingAnchor.constraintEqualToAnchor(contentScrollView.trailingAnchor),
+                NSLayoutConstraint.activate([
+                    pagingView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
+                    pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
                     ])
             } else {
-                if case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.displayMode {
+                if case .all(let menuOptions, _) = options.componentType, case .infinite = menuOptions.displayMode {
                     if index == currentPage {
-                        let previousPagingView = controllers[previousPage].view
-                        let nextPagingView = controllers[nextPage].view
+                        guard let previousPagingView = controllers[previousPage].view,
+                            let nextPagingView = controllers[nextPage].view else { continue }
                         
                         // H:[previousPagingView][pagingView][nextPagingView]
-                        NSLayoutConstraint.activateConstraints([
-                            previousPagingView.trailingAnchor.constraintEqualToAnchor(pagingView.leadingAnchor, constant: 0),
-                            pagingView.trailingAnchor.constraintEqualToAnchor(nextPagingView.leadingAnchor, constant: 0)
+                        NSLayoutConstraint.activate([
+                            previousPagingView.trailingAnchor.constraint(equalTo: pagingView.leadingAnchor, constant: 0),
+                            pagingView.trailingAnchor.constraint(equalTo: nextPagingView.leadingAnchor, constant: 0)
                             ])
                     } else if index == previousPage {
                         // "H:|[pagingView]
-                        pagingView.leadingAnchor.constraintEqualToAnchor(contentScrollView.leadingAnchor).active = true
+                        pagingView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor).isActive = true
                     } else if index == nextPage {
                         // H:[pagingView]|
-                        pagingView.trailingAnchor.constraintEqualToAnchor(contentScrollView.trailingAnchor).active = true
+                        pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor).isActive = true
                     }
                 } else {
                     if index == 0 || index == previousPage {
-                        pagingView.leadingAnchor.constraintEqualToAnchor(contentScrollView.leadingAnchor).active = true
+                        pagingView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor).isActive = true
                     } else {
-                        let previousPagingView = controllers[index - 1].view
+                        guard let previousPagingView = controllers[index - 1].view else { continue }
                         if index == controllers.count - 1 || index == nextPage {
                             // H:[pagingView]|
-                            pagingView.trailingAnchor.constraintEqualToAnchor(contentScrollView.trailingAnchor).active = true
+                            pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor).isActive = true
                         }
                         // H:[previousPagingView][pagingView]
-                        previousPagingView.trailingAnchor.constraintEqualToAnchor(pagingView.leadingAnchor, constant: 0).active = true
+                        previousPagingView.trailingAnchor.constraint(equalTo: pagingView.leadingAnchor, constant: 0).isActive = true
                     }
                 }
             }
             // H:[pagingView(==contentScrollView)
-            pagingView.widthAnchor.constraintEqualToAnchor(contentScrollView.widthAnchor).active = true
+            pagingView.widthAnchor.constraint(equalTo: contentScrollView.widthAnchor).isActive = true
             
             // V:|[pagingView(==contentScrollView)]|
-            NSLayoutConstraint.activateConstraints([
-                pagingView.topAnchor.constraintEqualToAnchor(contentScrollView.topAnchor),
-                pagingView.bottomAnchor.constraintEqualToAnchor(contentScrollView.bottomAnchor),
-                pagingView.heightAnchor.constraintEqualToAnchor(contentScrollView.heightAnchor)
+            NSLayoutConstraint.activate([
+                pagingView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
+                pagingView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),
+                pagingView.heightAnchor.constraint(equalTo: contentScrollView.heightAnchor)
                 ])
         }
         
@@ -212,27 +213,27 @@ extension PagingViewController: Pagable {
         return currentIndex
     }
     var previousPage: Int {
-        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.displayMode else { return currentPage - 1 }
+        guard case .all(let menuOptions, _) = options.componentType, case .infinite = menuOptions.displayMode else { return currentPage - 1 }
         
         return currentPage - 1 < 0 ? menuOptions.itemsOptions.count - 1 : currentPage - 1
     }
     var nextPage: Int {
-        guard case .All(let menuOptions, _) = options.componentType, case .Infinite = menuOptions.displayMode else { return currentPage + 1 }
+        guard case .all(let menuOptions, _) = options.componentType, case .infinite = menuOptions.displayMode else { return currentPage + 1 }
         
         return currentPage + 1 > menuOptions.itemsOptions.count - 1 ? 0 : currentPage + 1
     }
-    func updateCurrentPage(page: Int) {
+    func update(currentPage page: Int) {
         currentIndex = page
     }
 }
 
 extension PagingViewController: ViewCleanable {
     func cleanup() {
-        visibleControllers.removeAll(keepCapacity: true)
+        visibleControllers.removeAll(keepingCapacity: true)
         currentViewController = nil
         
         childViewControllers.forEach {
-            $0.willMoveToParentViewController(nil)
+            $0.willMove(toParentViewController: nil)
             $0.view.removeFromSuperview()
             $0.removeFromParentViewController()
         }
@@ -242,14 +243,14 @@ extension PagingViewController: ViewCleanable {
 }
 
 extension PagingViewController: PageLoadable {
-    func shouldLoadPage(page: Int) -> Bool {
+    func shouldLoad(page page: Int) -> Bool {
         switch (options.menuControllerSet, options.lazyLoadingPage) {
-        case (.Single, _),
-             (_, .One):
+        case (.single, _),
+             (_, .one):
             guard page == currentPage else { return false }
-        case (_, .Three):
-            if case .All(let menuOptions, _) = options.componentType,
-                case .Infinite = menuOptions.displayMode {
+        case (_, .three):
+            if case .all(let menuOptions, _) = options.componentType,
+                case .infinite = menuOptions.displayMode {
                 guard page == currentPage ||
                     page == previousPage ||
                     page == nextPage else { return false }
@@ -261,7 +262,7 @@ extension PagingViewController: PageLoadable {
         return true
     }
     
-    func isVisibleController(controller: UIViewController) -> Bool {
+    func isVisible(controller controller: UIViewController) -> Bool {
         return self.childViewControllers.contains(controller)
     }
     
@@ -275,10 +276,10 @@ extension PagingViewController: PageLoadable {
         visibleControllers.forEach { $0.view.alpha = 1 }
     }
     
-    private func shouldWaitForLayout() -> Bool {
+    fileprivate func shouldWaitForLayout() -> Bool {
         switch options.componentType {
-        case .All(let menuOptions, _):
-            guard case .Infinite = menuOptions.displayMode else { return false }
+        case .all(let menuOptions, _):
+            guard case .infinite = menuOptions.displayMode else { return false }
             return true
         default: break
         }

@@ -10,33 +10,33 @@ import UIKit
 import PagingMenuController
 
 private struct PagingMenuOptions: PagingMenuControllerCustomizable {
-    private var componentType: ComponentType {
-        return .All(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+    fileprivate var componentType: ComponentType {
+        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
     
-    private var pagingControllers: [UIViewController] {
+    fileprivate var pagingControllers: [UIViewController] {
         let viewController1 = ViewController1()
         let viewController2 = ViewController2()
         return [viewController1, viewController2]
     }
     
-    private struct MenuOptions: MenuViewCustomizable {
+    fileprivate struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
-            return .SegmentedControl
+            return .segmentedControl
         }
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItem1(), MenuItem2()]
         }
     }
     
-    private struct MenuItem1: MenuItemViewCustomizable {
+    fileprivate struct MenuItem1: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
-            return .Text(title: MenuItemText(text: "First Menu"))
+            return .text(title: MenuItemText(text: "First Menu"))
         }
     }
-    private struct MenuItem2: MenuItemViewCustomizable {
+    fileprivate struct MenuItem2: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
-            return .Text(title: MenuItemText(text: "Second Menu"))
+            return .text(title: MenuItemText(text: "Second Menu"))
         }
     }
 }
@@ -45,7 +45,7 @@ class RootViewControoler: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         
         let options = PagingMenuOptions()
         let pagingMenuController = PagingMenuController(options: options)
@@ -54,6 +54,6 @@ class RootViewControoler: UIViewController {
         
         addChildViewController(pagingMenuController)
         view.addSubview(pagingMenuController.view)
-        pagingMenuController.didMoveToParentViewController(self)
+        pagingMenuController.didMove(toParentViewController: self)
     }
 }

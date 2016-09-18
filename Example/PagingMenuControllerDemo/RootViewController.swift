@@ -10,25 +10,25 @@ import UIKit
 import PagingMenuController
 
 private enum Section {
-    case All(content: AllContent)
-    case MenuView(content: MenuViewContent)
-    case MenuController(content: MenuControllerContent)
+    case all(content: AllContent)
+    case menuView(content: MenuViewContent)
+    case menuController(content: MenuControllerContent)
     
-    private enum AllContent: Int { case Standard, SegmentedControl, Infinite }
-    private enum MenuViewContent: Int { case Underline, RoundRect }
-    private enum MenuControllerContent: Int { case Standard }
+    fileprivate enum AllContent: Int { case standard, segmentedControl, infinite }
+    fileprivate enum MenuViewContent: Int { case underline, roundRect }
+    fileprivate enum MenuControllerContent: Int { case standard }
     
-    init?(indexPath: NSIndexPath) {
-        switch (indexPath.section, indexPath.row) {
+    init?(indexPath: IndexPath) {
+        switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
         case (0, let row):
             guard let content = AllContent(rawValue: row) else { return nil }
-            self = .All(content: content)
+            self = .all(content: content)
         case (1, let row):
             guard let content = MenuViewContent(rawValue: row) else { return nil }
-            self = .MenuView(content: content)
+            self = .menuView(content: content)
         case (2, let row):
             guard let content = MenuControllerContent(rawValue: row) else { return nil }
-            self = .MenuController(content: content)
+            self = .menuController(content: content)
         default: return nil
         }
     }
@@ -36,25 +36,25 @@ private enum Section {
     var options: PagingMenuControllerCustomizable {
         let options: PagingMenuControllerCustomizable
         switch self {
-        case .All(let content):
+        case .all(let content):
             switch content {
-            case .Standard:
+            case .standard:
                 options = PagingMenuOptions1()
-            case .SegmentedControl:
+            case .segmentedControl:
                 options = PagingMenuOptions2()
-            case .Infinite:
+            case .infinite:
                 options = PagingMenuOptions3()
             }
-        case .MenuView(let content):
+        case .menuView(let content):
             switch content {
-            case .Underline:
+            case .underline:
                 options = PagingMenuOptions4()
-            case .RoundRect:
+            case .roundRect:
                 options = PagingMenuOptions5()
             }
-        case .MenuController(let content):
+        case .menuController(let content):
             switch content {
-            case .Standard:
+            case .standard:
                 options = PagingMenuOptions6()
             }
         }
@@ -68,11 +68,11 @@ class RootViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? UITableViewCell,
-            let indexPath = tableView.indexPathForCell(cell),
+            let indexPath = tableView.indexPath(for: cell),
             let sectionType = Section(indexPath: indexPath),
-            let viewController = segue.destinationViewController as? PagingMenuViewController else { return }
+            let viewController = segue.destination as? PagingMenuViewController else { return }
         
         viewController.title = cell.textLabel?.text
         viewController.options = sectionType.options

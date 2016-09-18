@@ -10,5 +10,5 @@ import Foundation
 
 protocol MenuItemMultipliable {
     var menuItemCount: Int { get }
-    func rawPage(page: Int) -> Int
+    func rawPage(_ page: Int) -> Int
 }

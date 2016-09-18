@@ -12,9 +12,9 @@ protocol Pagable {
     var currentPage: Int { get }
     var previousPage: Int { get }
     var nextPage: Int { get }
-    func updateCurrentPage(page: Int)
+    func update(currentPage page: Int)
 }
 
 extension Pagable {
-    func updateCurrentPage(page: Int) {}
+    func update(currentPage page: Int) {}
 }
