@@ -38,7 +38,7 @@ defaultPage: Int
 
 * duration for paging view animation
 ```Swift
-animationDuration: NSTimeInterval
+animationDuration: TimeInterval
 ```
 
 * scrollEnabled for paging view. **Set false in case of using swipe-to-delete on your table view**
@@ -55,8 +55,8 @@ backgroundColor: UIColor
 ```swift
 lazyLoadingPage: LazyLoadingPage
 public enum LazyLoadingPage {
-    case One // Currently sets false to scrollEnabled at this moment. Should be fixed in the future.
-    case Three
+    case one // Currently sets false to scrollEnabled at this moment. Should be fixed in the future.
+    case three
 }
 ```
 
@@ -64,8 +64,8 @@ public enum LazyLoadingPage {
 ```swift
 menuControllerSet: MenuControllerSet
 public enum MenuControllerSet {
-        case Single
-        case Multiple
+        case single
+        case multiple
     }
 ```
 
@@ -73,9 +73,9 @@ public enum MenuControllerSet {
 ```swift
 componentType: ComponentType
 public enum ComponentType {
-    case MenuView(menuOptions: MenuViewCustomizable)
-    case PagingController(pagingControllers: [UIViewController])
-    case All(menuOptions: MenuViewCustomizable, pagingControllers: [UIViewController])
+    case menuView(menuOptions: MenuViewCustomizable)
+    case pagingController(pagingControllers: [UIViewController])
+    case all(menuOptions: MenuViewCustomizable, pagingControllers: [UIViewController])
 }
 ```
 
@@ -98,7 +98,7 @@ height: CGFloat
 
 * duration for menu view animation
 ```Swift
-animationDuration: NSTimeInterval
+animationDuration: TimeInterval
 ```
 
 * decelerating rate for menu view
@@ -117,20 +117,20 @@ menuSelectedItemCenter: Bool
 displayMode: MenuDisplayMode
 
 public enum MenuDisplayMode {
-    case Standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
-    case SegmentedControl
-    case Infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode) // Requires three paging views at least
+    case standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
+    case segmentedControl
+    case infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode) // Requires three paging views at least
 }
 
 public enum MenuItemWidthMode {
-    case Flexible
-    case Fixed(width: CGFloat)
+    case flexible
+    case fixed(width: CGFloat)
 }
 
 public enum MenuScrollingMode {
-  case ScrollEnabled
-  case ScrollEnabledAndBouces
-  case PagingEnabled
+  case scrollEnabled
+  case scrollEnabledAndBouces
+  case pagingEnabled
 }
 ```
 
@@ -143,9 +143,9 @@ if `MenuScrollingMode` is `PagingEnabled`, menu item should be selected one by o
 ```Swift
 focusMode: MenuFocusMode
 public enum MenuFocusMode {
-    case None
-    case Underline(height: CGFloat, color: UIColor, horizontalPadding: CGFloat, verticalPadding: CGFloat)
-    case RoundRect(radius: CGFloat, horizontalPadding: CGFloat, verticalPadding: CGFloat, selectedColor: UIColor)
+    case none
+    case underline(height: CGFloat, color: UIColor, horizontalPadding: CGFloat, verticalPadding: CGFloat)
+    case roundRect(radius: CGFloat, horizontalPadding: CGFloat, verticalPadding: CGFloat, selectedColor: UIColor)
 }
 ```
 
@@ -160,8 +160,8 @@ dummyItemViewsSet: Int
 menuPosition: MenuPosition
 
 public enum MenuPosition {
-    case Top
-    case Bottom
+    case top
+    case bottom
 }
 ```
 
@@ -182,10 +182,10 @@ horizontalMargin: CGFloat
 ```swift
 displayMode: MenuItemDisplayMode
 public enum MenuItemDisplayMode {
-    case Text(title: MenuItemText)
-    case MultilineText(title: MenuItemText, description: MenuItemText)
-    case Image(image: UIImage, selectedImage: UIImage?)
-    case Custom(view: UIView)
+    case text(title: MenuItemText)
+    case multilineText(title: MenuItemText, description: MenuItemText)
+    case image(image: UIImage, selectedImage: UIImage?)
+    case custom(view: UIView)
 }
 ```
 
@@ -207,7 +207,7 @@ struct MenuOptions: MenuViewCustomizable {
 
 struct PagingMenuOptions: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
-        return .All(menuOptions: MenuOptions(), pagingControllers: [UIViewController(), UIViewController()])
+        return .all(menuOptions: MenuOptions(), pagingControllers: [UIViewController(), UIViewController()])
     }
 }
 
@@ -232,7 +232,7 @@ struct MenuOptions: MenuViewCustomizable {
 
 struct PagingMenuOptions: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
-        return .All(menuOptions: MenuOptions(), pagingControllers: [UIViewController(), UIViewController()])
+        return .all(menuOptions: MenuOptions(), pagingControllers: [UIViewController(), UIViewController()])
     }
 }
 
@@ -281,10 +281,8 @@ It creates a new paging menu controller. Do not forget to cleanup properties in 
 ## Requirements
 
 iOS8+  
-Swift 2.2+  
-Xcode 7.3+  
-
-*Please use 0.8.0 tag for Swift 1.2*
+Swift 3.0+  
+Xcode 8.0+  
 
 ## Installation
 
@@ -298,6 +296,14 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod "PagingMenuController"
+
+post_install do |installer|
+ installer.pods_project.targets.each do |target|
+   target.build_configurations.each do |config|
+     config.build_settings['SWIFT_VERSION'] = '3.0'
+   end
+ end
+end
 ```
 
 Then, run `pod install`
@@ -317,7 +323,7 @@ To install PagingMenuController into your Xcode project using Carthage, specify 
 github "kitasuke/PagingMenuController"
 ```
 
-Then, run `carthage update`
+Then, run `carthage update --toolchain com.apple.dt.toolchain.Swift_3_0`
 
 You can see `Carthage/Build/iOS/PagingMenuController.framework` now, so drag and drop it to `Linked Frameworks and Libraries` in General menu tab with your project.
 Add the following script to `New Run Script Phase` in Build Phases menu tab.
@@ -330,12 +336,7 @@ Also add the following script in `Input Files`
 $(SRCROOT)/Carthage/Build/iOS/PagingMenuController.framework
 ```
 
-In case you haven't installed Carthage yet, run the following command
-
-```ruby
-$ brew update
-$ brew install carthage
-```
+In case you haven't installed Carthage yet, download the latest pkg from [Carthage](https://github.com/Carthage/Carthage/releases)
 
 ### Manual
 
