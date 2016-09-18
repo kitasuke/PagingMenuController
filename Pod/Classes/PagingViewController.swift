@@ -75,7 +75,7 @@ open class PagingViewController: UIViewController {
     
     fileprivate func setupContentScrollView() {
         contentScrollView.backgroundColor = options.backgroundColor
-        contentScrollView.isScrollEnabled = options.scrollEnabled
+        contentScrollView.isScrollEnabled = options.isScrollEnabled
         view.addSubview(contentScrollView)
     }
     

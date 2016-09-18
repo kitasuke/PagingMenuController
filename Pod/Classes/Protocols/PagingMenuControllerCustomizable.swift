@@ -11,7 +11,7 @@ import Foundation
 public protocol PagingMenuControllerCustomizable {
     var defaultPage: Int { get }
     var animationDuration: TimeInterval { get }
-    var scrollEnabled: Bool { get }
+    var isScrollEnabled: Bool { get }
     var backgroundColor: UIColor { get }
     var lazyLoadingPage: LazyLoadingPage { get }
     var menuControllerSet: MenuControllerSet { get }
@@ -25,7 +25,7 @@ public extension PagingMenuControllerCustomizable {
     var animationDuration: TimeInterval {
         return 0.3
     }
-    var scrollEnabled: Bool {
+    var isScrollEnabled: Bool {
         return true
     }
     var backgroundColor: UIColor {
