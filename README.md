@@ -253,24 +253,20 @@ pagingMenuController.delegate = self
 ```
 
 ```Swift
-func willMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
-}
-
-func didMoveToPageMenuController(menuController: UIViewController, previousMenuController: UIViewController) {
-}
-
-func willMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView) {
-}
-
-func didMoveToMenuItemView(menuItemView: MenuItemView, previousMenuItemView: MenuItemView) {
-}
+func willMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
+    
+func didMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
+    
+func willMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
+    
+func didMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
 ```
 
 ### Moving to a menu tag programmatically
 
 ```swift
 // if you pass a nonexistent page number, it'll be ignored
-pagingMenuController.moveToMenuPage(1, animated: true)
+pagingMenuController.move(toPage: 1, animated: true)
 ```
 
 ### Changing PagingMenuController's option
