@@ -241,7 +241,7 @@ let pagingMenuController = PagingMenuController(options: options)
 
 addChildViewController(pagingMenuController)
 view.addSubview(pagingMenuController.view)
-pagingMenuController.didMoveToParentViewController(self)
+pagingMenuController.didMove(toParentViewController: self)
 ```
 
 See `PagingMenuControllerDemo2` target in demo project for more details
