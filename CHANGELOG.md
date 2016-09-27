@@ -1,3 +1,9 @@
+# 2.0.0 Release notes (2016/09-27)
+
+### Breaking changes
+
+- Drop iOS 8 support
+
 # 1.4.0 Release notes (2016/09-18)
 
 ### Enhancements
