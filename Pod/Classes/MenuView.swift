@@ -182,11 +182,15 @@ open class MenuView: UIScrollView {
     }
     
     fileprivate func layoutContentView() {
-        let viewsDictionary = ["contentView": contentView, "scrollView": self]
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[contentView]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[contentView(==scrollView)]|", options: [], metrics: nil, views: viewsDictionary)
-        
-        NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
+        // H:|[contentView]|
+        // V:|[contentView(==scrollView)]|
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentView.heightAnchor.constraint(equalTo: heightAnchor)
+            ])
     }
 
     fileprivate func constructMenuItemViews(_ menuOptions: MenuViewCustomizable) {
@@ -227,22 +231,24 @@ open class MenuView: UIScrollView {
         NSLayoutConstraint.deactivate(contentView.constraints)
         
         for (index, menuItemView) in sortedMenuItemViews.enumerated() {
-            let visualFormat: String;
-            var viewsDicrionary = ["menuItemView": menuItemView]
             if index == 0 {
-                visualFormat = "H:|[menuItemView]"
+                // H:|[menuItemView]
+                menuItemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
             } else  {
-                viewsDicrionary["previousMenuItemView"] = sortedMenuItemViews[index - 1]
-                if index == menuItemCount - 1 {
-                    visualFormat = "H:[previousMenuItemView][menuItemView]|"
-                } else {
-                    visualFormat = "H:[previousMenuItemView][menuItemView]"
+                if index == sortedMenuItemViews.count - 1 {
+                    // H:[menuItemView]|
+                    menuItemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
                 }
+                // H:[previousMenuItemView][menuItemView]
+                let previousMenuItemView = sortedMenuItemViews[index - 1]
+                previousMenuItemView.trailingAnchor.constraint(equalTo: menuItemView.leadingAnchor, constant: 0).isActive = true
             }
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: visualFormat, options: [], metrics: nil, views: viewsDicrionary)
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[menuItemView]|", options: [], metrics: nil, views: viewsDicrionary)
             
-            NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
+            // V:|[menuItemView]|
+            NSLayoutConstraint.activate([
+                menuItemView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                menuItemView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+                ])
         }
         
         setNeedsLayout()

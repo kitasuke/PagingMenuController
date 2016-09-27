@@ -199,24 +199,33 @@ open class PagingMenuController: UIViewController, PagingValidator {
     
     fileprivate func layoutMenuView() {
         guard let menuView = menuView else { return }
-        let viewsDictionary = ["menuView": menuView]
         
-        let verticalConstraints: [NSLayoutConstraint]
+        let height: CGFloat
         switch options.componentType {
         case .all(let menuOptions, _):
+            height = menuOptions.height
             switch menuOptions.menuPosition {
             case .top:
-                verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[menuView]", options: [], metrics: nil, views: viewsDictionary)
+                // V:|[menuView]
+                menuView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             case .bottom:
-                verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[menuView]|", options: [], metrics: nil, views: viewsDictionary)
+                // V:[menuView]|
+                menuView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
             }
-        case .menuView:
-            verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[menuView]", options: [], metrics: nil, views: viewsDictionary)
+        case .menuView(let menuOptions):
+            height = menuOptions.height
+            // V:|[menuView]
+            menuView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         default: return
         }
         
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[menuView]|", options: [], metrics: nil, views: viewsDictionary)
-        NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
+        // H:|[menuView]|
+        // V:[menuView(height)]
+        NSLayoutConstraint.activate([
+            menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            menuView.heightAnchor.constraint(equalToConstant: height)
+            ])
         
         menuView.setNeedsLayout()
         menuView.layoutIfNeeded()
@@ -235,31 +244,39 @@ open class PagingMenuController: UIViewController, PagingValidator {
 
     fileprivate func layoutPagingViewController() {
         guard let pagingViewController = pagingViewController else { return }
-        let viewsDictionary: [String: UIView]
-        switch options.componentType {
-        case .pagingController:
-            viewsDictionary = ["pagingView": pagingViewController.view]
-        default:
-            guard let menuView = menuView else { return }
-            viewsDictionary = ["menuView": menuView, "pagingView": pagingViewController.view]
-        }
-
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[pagingView]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints: [NSLayoutConstraint]
+        
+        // H:|[pagingView]|
+        NSLayoutConstraint.activate([
+            pagingViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pagingViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            ])
+        
         switch (options.componentType) {
         case .pagingController:
-            verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[pagingView]|", options: [], metrics: nil, views: viewsDictionary)
+            // V:|[pagingView]|
+            NSLayoutConstraint.activate([
+                pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+                pagingViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                ])
         case .all(let menuOptions, _):
+            guard let menuView = menuView else { return }
+            
             switch menuOptions.menuPosition {
             case .top:
-                verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[menuView][pagingView]|", options: [], metrics: nil, views: viewsDictionary)
+                // V:[menuView][pagingView]|
+                NSLayoutConstraint.activate([
+                    menuView.bottomAnchor.constraint(equalTo: pagingViewController.view.topAnchor, constant: 0),
+                    pagingViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                    ])
             case .bottom:
-                verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[pagingView][menuView]", options: [], metrics: nil, views: viewsDictionary)
+                // V:|[pagingView][menuView]
+                NSLayoutConstraint.activate([
+                    pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+                    pagingViewController.view.bottomAnchor.constraint(equalTo: menuView.topAnchor, constant: 0),
+                    ])
             }
         default: return
         }
-
-        NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
     }
     
     // MARK: - Private

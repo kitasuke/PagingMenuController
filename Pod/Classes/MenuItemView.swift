@@ -187,31 +187,40 @@ open class MenuItemView: UIView {
     }
     
     fileprivate func layoutMultiLineLabel() {
+        // H:|[titleLabel(==labelSize.width)]|
+        // H:|[descriptionLabel(==labelSize.width)]|
+        // V:|-margin-[titleLabel][descriptionLabel]-margin|
         let titleLabelSize = calculateLabelSize(titleLabel, maxWidth: maxWindowSize)
         let descriptionLabelSize = calculateLabelSize(descriptionLabel, maxWidth: maxWindowSize)
         let verticalMargin = max(menuOptions.height - (titleLabelSize.height + descriptionLabelSize.height), 0) / 2
-        let metrics = ["margin": verticalMargin]
-        let viewsDictionary = ["titleLabel": titleLabel, "descriptionLabel": descriptionLabel]
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[titleLabel]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-margin-[titleLabel][descriptionLabel]-margin-|", options: [], metrics: metrics, views: viewsDictionary)
-
-        let descriptionHorizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[descriptionLabel]|", options: [], metrics: nil, views: viewsDictionary)
-        widthConstraint = NSLayoutConstraint(item: titleLabel, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .width, multiplier: 1.0, constant: titleLabelSize.width)
-        descriptionWidthConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .width, multiplier: 1.0, constant: descriptionLabelSize.width)
-        
-        NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints + descriptionHorizontalConstraints + [widthConstraint, descriptionWidthConstraint])
+        widthConstraint = titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: titleLabelSize.width)
+        descriptionWidthConstraint = descriptionLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: descriptionLabelSize.width)
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            widthConstraint,
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            descriptionWidthConstraint,
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: verticalMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: 0),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: verticalMargin),
+            titleLabel.heightAnchor.constraint(equalToConstant: titleLabelSize.height),
+            ])
     }
 
     fileprivate func layoutLabel() {
-        let viewsDictionary = ["label": titleLabel]
-        let labelSize = calculateLabelSize(titleLabel, maxWidth: maxWindowSize)
-
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[label]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[label]|", options: [], metrics: nil, views: viewsDictionary)
-        widthConstraint = NSLayoutConstraint(item: titleLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: labelSize.width)
-        
-        NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints + [widthConstraint])
-
+        // H:|[titleLabel](==labelSize.width)|
+        // V:|[titleLabel]|
+        let titleLabelSize = calculateLabelSize(titleLabel, maxWidth: maxWindowSize)
+        widthConstraint = titleLabel.widthAnchor.constraint(equalToConstant: titleLabelSize.width)
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            widthConstraint,
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ])
     }
     
     fileprivate func layoutImageView() {
@@ -225,13 +234,13 @@ open class MenuItemView: UIView {
             width = image.size.width + horizontalMargin * 2
         }
         
-        widthConstraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: width)
+        widthConstraint = widthAnchor.constraint(equalToConstant: width)
         
         NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: menuImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: menuImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: menuImageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: image.size.width),
-            NSLayoutConstraint(item: menuImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: image.size.height),
+            menuImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            menuImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            menuImageView.widthAnchor.constraint(equalToConstant: image.size.width),
+            menuImageView.heightAnchor.constraint(equalToConstant: image.size.height),
             widthConstraint
             ])
     }
@@ -253,9 +262,10 @@ open class MenuItemView: UIView {
     fileprivate func layoutDivider() {
         guard let dividerImageView = dividerImageView else { return }
         
-        let centerYConstraint = NSLayoutConstraint(item: dividerImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 1.0)
-        let rightConstraint = NSLayoutConstraint(item: dividerImageView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0.0)
-        NSLayoutConstraint.activate([centerYConstraint, rightConstraint])
+        NSLayoutConstraint.activate([
+            dividerImageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 1.0),
+            dividerImageView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            ])
     }
 }
 
