@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/cocoapods/v/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![License](https://img.shields.io/cocoapods/l/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
 [![Platform](https://img.shields.io/cocoapods/p/PagingMenuController.svg?style=flat)](http://cocoapods.org/pods/PagingMenuController)
-![Swift 2.2.x](https://img.shields.io/badge/Swift-2.2.x-orange.svg)
+![Swift 3.0.x](https://img.shields.io/badge/Swift-3.0.x-orange.svg)
 
 This library is inspired by [PageMenu](https://github.com/uacaps/PageMenu)
 
@@ -276,11 +276,12 @@ It creates a new paging menu controller. Do not forget to cleanup properties in 
 
 ## Requirements
 
-iOS8+  
+iOS9+  
 Swift 3.0+  
 Xcode 8.0+ 
 
-Please use [v1.2.0](https://github.com/kitasuke/PagingMenuController/releases/tag/1.2.0) for Swift 2.3
+[v1.4.0](https://github.com/kitasuke/PagingMenuController/releases/tag/1.4.0) for iOS 8 in Swift 3.0  
+[v1.2.0](https://github.com/kitasuke/PagingMenuController/releases/tag/1.2.0) for iOS 8 in Swift 2.3
 
 ## Installation
 
@@ -290,7 +291,7 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 pod "PagingMenuController"
