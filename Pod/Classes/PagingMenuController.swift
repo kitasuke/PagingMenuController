@@ -374,12 +374,18 @@ extension PagingMenuController: PageDetectable {
     var nextPageFromCurrentPosition: Int {
         // set new page number according to current moving direction
         let page: Int
-        switch (currentPagingViewPosition, options.componentType) {
-        case (.left, .pagingController): page = previousPage
-        case (.left, _): page = menuView?.previousPage ?? previousPage
-        case (.right, .pagingController): page = nextPage
-        case (.right, _): page = menuView?.nextPage ?? nextPage
-        default: page = pagingViewController?.currentPage ?? currentPage
+        switch options.lazyLoadingPage {
+        case .all:
+            guard let scrollView = pagingViewController?.contentScrollView else { return currentPage }
+            page = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        default:
+            switch (currentPagingViewPosition, options.componentType) {
+            case (.left, .pagingController): page = previousPage
+            case (.left, _): page = menuView?.previousPage ?? previousPage
+            case (.right, .pagingController): page = nextPage
+            case (.right, _): page = menuView?.nextPage ?? nextPage
+            default: page = pagingViewController?.currentPage ?? currentPage
+            }
         }
         
         return page

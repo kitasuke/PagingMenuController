@@ -145,7 +145,8 @@ open class PagingViewController: UIViewController {
                     pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
                     ])
             } else {
-                if case .all(let menuOptions, _) = options.componentType, case .infinite = menuOptions.displayMode {
+                if case .all(let menuOptions, _) = options.componentType,
+                    case .infinite = menuOptions.displayMode {
                     if index == currentPage {
                         guard let previousPagingView = controllers[previousPage].view,
                             let nextPagingView = controllers[nextPage].view else { continue }
@@ -163,16 +164,24 @@ open class PagingViewController: UIViewController {
                         pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor).isActive = true
                     }
                 } else {
-                    if index == 0 || index == previousPage {
+                    switch (options.lazyLoadingPage, index) {
+                    case (.three, 0),
+                         (.three, previousPage),
+                         (.all, 0):
+                        // H:|[pagingView]
                         pagingView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor).isActive = true
-                    } else {
-                        guard let previousPagingView = controllers[index - 1].view else { continue }
-                        if index == controllers.count - 1 || index == nextPage {
-                            // H:[pagingView]|
+                    case (.three, controllers.count - 1),
+                             (.three, nextPage),
+                             (.all, controllers.count - 1):
+                            guard let previousPagingView = controllers[index - 1].view else { continue }
+                            // H:[previousPagingView][pagingView]|
+                            previousPagingView.trailingAnchor.constraint(equalTo: pagingView.leadingAnchor, constant: 0).isActive = true
                             pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor).isActive = true
-                        }
+                    case (.three, _), (.all, _):
+                        guard let previousPagingView = controllers[index - 1].view else { continue }
                         // H:[previousPagingView][pagingView]
                         previousPagingView.trailingAnchor.constraint(equalTo: pagingView.leadingAnchor, constant: 0).isActive = true
+                    default: break
                     }
                 }
             }
@@ -258,6 +267,7 @@ extension PagingViewController: PageLoadable {
                 guard page >= previousPage &&
                     page <= nextPage else { return false }
             }
+        case (_, .all): return true
         }
         return true
     }
