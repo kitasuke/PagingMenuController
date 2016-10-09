@@ -57,6 +57,7 @@ lazyLoadingPage: LazyLoadingPage
 public enum LazyLoadingPage {
     case one // Currently sets false to isScrollEnabled at this moment. Should be fixed in the future.
     case three
+    case all // Currently not available for Infinite mode
 }
 ```
 

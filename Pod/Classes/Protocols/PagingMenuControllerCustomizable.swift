@@ -42,6 +42,7 @@ public extension PagingMenuControllerCustomizable {
 public enum LazyLoadingPage {
     case one
     case three
+    case all
 }
 
 public enum MenuControllerSet {
