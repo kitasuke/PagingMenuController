@@ -26,6 +26,9 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     var componentType: ComponentType {
         return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
+    var lazyLoadingPage: LazyLoadingPage {
+        return .all
+    }
     
     struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
