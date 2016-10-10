@@ -56,7 +56,13 @@ open class MenuView: UIScrollView {
         }
     }
     fileprivate var centerOfScreenWidth: CGFloat {
-        return menuItemViews[currentPage].frame.midX - UIApplication.shared.keyWindow!.bounds.width / 2
+        let screenWidth: CGFloat
+        if let width = UIApplication.shared.keyWindow?.bounds.width {
+            screenWidth = width
+        } else {
+            screenWidth = UIScreen.main.bounds.width
+        }
+        return menuItemViews[currentPage].frame.midX - screenWidth / 2
     }
     fileprivate var contentOffsetXForCurrentPage: CGFloat {
         guard menuItemCount > MinimumSupportedViewCount else { return 0.0 }
