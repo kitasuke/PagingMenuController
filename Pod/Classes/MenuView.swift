@@ -313,8 +313,8 @@ open class MenuView: UIScrollView {
         default: return
         }
         
-        let firstMenuView = menuItemViews.first!
-        let lastMenuView = menuItemViews.last!
+        guard let firstMenuView = menuItemViews.first,
+            let lastMenuView = menuItemViews.last else { return }
         
         var inset = contentInset
         let halfWidth = frame.width / 2
