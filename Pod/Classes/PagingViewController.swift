@@ -15,6 +15,7 @@ open class PagingViewController: UIViewController {
     
     internal let contentScrollView: UIScrollView = {
         $0.isPagingEnabled = true
+        $0.isDirectionalLockEnabled = true
         $0.showsHorizontalScrollIndicator = false
         $0.showsVerticalScrollIndicator = false
         $0.scrollsToTop = false

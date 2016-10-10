@@ -170,6 +170,7 @@ open class MenuView: UIScrollView {
         showsVerticalScrollIndicator = false
         bounces = menuViewBounces
         isScrollEnabled = menuViewScrollEnabled
+        isDirectionalLockEnabled = true
         decelerationRate = menuOptions.deceleratingRate
         scrollsToTop = false
         translatesAutoresizingMaskIntoConstraints = false
