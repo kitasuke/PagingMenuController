@@ -26,14 +26,14 @@ internal let MinimumSupportedViewCount = 1
 internal let VisiblePagingViewNumber = 3
 
 open class PagingMenuController: UIViewController, PagingValidator {
-    weak open var delegate: PagingMenuControllerDelegate? {
+    weak public var delegate: PagingMenuControllerDelegate? {
         didSet {
             guard let menuView = menuView else { return }
             
             menuView.viewDelegate = delegate
         }
     }
-    open fileprivate(set) var menuView: MenuView? {
+    public fileprivate(set) var menuView: MenuView? {
         didSet {
             guard let menuView = menuView else { return }
             
@@ -43,7 +43,7 @@ open class PagingMenuController: UIViewController, PagingValidator {
             view.addSubview(menuView)
         }
     }
-    open fileprivate(set) var pagingViewController: PagingViewController? {
+    public fileprivate(set) var pagingViewController: PagingViewController? {
         didSet {
             guard let pagingViewController = pagingViewController else { return }
             

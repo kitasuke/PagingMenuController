@@ -9,7 +9,7 @@
 import UIKit
 
 open class MenuView: UIScrollView {
-    open fileprivate(set) var currentMenuItemView: MenuItemView!
+    public fileprivate(set) var currentMenuItemView: MenuItemView!
     
     weak internal var viewDelegate: PagingMenuControllerDelegate?
     internal fileprivate(set) var menuItemViews = [MenuItemView]()

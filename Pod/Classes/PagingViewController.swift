@@ -9,9 +9,9 @@
 import UIKit
 
 open class PagingViewController: UIViewController {
-    open let controllers: [UIViewController]
-    open internal(set) var currentViewController: UIViewController!
-    open fileprivate(set) var visibleControllers = [UIViewController]()
+    public let controllers: [UIViewController]
+    public internal(set) var currentViewController: UIViewController!
+    public fileprivate(set) var visibleControllers = [UIViewController]()
     
     internal let contentScrollView: UIScrollView = {
         $0.isPagingEnabled = true
