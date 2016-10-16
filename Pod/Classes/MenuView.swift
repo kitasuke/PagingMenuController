@@ -8,6 +8,8 @@
 
 import UIKit
 
+internal let MenuViewItemsMarginRigth: CGFloat = 20
+
 open class MenuView: UIScrollView {
     public fileprivate(set) var currentMenuItemView: MenuItemView!
     
@@ -65,9 +67,30 @@ open class MenuView: UIScrollView {
         return menuItemViews[currentPage].frame.midX - screenWidth / 2
     }
     fileprivate var contentOffsetXForCurrentPage: CGFloat {
-        guard menuItemCount > MinimumSupportedViewCount else { return 0.0 }
-        let ratio = CGFloat(currentPage) / CGFloat(menuItemCount - 1)
-        return (contentSize.width - frame.width) * ratio
+        var tmpElementWidth: CGFloat
+        var tmpElementPosX: CGFloat
+        let currentElementFrame = menuItemViews[currentPage].frame
+        let deviceWidth = (UIApplication.shared.keyWindow!.bounds.width)
+        if (currentPage != menuItemViews.count - 1) {
+            let nextElementFrame = menuItemViews[currentPage + 1].frame
+            tmpElementWidth = nextElementFrame.size.width / 2
+            tmpElementPosX = nextElementFrame.origin.x
+            let leadingValueForNextElement = deviceWidth - (tmpElementWidth + MenuViewItemsMarginRigth)
+            let simulatedOffset = nextElementFrame.origin.x - leadingValueForNextElement
+            if (currentElementFrame.origin.x < simulatedOffset) {
+                tmpElementWidth = currentElementFrame.size.width + nextElementFrame.size.width / 2
+                tmpElementPosX = currentElementFrame.origin.x
+            }
+        } else {
+            tmpElementWidth = currentElementFrame.size.width
+            tmpElementPosX = currentElementFrame.origin.x
+        }
+        
+        let leadingValue = deviceWidth - (tmpElementWidth + MenuViewItemsMarginRigth)
+        if (leadingValue > 0) {
+            return max(tmpElementPosX - leadingValue, 0)
+        }
+        return contentOffset.x
     }
     fileprivate var currentIndex: Int = 0
     
