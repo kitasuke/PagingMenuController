@@ -252,8 +252,10 @@ extension PagingViewController: ViewCleanable {
     }
 }
 
-extension PagingViewController: PageLoadable {
-    func shouldLoad(page: Int) -> Bool {
+// MARK: Page Control
+
+extension PagingViewController {
+    fileprivate func shouldLoad(page: Int) -> Bool {
         switch (options.menuControllerSet, options.lazyLoadingPage) {
         case (.single, _),
              (_, .one):
@@ -273,16 +275,16 @@ extension PagingViewController: PageLoadable {
         return true
     }
     
-    func isVisible(controller: UIViewController) -> Bool {
+    fileprivate func isVisible(controller: UIViewController) -> Bool {
         return self.childViewControllers.contains(controller)
     }
     
-    func hideVisibleControllers() {
+    fileprivate func hideVisibleControllers() {
         guard shouldWaitForLayout() else { return }
         visibleControllers.forEach { $0.view.alpha = 0 }
     }
     
-    func showVisibleControllers() {
+    fileprivate func showVisibleControllers() {
         guard shouldWaitForLayout() else { return }
         visibleControllers.forEach { $0.view.alpha = 1 }
     }
