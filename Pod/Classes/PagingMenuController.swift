@@ -8,6 +8,9 @@
 
 import UIKit
 
+@available(*, deprecated, message: "Please use `onMove` property instead")
+public protocol PagingMenuControllerDelegate: class {}
+
 public enum MenuMoveState {
     case willMoveController(to: UIViewController, from: UIViewController)
     case didMoveController(to: UIViewController, from: UIViewController)
