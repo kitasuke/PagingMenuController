@@ -8,37 +8,23 @@
 
 import UIKit
 
-public protocol PagingMenuControllerDelegate: class {
-    func willMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController)
-    func didMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController)
-    func willMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView)
-    func didMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView)
-}
-
-public extension PagingMenuControllerDelegate {
-    func willMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
-    func didMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
-    func willMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
-    func didMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
+public enum MenuMoveState {
+    case willMoveController(to: UIViewController, from: UIViewController)
+    case didMoveController(to: UIViewController, from: UIViewController)
+    case willMoveItem(to: MenuItemView, from: MenuItemView)
+    case didMoveItem(to: MenuItemView, from: MenuItemView)
 }
 
 internal let MinimumSupportedViewCount = 1
 internal let VisiblePagingViewNumber = 3
 
 open class PagingMenuController: UIViewController {
-    weak public var delegate: PagingMenuControllerDelegate? {
-        didSet {
-            guard let menuView = menuView else { return }
-            
-            menuView.viewDelegate = delegate
-        }
-    }
     public fileprivate(set) var menuView: MenuView? {
         didSet {
             guard let menuView = menuView else { return }
             
             menuView.delegate = self
-            menuView.viewDelegate = delegate
+            menuView.onMove = onMove
             menuView.update(currentPage: options.defaultPage)
             view.addSubview(menuView)
         }
@@ -51,6 +37,13 @@ open class PagingMenuController: UIViewController {
             view.addSubview(pagingViewController.view)
             addChildViewController(pagingViewController)
             pagingViewController.didMove(toParentViewController: self)
+        }
+    }
+    public var onMove: ((MenuMoveState) -> Void)? {
+        didSet {
+            guard let menuView = menuView else { return }
+            
+            menuView.onMove = onMove
         }
     }
     
@@ -172,7 +165,7 @@ open class PagingMenuController: UIViewController {
         
         let nextPage = page % pagingViewController.controllers.count
         let nextPagingViewController = pagingViewController.controllers[nextPage]
-        delegate?.willMove(toMenu: nextPagingViewController, fromMenu: previousPagingViewController)
+        onMove?(.willMoveController(to: nextPagingViewController, from: previousPagingViewController))
         menuView?.move(toPage: page)
         
         pagingViewController.update(currentPage: nextPage)
@@ -188,7 +181,7 @@ open class PagingMenuController: UIViewController {
                 // show paging views
                 self?.showPagingMenuControllers()
                 
-                self?.delegate?.didMove(toMenu: nextPagingViewController, fromMenu: previousPagingViewController)
+                self?.onMove?(.didMoveController(to: nextPagingViewController, from: previousPagingViewController))
         }
     }
     
