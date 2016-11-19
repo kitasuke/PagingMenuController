@@ -403,14 +403,34 @@ extension PagingMenuController: PageDetectable {
     }
 }
 
-extension PagingMenuController: GestureHandler {
-    func addTapGestureHandler() {
+// MARK: - GestureRecognizer
+
+extension PagingMenuController {
+    fileprivate var tapGestureRecognizer: UITapGestureRecognizer {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        gestureRecognizer.numberOfTapsRequired = 1
+        return gestureRecognizer
+    }
+    
+    fileprivate var leftSwipeGestureRecognizer: UISwipeGestureRecognizer {
+        let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+        gestureRecognizer.direction = .left
+        return gestureRecognizer
+    }
+    
+    fileprivate var rightSwipeGestureRecognizer: UISwipeGestureRecognizer {
+        let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+        gestureRecognizer.direction = .right
+        return gestureRecognizer
+    }
+    
+    fileprivate func addTapGestureHandler() {
         menuView?.menuItemViews.forEach {
             $0.addGestureRecognizer(tapGestureRecognizer)
         }
     }
     
-    func addSwipeGestureHandler() {
+    fileprivate func addSwipeGestureHandler() {
         guard let menuOptions = menuOptions else { return }
         
         switch menuOptions.displayMode {
