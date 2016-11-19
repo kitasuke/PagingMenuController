@@ -355,8 +355,23 @@ extension PagingMenuController: Pagable {
     }
 }
 
-extension PagingMenuController: PageDetectable {
-    var currentPagingViewPosition: PagingViewPosition {
+// MARK: Page Control
+
+extension PagingMenuController {
+    fileprivate enum PagingViewPosition {
+        case left, center, right, unknown
+        
+        init(order: Int) {
+            switch order {
+            case 0: self = .left
+            case 1: self = .center
+            case 2: self = .right
+            default: self = .unknown
+            }
+        }
+    }
+    
+    fileprivate var currentPagingViewPosition: PagingViewPosition {
         guard let pagingViewController = pagingViewController else { return .unknown }
         let pageWidth = pagingViewController.contentScrollView.frame.width
         let order = Int(ceil((pagingViewController.contentScrollView.contentOffset.x - pageWidth / 2) / pageWidth))
@@ -371,7 +386,7 @@ extension PagingMenuController: PageDetectable {
         return PagingViewPosition(order: order + 1)
     }
     
-    var nextPageFromCurrentPosition: Int {
+    fileprivate var nextPageFromCurrentPosition: Int {
         // set new page number according to current moving direction
         let page: Int
         switch options.lazyLoadingPage {
@@ -391,7 +406,7 @@ extension PagingMenuController: PageDetectable {
         return page
     }
     
-    var nextPageFromCurrentPoint: Int {
+    fileprivate var nextPageFromCurrentPoint: Int {
         guard let menuView = menuView else { return 0 }
         
         let point = CGPoint(x: menuView.contentOffset.x + menuView.frame.width / 2, y: 0)
