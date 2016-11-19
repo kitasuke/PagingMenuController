@@ -213,8 +213,23 @@ struct PagingMenuOptions: PagingMenuControllerCustomizable {
 }
 
 let pagingMenuController = self.childViewControllers.first as! PagingMenuController
-pagingMenuController.delegate = self
 pagingMenuController.setup(options)
+pagingMenuController.onMove = { state in
+    switch state {
+    case let .willMoveController(menuController, previousMenuController):
+        print(previousMenuController)
+        print(menuController)
+    case let .didMoveController(menuController, previousMenuController):
+        print(previousMenuController)
+        print(menuController)
+    case let .willMoveItem(menuItemView, previousMenuItemView):
+        print(previousMenuItemView)
+        print(menuItemView)
+    case let .didMoveItem(menuItemView, previousMenuItemView):
+        print(previousMenuItemView)
+        print(menuItemView)
+    }
+}
 ```
 * You should add `ContainerView` into your view controller's view and set `PagingMenuController` as the embedded view controller's class
 
@@ -247,20 +262,32 @@ pagingMenuController.didMove(toParentViewController: self)
 
 See `PagingMenuControllerDemo2` target in demo project for more details
 
-### Delegate methods (optional)
+### Menu move handler (optional)
 
 ```Swift
-pagingMenuController.delegate = self
-```
+public enum MenuMoveState {
+    case willMoveController(to: UIViewController, from: UIViewController)
+    case didMoveController(to: UIViewController, from: UIViewController)
+    case willMoveItem(to: MenuItemView, from: MenuItemView)
+    case didMoveItem(to: MenuItemView, from: MenuItemView)
+}
 
-```Swift
-func willMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
-    
-func didMove(toMenu menuController: UIViewController, fromMenu previousMenuController: UIViewController) {}
-    
-func willMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
-    
-func didMove(toMenuItem menuItemView: MenuItemView, fromMenuItem previousMenuItemView: MenuItemView) {}
+pagingMenuController.onMove = { state in
+    switch state {
+    case let .willMoveController(menuController, previousMenuController):
+        print(previousMenuController)
+        print(menuController)
+    case let .didMoveController(menuController, previousMenuController):
+        print(previousMenuController)
+        print(menuController)
+    case let .willMoveItem(menuItemView, previousMenuItemView):
+        print(previousMenuItemView)
+        print(menuItemView)
+    case let .didMoveItem(menuItemView, previousMenuItemView):
+        print(previousMenuItemView)
+        print(menuItemView)
+    }
+}
 ```
 
 ### Moving to a menu tag programmatically
@@ -279,7 +306,7 @@ It creates a new paging menu controller. Do not forget to cleanup properties in 
 
 iOS9+  
 Swift 3.0+  
-Xcode 8.0+ 
+Xcode 8.0+
 
 [v1.4.0](https://github.com/kitasuke/PagingMenuController/releases/tag/1.4.0) for iOS 8 in Swift 3.0  
 [v1.2.0](https://github.com/kitasuke/PagingMenuController/releases/tag/1.2.0) for iOS 8 in Swift 2.3
