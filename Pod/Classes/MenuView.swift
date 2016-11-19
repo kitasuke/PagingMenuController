@@ -376,14 +376,14 @@ extension MenuView: ViewCleanable {
     }
 }
 
-extension MenuView: MenuItemMultipliable {
+extension MenuView {
     var menuItemCount: Int {
         switch menuOptions.displayMode {
         case .infinite: return menuOptions.itemsOptions.count * menuOptions.dummyItemViewsSet
         default: return menuOptions.itemsOptions.count
         }
     }
-    func rawPage(_ page: Int) -> Int {
+    fileprivate func rawPage(_ page: Int) -> Int {
         let startIndex = currentPage - menuItemCount / 2
         return (startIndex + page + menuItemCount) % menuItemCount
     }
