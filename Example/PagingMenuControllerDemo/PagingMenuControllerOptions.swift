@@ -9,22 +9,19 @@
 import Foundation
 import PagingMenuController
 
-private var pagingControllers: [UIViewController] {
-    let usersViewController = UsersViewController.instantiateFromStoryboard()
-    let repositoriesViewController = RepositoriesViewController.instantiateFromStoryboard()
-    let gistsViewController = GistsViewController.instantiateFromStoryboard()
-    let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
-    return [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController]
-}
-
 struct MenuItemUsers: MenuItemViewCustomizable {}
 struct MenuItemRepository: MenuItemViewCustomizable {}
 struct MenuItemGists: MenuItemViewCustomizable {}
 struct MenuItemOrganization: MenuItemViewCustomizable {}
 
 struct PagingMenuOptions1: PagingMenuControllerCustomizable {
+    let usersViewController = UsersViewController.instantiateFromStoryboard()
+    let repositoriesViewController = RepositoriesViewController.instantiateFromStoryboard()
+    let gistsViewController = GistsViewController.instantiateFromStoryboard()
+    let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
+    
     var componentType: ComponentType {
-        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController])
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .all
@@ -76,8 +73,13 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
 }
 
 struct PagingMenuOptions2: PagingMenuControllerCustomizable {
+    let usersViewController = UsersViewController.instantiateFromStoryboard()
+    let repositoriesViewController = RepositoriesViewController.instantiateFromStoryboard()
+    let gistsViewController = GistsViewController.instantiateFromStoryboard()
+    let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
+    
     var componentType: ComponentType {
-        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController])
     }
     var menuControllerSet: MenuControllerSet {
         return .single
@@ -94,8 +96,13 @@ struct PagingMenuOptions2: PagingMenuControllerCustomizable {
 }
 
 struct PagingMenuOptions3: PagingMenuControllerCustomizable {
+    let usersViewController = UsersViewController.instantiateFromStoryboard()
+    let repositoriesViewController = RepositoriesViewController.instantiateFromStoryboard()
+    let gistsViewController = GistsViewController.instantiateFromStoryboard()
+    let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
+    
     var componentType: ComponentType {
-        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController])
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .three
@@ -148,8 +155,13 @@ struct PagingMenuOptions5: PagingMenuControllerCustomizable {
 }
 
 struct PagingMenuOptions6: PagingMenuControllerCustomizable {
+    let usersViewController = UsersViewController.instantiateFromStoryboard()
+    let repositoriesViewController = RepositoriesViewController.instantiateFromStoryboard()
+    let gistsViewController = GistsViewController.instantiateFromStoryboard()
+    let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
+    
     var componentType: ComponentType {
-        return .pagingController(pagingControllers: pagingControllers)
+        return .pagingController(pagingControllers: [usersViewController, repositoriesViewController, gistsViewController, organizationsViewController])
     }
     var defaultPage: Int {
         return 1

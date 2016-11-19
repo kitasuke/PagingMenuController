@@ -10,13 +10,14 @@ import UIKit
 import PagingMenuController
 
 private struct PagingMenuOptions: PagingMenuControllerCustomizable {
+    private let viewController1 = ViewController1()
+    private let viewController2 = ViewController2()
+    
     fileprivate var componentType: ComponentType {
         return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
     
     fileprivate var pagingControllers: [UIViewController] {
-        let viewController1 = ViewController1()
-        let viewController2 = ViewController2()
         return [viewController1, viewController2]
     }
     
