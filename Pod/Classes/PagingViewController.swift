@@ -114,7 +114,7 @@ open class PagingViewController: UIViewController {
             }
             
             pagingView.frame = .zero
-            pagingView.backgroundColor = options.backgroundColor
+            pagingView.backgroundColor = pagingView.backgroundColor ?? options.backgroundColor
             pagingView.translatesAutoresizingMaskIntoConstraints = false
             
             contentScrollView.addSubview(pagingView)
