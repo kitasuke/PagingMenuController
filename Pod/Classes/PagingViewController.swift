@@ -237,7 +237,7 @@ extension PagingViewController: Pagable {
     }
 }
 
-extension PagingViewController: ViewCleanable {
+extension PagingViewController {
     func cleanup() {
         visibleControllers.removeAll(keepingCapacity: true)
         currentViewController = nil

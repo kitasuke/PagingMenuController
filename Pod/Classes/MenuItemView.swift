@@ -273,7 +273,7 @@ open class MenuItemView: UIView {
     }
 }
 
-extension MenuItemView: ViewCleanable {
+extension MenuItemView {
     func cleanup() {
         switch menuItemOptions.displayMode {
         case .text:

@@ -506,7 +506,7 @@ extension PagingMenuController {
     }
 }
 
-extension PagingMenuController: ViewCleanable {
+extension PagingMenuController {
     func cleanup() {
         if let menuView = self.menuView {
             menuView.cleanup()

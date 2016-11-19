@@ -358,7 +358,7 @@ extension MenuView: Pagable {
     }
 }
 
-extension MenuView: ViewCleanable {
+extension MenuView {
     func cleanup() {
         contentView.removeFromSuperview()
         switch menuOptions.focusMode {
