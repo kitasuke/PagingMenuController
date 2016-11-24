@@ -175,16 +175,22 @@ open class PagingMenuController: UIViewController {
         pagingViewController.currentViewController = nextPagingViewController
         
         let duration = animated ? options.animationDuration : 0
-        UIView.animate(withDuration: duration, animations: {
-            () -> Void in
+        let animationClosure = {
             pagingViewController.positionMenuController()
-            }) { [weak self] (_) -> Void in
-                pagingViewController.relayoutPagingViewControllers()
-                
-                // show paging views
-                self?.showPagingMenuControllers()
-                
-                self?.onMove?(.didMoveController(to: nextPagingViewController, from: previousPagingViewController))
+        }
+        let completionClosure = { [weak self] (_: Bool) -> Void in
+            pagingViewController.relayoutPagingViewControllers()
+
+            // show paging views
+            self?.showPagingMenuControllers()
+
+            self?.onMove?(.didMoveController(to: nextPagingViewController, from: previousPagingViewController))
+        }
+        if duration > 0 {
+            UIView.animate(withDuration: duration, animations: animationClosure, completion: completionClosure)
+        } else {
+            animationClosure()
+            completionClosure(true)
         }
     }
     
