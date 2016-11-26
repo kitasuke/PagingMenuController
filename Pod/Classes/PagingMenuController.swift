@@ -104,8 +104,10 @@ open class PagingMenuController: UIViewController {
         self.options = options
         
         switch options.componentType {
-        case .all(let menuOptions, _): self.menuOptions = menuOptions
-        case .menuView(let menuOptions): self.menuOptions = menuOptions
+        case .all(let menuOptions, _):
+            self.menuOptions = menuOptions
+        case .menuView(let menuOptions):
+            self.menuOptions = menuOptions
         default: break
         }
         
@@ -259,7 +261,7 @@ open class PagingMenuController: UIViewController {
             pagingViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             ])
         
-        switch (options.componentType) {
+        switch options.componentType {
         case .pagingController:
             // V:|[pagingView]|
             NSLayoutConstraint.activate([
@@ -295,7 +297,8 @@ open class PagingMenuController: UIViewController {
         switch (options.lazyLoadingPage, menuOptions.displayMode, page) {
         case (.three, .infinite, menuView?.previousPage ?? previousPage),
              (.three, .infinite, menuView?.nextPage ?? nextPage): break
-        case (.three, .infinite, _): pagingViewController?.visibleControllers.forEach { $0.view.alpha = 0 }
+        case (.three, .infinite, _):
+            pagingViewController?.visibleControllers.forEach { $0.view.alpha = 0 }
         default: break
         }
     }
@@ -332,13 +335,13 @@ extension PagingMenuController: UIScrollViewDelegate {
 
 extension PagingMenuController: Pagable {
     public var currentPage: Int {
-        switch options.componentType {
-        case .menuView:
-            guard let menuView = menuView else { return 0 }
+        switch (menuView, pagingViewController) {
+        case (let menuView?, _):
             return menuView.currentPage
-        default:
-            guard let pagingViewController = pagingViewController else { return 0 }
+        case (_, let pagingViewController?):
             return pagingViewController.currentPage
+        default:
+            return 0
         }
     }
     var previousPage: Int {
@@ -397,11 +400,16 @@ extension PagingMenuController {
             page = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
         default:
             switch (currentPagingViewPosition, options.componentType) {
-            case (.left, .pagingController): page = previousPage
-            case (.left, _): page = menuView?.previousPage ?? previousPage
-            case (.right, .pagingController): page = nextPage
-            case (.right, _): page = menuView?.nextPage ?? nextPage
-            default: page = pagingViewController?.currentPage ?? currentPage
+            case (.left, .pagingController):
+                page = previousPage
+            case (.left, _):
+                page = menuView?.previousPage ?? previousPage
+            case (.right, .pagingController):
+                page = nextPage
+            case (.right, _):
+                page = menuView?.nextPage ?? nextPage
+            default:
+                page = currentPage
             }
         }
         
@@ -546,10 +554,12 @@ extension PagingMenuController {
     fileprivate func validateDefaultPage(_ options: PagingMenuControllerCustomizable) {
         let maxCount: Int
         switch options.componentType {
-        case .pagingController(let pagingControllers): maxCount = pagingControllers.count
+        case .pagingController(let pagingControllers):
+            maxCount = pagingControllers.count
         case .all(_, let pagingControllers):
             maxCount = pagingControllers.count
-        case .menuView(let menuOptions): maxCount = menuOptions.itemsOptions.count
+        case .menuView(let menuOptions):
+            maxCount = menuOptions.itemsOptions.count
         }
         
         guard options.defaultPage >= maxCount || options.defaultPage < 0 else { return }
