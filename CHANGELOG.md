@@ -1,3 +1,15 @@
+# 2.1.0 Release notes (2016/11-25)
+
+### Enhancements
+
+- Use `onMove` clousure instead of `PagingMenuControllerDelegate`
+- Performance improvements of view animation thanks to @wwwjfy
+
+### Bug fixes
+
+- Fix unexpected behaviour that it goes to wrong page with `infinite` mode
+- Fix a bug that preset background color on paging view is not correctly set
+
 # 2.0.0 Release notes (2016/09-27)
 
 ### Breaking changes
