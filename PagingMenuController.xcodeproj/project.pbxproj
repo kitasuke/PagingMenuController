@@ -7,17 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC202B4F1D0C54D100D527D2 /* GestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B441D0C54D100D527D2 /* GestureHandler.swift */; };
-		EC202B501D0C54D100D527D2 /* LabelSizeCalculatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B451D0C54D100D527D2 /* LabelSizeCalculatable.swift */; };
-		EC202B511D0C54D100D527D2 /* MenuItemMultipliable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B461D0C54D100D527D2 /* MenuItemMultipliable.swift */; };
 		EC202B521D0C54D100D527D2 /* MenuItemViewCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B471D0C54D100D527D2 /* MenuItemViewCustomizable.swift */; };
 		EC202B531D0C54D100D527D2 /* MenuViewCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B481D0C54D100D527D2 /* MenuViewCustomizable.swift */; };
 		EC202B541D0C54D100D527D2 /* Pagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B491D0C54D100D527D2 /* Pagable.swift */; };
-		EC202B551D0C54D100D527D2 /* PageDetectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B4A1D0C54D100D527D2 /* PageDetectable.swift */; };
-		EC202B561D0C54D100D527D2 /* PageLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B4B1D0C54D100D527D2 /* PageLoadable.swift */; };
 		EC202B571D0C54D100D527D2 /* PagingMenuControllerCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B4C1D0C54D100D527D2 /* PagingMenuControllerCustomizable.swift */; };
-		EC202B581D0C54D100D527D2 /* PagingValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B4D1D0C54D100D527D2 /* PagingValidator.swift */; };
-		EC202B591D0C54D100D527D2 /* ViewCleanable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B4E1D0C54D100D527D2 /* ViewCleanable.swift */; };
 		ECA2108A1D054879006AA684 /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA210891D054879006AA684 /* PagingViewController.swift */; };
 		ECE5306D1B6DEB18001CF201 /* PagingMenuController.h in Headers */ = {isa = PBXBuildFile; fileRef = ECE5306C1B6DEB18001CF201 /* PagingMenuController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ECE530871B6DEB68001CF201 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE530831B6DEB68001CF201 /* MenuItemView.swift */; };
@@ -26,17 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC202B441D0C54D100D527D2 /* GestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureHandler.swift; sourceTree = "<group>"; };
-		EC202B451D0C54D100D527D2 /* LabelSizeCalculatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSizeCalculatable.swift; sourceTree = "<group>"; };
-		EC202B461D0C54D100D527D2 /* MenuItemMultipliable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemMultipliable.swift; sourceTree = "<group>"; };
 		EC202B471D0C54D100D527D2 /* MenuItemViewCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemViewCustomizable.swift; sourceTree = "<group>"; };
 		EC202B481D0C54D100D527D2 /* MenuViewCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewCustomizable.swift; sourceTree = "<group>"; };
 		EC202B491D0C54D100D527D2 /* Pagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagable.swift; sourceTree = "<group>"; };
-		EC202B4A1D0C54D100D527D2 /* PageDetectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageDetectable.swift; sourceTree = "<group>"; };
-		EC202B4B1D0C54D100D527D2 /* PageLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageLoadable.swift; sourceTree = "<group>"; };
 		EC202B4C1D0C54D100D527D2 /* PagingMenuControllerCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerCustomizable.swift; sourceTree = "<group>"; };
-		EC202B4D1D0C54D100D527D2 /* PagingValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingValidator.swift; sourceTree = "<group>"; };
-		EC202B4E1D0C54D100D527D2 /* ViewCleanable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCleanable.swift; sourceTree = "<group>"; };
 		ECA210891D054879006AA684 /* PagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagingViewController.swift; path = Pod/Classes/PagingViewController.swift; sourceTree = SOURCE_ROOT; };
 		ECE530671B6DEB18001CF201 /* PagingMenuController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PagingMenuController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECE5306B1B6DEB18001CF201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,17 +46,10 @@
 		EC202B431D0C54D100D527D2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				EC202B441D0C54D100D527D2 /* GestureHandler.swift */,
-				EC202B451D0C54D100D527D2 /* LabelSizeCalculatable.swift */,
-				EC202B461D0C54D100D527D2 /* MenuItemMultipliable.swift */,
 				EC202B471D0C54D100D527D2 /* MenuItemViewCustomizable.swift */,
 				EC202B481D0C54D100D527D2 /* MenuViewCustomizable.swift */,
 				EC202B491D0C54D100D527D2 /* Pagable.swift */,
-				EC202B4A1D0C54D100D527D2 /* PageDetectable.swift */,
-				EC202B4B1D0C54D100D527D2 /* PageLoadable.swift */,
 				EC202B4C1D0C54D100D527D2 /* PagingMenuControllerCustomizable.swift */,
-				EC202B4D1D0C54D100D527D2 /* PagingValidator.swift */,
-				EC202B4E1D0C54D100D527D2 /* ViewCleanable.swift */,
 			);
 			name = Protocols;
 			path = Pod/Classes/Protocols;
@@ -195,19 +174,12 @@
 			files = (
 				EC202B541D0C54D100D527D2 /* Pagable.swift in Sources */,
 				EC202B531D0C54D100D527D2 /* MenuViewCustomizable.swift in Sources */,
-				EC202B511D0C54D100D527D2 /* MenuItemMultipliable.swift in Sources */,
-				EC202B501D0C54D100D527D2 /* LabelSizeCalculatable.swift in Sources */,
 				EC202B521D0C54D100D527D2 /* MenuItemViewCustomizable.swift in Sources */,
 				ECA2108A1D054879006AA684 /* PagingViewController.swift in Sources */,
-				EC202B591D0C54D100D527D2 /* ViewCleanable.swift in Sources */,
 				ECE530871B6DEB68001CF201 /* MenuItemView.swift in Sources */,
-				EC202B551D0C54D100D527D2 /* PageDetectable.swift in Sources */,
 				ECE530891B6DEB68001CF201 /* PagingMenuController.swift in Sources */,
 				ECE530881B6DEB68001CF201 /* MenuView.swift in Sources */,
-				EC202B581D0C54D100D527D2 /* PagingValidator.swift in Sources */,
-				EC202B561D0C54D100D527D2 /* PageLoadable.swift in Sources */,
 				EC202B571D0C54D100D527D2 /* PagingMenuControllerCustomizable.swift in Sources */,
-				EC202B4F1D0C54D100D527D2 /* GestureHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
