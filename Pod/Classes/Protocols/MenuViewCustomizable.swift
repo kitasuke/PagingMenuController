@@ -65,6 +65,12 @@ public enum MenuDisplayMode {
     case infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode)
 }
 
+public extension MenuViewCustomizable {
+    var pagingViewWidth: CGFloat {
+        return 320
+    }
+}
+
 public enum MenuItemWidthMode {
     case flexible
     case fixed(width: CGFloat)
