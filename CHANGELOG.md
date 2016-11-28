@@ -1,3 +1,9 @@
+# 2.1.1 Release notes (2016/11-28)
+
+### Bug fixes
+
+- Fix a bug that carthage install failed
+
 # 2.1.0 Release notes (2016/11-25)
 
 ### Enhancements
