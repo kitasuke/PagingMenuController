@@ -172,6 +172,10 @@ open class PagingMenuController: UIViewController {
         
         let nextPage = page % pagingViewController.controllers.count
         let nextPagingViewController = pagingViewController.controllers[nextPage]
+        
+        previousPagingViewController.beginAppearanceTransition(false, animated: animated)
+        nextPagingViewController.beginAppearanceTransition(true, animated: animated)
+        
         onMove?(.willMoveController(to: nextPagingViewController, from: previousPagingViewController))
         menuView?.move(toPage: page)
         
@@ -193,6 +197,9 @@ open class PagingMenuController: UIViewController {
         if duration > 0 {
             UIView.animate(withDuration: duration, animations: animationClosure, completion: completionClosure)
         } else {
+            previousPagingViewController.endAppearanceTransition()
+            nextPagingViewController.endAppearanceTransition()
+            
             animationClosure()
             completionClosure(true)
         }
