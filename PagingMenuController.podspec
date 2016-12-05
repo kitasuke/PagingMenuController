@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.name             = "PagingMenuController"
   s.version          = "2.2.0"
   s.summary          = "A paging view with customizable menu"
-  s.homepage         = "https://github.com/kitasuke/PagingMenuController"
+  s.homepage         = "https://github.com/sport1online/PagingMenuController"
   s.license          = 'MIT'
   s.author           = { "kitasuke" => "yusuke2759@gmail.com" }
   s.source           = { :git => "https://github.com/kitasuke/PagingMenuController.git", :tag => s.version.to_s }
