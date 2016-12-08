@@ -21,6 +21,7 @@ public protocol MenuViewCustomizable {
     var menuPosition: MenuPosition { get }
     var dividerImage: UIImage? { get }
     var itemsOptions: [MenuItemViewCustomizable] { get }
+    var pagingViewWidth: CGFloat { get set }
 }
 
 public extension MenuViewCustomizable {
@@ -63,12 +64,6 @@ public enum MenuDisplayMode {
     case standard(widthMode: MenuItemWidthMode, centerItem: Bool, scrollingMode: MenuScrollingMode)
     case segmentedControl
     case infinite(widthMode: MenuItemWidthMode, scrollingMode: MenuScrollingMode)
-}
-
-public extension MenuViewCustomizable {
-    var pagingViewWidth: CGFloat {
-        return 320
-    }
 }
 
 public enum MenuItemWidthMode {
