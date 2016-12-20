@@ -41,14 +41,8 @@ open class PagingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override open var shouldAutomaticallyForwardAppearanceMethods: Bool { get {
+    override open var shouldAutomaticallyForwardAppearanceMethods: Bool {
         return false
-        }
-    }
-    
-    override open func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        currentViewController?.beginAppearanceTransition(true, animated: animated)
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -56,20 +50,8 @@ open class PagingViewController: UIViewController {
         
         positionMenuController()
         showVisibleControllers()
-        
-        currentViewController?.endAppearanceTransition()
     }
-    
-    override open func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        currentViewController?.beginAppearanceTransition(false, animated: animated)
-    }
-    
-    override open func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        currentViewController?.endAppearanceTransition()
-    }
-    
+
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
