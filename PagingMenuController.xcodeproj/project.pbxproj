@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		659FC0FB1E152C66003DC488 /* PagingMenuScrollEventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659FC0FA1E152C66003DC488 /* PagingMenuScrollEventsDelegate.swift */; };
+		659FC0FD1E152C96003DC488 /* PagingMenuScrollEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659FC0FC1E152C96003DC488 /* PagingMenuScrollEvents.swift */; };
 		EC202B521D0C54D100D527D2 /* MenuItemViewCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B471D0C54D100D527D2 /* MenuItemViewCustomizable.swift */; };
 		EC202B531D0C54D100D527D2 /* MenuViewCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B481D0C54D100D527D2 /* MenuViewCustomizable.swift */; };
 		EC202B541D0C54D100D527D2 /* Pagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC202B491D0C54D100D527D2 /* Pagable.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		659FC0FA1E152C66003DC488 /* PagingMenuScrollEventsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuScrollEventsDelegate.swift; sourceTree = "<group>"; };
+		659FC0FC1E152C96003DC488 /* PagingMenuScrollEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuScrollEvents.swift; sourceTree = "<group>"; };
 		EC202B471D0C54D100D527D2 /* MenuItemViewCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemViewCustomizable.swift; sourceTree = "<group>"; };
 		EC202B481D0C54D100D527D2 /* MenuViewCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewCustomizable.swift; sourceTree = "<group>"; };
 		EC202B491D0C54D100D527D2 /* Pagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pagable.swift; sourceTree = "<group>"; };
@@ -50,6 +54,7 @@
 				EC202B481D0C54D100D527D2 /* MenuViewCustomizable.swift */,
 				EC202B491D0C54D100D527D2 /* Pagable.swift */,
 				EC202B4C1D0C54D100D527D2 /* PagingMenuControllerCustomizable.swift */,
+				659FC0FA1E152C66003DC488 /* PagingMenuScrollEventsDelegate.swift */,
 			);
 			name = Protocols;
 			path = Pod/Classes/Protocols;
@@ -80,6 +85,7 @@
 				ECE530851B6DEB68001CF201 /* PagingMenuController.swift */,
 				ECA210891D054879006AA684 /* PagingViewController.swift */,
 				ECE5306C1B6DEB18001CF201 /* PagingMenuController.h */,
+				659FC0FC1E152C96003DC488 /* PagingMenuScrollEvents.swift */,
 				ECE5306A1B6DEB18001CF201 /* Supporting Files */,
 			);
 			path = PagingMenuController;
@@ -173,6 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC202B541D0C54D100D527D2 /* Pagable.swift in Sources */,
+				659FC0FB1E152C66003DC488 /* PagingMenuScrollEventsDelegate.swift in Sources */,
+				659FC0FD1E152C96003DC488 /* PagingMenuScrollEvents.swift in Sources */,
 				EC202B531D0C54D100D527D2 /* MenuViewCustomizable.swift in Sources */,
 				EC202B521D0C54D100D527D2 /* MenuItemViewCustomizable.swift in Sources */,
 				ECA2108A1D054879006AA684 /* PagingViewController.swift in Sources */,
