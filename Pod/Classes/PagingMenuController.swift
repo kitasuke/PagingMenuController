@@ -324,7 +324,7 @@ extension PagingMenuController: UIScrollViewDelegate {
         move(toPage: nextPage)
     }
 
-    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         onMove?(.didScrollStart)
     }
 
