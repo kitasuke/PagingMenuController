@@ -324,13 +324,15 @@ extension PagingMenuController: UIScrollViewDelegate {
         move(toPage: nextPage)
     }
 
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         onMove?(.didScrollStart)
     }
 
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         onMove?(.didScrollEnd)
+    }
 
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         switch (scrollView, decelerate) {
         case (let scrollView, false) where scrollView.isEqual(menuView): break
         default: return
