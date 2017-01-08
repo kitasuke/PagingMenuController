@@ -32,6 +32,10 @@ class PagingMenuViewController: UIViewController {
             case let .didMoveItem(menuItemView, previousMenuItemView):
                 print(previousMenuItemView)
                 print(menuItemView)
+            case .didScrollStart:
+                print("Scroll start")
+            case .didScrollEnd:
+                print("Scroll end")
             }
         }
     }
