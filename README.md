@@ -274,6 +274,8 @@ public enum MenuMoveState {
     case didMoveController(to: UIViewController, from: UIViewController)
     case willMoveItem(to: MenuItemView, from: MenuItemView)
     case didMoveItem(to: MenuItemView, from: MenuItemView)
+    case didScrollStart
+    case didScrollEnd
 }
 
 pagingMenuController.onMove = { state in
