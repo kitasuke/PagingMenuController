@@ -1,3 +1,9 @@
+# 2.2.0 Release notes (2017/01/08)
+
+### Enhancements
+
+- Add `didScrollStart` and `didScrollEnd` to `MenuMoveState` thanks to @spsammy
+
 # 2.1.1 Release notes (2016/11-28)
 
 ### Bug fixes
