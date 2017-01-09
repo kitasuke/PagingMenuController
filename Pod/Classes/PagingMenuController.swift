@@ -312,6 +312,8 @@ open class PagingMenuController: UIViewController {
 
 extension PagingMenuController: UIScrollViewDelegate {
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        onMove?(.didScrollEnd)
+        
         let nextPage: Int
         switch (scrollView, pagingViewController, menuView) {
         case let (scrollView, pagingViewController?, _) where scrollView.isEqual(pagingViewController.contentScrollView):
@@ -327,11 +329,7 @@ extension PagingMenuController: UIScrollViewDelegate {
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         onMove?(.didScrollStart)
     }
-
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        onMove?(.didScrollEnd)
-    }
-
+    
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         switch (scrollView, decelerate) {
         case (let scrollView, false) where scrollView.isEqual(menuView): break
