@@ -67,30 +67,19 @@ open class MenuView: UIScrollView {
         return menuItemViews[currentPage].frame.midX - screenWidth / 2
     }
     fileprivate var contentOffsetXForCurrentPage: CGFloat {
-        var tmpElementWidth: CGFloat
-        var tmpElementPosX: CGFloat
+        //  Get the content offset X for the current element so the next one will be visible.
         let currentElementFrame = menuItemViews[currentPage].frame
         let deviceWidth = (UIApplication.shared.keyWindow!.bounds.width)
-        if (currentPage != menuItemViews.count - 1) {
-            let nextElementFrame = menuItemViews[currentPage + 1].frame
-            tmpElementWidth = nextElementFrame.size.width / 2
-            tmpElementPosX = nextElementFrame.origin.x
-            let leadingValueForNextElement = deviceWidth - (tmpElementWidth + MenuViewItemsMarginRigth)
-            let simulatedOffset = nextElementFrame.origin.x - leadingValueForNextElement
-            if (currentElementFrame.origin.x < simulatedOffset) {
-                tmpElementWidth = currentElementFrame.size.width + nextElementFrame.size.width / 2
-                tmpElementPosX = currentElementFrame.origin.x
-            }
-        } else {
-            tmpElementWidth = currentElementFrame.size.width
-            tmpElementPosX = currentElementFrame.origin.x
-        }
         
-        let leadingValue = deviceWidth - (tmpElementWidth + MenuViewItemsMarginRigth)
-        if (leadingValue > 0) {
-            return max(tmpElementPosX - leadingValue, 0)
+        if (currentPage == menuItemViews.count - 1) {
+            //  Current element is the last element.
+            let leadingValue = deviceWidth - (currentElementFrame.size.width + MenuViewItemsMarginRigth)
+            return max(currentElementFrame.origin.x - leadingValue, 0)
         }
-        return contentOffset.x
+        //  There is a nextElement we should care about.
+        let nextElement = menuItemViews[currentPage + 1]
+        let leadingValue = deviceWidth - (currentElementFrame.size.width + nextElement.frame.size.width / 2 + MenuViewItemsMarginRigth)
+        return max(currentElementFrame.origin.x - leadingValue, 0)
     }
     fileprivate var currentIndex: Int = 0
     
