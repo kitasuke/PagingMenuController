@@ -47,6 +47,12 @@ open class MenuView: UIScrollView {
         switch menuOptions.displayMode {
         case .standard(_, let centerItem, _) where centerItem:
             return centerOfScreenWidth
+        case .standard(_, let centerItem, _) where !centerItem:
+            if self.contentView.frame.width < self.frame.width {
+                return contentOffset.x
+            } else {
+                return contentOffsetXForCurrentPage
+            }
         case .segmentedControl:
             return contentOffset.x
         case .infinite:
