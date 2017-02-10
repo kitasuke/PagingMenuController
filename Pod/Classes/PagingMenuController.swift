@@ -319,7 +319,10 @@ extension PagingMenuController: UIScrollViewDelegate {
         case let (scrollView, pagingViewController?, _) where scrollView.isEqual(pagingViewController.contentScrollView):
             nextPage = nextPageFromCurrentPosition
         case let (scrollView, _, menuView?) where scrollView.isEqual(menuView):
-            nextPage = nextPageFromCurrentPoint
+            switch menuOptions!.displayMode {
+            case .standard(_, let centerItem, _) where !centerItem: return
+            default: nextPage = nextPageFromCurrentPoint
+            }
         default: return
         }
         
