@@ -8,6 +8,8 @@
 
 import UIKit
 
+internal let MenuViewItemsMarginRigth: CGFloat = 20
+
 open class MenuView: UIScrollView {
     public fileprivate(set) var currentMenuItemView: MenuItemView!
     
@@ -71,9 +73,19 @@ open class MenuView: UIScrollView {
         return menuItemViews[currentPage].frame.midX - screenWidth / 2
     }
     fileprivate var contentOffsetXForCurrentPage: CGFloat {
-        guard menuItemCount > MinimumSupportedViewCount else { return 0.0 }
-        let ratio = CGFloat(currentPage) / CGFloat(menuItemCount - 1)
-        return (contentSize.width - frame.width) * ratio
+        //  Get the content offset X for the current element so the next one will be visible.
+        let currentElementFrame = menuItemViews[currentPage].frame
+        let deviceWidth = (UIApplication.shared.keyWindow!.bounds.width)
+        
+        if (currentPage == menuItemViews.count - 1) {
+            //  Current element is the last element.
+            let leadingValue = deviceWidth - (currentElementFrame.size.width + MenuViewItemsMarginRigth)
+            return max(currentElementFrame.origin.x - leadingValue, 0)
+        }
+        //  There is a nextElement we should care about.
+        let nextElement = menuItemViews[currentPage + 1]
+        let leadingValue = deviceWidth - (currentElementFrame.size.width + nextElement.frame.size.width / 2 + MenuViewItemsMarginRigth)
+        return max(currentElementFrame.origin.x - leadingValue, 0)
     }
     fileprivate var currentIndex: Int = 0
     

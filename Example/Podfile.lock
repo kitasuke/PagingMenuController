@@ -6,7 +6,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   PagingMenuController:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   PagingMenuController: acdb8e0ff7f977182b0586656d19ba1d992390a6
