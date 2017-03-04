@@ -204,8 +204,8 @@ open class PagingViewController: UIViewController {
     // MARK: - Internal
     
     internal func relayoutPagingViewControllers() {
-        constructPagingViewControllers()
-        layoutPagingViewControllers()
+//        constructPagingViewControllers()
+//        layoutPagingViewControllers()
         view.setNeedsLayout()
         view.layoutIfNeeded()
     }
