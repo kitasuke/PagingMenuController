@@ -15,6 +15,7 @@ public protocol MenuViewCustomizable {
     var animationDuration: TimeInterval { get }
     var deceleratingRate: CGFloat { get }
     var selectedItemCenter: Bool { get }
+    var isAutoSelectAtScrollEnd: Bool { get }
     var displayMode: MenuDisplayMode { get }
     var focusMode: MenuFocusMode { get }
     var dummyItemViewsSet: Int { get }
@@ -40,6 +41,9 @@ public extension MenuViewCustomizable {
         return UIScrollViewDecelerationRateFast
     }
     var selectedItemCenter: Bool {
+        return true
+    }
+    var isAutoSelectAtScrollEnd: Bool {
         return true
     }
     var displayMode: MenuDisplayMode {
