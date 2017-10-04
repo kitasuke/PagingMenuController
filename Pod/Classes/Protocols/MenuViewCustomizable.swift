@@ -21,6 +21,7 @@ public protocol MenuViewCustomizable {
     var menuPosition: MenuPosition { get }
     var dividerImage: UIImage? { get }
     var itemsOptions: [MenuItemViewCustomizable] { get }
+    var pagingViewWidth: CGFloat { get set }
 }
 
 public extension MenuViewCustomizable {

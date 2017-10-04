@@ -309,7 +309,11 @@ open class MenuView: UIScrollView {
     }
 
     fileprivate func positionMenuItemViews() {
-        contentOffset.x = contentOffsetX
+        // NEWS-1205: Only make the view menu scroll when it's to wide to fit on the screen.
+        if contentView.frame.width > menuOptions.pagingViewWidth {
+            contentOffset.x = contentOffsetX
+        }
+        
         animateUnderlineViewIfNeeded()
         animateRoundRectViewIfNeeded()
     }
