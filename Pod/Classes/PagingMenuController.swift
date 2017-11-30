@@ -478,7 +478,7 @@ extension PagingMenuController {
         menuView?.addGestureRecognizer(rightSwipeGestureRecognizer)
     }
     
-    internal func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
+    @objc internal func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
         guard let menuItemView = recognizer.view as? MenuItemView,
             let menuView = menuView,
             let page = menuView.menuItemViews.index(of: menuItemView),
@@ -503,7 +503,7 @@ extension PagingMenuController {
         move(toPage: newPage)
     }
     
-    internal func handleSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
+    @objc internal func handleSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
         guard let menuView = recognizer.view as? MenuView,
             let menuOptions = menuOptions else { return }
         
