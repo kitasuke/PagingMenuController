@@ -81,6 +81,10 @@ open class MenuView: UIScrollView {
     internal init(menuOptions: MenuViewCustomizable) {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: menuOptions.height))
         
+        if #available(iOS 10.0, *) {
+            self.accessibilityTraits = UIAccessibilityTraitTabBar
+        }
+        
         self.menuOptions = menuOptions
         
         commonInit({ self.constructMenuItemViews(menuOptions) })
@@ -121,8 +125,11 @@ open class MenuView: UIScrollView {
         
         if let previousMenuItemView = previousMenuItemView,
             page != previousPage {
+            previousMenuItemView.titleLabel.accessibilityTraits = UIAccessibilityTraitStaticText
             onMove?(.willMoveItem(to: menuItemView, from: previousMenuItemView))
         }
+        
+        menuItemView.titleLabel.accessibilityTraits = UIAccessibilityTraitSelected
         
         update(currentPage: page)
         
