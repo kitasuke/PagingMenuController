@@ -13,7 +13,7 @@ open class PagingViewController: UIViewController {
     public internal(set) var currentViewController: UIViewController!
     public fileprivate(set) var visibleControllers = [UIViewController]()
     
-    internal let contentScrollView: UIScrollView = {
+    internal let contentScrollView: PagingScrollView = {
         $0.isPagingEnabled = true
         $0.isDirectionalLockEnabled = true
         $0.showsHorizontalScrollIndicator = false
@@ -22,7 +22,7 @@ open class PagingViewController: UIViewController {
         $0.bounces = false
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }(UIScrollView(frame: .zero))
+    }(PagingScrollView(frame: .zero))
     
     fileprivate let options: PagingMenuControllerCustomizable
     fileprivate var currentIndex: Int = 0
@@ -301,3 +301,5 @@ extension PagingViewController {
         return true
     }
 }
+
+
