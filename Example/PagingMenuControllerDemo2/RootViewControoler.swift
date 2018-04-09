@@ -10,17 +10,13 @@ import UIKit
 import PagingMenuController
 
 private struct PagingMenuOptions: PagingMenuControllerCustomizable {
-    private let viewController1 = ViewController1()
-    private let viewController2 = ViewController2()
-    
+
     fileprivate var componentType: ComponentType {
         return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
     }
-    
-    fileprivate var pagingControllers: [UIViewController] {
-        return [viewController1, viewController2]
-    }
-    
+  
+    var pagingControllers: [UIViewController]!
+
     fileprivate struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
             return .segmentedControl
@@ -29,7 +25,6 @@ private struct PagingMenuOptions: PagingMenuControllerCustomizable {
             return [MenuItem1(), MenuItem2()]
         }
     }
-    
     fileprivate struct MenuItem1: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             return .text(title: MenuItemText(text: "First Menu"))
@@ -42,14 +37,50 @@ private struct PagingMenuOptions: PagingMenuControllerCustomizable {
     }
 }
 
+private struct PagingMenuOptions1: PagingMenuControllerCustomizable {
+    private let viewController1 = ViewController1()
+    private let viewController2 = ViewController2()
+  
+    fileprivate var componentType: ComponentType {
+        return .all(menuOptions: MenuOptions(), pagingControllers: pagingControllers)
+    }
+  
+    var pagingControllers: [UIViewController]!
+
+    fileprivate struct MenuOptions: MenuViewCustomizable {
+        var displayMode: MenuDisplayMode {
+            return .segmentedControl
+        }
+        var itemsOptions: [MenuItemViewCustomizable] {
+            return [MenuItem1(), MenuItem2()]
+        }
+    }
+    fileprivate struct MenuItem1: MenuItemViewCustomizable {
+        var displayMode: MenuItemDisplayMode {
+            return .text(title: MenuItemText(text: "123"))
+        }
+    }
+    fileprivate struct MenuItem2: MenuItemViewCustomizable {
+        var displayMode: MenuItemDisplayMode {
+            return .text(title: MenuItemText(text: "456"))
+        }
+    }
+}
+
 class RootViewControoler: UIViewController {
+    var viewController1 = UIViewController()
+    var viewController2 = UIViewController()
+  var pagingMenuController: PagingMenuController!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        viewController1.view.backgroundColor = .purple
+        viewController2.view.backgroundColor = .red
         view.backgroundColor = UIColor.white
         
-        let options = PagingMenuOptions()
-        let pagingMenuController = PagingMenuController(options: options)
+        var options = PagingMenuOptions()
+        options.pagingControllers = [viewController1, viewController2]
+        pagingMenuController = PagingMenuController(options: options)
         pagingMenuController.view.frame.origin.y += 64
         pagingMenuController.view.frame.size.height -= 64
         pagingMenuController.onMove = { state in
@@ -76,5 +107,18 @@ class RootViewControoler: UIViewController {
         addChildViewController(pagingMenuController)
         view.addSubview(pagingMenuController.view)
         pagingMenuController.didMove(toParentViewController: self)
+
+        let rightBarButton = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(RootViewControoler.reload))
+        self.navigationItem.rightBarButtonItem = rightBarButton
+      
+        let marker = UIView(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
+        marker.backgroundColor = .blue
+        viewController1.view.addSubview(marker)
     }
+  
+  func reload() {
+      var options = PagingMenuOptions1()
+      options.pagingControllers = [viewController1, viewController2]
+      pagingMenuController.reload(options)
+  }
 }

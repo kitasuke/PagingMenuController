@@ -118,6 +118,38 @@ open class PagingMenuController: UIViewController {
         
         move(toPage: currentPage, animated: false)
     }
+
+    open func reload(_ options: PagingMenuControllerCustomizable) {
+        self.options = options
+        switch options.componentType {
+        case .all(let menuOptions, _):
+            self.menuOptions = menuOptions
+        case .menuView(let menuOptions):
+            self.menuOptions = menuOptions
+        default: break
+        }
+      
+        // setupMenuView
+        switch options.componentType {
+        case .pagingController: return
+        default: break
+        }
+        // create a new menu
+        constructMenuView()
+        layoutMenuView()
+
+        // setupMenuController
+        switch options.componentType {
+        case .menuView: return
+        default: break
+        }
+      
+        // create a new pagingViewController
+        constructPagingViewController()
+        layoutPagingViewController()
+
+        move(toPage: currentPage, animated: false)
+    }
     
     fileprivate func setupMenuView() {
         switch options.componentType {
