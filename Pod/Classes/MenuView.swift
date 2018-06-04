@@ -142,9 +142,7 @@ open class MenuView: UIScrollView {
         let duration = animated ? menuOptions.animationDuration : 0
         UIView.animate(withDuration: duration, animations: { [unowned self] () -> Void in
             self.focusMenuItem()
-            if self.menuOptions.selectedItemCenter {
-                self.positionMenuItemViews()
-            }
+            self.positionMenuItemViews()
         }) { [weak self] (_) in
             guard let _ = self else { return }
             
@@ -152,9 +150,8 @@ open class MenuView: UIScrollView {
             if case .infinite = self!.menuOptions.displayMode {
                 self!.relayoutMenuItemViews()
             }
-            if self!.menuOptions.selectedItemCenter {
-                self!.positionMenuItemViews()
-            }
+            self!.positionMenuItemViews()
+            
             self!.setNeedsLayout()
             self!.layoutIfNeeded()
             
@@ -322,7 +319,9 @@ open class MenuView: UIScrollView {
     }
 
     fileprivate func positionMenuItemViews() {
-        contentOffset.x = contentOffsetX
+        if self.menuOptions.selectedItemCenter {
+            contentOffset.x = contentOffsetX
+        }
         animateUnderlineViewIfNeeded()
         animateRoundRectViewIfNeeded()
     }
