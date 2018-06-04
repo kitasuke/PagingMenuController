@@ -314,15 +314,17 @@ extension PagingMenuController: UIScrollViewDelegate {
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         onMove?(.didScrollEnd)
         
+        var contentScrollView:Bool = false
         let nextPage: Int
         switch (scrollView, pagingViewController, menuView) {
         case let (scrollView, pagingViewController?, _) where scrollView.isEqual(pagingViewController.contentScrollView):
             nextPage = nextPageFromCurrentPosition
+            contentScrollView = true
         case let (scrollView, _, menuView?) where scrollView.isEqual(menuView):
             nextPage = nextPageFromCurrentPoint
         default: return
         }
-        if !(menuView?.freescroll ?? false) {
+        if !(menuView?.freescroll ?? false) || contentScrollView {
             move(toPage: nextPage)
         }
     }

@@ -319,7 +319,8 @@ open class MenuView: UIScrollView {
     }
 
     fileprivate func positionMenuItemViews() {
-        if self.menuOptions.selectedItemCenter {
+        let item = self.currentMenuItemView.frame
+        if self.menuOptions.selectedItemCenter || !bounds.contains(item) {
             contentOffset.x = contentOffsetX
         }
         animateUnderlineViewIfNeeded()
