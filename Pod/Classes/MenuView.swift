@@ -30,16 +30,29 @@ open class MenuView: UIScrollView {
     fileprivate var menuViewBounces: Bool {
         switch menuOptions.displayMode {
         case .standard(_, _, .scrollEnabledAndBouces),
-             .infinite(_, .scrollEnabledAndBouces): return true
+             .standard(_, _, .freeScroll),
+             .infinite(_, .scrollEnabledAndBouces),
+             .infinite(_, .freeScroll): return true
         default: return false
+        }
+    }
+    var freescroll:Bool {
+        switch menuOptions.displayMode {
+        case .standard(_, _, .freeScroll),
+             .infinite(_, .freeScroll):
+            return true
+        default:
+            return false
         }
     }
     fileprivate var menuViewScrollEnabled: Bool {
         switch menuOptions.displayMode {
         case .standard(_, _, .scrollEnabledAndBouces),
              .standard(_, _, .scrollEnabled),
+             .standard(_, _, .freeScroll),
              .infinite(_, .scrollEnabledAndBouces),
-             .infinite(_, .scrollEnabled): return true
+             .infinite(_, .scrollEnabled),
+             .infinite(_, .freeScroll): return true
         default: return false
         }
     }
