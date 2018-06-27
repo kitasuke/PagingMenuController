@@ -91,7 +91,7 @@ open class MenuView: UIScrollView {
     fileprivate var currentIndex: Int = 0
     
     // MARK: - Lifecycle
-    internal init(menuOptions: MenuViewCustomizable) {
+    public init(menuOptions: MenuViewCustomizable) {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: menuOptions.height))
         
         self.menuOptions = menuOptions
@@ -122,7 +122,7 @@ open class MenuView: UIScrollView {
     
     // MARK: - Internal method
     
-    internal func move(toPage page: Int, animated: Bool = true) {
+    func move(toPage page: Int, animated: Bool = true) {
         // hide menu view when constructing itself
         if !animated {
             alpha = 0
