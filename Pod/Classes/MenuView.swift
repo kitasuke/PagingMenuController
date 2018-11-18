@@ -82,7 +82,7 @@ open class MenuView: UIScrollView {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: menuOptions.height))
         
         if #available(iOS 10.0, *) {
-            self.accessibilityTraits = UIAccessibilityTraitTabBar
+            self.accessibilityTraits = UIAccessibilityTraits.tabBar
         }
         
         self.menuOptions = menuOptions
@@ -125,11 +125,11 @@ open class MenuView: UIScrollView {
         
         if let previousMenuItemView = previousMenuItemView,
             page != previousPage {
-            previousMenuItemView.titleLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+            previousMenuItemView.titleLabel.accessibilityTraits = UIAccessibilityTraits.staticText
             onMove?(.willMoveItem(to: menuItemView, from: previousMenuItemView))
         }
         
-        menuItemView.titleLabel.accessibilityTraits = UIAccessibilityTraitSelected
+        menuItemView.titleLabel.accessibilityTraits = UIAccessibilityTraits.selected
         
         update(currentPage: page)
         
@@ -184,7 +184,7 @@ open class MenuView: UIScrollView {
         bounces = menuViewBounces
         isScrollEnabled = menuViewScrollEnabled
         isDirectionalLockEnabled = true
-        decelerationRate = menuOptions.deceleratingRate
+        decelerationRate = UIScrollView.DecelerationRate(rawValue: menuOptions.deceleratingRate)
         scrollsToTop = false
         translatesAutoresizingMaskIntoConstraints = false
     }
