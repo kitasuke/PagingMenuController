@@ -11,10 +11,10 @@ import UIKit
 open class MenuView: UIScrollView {
     public fileprivate(set) var currentMenuItemView: MenuItemView!
     
-    internal fileprivate(set) var menuItemViews = [MenuItemView]()
+    public fileprivate(set) var menuItemViews = [MenuItemView]()
     internal var onMove: ((MenuMoveState) -> Void)?
     
-    fileprivate var menuOptions: MenuViewCustomizable!
+    public var menuOptions: MenuViewCustomizable!
     fileprivate var sortedMenuItemViews = [MenuItemView]()
     fileprivate let contentView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -363,13 +363,13 @@ open class MenuView: UIScrollView {
 }
 
 extension MenuView: Pagable {
-    var currentPage: Int {
+    public var currentPage: Int {
         return currentIndex
     }
-    var previousPage: Int {
+    public var previousPage: Int {
         return currentPage - 1 < 0 ? menuItemCount - 1 : currentPage - 1
     }
-    var nextPage: Int {
+    public var nextPage: Int {
         return currentPage + 1 > menuItemCount - 1 ? 0 : currentPage + 1
     }
     func update(currentPage page: Int) {
