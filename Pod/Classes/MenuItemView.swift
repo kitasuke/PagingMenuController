@@ -58,7 +58,7 @@ open class MenuItemView: UIView {
         return imageView
     }()
     
-    fileprivate var menuOptions: MenuViewCustomizable!
+    fileprivate(set) var menuOptions: MenuViewCustomizable!
     fileprivate var menuItemOptions: MenuItemViewCustomizable!
     fileprivate var widthConstraint: NSLayoutConstraint!
     fileprivate var descriptionWidthConstraint: NSLayoutConstraint!

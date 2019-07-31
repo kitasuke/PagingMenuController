@@ -11,10 +11,10 @@ import UIKit
 open class MenuView: UIScrollView {
     public fileprivate(set) var currentMenuItemView: MenuItemView!
     
-    internal fileprivate(set) var menuItemViews = [MenuItemView]()
+    public fileprivate(set) var menuItemViews = [MenuItemView]()
     internal var onMove: ((MenuMoveState) -> Void)?
     
-    fileprivate var menuOptions: MenuViewCustomizable!
+    public var menuOptions: MenuViewCustomizable!
     fileprivate var sortedMenuItemViews = [MenuItemView]()
     fileprivate let contentView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -121,6 +121,20 @@ open class MenuView: UIScrollView {
     }
     
     // MARK: - Internal method
+    public func scrollBetween(toPage: Int, percent:CGFloat){
+        guard toPage >= 0 && toPage < menuItemViews.count else {
+            return
+        }
+        guard case .underline(_, _, let horizontalPadding, _) = menuOptions.focusMode else { return }
+        let previousFrame = menuItemViews[currentPage].frame
+        let targetFrame = menuItemViews[toPage].frame
+        let differencePos = ((targetFrame.minX - previousFrame.minX)*percent)
+        let differenceSize = (previousFrame.width*(1-percent) + targetFrame.width*percent)
+        //        print(differenceSize)
+        underlineView.frame.origin.x = previousFrame.minX + differencePos + horizontalPadding
+        underlineView.frame.size.width = differenceSize - horizontalPadding * 2
+        
+    }
     
     public func move(toPage page: Int, animated: Bool = true) {
         // hide menu view when constructing itself
@@ -173,7 +187,7 @@ open class MenuView: UIScrollView {
         }
         setNeedsLayout()
         layoutIfNeeded()
-
+        
         animateUnderlineViewIfNeeded()
         animateRoundRectViewIfNeeded()
     }
@@ -215,7 +229,7 @@ open class MenuView: UIScrollView {
             contentView.heightAnchor.constraint(equalTo: heightAnchor)
             ])
     }
-
+    
     fileprivate func constructMenuItemViews(_ menuOptions: MenuViewCustomizable) {
         constructMenuItemViews({
             return MenuItemView(menuOptions: menuOptions, menuItemOptions: menuOptions.itemsOptions[$0], addDiveder: $1)
@@ -312,12 +326,12 @@ open class MenuView: UIScrollView {
         roundRectView.frame.origin.x = targetFrame.minX + horizontalPadding
         roundRectView.frame.size.width = targetFrame.width - horizontalPadding * 2
     }
-
+    
     fileprivate func relayoutMenuItemViews() {
         sortMenuItemViews()
         layoutMenuItemViews()
     }
-
+    
     fileprivate func positionMenuItemViews() {
         let item = self.currentMenuItemView.frame
         if self.menuOptions.selectedItemCenter || !bounds.contains(item) {
@@ -353,7 +367,7 @@ open class MenuView: UIScrollView {
                 self.currentMenuItemView = $0
             }
         }
-
+        
         // make selected item foreground
         sortedMenuItemViews.forEach { $0.layer.zPosition = isSelected($0) ? 0 : -1 }
         
@@ -363,13 +377,13 @@ open class MenuView: UIScrollView {
 }
 
 extension MenuView: Pagable {
-    var currentPage: Int {
+    public var currentPage: Int {
         return currentIndex
     }
-    var previousPage: Int {
+    public var previousPage: Int {
         return currentPage - 1 < 0 ? menuItemCount - 1 : currentPage - 1
     }
-    var nextPage: Int {
+    public var nextPage: Int {
         return currentPage + 1 > menuItemCount - 1 ? 0 : currentPage + 1
     }
     func update(currentPage page: Int) {
