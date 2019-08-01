@@ -16,7 +16,7 @@ public enum MenuMoveState {
     case didMoveController(to: UIViewController, from: UIViewController)
     case willMoveItem(to: MenuItemView, from: MenuItemView)
     case didMoveItem(to: MenuItemView, from: MenuItemView)
-    case scrollingView(scrollView:UIScrollView)
+    case scrollingView(toPage:Int, percent:CGFloat)
     case didScrollStart
     case didScrollEnd
 }
@@ -359,7 +359,7 @@ extension PagingMenuController: UIScrollViewDelegate {
         }
         print(page, percent)
         menuView?.scrollBetween(toPage: page, percent: percent)
-        onMove?(.scrollingView(scrollView:scrollView))
+        onMove?(.scrollingView(toPage: page, percent:percent))
     }
 }
 
