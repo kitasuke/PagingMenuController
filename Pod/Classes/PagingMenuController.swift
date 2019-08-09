@@ -141,8 +141,9 @@ open class PagingMenuController: UIViewController {
         constructPagingViewController()
         layoutPagingViewController()
     }
-    
+    var movingPageAutomatically = false
     open func move(toPage page: Int, animated: Bool = true) {
+        movingPageAutomatically = true
         switch options.componentType {
         case .menuView, .all:
             // ignore an unexpected page number
@@ -192,6 +193,7 @@ open class PagingMenuController: UIViewController {
             self?.showPagingMenuControllers()
             
             self?.onMove?(.didMoveController(to: nextPagingViewController, from: previousPagingViewController))
+            self?.movingPageAutomatically = false
         }
         if duration > 0 {
             UIView.animate(withDuration: duration, animations: animationClosure, completion: completionClosure)
@@ -351,10 +353,10 @@ extension PagingMenuController: UIScrollViewDelegate {
         let percent:CGFloat
         let page:Int
         if initialOffset.x > scrollView.contentOffset.x {
-            page = currentPage - 1
+            page = movingPageAutomatically ? currentPage : currentPage - 1
             percent = (initialOffset.x - scrollView.contentOffset.x)/self.view.frame.width
         }else {
-            page = currentPage + 1
+            page = movingPageAutomatically ? currentPage : currentPage + 1
             percent = (scrollView.contentOffset.x - initialOffset.x)/self.view.frame.width
         }
 //        print(page, percent)
