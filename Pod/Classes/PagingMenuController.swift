@@ -350,6 +350,7 @@ extension PagingMenuController: UIScrollViewDelegate {
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView != self.menuView else {return}
         let percent:CGFloat
         let page:Int
         if initialOffset.x > scrollView.contentOffset.x {
@@ -359,7 +360,7 @@ extension PagingMenuController: UIScrollViewDelegate {
             page = movingPageAutomatically ? currentPage : currentPage + 1
             percent = (scrollView.contentOffset.x - initialOffset.x)/self.view.frame.width
         }
-//        print(page, percent)
+        //        print(page, percent)
         menuView?.scrollBetween(toPage: page, percent: percent)
         onMove?(.scrollingView(toPage: page, percent:percent))
     }
