@@ -126,14 +126,25 @@ open class MenuView: UIScrollView {
             return
         }
         guard case .underline(_, _, let horizontalPadding, _) = menuOptions.focusMode else { return }
-        let previousFrame = menuItemViews[currentPage].frame
-        let targetFrame = menuItemViews[toPage].frame
+        let previousMenuItem = menuItemViews[currentPage]
+        let previousFrame = previousMenuItem.frame
+        let targetMenuItem = menuItemViews[toPage]
+        let targetFrame = targetMenuItem.frame
         let differencePos = ((targetFrame.minX - previousFrame.minX)*percent)
         let differenceSize = (previousFrame.width*(1-percent) + targetFrame.width*percent)
-        //        print(differenceSize)
         underlineView.frame.origin.x = previousFrame.minX + differencePos + horizontalPadding
         underlineView.frame.size.width = differenceSize - horizontalPadding * 2
         
+        guard case .text(let title) = menuOptions.itemsOptions[0].displayMode else { return }
+        previousMenuItem.titleLabel.textColor = multiplyColor(title.selectedColor, by: (1-percent))
+        targetMenuItem.titleLabel.textColor = multiplyColor(title.selectedColor, by: percent)
+    }
+    
+    ///simply put coloe function in here.
+    private func multiplyColor(_ color: UIColor, by multiplier: CGFloat) -> UIColor {
+        var (r, g, b, a) = (CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0))
+        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return UIColor(red: r * multiplier, green: g * multiplier, blue: b * multiplier, alpha: a)
     }
     
     public func move(toPage page: Int, animated: Bool = true) {
