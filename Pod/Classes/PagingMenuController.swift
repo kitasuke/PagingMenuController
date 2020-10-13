@@ -336,6 +336,7 @@ extension PagingMenuController: UIScrollViewDelegate {
     
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.initialOffset = scrollView.contentOffset
+        self.movingPageAutomatically = false
         onMove?(.didScrollStart)
     }
     
