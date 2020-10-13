@@ -136,11 +136,21 @@ open class MenuView: UIScrollView {
         underlineView.frame.size.width = differenceSize - horizontalPadding * 2
         
         guard case .text(let title) = menuOptions.itemsOptions[0].displayMode else { return }
-        previousMenuItem.titleLabel.textColor = multiplyColor(title.selectedColor, by: (1-percent))
-        targetMenuItem.titleLabel.textColor = multiplyColor(title.selectedColor, by: percent)
+        previousMenuItem.titleLabel.textColor = addColor(multiplyColor(title.selectedColor, by: (1-percent)), with: multiplyColor(title.color, by: percent))
+        targetMenuItem.titleLabel.textColor = addColor(multiplyColor(title.selectedColor, by: percent), with: multiplyColor(title.color, by: (1-percent)))
+    }
+    ///simply put coloe function in here.
+    private func addColor(_ color1: UIColor, with color2: UIColor) -> UIColor {
+        var (r1, g1, b1, a1) = (CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0))
+        var (r2, g2, b2, a2) = (CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0))
+
+        color1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        color2.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+
+        // add the components, but don't let them go above 1.0
+        return UIColor(red: min(r1 + r2, 1), green: min(g1 + g2, 1), blue: min(b1 + b2, 1), alpha: (a1 + a2) / 2)
     }
     
-    ///simply put coloe function in here.
     private func multiplyColor(_ color: UIColor, by multiplier: CGFloat) -> UIColor {
         var (r, g, b, a) = (CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0))
         color.getRed(&r, green: &g, blue: &b, alpha: &a)
