@@ -58,7 +58,7 @@ open class MenuItemView: UIView {
         return imageView
     }()
     
-    fileprivate var menuOptions: MenuViewCustomizable!
+    fileprivate(set) var menuOptions: MenuViewCustomizable!
     fileprivate var menuItemOptions: MenuItemViewCustomizable!
     fileprivate var widthConstraint: NSLayoutConstraint!
     fileprivate var descriptionWidthConstraint: NSLayoutConstraint!
@@ -303,7 +303,7 @@ extension MenuItemView {
     
     fileprivate func estimatedLabelSize(_ label: UILabel) -> CGSize {
         guard let text = label.text else { return .zero }
-        return NSString(string: text).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: label.font], context: nil).size
+        return NSString(string: text).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, attributes: [kCTFontAttributeName as NSAttributedStringKey: label.font], context: nil).size
     }
     
     fileprivate func calculateLabelSize(_ label: UILabel, maxWidth: CGFloat) -> CGSize {

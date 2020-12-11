@@ -16,6 +16,7 @@ public enum MenuMoveState {
     case didMoveController(to: UIViewController, from: UIViewController)
     case willMoveItem(to: MenuItemView, from: MenuItemView)
     case didMoveItem(to: MenuItemView, from: MenuItemView)
+    case scrollingView(toPage:Int, percent:CGFloat)
     case didScrollStart
     case didScrollEnd
 }
@@ -24,6 +25,8 @@ internal let MinimumSupportedViewCount = 1
 internal let VisiblePagingViewNumber = 3
 
 open class PagingMenuController: UIViewController {
+    var initialOffset:CGPoint = .zero
+    
     public fileprivate(set) var menuView: MenuView? {
         didSet {
             guard let menuView = menuView else { return }
@@ -138,8 +141,9 @@ open class PagingMenuController: UIViewController {
         constructPagingViewController()
         layoutPagingViewController()
     }
-    
+    var movingPageAutomatically = false
     open func move(toPage page: Int, animated: Bool = true) {
+        movingPageAutomatically = true
         switch options.componentType {
         case .menuView, .all:
             // ignore an unexpected page number
@@ -184,11 +188,12 @@ open class PagingMenuController: UIViewController {
         }
         let completionClosure = { [weak self] (_: Bool) -> Void in
             pagingViewController.relayoutPagingViewControllers()
-
+            
             // show paging views
             self?.showPagingMenuControllers()
-
+            
             self?.onMove?(.didMoveController(to: nextPagingViewController, from: previousPagingViewController))
+            self?.movingPageAutomatically = false
         }
         if duration > 0 {
             UIView.animate(withDuration: duration, animations: animationClosure, completion: completionClosure)
@@ -242,7 +247,7 @@ open class PagingMenuController: UIViewController {
         menuView.setNeedsLayout()
         menuView.layoutIfNeeded()
     }
-
+    
     fileprivate func constructPagingViewController() {
         let viewControllers: [UIViewController]
         switch options.componentType {
@@ -253,7 +258,7 @@ open class PagingMenuController: UIViewController {
         
         pagingViewController = PagingViewController(viewControllers: viewControllers, options: options)
     }
-
+    
     fileprivate func layoutPagingViewController() {
         guard let pagingViewController = pagingViewController else { return }
         
@@ -314,30 +319,51 @@ extension PagingMenuController: UIScrollViewDelegate {
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         onMove?(.didScrollEnd)
         
+        var contentScrollView:Bool = false
         let nextPage: Int
         switch (scrollView, pagingViewController, menuView) {
         case let (scrollView, pagingViewController?, _) where scrollView.isEqual(pagingViewController.contentScrollView):
             nextPage = nextPageFromCurrentPosition
+            contentScrollView = true
         case let (scrollView, _, menuView?) where scrollView.isEqual(menuView):
             nextPage = nextPageFromCurrentPoint
         default: return
         }
-        
-        move(toPage: nextPage)
+        if !(menuView?.freescroll ?? false) || contentScrollView {
+            move(toPage: nextPage)
+        }
     }
-
+    
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.initialOffset = scrollView.contentOffset
+        self.movingPageAutomatically = false
         onMove?(.didScrollStart)
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         switch (scrollView, decelerate) {
-        case (let scrollView, false) where scrollView.isEqual(menuView): break
+        case (let scrollView, false) where scrollView.isEqual(menuView) && !(menuView?.freescroll ?? false): break
         default: return
         }
         
         let nextPage = nextPageFromCurrentPoint
         move(toPage: nextPage)
+    }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView != self.menuView else {return}
+        let percent:CGFloat
+        let page:Int
+        if initialOffset.x > scrollView.contentOffset.x {
+            page = movingPageAutomatically ? currentPage : currentPage - 1
+            percent = (initialOffset.x - scrollView.contentOffset.x)/self.view.frame.width
+        }else {
+            page = movingPageAutomatically ? currentPage : currentPage + 1
+            percent = (scrollView.contentOffset.x - initialOffset.x)/self.view.frame.width
+        }
+        //        print(page, percent)
+        menuView?.scrollBetween(toPage: page, percent: percent)
+        onMove?(.scrollingView(toPage: page, percent:percent))
     }
 }
 
@@ -478,7 +504,7 @@ extension PagingMenuController {
         menuView?.addGestureRecognizer(rightSwipeGestureRecognizer)
     }
     
-    internal func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
+    @objc internal func handleTapGesture(_ recognizer: UITapGestureRecognizer) {
         guard let menuItemView = recognizer.view as? MenuItemView,
             let menuView = menuView,
             let page = menuView.menuItemViews.index(of: menuItemView),
@@ -503,7 +529,7 @@ extension PagingMenuController {
         move(toPage: newPage)
     }
     
-    internal func handleSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
+    @objc internal func handleSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
         guard let menuView = recognizer.view as? MenuView,
             let menuOptions = menuOptions else { return }
         

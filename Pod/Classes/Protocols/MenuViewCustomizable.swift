@@ -74,6 +74,7 @@ public enum MenuScrollingMode {
     case scrollEnabled
     case scrollEnabledAndBouces
     case pagingEnabled
+    case freeScroll
 }
 
 public enum MenuFocusMode {
